@@ -10,15 +10,15 @@ export default function Home() {
   // List of awards (update with your actual image file paths)
   const awards = [
     
-    { id: 1, src: "/img/awards/IEEE_MASS_2022.png", alt: "Award 1", 
+    { id: 1, src: `${import.meta.env.BASE_URL}/img/awards/IEEE_MASS_2022.png`, alt: "Award 1", 
       caption: "Best Paper Award – IEEE MASS Conference 2022"  },
-    { id: 2, src: "/img/awards/IPBSA_2022.png", alt: "Award 2", 
+    { id: 2, src: `${import.meta.env.BASE_URL}/img/awards/IPBSA_2022.png`, alt: "Award 2", 
       caption: "Best Demonstration Award - IBPSA 2022"  },
-    { id: 3, src: "/img/awards/ORNL_DOE_Significant_event_award_2020.png", alt: "Award 3", 
+    { id: 3, src: `${import.meta.env.BASE_URL}/img/awards/ORNL_DOE_Significant_event_award_2020.png`, alt: "Award 3", 
       caption: "US Government (ORNL) Significant Event Award 2020" },
-    { id: 4, src: "/img/awards/AWRA_best_presentation_award.jpg", alt: "Award 4", 
+    { id: 4, src: `${import.meta.env.BASE_URL}/img/awards/AWRA_best_presentation_award.jpg`, alt: "Award 4", 
       caption: "Best Presentation - AWRA 2016" },
-    { id: 5, src: "/img/awards/CIE_2024.jpeg", alt: "Award 5", 
+    { id: 5, src: `${import.meta.env.BASE_URL}/img/awards/CIE_2024.jpeg`, alt: "Award 5", 
       caption: "Best Paper Award - CIE 2024"  },
     // Add more awards here...
   ];
@@ -36,7 +36,7 @@ export default function Home() {
             <div className="flex flex-col items-center">
               <div className="relative w-48 sm:w-56 md:w-64 aspect-square overflow-hidden rounded-2xl shadow-md ring-1 ring-black/10">
                 <img
-                  src="/img/haowen_xu_nas.jpg"
+                  src={`${import.meta.env.BASE_URL}img/haowen_xu_nas.jpg`}
                   alt="Profile 1"
                   className="h-full w-full object-cover"
                 />
@@ -49,7 +49,7 @@ export default function Home() {
             <div className="flex flex-col items-center">
               <div className="relative w-48 sm:w-56 md:w-64 overflow-hidden rounded-2xl shadow-md ring-1 ring-black/10">
                 <img
-                  src="/img/haowen_nl.jpg"
+                  src={`${import.meta.env.BASE_URL}img/haowen_nl.jpg`}   
                   alt="Profile 2"
                   className="w-full h-auto object-cover rounded-2xl"
                 />
