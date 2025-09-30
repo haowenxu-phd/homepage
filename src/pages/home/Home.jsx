@@ -10,7 +10,7 @@ export default function Home() {
   // List of awards (update with your actual image file paths)
   const awards = [
     
-    { id: 1, src: `${import.meta.env.BASE_URL}/img/awards/IEEE_MASS_2022.png`, alt: "Award 1", 
+    { id: 1, src: `${import.meta.env.BASE_URL}/img/awards/IEEE_MASS_2022.png`, alt: "Award 1 ", 
       caption: "Best Paper Award – IEEE MASS Conference 2022"  },
     { id: 2, src: `${import.meta.env.BASE_URL}/img/awards/IPBSA_2022.png`, alt: "Award 2", 
       caption: "Best Demonstration Award - IBPSA 2022"  },
