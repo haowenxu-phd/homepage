@@ -1,0 +1,96 @@
+.dataVis_c {
+  position: absolute;
+  left: 0%;
+  width: 95%;
+  left: 2%;
+  overflow-y: hidden;
+}
+
+.mapWrapper {
+ 
+}
+
+.mapContainer_c {
+  
+  position: relative;
+}
+
+.leaflet-container {
+  height: 100%;
+  position: relative;
+}
+
+#dataviz_axisZoom{
+  
+  height: 600px;
+ 
+}
+
+.visContainer_c{
+  display: block;
+  clear: both;
+}
+
+.visTitle{
+  height:10px
+}
+
+p{
+  display: block;
+  clear: both; 
+}
+
+.visContainer2_c{
+   
+   
+}
+
+
+
+body{
+   
+} 
+
+#d3_latent_vector_bar_c{
+  height: 180px;
+}
+
+#d3_tree_diagram_c{
+  height:100%;
+  width:100%
+}
+ 
+
+:root {
+  overflow-y: hidden;
+}
+
+
+.node circle {
+  fill: #999;
+  stroke: #555;
+  stroke-width: 2px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #555;
+  stroke-opacity: 0.5;
+  stroke-width: 1.5px;
+}
+
+
+.menueSelect{
+   flex: "1" 
+}
+.menueSelectLabel{
+  flex: "1" 
+}
+.formGroup{
+  display: "flex";
+  alignItems: "center" 
+}

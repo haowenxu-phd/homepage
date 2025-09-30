@@ -1,0 +1,10 @@
+{
+    "N": 5000.0,
+    "core": 10.0,
+    "gamma_scale": 120.0,
+    "seed": 6,
+    "w_speed": 5.0,
+    "deg": 135.0,
+    "heat_boost_v": 1600.0,
+    "color_ramp": "bluegreen"
+}

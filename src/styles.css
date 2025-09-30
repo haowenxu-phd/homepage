@@ -1,0 +1,13 @@
+/* Tailwind v4 */
+@import "tailwindcss";
+
+/* your custom CSS can stay */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; }
+.brand { margin: 0; font-size: 18px; }
+.links a { margin-left: 12px; text-decoration: none; }
+.links a.active { text-decoration: underline; }
+.content { max-width: 920px; width: 100%; padding: 24px 16px; margin: 0 auto; }
+section h2 { margin-top: 0; }

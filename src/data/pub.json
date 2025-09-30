@@ -1,0 +1,110 @@
+[
+    { 
+        "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2025). Generative AI as a Pillar for Predicting 2D and 3D Wildfire Spread: Beyond Physics-Based Models and Traditional Deep Learning. Fire, 8(8), 293.",
+        "url":"https://www.mdpi.com/2571-6255/8/8/293"
+    },
+    {
+        "name": "Xu, H., Sun, Y., Tupayachi, J., Omitaomu, O., Zlatanova, S., & Li, X. (2025). Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol. arXiv preprint arXiv:2506.13068.",
+        "url":"https://www.arxiv.org/abs/2506.13068"
+    },
+    {
+        "name": "Xu, H., & Yu, X. Y. (2025). From powerpoint ui sketches to web-based applications: Pattern-driven code generation for gis dashboard development using knowledge-augmented llms, context-aware visual prompting, and the react framework. arXiv preprint arXiv:2502.08756.",
+        "url":"https://arxiv.org/abs/2502.08756"
+    },
+    {
+        "name": "Xu, H., Boyaci, A., Lian, J., & Wilson, A. (2025). Explainable ai for multivariate time series pattern exploration: Latent space visual analytics with temporal fusion transformer and variational autoencoders in power grid event diagnosis. IEEE Access.",
+        "url":"https://ieeexplore.ieee.org/abstract/document/11141392/"
+    },
+    {
+        "name": "Xu, H., Yuan, J., Zhou, A., Xu, G., Li, W., & Ye, X. (2024). GenAI-powered Multi-Agent Paradigm for Smart Urban Mobility: Opportunities and Challenges for Integrating Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) with Intelligent Transportation Systems. Urban Human Mobility, 123-137.",
+        "url":"https://www.taylorfrancis.com/chapters/edit/10.1201/9781003503262-14/generative-artificial-intelligence%E2%80%93powered-multi-agent-paradigm-smart-urban-mobility-haowen-xu-jinghui-yuan-anye-zhou-guanhao-xu-wan-li-xuegang-jeff-ban-xinyue-ye"
+    },
+    {
+        "name": "Xu, H., Omitaomu, F., Sabri, S., Zlatanova, S., Li, X., & Song, Y. (2024). Leveraging generative AI for urban digital twins: a scoping review on the autonomous generation of urban data, scenarios, designs, and 3D city models for smart city advancement. Urban Informatics, 3(1), 29.",
+        "url":"https://link.springer.com/article/10.1007/s44212-024-00060-w"
+    },
+    {
+        "name": "Tupayachi, J., Xu, H*., Omitaomu, O. A., Camur, M. C., Sharmin, A., & Li, X. (2024). Towards Next-Generation Urban Decision Support Systems through AI-Powered Construction of Scientific Ontology Using Large Language Models—A Case in Optimizing Intermodal Freight Transportation. Smart Cities, 7(5), 2392-2421.",
+        "url":""
+    },
+    {
+        "name": "Moriano, P., Berres, A., Xu, H., & Sanyal, J. (2024). Spatiotemporal Features of Traffic Help Reduce Automatic Accident Detection Time. Expert Systems With Applications, 244, 122813.",
+        "url":""
+    },
+    {
+        "name": "Shi, L., Qu, M., Liu, L., Venegas, T. P., Wang, L., Dong, J., Cui, B., Xu, H., Liu, X., & Li Y. (2024). Performance evaluation of underground thermal storage integrated dual-source heat pump systems. Energy and Buildings: 114349.",
+        "url":""
+    },
+    {
+        "name": "Berres, A., Moriano, P., Xu, H., Tennille, S., Smith, L., Storey, J., & Sanyal, J. (2024). A traffic accident dataset for Chattanooga, Tennessee. Data in brief, 55, 110675.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Shao, Y., Chen, J., Wang, C., & Berres, A. (2023). Semi-Automatic Geographic Information System Framework for Creating Photo-Realistic Digital Twin Cities to Support Autonomous Driving Research. Transportation Research Record, 03611981231205884.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Yuan, J., Berres, A., Shao, Y., Wang, C., Li, W., Laclair, T., Sanyal, J., & Wang, H. (2023). A Mobile Edge Computing Framework for Traffic Optimization At Urban Intersections Through Cyber-Physical Integration. IEEE Transactions on Intelligent Vehicles, doi: 10.1109/TIV.2023.3332256.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Berres, A., Yoginath, S. B., Sorensen, H., Nugent, P. J., Severino, J., ... & Sanyal, J. (2023). Smart Mobility in the Cloud: Enabling Real-Time Situational Awareness and Cyber-Physical Control Through a Digital Twin for Traffic. IEEE Transactions on Intelligent Transportation Systems.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Berres, A. S., Shao, Y., Wang, C., J, New., Omitaomu, O. A. (2022). Towards a Smart Metaverse City: Immersive Realism and 3D Visualization of Digital Twin Cities. In Surya Durbha (Eds.). Advances in Scalable and Geospatial Analytics: New Trends, Challenges and Applications.",
+        "url":""
+    },
+    {
+        "name": "Muste, M., & Xu, H*. (2022). Multi-pronged approach for monitoring sedimentation processes at multi-barrel culverts. Journal of Hydrology, 610, 127840.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Berres, A., Liu, Y., Allen-Dumas, M. R., & Sanyal, J. (2022). An overview of visualization and visual analytics applications in water resources management. Environmental Modelling & Software, 105396.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Berres, A., Thakur, G., Sanyal, J., & Chinthavali, S. (2021). EPIsembleVis: A geo-visual analysis and comparison of the prediction ensembles of multiple COVID-19 models. Journal of Biomedical Informatics, 124, 103941.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Berres, A., Tennille, S. A., Ravulaparthy, S. K., Wang, C., & Sanyal, J. (2021). Continuous Emulation and Multiscale Visualization of Traffic Flow Using Stationary Roadside Sensor Data. IEEE Transactions on Intelligent Transportation Systems.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Wang, C., Berres, A., LaClair, T., & Sanyal, J. (2022). Interactive web application for traffic simulation data management and visualization. Transportation research record, 2676(1), 274-292.",
+        "url":""
+    },
+    {
+        "name": "Li, X., Xu, H., Huang, X., Guo, C. A., Kang, Y., & Ye, X. (2021). Emerging geo-data sources to reveal human mobility dynamics during COVID-19 pandemic: opportunities and challenges. Computational Urban Science, 1(1), 1-9.",
+        "url":""
+    },
+    {
+        "name": "Berres, A. S., Xu, H., Tennille, S. A., Severino, J., Ravulaparthy, S., & Sanyal, J. (2021). Explorative visualization for traffic safety using adaptive study areas. Transportation research record, 2675(6), 51-69.",
+        "url":""
+    },
+    {
+        "name": "Allen-Dumas, M. R., Xu, H*., Kurte, K. R., & Rastogi, D. (2021). Toward urban water security: broadening the use of machine learning methods for mitigating urban water hazards. Frontiers in Water, 2, 562304.",
+        "url":""
+    },
+    {
+        "name": "Berres, A. S., LaClair, T. J., Wang, C., Xu, H., Ravulaparthy, S., Todd, A., ... & Sanyal, J. (2020). Multiscale and Multivariate Transportation System Visualization for Shopping District Traffic and Regional Traffic. Transportation Research Record, 0361198120970526.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Demir, I., Koylu, C., & Muste, M. (2019). A web-based geovisual analytics platform for identifying potential contributors to culvert sedimentation. Science of the Total Environment, 692, 806-817.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Windsor, M., Muste, M., & Demir, I. (2020). A web-based decision support system for collaborative mitigation of multiple water-related hazards using serious gaming. Journal of environmental management, 255, 109887.",
+        "url":""
+    },
+    {
+        "name": "Xu, H., Muste, M., & Demir, I. (2019). Web-based geospatial platform for the analysis and forecasting of sedimentation at culverts. Journal of Hydroinformatics, 21(6), 1064-1081.",
+        "url":""
+    },
+    {
+        "name": "Basnet, K., Muste, M., Constantinescu, G., Ho, H., & Xu, H. (2016). Close range photogrammetry for dynamically tracking drifted snow deposition. Cold Regions Science and Technology, 121, 141-153.",
+        "url":""
+    }
+ ]
