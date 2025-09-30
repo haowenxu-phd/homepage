@@ -72,7 +72,7 @@ export default function Home() {
 
               <ul className="text-slate-600 leading-relaxed list-disc list-inside space-y-2">
               <li>
-                <strong>5.5 years</strong> of post-PhD experience as an
+                <strong>Over 6 years</strong> of post-PhD experience as an
                 award-winning <strong>Staff Research Scientist</strong> at the
                 <strong> U.S. Department of Energy’s Oak Ridge National Laboratory (ORNL)</strong>,
                 and <strong>Adjunct Associate Professor</strong> at the
