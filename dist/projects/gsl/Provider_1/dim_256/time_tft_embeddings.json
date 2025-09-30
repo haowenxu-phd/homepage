@@ -1,0 +1,10 @@
+{
+    "0_start_import": 1733366823.4883988,
+    "1_parsing": 1733366823.4903996,
+    "2_start_padding": 1733366823.9575183,
+    "3_start_normalizing": 1733366824.3306131,
+    "4_start_tensor_conversion": 1733366824.4096327,
+    "5_start_model": 1733366824.458002,
+    "6_complete_model": 1733366848.3946419,
+    "res_model_runtime": 23.9366397857666
+}
