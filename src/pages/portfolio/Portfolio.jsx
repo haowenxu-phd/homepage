@@ -72,7 +72,7 @@ export default function Projects() {
 
           {/* Strong CTA (edit bullets or turn into paragraph) */}
           <ul className="mt-4 list-disc list-inside text-slate-700 space-y-1">
-            <li>Discuss AI surrogate modeling for real-time at scale.</li>
+            <li>Discuss AI surrogate modeling and agentic AI system for real-time at scale.</li>
             <li>Partner on ARC / DOE / industry proposals.</li>
           </ul>
 

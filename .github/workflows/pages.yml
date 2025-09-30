@@ -21,9 +21,10 @@ jobs:
         with: { node-version: 20, cache: npm }
       - run: npm ci
       - run: npm run build
-      - run: cp dist/index.html dist/404.html   # SPA fallback
+      - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
-        with: { path: ./dist }
+        with:
+          path: ./dist          # ← MUST be dist, not repo root
   deploy:
     needs: build
     runs-on: ubuntu-latest
