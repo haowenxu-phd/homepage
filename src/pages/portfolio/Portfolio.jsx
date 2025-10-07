@@ -10,19 +10,20 @@ export default function Projects() {
   // 🔧 Replace with your real projects
   const projects = useMemo(
     () => [
+      
       {
         id: 1,
-        title: "Urban Digital Twin (CTwin)",
-        image: "/img/projects/ctwin_dashboard.jpg",
+        title: "Agentic AI for Urban Logistic Optimization",
+        image: "/img/thumbnail/tn_agentic_ai.png",
         blurb:
-          "Real-time mobility & energy analytics with cyber-physical control and visual analytics.",
-        href: "https://yourlink.example/ctwin",
-        badges: ["Digital Twin", "HPC", "Edge"],
+          "Agentic AI assistants orchestrating tools for planning, querying, and reporting.",
+        href: "https://yourlink.example/agentic-llm",
+        badges: ["LLM", "Agents", "RAG"],
       },
       {
         id: 2,
         title: "Voxel Wildfire Simulator",
-        image: "/img/projects/voxel_fire.jpg",
+        image: "/img/thumbnail/tn_wildfire.png",
         blurb:
           "Multi-kernel heat transfer (convection, radiation, conduction, wind) with 3D voxel outputs.",
         href: "https://yourlink.example/voxel-fire",
@@ -31,7 +32,7 @@ export default function Projects() {
       {
         id: 3,
         title: "Speed Advisory Mobile App",
-        image: "/img/projects/speed_advisory.jpg",
+        image: "/img/thumbnail/tn_mobile_ad.png",
         blurb:
           "V2I-based intelligent speed advisory to smooth stop-and-go traffic and reduce fuel.",
         href: "https://yourlink.example/speed-app",
@@ -39,30 +40,45 @@ export default function Projects() {
       },
       {
         id: 4,
-        title: "LLM Agentic Planning",
-        image: "/img/projects/agentic_llm.jpg",
+        title: "Urban Digital Twin (CTwin)",
+        image: "/img/thumbnail/tn_ctwin.png",
         blurb:
-          "Agentic AI assistants orchestrating tools for planning, querying, and reporting.",
-        href: "https://yourlink.example/agentic-llm",
-        badges: ["LLM", "Agents", "RAG"],
+          "Real-time mobility & energy analytics with cyber-physical control and visual analytics.",
+        href: "https://yourlink.example/ctwin",
+        badges: ["Digital Twin", "HPC", "Edge"],
       },
+
+      {
+        id: 4,
+        title: "Urban Digital Twin (CTwin)",
+        image: "/img/thumbnail/tn_photorealistic_dt.png",
+        blurb:
+          "VRc Digital Twins",
+        href: "https://yourlink.example/ctwin",
+        badges: ["Digital Twin", "HPC", "Edge"],
+      },
+
+      
+      
       // add more…
     ],
     []
   );
 
   return (
-    <main className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      <div className="max-w-6xl mx-auto px-4 pb-10 md:pb-14">
+    <div className="w-full">
+    <main className="w-full !max-w-none min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 via-white to-slate-100">
+
+      <div className="max-w-[1600px] mx-auto">  {/* or w-full for no cap */}
         {/* ---------- CTA Section ---------- */}
-        <section className="rounded-2xl border bg-white/70 backdrop-blur p-6 md:p-8 ring-1 ring-black/5 shadow-sm">
+        <section className="w-full">
           <h4 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Dr. Haowen Xu's Selected Projects
+            Dr. Haowen Xu's Selected Projects 
           </h4>
           <p className="mt-3 text-slate-600">
             I design and build <strong>Urban AI systems</strong> that integrate 
             <strong> digital twins, simulation, visual analytics, IoT devices,
-            generative and agentic AI, and large language models (LLMs)</strong> 
+            generative and agentic AI, and large language models (LLMs)</strong>  {" "}
             to advance smart cities and enhance everyday life.  
             Below are representative projects—funded by UNSW and the U.S. government—
             with links to <strong>videos, live demos, publications, and awards</strong>.  
@@ -102,7 +118,7 @@ export default function Projects() {
 
           {/* Responsive columns:
               <640px: 1,  >=640px: 2,  >=1024px: 3,  >=1280px: 4  */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
             {projects.map((p) => (
               <a
                 key={p.id}
@@ -114,7 +130,7 @@ export default function Projects() {
                 {/* Thumb */}
                 <div className="aspect-video overflow-hidden bg-slate-100">
                   <img
-                    src={p.image}
+                    src={`${import.meta.env.BASE_URL}${p.image}`}  
                     alt={p.title}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
@@ -123,9 +139,9 @@ export default function Projects() {
 
                 {/* Text block */}
                 <div className="p-4">
-                  <h3 className="text-sm font-semibold text-slate-900 line-clamp-2">
+                  <h5 className="text-sm font-semibold text-slate-900 line-clamp-2">
                     {p.title}
-                  </h3>
+                  </h5>
                   <p className="mt-1 text-sm text-slate-600 line-clamp-3">
                     {p.blurb}
                   </p>
@@ -153,5 +169,6 @@ export default function Projects() {
         </section>
       </div>
     </main>
+    </div>
   );
 }
