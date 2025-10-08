@@ -13,20 +13,20 @@ export default function Projects() {
       
       {
         id: 1,
-        title: "Agentic AI for Urban Logistic Optimization",
+        title: "LLM & Agentic AI for Urban Logistic Optimization",
         image: "/img/thumbnail/tn_agentic_ai.png",
         blurb:
           "Agentic AI assistants orchestrating tools for planning, querying, and reporting.",
-        href: "https://yourlink.example/agentic-llm",
-        badges: ["LLM", "Agents", "RAG"],
+        href: "/homepage/portfolio/agentic_ai_dt",
+        badges: ["LLM", "Agents", "RAG", "Optimization Solver"],
       },
       {
         id: 2,
-        title: "Voxel Wildfire Simulator",
+        title: "HPC-accelerated 3D Wildfire Simulator using Voxels",
         image: "/img/thumbnail/tn_wildfire.png",
         blurb:
-          "Multi-kernel heat transfer (convection, radiation, conduction, wind) with 3D voxel outputs.",
-        href: "https://yourlink.example/voxel-fire",
+          "Multi-kernel heat transfer (convection, radiation, conduction, wind) through 3D voxel City.",
+        href: "/homepage/portfolio/bushfire_sim",
         badges: ["3D Voxels", "Simulation", "AI Surrogates"],
       },
       {
@@ -35,7 +35,7 @@ export default function Projects() {
         image: "/img/thumbnail/tn_mobile_ad.png",
         blurb:
           "V2I-based intelligent speed advisory to smooth stop-and-go traffic and reduce fuel.",
-        href: "https://yourlink.example/speed-app",
+        href: "/homepage/portfolio/mobile_app_smart_speed",
         badges: ["V2I", "Mobile", "Optimization"],
       },
       {
@@ -69,7 +69,7 @@ export default function Projects() {
     <div className="w-full">
     <main className="w-full !max-w-none min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 via-white to-slate-100">
 
-      <div className="max-w-[1600px] mx-auto">  {/* or w-full for no cap */}
+      <div className="max-w-[1800px] mx-auto">  {/* or w-full for no cap */}
         {/* ---------- CTA Section ---------- */}
         <section className="w-full">
           <h4 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
@@ -86,11 +86,13 @@ export default function Projects() {
             <strong>mobility, energy, or environmental systems</strong>, I’d love to connect.
           </p>
 
-          {/* Strong CTA (edit bullets or turn into paragraph) */}
+          {/* Strong CTA (edit bullets or turn into paragraph) */
+          /*
           <ul className="mt-4 list-disc list-inside text-slate-700 space-y-1">
             <li>Discuss AI surrogate modeling and agentic AI system for real-time at scale.</li>
             <li>Partner on ARC / DOE / industry proposals.</li>
-          </ul>
+          </ul>*/
+          }
 
           {/** 
            * 

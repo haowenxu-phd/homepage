@@ -118,7 +118,7 @@ export default function Home() {
                 funded research projects supported by the U.S. Department of Energy.
               </li>
               <li>
-                <strong>Over 930 citations</strong> with an h-index of 17 on {" "}
+                <strong>Over 950 citations</strong> with an h-index of 17 on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
