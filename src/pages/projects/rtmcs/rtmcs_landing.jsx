@@ -480,8 +480,8 @@ export function RtmcsDetail() {
           wpercentage: 40
         },
         {
-          kind: "image",
-          src: `${import.meta.env.BASE_URL}/landing/rtmcs/rtmcs_app.gif`,
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/rtmcs/rtmcs_video.mp4`,
           alt: "",
           caption: "Real-time speed optimization using a V2I mobile-edge computing app that advises drivers on the optimal speed to pass through green lights smoothly, reducing stop-and-go traffic",
           wpercentage: 60

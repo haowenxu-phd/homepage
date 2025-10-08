@@ -384,15 +384,15 @@ export function VoxelFireDetail() {
       mediaColumns={2}
       media={[
         {
-          kind: "image",
-          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/3D_voxel_heat_transfer_Fuel_NC_liverpoll.gif`,
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/liverpool_voxel.mp4`,
           alt: "VoxelFire",
           title: "Demo",
           caption: "Creating a 3D voxel model of Liverpool (NSW) that integrates city features and fuel type classification from LiDAR and GIS data."
         },
         {
-          kind: "image",
-          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/3D_voxel_heat_transfer_liverpool_demo1.gif`,
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/firespread_voxel.mp4`,
           alt: "VoxelFire",
           caption: "3D simulation of heat transer and fire spread across millions of voxels, capturing turbulent wind dynamics in a complex urban environment."
         }
