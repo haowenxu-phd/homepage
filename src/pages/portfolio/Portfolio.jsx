@@ -34,26 +34,36 @@ export default function Projects() {
         title: "Speed Advisory Mobile App",
         image: "/img/thumbnail/tn_mobile_ad.png",
         blurb:
-          "V2I-based intelligent speed advisory to smooth stop-and-go traffic and reduce fuel.",
+          "V2I-based intelligent speed advisory to smooth stop-and-go traffic and reduce fuel consumptuon.",
         href: "/homepage/portfolio/mobile_app_smart_speed",
         badges: ["V2I", "Mobile", "Optimization"],
       },
       {
         id: 4,
-        title: "Urban Digital Twin (CTwin)",
-        image: "/img/thumbnail/tn_ctwin.png",
+        title: "Multivariate Time-Series Pattern Analysis with Transformers and VAEs",
+        image: "/img/thumbnail/tn_xai_gsle.png",
         blurb:
-          "Real-time mobility & energy analytics with cyber-physical control and visual analytics.",
+          "Enhancing Smart Grid Operations with Explainable AI",
         href: "https://yourlink.example/ctwin",
-        badges: ["Digital Twin", "HPC", "Edge"],
+        badges: ["Temporal Fusion Transformer", "Variational Autoencoder", "Latent Space"],
       },
 
       {
         id: 4,
-        title: "Urban Digital Twin (CTwin)",
+        title: "Urban Digital Twin (CTwin) for Traffic",
+        image: "/img/thumbnail/tn_ctwin.png",
+        blurb:
+          "Real-Time Mobility & Energy Analytics with Cyber-Physical Control and Visual Analytics for Congestion Reduction in Chattanooga, TN",
+        href: "/homepage/portfolio/ctwin",
+        badges: ["Cloud-based","Digital Twin", "HPC", "Cyber-physical System"],
+      },
+
+      {
+        id: 6,
+        title: "Realistic 3D Digital Twins for Autonomous Vehicles",
         image: "/img/thumbnail/tn_photorealistic_dt.png",
         blurb:
-          "VRc Digital Twins",
+          "VR Digital Twins & Vehicle/Driving Simulator",
         href: "https://yourlink.example/ctwin",
         badges: ["Digital Twin", "HPC", "Edge"],
       },

@@ -13,6 +13,8 @@ import Projects from "./pages/portfolio/Portfolio.jsx";
 import ProjectDetail2, { RecoilDetail } from "./pages/projects/recoil/recoil_agentai_landing.jsx"
 import ProjectDetail3, { RtmcsDetail } from "./pages/projects/rtmcs/rtmcs_landing.jsx"  
 
+import ProjectDetail4, { CtwinDetail } from "./pages/projects/ctwin/ctwin_agentai_landing.jsx"  
+
 export default function App() {
   return (
     <div className="app">
@@ -29,6 +31,7 @@ export default function App() {
           <Route path="/portfolio/bushfire_sim" element={<VoxelFireDetail />} />
           <Route path="/portfolio/agentic_ai_dt" element={<RecoilDetail />} />
           <Route path="/portfolio/mobile_app_smart_speed" element={<RtmcsDetail />} />
+          <Route path="/portfolio/ctwin" element={<CtwinDetail />} />
         </Routes>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import publications from "../../data/pub.json"; // adjust path
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   // Track which award is open in the modal
@@ -23,7 +24,7 @@ export default function Home() {
     // Add more awards here...
   ];
   const [isOpen_award, setIsOpen_award] = useState(true);
-  const [isOpen_pub, setIsOpen_pub] = useState(false);
+  const [isOpen_pub, setIsOpen_pub] = useState(true);
 
   return (
     <main className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 via-white to-slate-100">
@@ -66,7 +67,7 @@ export default function Home() {
             </h4>
 
             <p className="text-slate-600 leading-relaxed">
-                Currently an <strong>Urban AI Research Fellow (Level B/Lecture)</strong> at{" "}
+                Currently an <strong>Urban AI Research Fellow (Level B/lecturer)</strong> at{" "}
                 <strong>UNSW Sydney</strong>.
               </p>
 
@@ -84,9 +85,8 @@ export default function Home() {
               </li>
               <li className="leading-relaxed">
                 Holder of <strong>two U.S. patent applications</strong>:
-                <ul className="mt-1 ml-8 list-[square] text-slate-600">
-                  <li>
-                          <a
+                 
+                          {" "}<a
                             href="https://patents.google.com/patent/US20250128708A1/en"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -103,8 +103,7 @@ export default function Home() {
                           >
                             US20250131819A1
                           </a>
-                        </li>
-                </ul>
+                      
               </li>
 
               <li>
@@ -115,10 +114,10 @@ export default function Home() {
               </li>
               <li>
                 Served as a <strong>Co-Investigator</strong> on multiple nationally
-                funded research projects supported by the U.S. Department of Energy.
+                funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
               <li>
-                <strong>Over 950 citations</strong> with an h-index of 17 on {" "}
+                <strong>Over 950 citations</strong> with an h-index of <strong>17</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
@@ -127,7 +126,7 @@ export default function Home() {
                 Scholar</a>. 
               </li>
               <li>
-                Holds <strong>Permanent Residency</strong> in Australia; eligible to work without visa sponsorship
+                Holds <strong>Permanent Residency in Australia</strong>; eligible to work without visa sponsorship
               </li>
             </ul>
 
@@ -155,6 +154,22 @@ export default function Home() {
                 VR & AR & Serious Gaming
               </li>
             </ul>
+
+            <div className="mt-7 w-full">
+                  <Link
+                      to="/portfolio"
+                      aria-label="See my selected work"
+                      className="group relative inline-flex w-full items-center justify-center 
+                                rounded-lg px-6 py-3 text-base font-semibold tracking-tight
+                                shadow-md ring-1 ring-black/5 transition hover:shadow-lg focus:outline-none
+                                focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
+                    >
+                      <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 
+                                      opacity-90 transition-opacity group-hover:opacity-100" />
+                      <span>See my selected work with demos</span>
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+            </div>
 
             {/* Actions 
             
