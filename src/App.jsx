@@ -14,6 +14,8 @@ import ProjectDetail2, { RecoilDetail } from "./pages/projects/recoil/recoil_age
 import ProjectDetail3, { RtmcsDetail } from "./pages/projects/rtmcs/rtmcs_landing.jsx"  
 
 import ProjectDetail4, { CtwinDetail } from "./pages/projects/ctwin/ctwin_agentai_landing.jsx"  
+import ProjectDetail5, { GSLDetail } from "./pages/projects/gsl/gsl_landing.jsx"  
+import ProjectDetail6, { RTDetail } from "./pages/projects/realtwin/rt_landing.jsx"  
 
 export default function App() {
   return (
@@ -32,6 +34,8 @@ export default function App() {
           <Route path="/portfolio/agentic_ai_dt" element={<RecoilDetail />} />
           <Route path="/portfolio/mobile_app_smart_speed" element={<RtmcsDetail />} />
           <Route path="/portfolio/ctwin" element={<CtwinDetail />} />
+          <Route path="/portfolio/gsl" element={<GSLDetail />} />
+          <Route path="/portfolio/vr_digital_twins" element={<RTDetail />} />
         </Routes>
       </div>
     </div>

@@ -297,7 +297,7 @@ function Publications({ items = [] }) {
             {(p.doi || p.url) && (
               <>
                 {". "}
-                <External href={p.url || `https://doi.org/${p.doi}`}>
+                <External href={p.url || `${p.doi}`}>
                   {p.doi ? `${p.doi}` : "Link"}
                 </External>
               </>
@@ -473,24 +473,24 @@ export function CtwinDetail() {
       media={[
         {
           kind: "image",
-          src: `${import.meta.env.BASE_URL}/landing/recoil/recoil_chatbot.png`,
-          alt: "VoxelFire",
+          src: `${import.meta.env.BASE_URL}/landing/ctwin/ctwin_illustration.png`,
+          alt: "Demo",
           title: "Demo",
-          caption: "Agentic AI-powered chatbot for intermodal freight logistic optimization.",
+          caption: "Smart mobility digital twins developed using IoT-connected infrastructure, sensors, and traffic simulations in cloud environment.",
           wpercentage: 40
         },
         {
-          kind: "image",
-          src: `${import.meta.env.BASE_URL}/landing/recoil/dt_dashboard_recoil.gif`,
-          alt: "VoxelFire",
-          caption: "Real-time dashboard for monitoring intermodal freight transport (highway, waterway, rail) across USA.",
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/ctwin/traffic_flow_emulator.mp4`,
+          alt: "Demo",
+          caption: "Real-time reconstruction of traffic flow (vehicle movement) using highway road-side sensor data in Chattaooga Tennessee, USA.",
           wpercentage: 60
         }
       ]}
-      title="Agentic AI Digital Twin for National-level Intermodal Freight"
-      subtitle="Teaching AI agents to use scientific tools and mathematical solvers for data analytics and optimization"
+      title="CTwin: Cloud-Based Digital Twin Infrastructure for Real-Time Traffic Emulation, Optimization, and Cyber-Physical Control for Congestion Reduction"
+      subtitle="A Scalable Framework for Integrating Multiscale Traffic Simulation, IoT Data Fusion, and Intelligent Control in Smart Urban Mobility Systems"
       sponsor_logos={[
-        { src: `${import.meta.env.BASE_URL}/landing/recoil/combined_logo.png`, alt: "ARPA-E & USDOE" },
+        { src: `${import.meta.env.BASE_URL}/landing/ctwin/combined_logo.png`, alt: "ARPA-E & USDOE" },
        // { src: "/img/logos/doe.svg", alt: "U.S. DOE", href: "https://www.energy.gov/" },
  
       ]}
@@ -498,8 +498,8 @@ export function CtwinDetail() {
       introLeft={
         <>
           <p>
-            This project, a core component of the USDOE and ARPA-E–funded multi-million-dollar research initiative RECOIL, tackles the urgent challenge of decarbonizing U.S. freight systems by developing an agentic AI–powered digital twin for intermodal transportation. By integrating large-language-model agents, retrieval-augmented knowledge, and advanced optimization platforms such as Gurobi and AnyLogic, the system transforms planning conversations into real-time, simulation-informed logistics decisions. Stakeholders can interact with dynamic dashboards and visualizations to explore optimized routing, modal transfers, and infrastructure deployment strategies that reduce costs, cut emissions, and enhance resiliency across maritime, rail, and road networks. Moving beyond static dashboards, this project advances digital twins into autonomous decision engines, paving the way for a more sustainable and intelligent freight ecosystem.
-            </p>
+             The Chattanooga Digital Twin (CTwin) is a next-generation smart city platform designed to transform urban mobility management. Developed as part of the U.S. Department of Energy’s initiative on real-time data and simulation for regional mobility, CTwin serves as an end-to-end, web-based cyberinfrastructure that integrates multi-domain data from IoT sensors, online repositories, and urban systems across Chattanooga, Tennessee. By combining traffic, weather, safety, and hazard data, the platform enables real-time situational awareness, predictive traffic and energy analytics, and cyber-physical control of traffic signals to reduce congestion, incidents, and fuel consumption. CTwin also provides interactive visual analytics for decision-makers, built on a modular and adaptive architecture that makes it scalable and extensible to other cities. Demonstrated through real-world use cases, CTwin showcases the potential of digital twins to deliver smarter, safer, and more sustainable transportation systems.
+             </p>
           <p className="mt-3">
     
           </p>
@@ -508,51 +508,79 @@ export function CtwinDetail() {
       
       introRight={   
         <ul className="list-disc list-inside text-slate-700">
-          <li>Built an LLM-powered chatbot for freight transportation model selection and route planning, aimed at minimizing carbon emissions.</li>
-          <li>Integrated input data from the Freight Analysis Framework (FAF) and the Freight and Fuel Transportation Optimization Tool (FTOT).</li>
-          <li>Developed an LLM with a RAG pipeline to support decision-making on optimization models and tools, leveraging domain literature and knowledge graphs.</li>
-          <li>Implemented the Model Context Protocol (MCP) to enable agentic AI digital twins to use specialized solvers such as Gurobi Optimizer.</li>
+        <li>Developed a cloud-based digital twin infrastructure (CTwin) for real-time emulation, optimization, and control of regional traffic systems.</li>
+        <li>Integrated multi-domain IoT sensor data—including radar, cameras, and signal controllers—into a unified cyber-physical platform for situational awareness.</li>
+        <li>Implemented agent-based traffic emulation using traffic flow theory and GPU-accelerated computation to reconstruct continuous lane-level vehicle dynamics.</li>
+        <li>Enabled cyber-physical feedback control for optimizing traffic signal timing and reducing congestion, fuel consumption, and emissions.</li>
+        <li>Deployed multiscale visualization and analytics dashboards to support decision-making across corridor, regional, and city-wide levels.</li>
+        <li>Established a modular, microservice-based architecture leveraging open-source technologies for interoperability, scalability, and maintainability.</li>
         </ul>
       }
       relatedLinks={[
         
         /*{ label: "Live demo (viewer)", href: "https://yourlink.example/voxel-viewer", tag: "demo" },
         { label: "CTwin platform", href: "https://yourlink.example/ctwin", tag: "platform" },*/
-        { label: "UTK RECOIL Project Website", href: "https://recoil.utk.edu/", tag: "press" },
-        { label: "Project Background", href: "https://arpa-e.energy.gov/technologies/exploratory-topics/intermodal-freight", tag: "press" },
+        { label: "Digital-Twin Project Green-Lights Traffic Congestion Improvements", href: "https://www.nrel.gov/news/detail/program/2023/digital-twin-project-green-lights-traffic-congestion-improvements", tag: "government report" },
+        { label: "CNN media coverage featured our CTwin research", href: "https://edition.cnn.com/2023/01/31/world/digital-twin-cities-tnf-spc-intl", tag: "press" },
+        { label: "Using Artificial Intelligence to Connect Vehicles and Traffic Infrastructure", href: "https://edition.cnn.com/2023/01/31/world/digital-twin-cities-tnf-spc-intl", tag: "press" },
         
       ]}
       awards={
           [ 
-             { label: "Best Research Paper Award - The 51st International Conference on Computers & Industrial Engineering (CIE51)", href: "https://www.linkedin.com/posts/haowen-xu-8818357a_sustainabletransport-digitaltwins-ai-activity-7275193564857253888-QbP9/" },
+             { label: "Significant Event Award (SEA) – ORNL, USDOE Release of Real-time Ctwin v1.1 -- The Chattanooga Digital Twin for Mobility/Transportation"},
         
           ]
     }
       publications={[
         {
           authors: "Xu, H., et al.",
-          title: "Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol",
-          venue: "IJPR (In Revision)",
-          year: "2025",
-          doi: "https://arxiv.org/abs/2506.13068",
-          badges: ["Open Access", "Preprint"],
+          title: "Smart Mobility in the Cloud: Enabling Real-Time Situational Awareness and Cyber-Physical Control Through a Digital Twin for Traffic",
+          venue: "IEEE Transactions on Intelligent Transportation Systems",
+          year: "2023",
+          doi: "https://ieeexplore.ieee.org/document/10018121",
+          badges: ["Journal Paper"],
         },
         {
           authors: "Xu, H., et al.",
-          title: "Generative Artificial Intelligence–Powered Multi-Agent Paradigm for Smart Urban Mobility: Opportunities and Challenges for Integrating Large Language Models and Retrieval-Augmented Generation with Intelligent Transportation Systems",
-          venue: "Urban Human Mobility",
-          year: "2025",
-          doi: "https://arxiv.org/abs/2409.00494",          
-          badges: ["Book Chapter"],
+          title: "Continuous Emulation and Multiscale Visualizationof Traffic Flow Using Stationary Roadside Sensor Data",
+          venue: "IEEE Transactions on Intelligent Transportation Systems",
+          year: "2022",
+          doi: "https://ieeexplore.ieee.org/ielaam/6979/9853713/9524550-aam.pdf",          
+          badges: ["Journal Paper"],
         },
         {
-          authors: "X Li, H Xu, J Tupayachi, O Omitaomu, X Wang",
-          title: "Towards Next-Generation Urban Decision Support Systems through AI-Powered Construction of Scientific Ontology Using Large Language Models—A Case in Optimizing Intermodal Freight Transportation",
-          venue: "Smart Cities",
+          authors: "Moriano, P., Berres, A., Xu, H., & Sanyal, J. ",
+          title: "Spatiotemporal Features of Traffic Help Reduce Automatic Accident Detection Time. ",
+          venue: "Expert Systems With Applications",
           year: "2024",
-          doi: "https://www.mdpi.com/2624-6511/7/5/94",          
-          badges: ["Open Access","Journal Paper"],
+          doi: "https://www.sciencedirect.com/science/article/pii/S0957417423033158",          
+          badges: ["Journal Paper"],
         },
+         {
+          authors: "Berres, A., Moriano, P., Xu, H., Tennille, S., Smith, L., Storey, J., & Sanyal, J. ",
+          title: "A traffic accident dataset for Chattanooga, Tennessee",
+          venue: "Data in brief",
+          year: "2024",
+          doi: "https://www.sciencedirect.com/science/article/pii/S2352340924006425",          
+          badges: ["Data Descriptor"],
+        },
+        {
+          authors: "Berres, A. S., Xu, H., Tennille, S. A., Severino, J., Ravulaparthy, S., & Sanyal, J. ",
+          title: "Explorative visualization for traffic safety using adaptive study areas",
+          venue: "Transportation research record",
+          year: "2021",
+          doi: "https://journals.sagepub.com/doi/10.1177/0361198120981065",          
+          badges: ["Journal Paper"],
+        },
+        {
+          authors: "Berres, A. S., LaClair, T. J., Wang, C., Xu, H., Ravulaparthy, S., Todd, A., ... & Sanyal, J. ",
+          title: "Multiscale and Multivariate Transportation System Visualization for Shopping District Traffic and Regional Traffic",
+          venue: "Transportation research record",
+          year: "2020",
+          doi: "https://journals.sagepub.com/doi/full/10.1177/0361198120970526",          
+          badges: ["Journal Paper"],
+        },
+ 
       
       ]}
     />

@@ -11,3 +11,4 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helve
 .links a.active { text-decoration: underline; }
 .content { max-width: 1300px; width: 100%; padding: 24px 16px; margin: 0 auto; }
 section h2 { margin-top: 0; }
+figcaption { font-size: 20px}

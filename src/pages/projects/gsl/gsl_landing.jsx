@@ -85,9 +85,79 @@ function External({ href, children, className = "" }) {
 }
 
 // ---------- Media renderer ----------
-function ProjectMedia({ items = [], columns = 2, rowHeightPx = 300 }) {
-  const twoCustomCols =
-    columns === 2 && items.length === 2;
+// ---------- Media renderer ----------
+function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
+  const twoCustomCols = columns === 2 && items.length === 2;
+  const singleItem = items.length === 1;
+
+  // Single item: force full-width single column
+  if (singleItem) {
+    const m = items[0];
+    return (
+      <div
+        className="w-full"
+        aria-label="Project media (single item)"
+        style={{ "--rowH": `${rowHeightPx}px` }}
+      >
+        <figure className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm overflow-hidden">
+          <div className="w-full flex items-center justify-center bg-slate-100">
+            {(m.kind === "image" || m.kind === "gif") && (
+              <img
+                src={m.src}
+                alt={m.alt || "Project media"}
+                loading="lazy"
+                className="w-full h-auto object-contain"
+              />
+            )}
+
+            {m.kind === "video" && (
+              <div className="relative w-full overflow-hidden rounded-2xl bg-slate-100">
+                <video
+                  className="w-full h-auto object-contain"
+                  poster={m.poster}
+                  autoPlay={m.autoplay}
+                  loop={m.loop}
+                  muted={m.muted ?? true}
+                  playsInline
+                  controls={m.controls ?? true}
+                  preload="auto"
+                >
+                  <source src={m.src} type="video/mp4" />
+                </video>
+
+                {/* Overlay text (doesn't block clicks) */} 
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                  <span className="rounded-md bg-black/50 px-3 py-1 text-xs text-white">
+                    Click the video to play
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {m.kind === "youtube" && (
+              <div className="w-full aspect-video">
+                <iframe
+                  className="w-full h-full"
+                  src={m.src}
+                  title={m.title || "YouTube video"}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            )}
+          </div>
+
+          {m.caption && (
+            <figcaption className="px-2 py-2 text-xs text-center text-slate-600 leading-snug">
+              {m.caption}
+            </figcaption>
+          )}
+        </figure>
+      </div>
+    );
+  }
 
   if (twoCustomCols) {
     return (
@@ -98,7 +168,7 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 300 }) {
       >
         {items.map((m, idx) => (
           // wrapper controls equal height; width is auto from aspect ratio
-          <div key={idx}  >
+          <div key={idx}>
             <figure className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm overflow-hidden">
               {/* Media box with fixed height; width auto */}
               <div className="bg-slate-100 md:h-[var(--rowH)] md:w-auto flex items-center justify-center">
@@ -114,27 +184,17 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 300 }) {
 
                 {/* ----- Video: width auto from aspect ratio ----- */}
                 {m.kind === "video" && (
-                  <div className="relative w-full overflow-hidden rounded-2xl bg-slate-100">
-                    <video
-                      className="w-full h-auto object-contain"
-                      poster={m.poster}
-                      autoPlay={m.autoplay}
-                      loop={m.loop}
-                      muted={m.muted ?? true}
-                      playsInline
-                      controls={m.controls ?? true}
-                      preload="auto"
-                    >
-                      <source src={m.src} type="video/mp4" />
-                    </video>
-
-                    {/* Overlay text (doesn't block clicks) */}
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                      <span className="rounded-md bg-black/50 px-3 py-1 text-xs text-white">
-                        Click the video to play
-                      </span>
-                    </div>
-                  </div>
+                  <video
+                    className="h-full w-auto max-w-none object-contain"
+                    poster={m.poster}
+                    autoPlay={m.autoplay}
+                    loop={m.loop}
+                    muted={m.muted ?? true}
+                    playsInline
+                    controls={m.controls ?? true}
+                  >
+                    <source src={m.src} />
+                  </video>
                 )}
 
                 {/* ----- YouTube: use aspectRatio + fixed height ----- */}
@@ -172,7 +232,6 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 300 }) {
   }
 
   // Fallback: normal grid
-  // Fallback: normal grid
   const gridCols = columns === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2";
   return (
     <div className={`grid ${gridCols} gap-4`} aria-label="Project media gallery">
@@ -181,19 +240,29 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 300 }) {
           key={idx}
           className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm overflow-hidden"
         >
-          <div className="w-full overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100">
+          <div
+            className={
+              m.kind === "image"
+                ? "aspect-square overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100"
+                : "w-full overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100"
+            }
+          >
             {(m.kind === "image" || m.kind === "gif") && (
               <img
                 src={m.src}
                 alt={m.alt || "Project media"}
                 loading="lazy"
-                className="block w-8/10 max-w-full h-auto object-contain mx-auto"
+                className={
+                  m.kind === "image"
+                    ? "w-full h-full object-cover"
+                    : "w-full h-auto object-contain"
+                }
               />
             )}
 
             {m.kind === "video" && (
               <video
-                className="w-full h-auto object-contain mx-auto"
+                className="w-full h-auto object-contain"
                 poster={m.poster}
                 autoPlay={m.autoplay}
                 loop={m.loop}
@@ -206,7 +275,7 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 300 }) {
             )}
 
             {m.kind === "youtube" && (
-              <div className="w-4/5 mx-auto aspect-video">
+              <div className="w-full aspect-video">
                 <iframe
                   className="w-full h-full"
                   src={m.src}
@@ -230,6 +299,7 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 300 }) {
     </div>
   );
 } // <-- closes the function
+
 
 
 
@@ -320,7 +390,7 @@ function Publications({ items = [] }) {
 }
 
 // ---------- Main component ----------
-export default function ProjectDetail2({
+export default function ProjectDetail5({
   // First row (media)
   media = /** @type {MediaItem[]} */ ([]),
   mediaColumns = 2, // 1 or 2
@@ -467,31 +537,32 @@ export default function ProjectDetail2({
 // ${import.meta.env.BASE_URL}${p.image}`
  
 
-export function RecoilDetail() {
+export function GSLDetail() {
   return (
-    <ProjectDetail2
+    <ProjectDetail5
       mediaColumns={1}
       media={[
-        {
-          kind: "image",
-          src: `${import.meta.env.BASE_URL}/landing/recoil/rtmcs_app.gif`,
-          alt: "VoxelFire",
-          title: "Demo",
-          caption: "Agentic AI chatbot for intermodal freight logistics optimization via automated scientific tool integration (e.g., Gurobi Optimizer).",
-          wpercentage: 60
-        },
+        
         {
           kind: "video",
-          src: `${import.meta.env.BASE_URL}/landing/recoil/dashboard.mp4`,
-          alt: "VoxelFire",
-          caption: "Real-time dashboard for monitoring intermodal freight transport (highway, waterway, rail) across USA.",
+          src: `${import.meta.env.BASE_URL}/landing/gsl/tft_vae_dash.mp4`,
+          alt: "Demo",
+          caption: `The visual analytics dashboard for exploring and analyzing different types of grid signature event (e.g., transformer failure, arcing, fuse blow) 
+          through the dimension reduction of complex multivariate timeseries of voltage and current data collected from PMU`,
           wpercentage: 100
+        },
+        {
+          kind: "image",
+          src: `${import.meta.env.BASE_URL}/landing/gsl/gsl_ai_architecture.png`,
+          alt: "Demo",
+          caption: `A generative AI framework integrating Temporal Fusion Transformers (TFT) and Variational Autoencoders (VAEs) for dimensionality reduction and representation learning of multivariate time-series data.`,
+          wpercentage: 60
         }
       ]}
-      title="Agentic AI Digital Twin for National-level Intermodal Freight"
-      subtitle="Teaching AI agents to use scientific tools and mathematical solvers for data analytics and optimization"
+      title="Explainable AI for Multivariate Time-Series Analytics"
+      subtitle="Latent Space Visual Analytics with Transformers and Autoencoders for Power Grid Event Diagnosis"
       sponsor_logos={[
-        { src: `${import.meta.env.BASE_URL}/landing/recoil/combined_logo.png`, alt: "ARPA-E & USDOE" },
+        { src: `${import.meta.env.BASE_URL}/landing/gsl/combined_logo.png`, alt: "ARPA-E & USDOE" },
        // { src: "/img/logos/doe.svg", alt: "U.S. DOE", href: "https://www.energy.gov/" },
  
       ]}
@@ -499,8 +570,8 @@ export function RecoilDetail() {
       introLeft={
         <>
           <p>
-            This project, a core component of the USDOE and ARPA-E–funded multi-million-dollar research initiative RECOIL, tackles the urgent challenge of decarbonizing U.S. freight systems by developing an agentic AI–powered digital twin for intermodal transportation. By integrating large-language-model agents, retrieval-augmented knowledge, and advanced optimization platforms such as Gurobi and AnyLogic, the system transforms planning conversations into real-time, simulation-informed logistics decisions. Stakeholders can interact with dynamic dashboards and visualizations to explore optimized routing, modal transfers, and infrastructure deployment strategies that reduce costs, cut emissions, and enhance resiliency across maritime, rail, and road networks. Moving beyond static dashboards, this project advances digital twins into autonomous decision engines, paving the way for a more sustainable and intelligent freight ecosystem.
-            </p>
+             The Chattanooga Digital Twin (CTwin) is a next-generation smart city platform designed to transform urban mobility management. Developed as part of the U.S. Department of Energy’s initiative on real-time data and simulation for regional mobility, CTwin serves as an end-to-end, web-based cyberinfrastructure that integrates multi-domain data from IoT sensors, online repositories, and urban systems across Chattanooga, Tennessee. By combining traffic, weather, safety, and hazard data, the platform enables real-time situational awareness, predictive traffic and energy analytics, and cyber-physical control of traffic signals to reduce congestion, incidents, and fuel consumption. CTwin also provides interactive visual analytics for decision-makers, built on a modular and adaptive architecture that makes it scalable and extensible to other cities. Demonstrated through real-world use cases, CTwin showcases the potential of digital twins to deliver smarter, safer, and more sustainable transportation systems.
+             </p>
           <p className="mt-3">
     
           </p>
@@ -508,52 +579,40 @@ export function RecoilDetail() {
       }
       
       introRight={   
-        <ul className="list-disc list-inside text-slate-700">
-          <li>Built an LLM-powered chatbot for freight transportation model selection and route planning, aimed at minimizing carbon emissions.</li>
-          <li>Integrated input data from the Freight Analysis Framework (FAF) and the Freight and Fuel Transportation Optimization Tool (FTOT).</li>
-          <li>Developed an LLM with a RAG pipeline to support decision-making on optimization models and tools, leveraging domain literature and knowledge graphs.</li>
-          <li>Implemented the Model Context Protocol (MCP) to enable agentic AI digital twins to use specialized solvers such as Gurobi Optimizer.</li>
-        </ul>
+         <ul className="list-disc list-inside text-slate-700">
+            <li>Proposed a novel visual analytics framework integrating Temporal Fusion Transformers (TFT) and Variational Autoencoders (VAEs) for dimensionality reduction of multivariate time-series data.</li>
+            <li>Applied latent space mapping with PCA, t-SNE, and UMAP to reveal correlations, similarities, and dependencies among complex temporal patterns.</li>
+            <li>Developed customized visual encodings, including a Multivariate 2D Latent Vector Map and a Hierarchical Multi-label Tree, for interactive exploration of multi-label grid event data.</li>
+            <li>Introduced validation workflows combining quantitative metrics, Human-in-the-Loop evaluation, and relative model comparisons to ensure robustness and interpretability.</li>
+            <li>Benchmarked TFT against convolutional and LSTM-based VAEs, demonstrating superior scalability, efficiency, and runtime performance across diverse data shapes.</li>
+            <li>Demonstrated use cases with DOE’s Grid Event Signature Library (GESL), enabling inter-pattern dependency analysis, fault label imputation, and model parameter tuning for grid event diagnosis.</li>
+          </ul>
       }
       relatedLinks={[
         
         /*{ label: "Live demo (viewer)", href: "https://yourlink.example/voxel-viewer", tag: "demo" },
         { label: "CTwin platform", href: "https://yourlink.example/ctwin", tag: "platform" },*/
-        { label: "UTK RECOIL Project Website", href: "https://recoil.utk.edu/", tag: "press" },
-        { label: "Project Background", href: "https://arpa-e.energy.gov/technologies/exploratory-topics/intermodal-freight", tag: "press" },
+        { label: "Digital-Twin Project Green-Lights Traffic Congestion Improvements", href: "https://www.nrel.gov/news/detail/program/2023/digital-twin-project-green-lights-traffic-congestion-improvements", tag: "government report" },
+
         
       ]}
       awards={
           [ 
-             { label: "Best Research Paper Award - The 51st International Conference on Computers & Industrial Engineering (CIE51)", href: "https://www.linkedin.com/posts/haowen-xu-8818357a_sustainabletransport-digitaltwins-ai-activity-7275193564857253888-QbP9/" },
+             
         
           ]
     }
       publications={[
         {
           authors: "Xu, H., et al.",
-          title: "Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol",
-          venue: "IJPR (In Revision)",
+          title: "Explainable AI for Multivariate Time Series Pattern Exploration: Latent Space Visual Analytics with Temporal Fusion Transformer and Variational Autoencoders in Power Grid Event Diagnosis",
+          venue: "IEEE Access",
           year: "2025",
-          doi: "https://arxiv.org/abs/2506.13068",
-          badges: ["Open Access", "Preprint"],
+          doi: "https://ieeexplore.ieee.org/abstract/document/11141392",
+          badges: ["Journal Paper"],
         },
-        {
-          authors: "Xu, H., et al.",
-          title: "Generative Artificial Intelligence–Powered Multi-Agent Paradigm for Smart Urban Mobility: Opportunities and Challenges for Integrating Large Language Models and Retrieval-Augmented Generation with Intelligent Transportation Systems",
-          venue: "Urban Human Mobility",
-          year: "2025",
-          doi: "https://arxiv.org/abs/2409.00494",          
-          badges: ["Book Chapter"],
-        },
-        {
-          authors: "X Li, H Xu, J Tupayachi, O Omitaomu, X Wang",
-          title: "Towards Next-Generation Urban Decision Support Systems through AI-Powered Construction of Scientific Ontology Using Large Language Models—A Case in Optimizing Intermodal Freight Transportation",
-          venue: "Smart Cities",
-          year: "2024",
-          doi: "https://www.mdpi.com/2624-6511/7/5/94",          
-          badges: ["Open Access","Journal Paper"],
-        },
+              
+ 
       
       ]}
     />

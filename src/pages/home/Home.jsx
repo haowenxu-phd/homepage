@@ -166,7 +166,7 @@ export default function Home() {
                     >
                       <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 
                                       opacity-90 transition-opacity group-hover:opacity-100" />
-                      <span>See my selected work with demos</span>
+                      <span> 🎮 See my selected work with demos 🕹️ </span>
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
                     </Link>
             </div>

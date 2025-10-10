@@ -210,7 +210,7 @@ function Publications({ items = [] }) {
             {(p.doi || p.url) && (
               <>
                 {". "}
-                <External href={p.url || `https://doi.org/${p.doi}`}>
+                <External href={p.url || `${p.doi}`}>
                   {p.doi ? `${p.doi}` : "Link"}
                 </External>
               </>

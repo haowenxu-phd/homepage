@@ -44,13 +44,13 @@ export default function Projects() {
         image: "/img/thumbnail/tn_xai_gsle.png",
         blurb:
           "Enhancing Smart Grid Operations with Explainable AI",
-        href: "https://yourlink.example/ctwin",
-        badges: ["Temporal Fusion Transformer", "Variational Autoencoder", "Latent Space"],
+        href: "/homepage/portfolio/gsl",
+        badges: ["Explainable AI", "Temporal Fusion Transformer", "Variational Autoencoder", "Latent Space"],
       },
 
       {
         id: 4,
-        title: "Urban Digital Twin (CTwin) for Traffic",
+        title: "Cloud-based Chattanooga Digital Twin (CTwin) for Smart Mobility",
         image: "/img/thumbnail/tn_ctwin.png",
         blurb:
           "Real-Time Mobility & Energy Analytics with Cyber-Physical Control and Visual Analytics for Congestion Reduction in Chattanooga, TN",
@@ -64,7 +64,7 @@ export default function Projects() {
         image: "/img/thumbnail/tn_photorealistic_dt.png",
         blurb:
           "VR Digital Twins & Vehicle/Driving Simulator",
-        href: "https://yourlink.example/ctwin",
+        href: "/homepage/portfolio/vr_digital_twins",
         badges: ["Digital Twin", "HPC", "Edge"],
       },
 
@@ -94,7 +94,9 @@ export default function Projects() {
             with links to <strong>videos, live demos, publications, and awards</strong>.  
             If you’re interested in collaboration or in exploring applications across {" "}
             <strong>mobility, energy, or environmental systems</strong>, I’d love to connect.
+           
           </p>
+          <p> <strong>Email:</strong> haowen.xu.phd@gmail.com</p>
 
           {/* Strong CTA (edit bullets or turn into paragraph) */
           /*
