@@ -85,10 +85,79 @@ function External({ href, children, className = "" }) {
 }
 
 // ---------- Media renderer ----------
-function ProjectMedia({ items = [], columns = 2, rowHeightPx = 400 }) {
-  const twoCustomCols =
-    columns === 2 && items.length === 2;
+function ProjectMedia({ items = [], columns = 1, rowHeightPx = 200 }) {
+  const twoCustomCols = columns === 2 && items.length === 2;
+  const singleItem = items.length === 1;
 
+  // --- SINGLE ITEM ---
+  if (singleItem) {
+    const m = items[0];
+    return (
+      <div
+        className="w-full"
+        aria-label="Project media (single item)"
+        style={{ "--rowH": `${rowHeightPx}px` }}
+      >
+        <figure className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm overflow-hidden">
+          <div className="w-full flex items-center justify-center bg-slate-100">
+            {(m.kind === "image" || m.kind === "gif") && (
+              <img
+                src={m.src}
+                alt={m.alt || "Project media"}
+                loading="lazy"
+                className="block w-full max-w-full h-auto object-contain"
+              />
+            )}
+
+            {m.kind === "video" && (
+              <div className="relative w-full overflow-hidden rounded-2xl bg-slate-100">
+                <video
+                  className="block w-full h-auto object-contain"
+                  poster={m.poster}
+                  autoPlay={m.autoplay}
+                  loop={m.loop}
+                  muted={m.muted ?? true}
+                  playsInline
+                  controls={m.controls ?? true}
+                  preload="auto"
+                >
+                  <source src={m.src} type="video/mp4" />
+                </video>
+
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                  <span className="rounded-md bg-black/50 px-3 py-1 text-xs text-white">
+                    Click the video to play
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {m.kind === "youtube" && (
+              <div className="w-full aspect-video">
+                <iframe
+                  className="w-full h-full"
+                  src={m.src}
+                  title={m.title || "YouTube video"}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            )}
+          </div>
+
+          {m.caption && (
+            <figcaption className="px-2 py-2 text-xs text-center text-slate-600 leading-snug">
+              {m.caption}
+            </figcaption>
+          )}
+        </figure>
+      </div>
+    );
+  }
+
+  // --- TWO CUSTOM COLS ---
   if (twoCustomCols) {
     return (
       <div
@@ -97,12 +166,9 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 400 }) {
         style={{ "--rowH": `${rowHeightPx}px` }}
       >
         {items.map((m, idx) => (
-          // wrapper controls equal height; width is auto from aspect ratio
-          <div key={idx}  >
+          <div key={idx}>
             <figure className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm overflow-hidden">
-              {/* Media box with fixed height; width auto */}
               <div className="bg-slate-100 md:h-[var(--rowH)] md:w-auto flex items-center justify-center">
-                {/* ----- Image / GIF: width auto from aspect ratio ----- */}
                 {(m.kind === "image" || m.kind === "gif") && (
                   <img
                     src={m.src}
@@ -112,7 +178,6 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 400 }) {
                   />
                 )}
 
-                {/* ----- Video: width auto from aspect ratio ----- */}
                 {m.kind === "video" && (
                   <video
                     className="h-full w-auto max-w-none object-contain"
@@ -127,12 +192,10 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 400 }) {
                   </video>
                 )}
 
-                {/* ----- YouTube: use aspectRatio + fixed height ----- */}
                 {m.kind === "youtube" && (
                   <div
                     className="h-full w-auto"
                     style={{
-                      // If you can supply m.aspect like "16 / 9", it will be exact.
                       aspectRatio: m.aspect || "16 / 9",
                     }}
                   >
@@ -161,7 +224,7 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 400 }) {
     );
   }
 
-  // Fallback: normal grid
+  // --- FALLBACK GRID ---
   const gridCols = columns === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2";
   return (
     <div className={`grid ${gridCols} gap-4`} aria-label="Project media gallery">
@@ -170,29 +233,19 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 400 }) {
           key={idx}
           className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm overflow-hidden"
         >
-          <div
-            className={
-              m.kind === "image"
-                ? "aspect-square overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100"
-                : "w-full overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100"
-            }
-          >
+          <div className="w-full overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100">
             {(m.kind === "image" || m.kind === "gif") && (
               <img
                 src={m.src}
                 alt={m.alt || "Project media"}
                 loading="lazy"
-                className={
-                  m.kind === "image"
-                    ? "w-full h-full object-cover"
-                    : "w-full h-auto object-contain"
-                }
+                className="block w-full max-w-full h-auto object-contain"
               />
             )}
 
             {m.kind === "video" && (
               <video
-                className="w-full h-auto object-contain"
+                className="block w-full h-auto object-contain"
                 poster={m.poster}
                 autoPlay={m.autoplay}
                 loop={m.loop}
@@ -228,7 +281,8 @@ function ProjectMedia({ items = [], columns = 2, rowHeightPx = 400 }) {
       ))}
     </div>
   );
-} // <-- closes the function
+}
+
 
 
 
@@ -469,8 +523,15 @@ export default function ProjectDetail4({
 export function CtwinDetail() {
   return (
     <ProjectDetail4
-      mediaColumns={2}
+      mediaColumns={1}
       media={[
+        {
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/ctwin/traffic_flow_emulator.mp4`,
+          alt: "Demo",
+          caption: "Real-time reconstruction of traffic flow (vehicle movement) using highway road-side sensor data in Chattaooga Tennessee, USA.",
+          wpercentage: 60
+        },
         {
           kind: "image",
           src: `${import.meta.env.BASE_URL}/landing/ctwin/ctwin_illustration.png`,
@@ -478,14 +539,8 @@ export function CtwinDetail() {
           title: "Demo",
           caption: "Smart mobility digital twins developed using IoT-connected infrastructure, sensors, and traffic simulations in cloud environment.",
           wpercentage: 40
-        },
-        {
-          kind: "video",
-          src: `${import.meta.env.BASE_URL}/landing/ctwin/traffic_flow_emulator.mp4`,
-          alt: "Demo",
-          caption: "Real-time reconstruction of traffic flow (vehicle movement) using highway road-side sensor data in Chattaooga Tennessee, USA.",
-          wpercentage: 60
         }
+        
       ]}
       title="CTwin: Cloud-Based Digital Twin Infrastructure for Real-Time Traffic Emulation, Optimization, and Cyber-Physical Control for Congestion Reduction"
       subtitle="A Scalable Framework for Integrating Multiscale Traffic Simulation, IoT Data Fusion, and Intelligent Control in Smart Urban Mobility Systems"

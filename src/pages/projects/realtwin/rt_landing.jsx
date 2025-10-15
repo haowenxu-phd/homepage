@@ -86,11 +86,11 @@ function External({ href, children, className = "" }) {
 
 // ---------- Media renderer ----------
 // ---------- Media renderer ----------
-function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
+function ProjectMedia({ items = [], columns = 1, rowHeightPx = 200 }) {
   const twoCustomCols = columns === 2 && items.length === 2;
   const singleItem = items.length === 1;
 
-  // Single item: force full-width single column
+  // --- SINGLE ITEM ---
   if (singleItem) {
     const m = items[0];
     return (
@@ -106,22 +106,31 @@ function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
                 src={m.src}
                 alt={m.alt || "Project media"}
                 loading="lazy"
-                className="w-full h-auto object-contain"
+                className="block w-full max-w-full h-auto object-contain"
               />
             )}
 
             {m.kind === "video" && (
-              <video
-                className="w-full h-auto object-contain"
-                poster={m.poster}
-                autoPlay={m.autoplay}
-                loop={m.loop}
-                muted={m.muted ?? true}
-                playsInline
-                controls={m.controls ?? true}
-              >
-                <source src={m.src} />
-              </video>
+              <div className="relative w-full overflow-hidden rounded-2xl bg-slate-100">
+                <video
+                  className="block w-full h-auto object-contain"
+                  poster={m.poster}
+                  autoPlay={m.autoplay}
+                  loop={m.loop}
+                  muted={m.muted ?? true}
+                  playsInline
+                  controls={m.controls ?? true}
+                  preload="auto"
+                >
+                  <source src={m.src} type="video/mp4" />
+                </video>
+
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                  <span className="rounded-md bg-black/50 px-3 py-1 text-xs text-white">
+                    Click the video to play
+                  </span>
+                </div>
+              </div>
             )}
 
             {m.kind === "youtube" && (
@@ -149,6 +158,7 @@ function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
     );
   }
 
+  // --- TWO CUSTOM COLS ---
   if (twoCustomCols) {
     return (
       <div
@@ -157,12 +167,9 @@ function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
         style={{ "--rowH": `${rowHeightPx}px` }}
       >
         {items.map((m, idx) => (
-          // wrapper controls equal height; width is auto from aspect ratio
           <div key={idx}>
             <figure className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm overflow-hidden">
-              {/* Media box with fixed height; width auto */}
               <div className="bg-slate-100 md:h-[var(--rowH)] md:w-auto flex items-center justify-center">
-                {/* ----- Image / GIF: width auto from aspect ratio ----- */}
                 {(m.kind === "image" || m.kind === "gif") && (
                   <img
                     src={m.src}
@@ -172,7 +179,6 @@ function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
                   />
                 )}
 
-                {/* ----- Video: width auto from aspect ratio ----- */}
                 {m.kind === "video" && (
                   <video
                     className="h-full w-auto max-w-none object-contain"
@@ -187,12 +193,10 @@ function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
                   </video>
                 )}
 
-                {/* ----- YouTube: use aspectRatio + fixed height ----- */}
                 {m.kind === "youtube" && (
                   <div
                     className="h-full w-auto"
                     style={{
-                      // If you can supply m.aspect like "16 / 9", it will be exact.
                       aspectRatio: m.aspect || "16 / 9",
                     }}
                   >
@@ -221,7 +225,7 @@ function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
     );
   }
 
-  // Fallback: normal grid
+  // --- FALLBACK GRID ---
   const gridCols = columns === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2";
   return (
     <div className={`grid ${gridCols} gap-4`} aria-label="Project media gallery">
@@ -230,29 +234,19 @@ function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
           key={idx}
           className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm overflow-hidden"
         >
-          <div
-            className={
-              m.kind === "image"
-                ? "aspect-square overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100"
-                : "w-full overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100"
-            }
-          >
+          <div className="w-full overflow-hidden rounded-2xl flex items-center justify-center bg-slate-100">
             {(m.kind === "image" || m.kind === "gif") && (
               <img
                 src={m.src}
                 alt={m.alt || "Project media"}
                 loading="lazy"
-                className={
-                  m.kind === "image"
-                    ? "w-full h-full object-cover"
-                    : "w-full h-auto object-contain"
-                }
+                className="block w-full max-w-full h-auto object-contain"
               />
             )}
 
             {m.kind === "video" && (
               <video
-                className="w-full h-auto object-contain"
+                className="block w-full h-auto object-contain"
                 poster={m.poster}
                 autoPlay={m.autoplay}
                 loop={m.loop}
@@ -288,7 +282,8 @@ function ProjectMedia({ items = [], columns = 1, rowHeightPx = 400 }) {
       ))}
     </div>
   );
-} // <-- closes the function
+}
+
 
 
 
@@ -535,18 +530,17 @@ export function RTDetail() {
         
         {
           kind: "video",
-          src: `${import.meta.env.BASE_URL}/landing/realtwin/vr_dt.mp4`, 
+          src: `${import.meta.env.BASE_URL}/landing/realtwin/3D_driving_sim.mp4`, 
           alt: "Demo",
-          caption: `The visual analytics dashboard for exploring and analyzing different types of grid signature event (e.g., transformer failure, arcing, fuse blow) 
-          through the dimension reduction of complex multivariate timeseries of voltage and current data collected from PMU`,
+          caption: `Using real-world GIS data to generate realistic virtual reality environments for vehicle and driving simulation.`,
           wpercentage: 100
         },
         {
           kind: "image",
-          src: `${import.meta.env.BASE_URL}/landing/gsl/gsl_ai_architecture.png`,
+          src: `${import.meta.env.BASE_URL}/landing/realtwin/hardware_in_loop.jpg`,
           alt: "Demo",
-          caption: `A generative AI framework integrating Temporal Fusion Transformers (TFT) and Variational Autoencoders (VAEs) for dimensionality reduction and representation learning of multivariate time-series data.`,
-          wpercentage: 60
+          caption: `Hardware-in-the-loop vehicle testing environment integrated with a virtual reality 3D city and traffic co-simulation platform.`,
+          wpercentage: 100
         }
       ]}
       title="Semi-Automatic GIS Framework for Photorealistic Digital Twin Cities"
@@ -583,7 +577,7 @@ export function RTDetail() {
         
         /*{ label: "Live demo (viewer)", href: "https://yourlink.example/voxel-viewer", tag: "demo" },
         { label: "CTwin platform", href: "https://yourlink.example/ctwin", tag: "platform" },*/
-        { label: "Digital-Twin Project Green-Lights Traffic Congestion Improvements", href: "https://www.nrel.gov/news/detail/program/2023/digital-twin-project-green-lights-traffic-congestion-improvements", tag: "government report" },
+        { label: "Real-Twin Project", href: "https://www.google.com/search?q=ornl+real-twin+traffic+vehicle&sca_esv=552fb68e3d08662a&rlz=1C1UEAD_en-GBAU1155AU1155&sxsrf=AE3TifN4iSgvy0pgMRPRHcTY1nOBTbm3vw%3A1760508395353&ei=6znvaMinFa_r1e8P57rEmAk&ved=0ahUKEwiIyZ3sxKWQAxWvdfUHHWcdEZMQ4dUDCBA&uact=5&oq=ornl+real-twin+traffic+vehicle&gs_lp=Egxnd3Mtd2l6LXNlcnAiHm9ybmwgcmVhbC10d2luIHRyYWZmaWMgdmVoaWNsZTIHECEYoAEYCkiXHFCPB1iDG3ACeACQAQCYAaUCoAGlF6oBBjAuMTQuMrgBA8gBAPgBAZgCEKAC-RTCAg0QIxjwBRiwAxgnGMkCwgILEAAYgAQYsAMYogTCAggQABiwAxjvBcICCxAAGLADGKIEGIkFwgIKECMY8AUYJxjJAsICBRAAGO8FwgIIEAAYogQYiQXCAgUQIRigAZgDAIgGAZAGBZIHBjIuMTIuMqAH8TGyBwYwLjEyLjK4B-kUwgcIMS4xMi4yLjHIByU&sclient=gws-wiz-serp", tag: "government report" },
 
         
       ]}
@@ -596,10 +590,10 @@ export function RTDetail() {
       publications={[
         {
           authors: "Xu, H., et al.",
-          title: "Explainable AI for Multivariate Time Series Pattern Exploration: Latent Space Visual Analytics with Temporal Fusion Transformer and Variational Autoencoders in Power Grid Event Diagnosis",
-          venue: "IEEE Access",
-          year: "2025",
-          doi: "https://ieeexplore.ieee.org/abstract/document/11141392",
+          title: "Semi-automatic geographic information system framework for creating photo-realistic digital twin cities to support autonomous driving research",
+          venue: "Transportation Research Record",
+          year: "2024",
+          doi: "https://journals.sagepub.com/doi/full/10.1177/03611981231205884",
           badges: ["Journal Paper"],
         },
               
