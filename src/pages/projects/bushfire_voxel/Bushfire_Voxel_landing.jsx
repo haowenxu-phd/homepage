@@ -397,6 +397,20 @@ export function VoxelFireDetail() {
           alt: "VoxelFire",
           autoPlay:true,
           caption: "3D simulation of heat transer and fire spread across millions of voxels, capturing turbulent wind dynamics in a complex urban environment."
+        },
+        {
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/voxel_fire_sim_scenario_1.mp4`,
+          alt: "VoxelFire",
+          autoPlay:true,
+          caption: "Fire spread simulation scenario showing propagation under a north wind of 5 m/s across a residential area."
+        },
+        {
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/voxel_fire_sim_scenario_2.mp4`,
+          alt: "VoxelFire",
+          autoPlay:true,
+          caption: "Fire spread simulation scenario under no-wind conditions, with the ignition point located in a high-rise building."
         }
       ]}
       title="Simulating Fire Spread in Urban Environments using 3D Voxels and High-performance Parallel Programing"
@@ -410,23 +424,39 @@ export function VoxelFireDetail() {
       introLeft={
         <>
           <p>
-            The Voxel Wildfire Simulator is a lightweight, Python-based 3D modeling framework for simulating wildfire propagation across complex urban and natural environments. Built on the Taichi parallel computing engine, it integrates LiDAR-derived voxel models, GIS-based fuel classifications, and physics-informed heat-transfer equations to capture dynamic fire behavior in both vertical and horizontal dimensions. The simulator models convection, radiation, and conduction across 3D voxel grids, allowing realistic visualization of surface and crown fires at meter-level resolution. Designed for modularity and scalability, it supports high-performance execution on CPUs and GPUs, real-time visualization in Blender and Unity, and seamless integration with urban digital twins and environmental simulation platforms. A case study in Newcastle, Australia demonstrates how detailed LiDAR data and voxelized urban topography can reveal critical fire-spread pathways—providing actionable insights for firefighting, hazard reduction, and emergency response planning.
+            
+           The <strong>Voxel Wildfire Simulator</strong> is a lightweight, <strong>Python-based 3D modeling framework</strong> for simulating wildfire propagation across complex <strong>urban and natural environments</strong>. Built on the <strong>Taichi parallel computing engine</strong>, it integrates <strong>LiDAR-derived voxel models</strong>, <strong>GIS-based fuel classifications</strong>, and <strong>physics-informed heat-transfer equations</strong> to capture dynamic fire behavior in both vertical and horizontal dimensions. The simulator models <strong>convection</strong>, <strong>radiation</strong>, and <strong>conduction</strong> across 3D voxel grids, enabling realistic visualization of surface and crown fires at <strong>meter-level resolution</strong>. Designed for <strong>modularity and scalability</strong>, it supports <strong>high-performance execution</strong> on CPUs and GPUs, <strong>real-time visualization</strong> in Blender and Unity, and seamless integration with <strong>urban digital twins</strong> and <strong>environmental simulation platforms</strong>. A <strong>case study in Newcastle, Australia</strong> demonstrates how detailed LiDAR data and voxelized urban topography reveal critical fire-spread pathways—providing <strong>actionable insights</strong> for firefighting, hazard reduction, and emergency response planning.
           </p>
           <p className="mt-3">
-            The AI surrogate (3D Transformer) is trained on simulator-generated data to predict
-            next-step fire states 10–100× faster, enabling near-real-time decision support.
-          </p>
+            The <strong>AI surrogate model</strong>, built using <strong>generative AI</strong> and a <strong>3D Transformer</strong> architecture, is trained on simulator-generated data to predict next-step fire states <strong>10–100× faster</strong> than the physical model, enabling near-real-time decision support for <strong>urban fire management</strong>. Within six months at UNSW, I delivered a <strong>physics-based voxel fire spread simulator</strong> powered by <strong>parallel computing</strong>, and a <strong>transformer-based surrogate model</strong> for rapid 3D fire spread inference. The model is currently being <strong>trained and optimized on UNSW’s Katana HPC system</strong>, advancing AI-accelerated fire prediction for <strong>digital twin</strong> and <strong>urban resilience</strong> applications.
+            
+            </p>
         </>
       }
-      /*
+      
       introRight={
         <ul className="list-disc list-inside text-slate-700">
-          <li>Voxel sizes: 1–5 m; neighborhood: 6-connectivity</li>
-          <li>Inputs: wind, fuel, moisture, topography</li>
-          <li>Outputs: state fields (heating/igniting/burning/burned)</li>
-          <li>Exports: VTK, GLB; web viewer integration</li>
+          <li>Voxel resolution: 1–5 m; neighborhood model: 26-connectivity</li>
+          <li>Input parameters: wind, fuel type, moisture, and topography</li>
+          <li>Output states: heating, igniting, burning, and burned phases</li>
+          <li>
+            Technologies used: Python <strong>Taichi</strong> framework for large-scale, 
+            parallel fire spread simulation; and <strong>VTK</strong> for high-performance 
+            3D visualization of urban fire dynamics across millions of voxels
+          </li>
+           <li>
+            The fire spread simulation framework is fully generalizable and can be 
+            extended to any region in Australia with voxel-based datasets containing 
+            fuel type classification, which can be derived from <strong>LiDAR</strong>, 
+            <strong>BIM</strong>, and land-use data sources.
+          </li>
+          <li>
+            Fire spread visualization is rendered directly in the browser and can be 
+            interactively played, explored, and shared online for collaborative analysis 
+            and decision support.
+          </li>
         </ul>
-      }*/
+      }
       relatedLinks={[
         /*
         { label: "Live demo (viewer)", href: "https://yourlink.example/voxel-viewer", tag: "demo" },
@@ -448,7 +478,15 @@ export function VoxelFireDetail() {
           venue: "Fire",
           year: "2025",
           doi: "https://www.mdpi.com/2571-6255/8/8/293",
-          badges: ["Open Access"],
+          badges: ["Open Access", "Journal Paper"],
+        },
+        {
+          authors: "Xu, H., et al.",
+          title: "Generative AI as a Pillar for Predicting 2D and 3D Wildfire Spread: Beyond Physics-Based Models and Traditional Deep Learning",
+          venue: "ISPRS ICWG III/IV Conference on Geoinformation (Accepted) ",
+          year: "2025",
+          doi: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5611510",
+          badges: ["Conference Paper"],
         },
       
       ]}

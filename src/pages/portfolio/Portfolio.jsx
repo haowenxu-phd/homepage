@@ -60,7 +60,7 @@ export default function Projects() {
 
       {
         id: 6,
-        title: "Realistic 3D Digital Twins for Autonomous Vehicles",
+        title: "Realistic 3D Digital Twins Generation Pipeline for Autonomous Vehicles",
         image: "/img/thumbnail/tn_photorealistic_dt.png",
         blurb:
           "VR Digital Twins & Vehicle/Driving Simulator",
@@ -68,6 +68,27 @@ export default function Projects() {
         badges: ["Digital Twin", "HPC", "Edge"],
       },
 
+      {
+        id: 7,
+        title: "Mobile Augmented Reality (AR) App for Building Operations (Coming Soon)",
+        image: "/img/thumbnail/MAR_HVAC_control.jpg",
+        blurb:
+          "Smartphone AR for Real-Time Data Visualization and Fault Diagnosis",
+        href: "",
+        NA: true,
+        badges: ["Mobile Augumented Reality", ],
+      },
+      {
+        id: 8,
+        title: "Visual Analytics for Ensemble COVID-19 Prediction Analysis (Coming Soon)",
+        image: "/img/thumbnail/tn_va_epi.png",
+        blurb:
+          "Analyzing Uncertainty in COVID-19 Prediction Models through Interactive Visual Analysis and Encoding",
+        href: "",
+        NA: true,
+        badges: ["Visual Analytics", "Geo-Visualization", ],
+      },
+      
       
       
       // add more…
@@ -133,53 +154,57 @@ export default function Projects() {
           {/* Responsive columns:
               <640px: 1,  >=640px: 2,  >=1024px: 3,  >=1280px: 4  */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
-            {projects.map((p) => (
-              <a
-                key={p.id}
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 hover:ring-blue-400 shadow-sm hover:shadow transition"
-              >
-                {/* Thumb */}
-                <div className="aspect-video overflow-hidden bg-slate-100">
-                  <img
-                    src={`${import.meta.env.BASE_URL}${p.image}`}  
-                    alt={p.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  />
-                </div>
+          {projects.map((p) => (
+            <a
+              key={p.id}
+              href={p.NA ? undefined : p.href}
+              target={p.NA ? undefined : "_blank"}
+              rel={p.NA ? undefined : "noopener noreferrer"}
+              onClick={(e) => p.NA && e.preventDefault()}
+              className={`group relative rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow-sm transition
+                ${p.NA ? "cursor-not-allowed" : "hover:ring-blue-400 hover:shadow"}`}
+            >
+              {/* Thumbnail (always vivid) */}
+              <div className="aspect-video overflow-hidden bg-slate-100">
+                <img
+                  src={`${import.meta.env.BASE_URL}${p.image}`}
+                  alt={p.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+              </div>
 
-                {/* Text block */}
-                <div className="p-4">
-                  <h5 className="text-sm font-semibold text-slate-900 line-clamp-2">
-                    {p.title}
-                  </h5>
-                  <p className="mt-1 text-sm text-slate-600 line-clamp-3">
-                    {p.blurb}
-                  </p>
+              {/* Text block (greyed out if NA) */}
+              <div className={`p-4 ${p.NA ? "opacity-50" : ""}`}>
+                <h5 className="text-sm font-semibold text-slate-900 line-clamp-2">
+                  {p.title}
+                </h5>
+                <p className="mt-1 text-sm text-slate-600 line-clamp-3">
+                  {p.blurb}
+                </p>
 
-                  {/* Badges */}
-                  {p.badges?.length > 0 && (
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {p.badges.map((b, i) => (
-                        <span
-                          key={i}
-                          className="text-[11px] rounded-full bg-slate-100 px-2.5 py-1 text-slate-700 ring-1 ring-inset ring-slate-200"
-                        >
-                          {b}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                {/* Badges */}
+                {p.badges?.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {p.badges.map((b, i) => (
+                      <span
+                        key={i}
+                        className="text-[11px] rounded-full bg-slate-100 px-2.5 py-1 text-slate-700 ring-1 ring-inset ring-slate-200"
+                      >
+                        {b}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-                {/* Hover overlay */}
+              {/* Hover overlay (only when active) */}
+              {!p.NA && (
                 <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-b from-transparent via-transparent to-black/20" />
-              </a>
-            ))}
-          </div>
+              )}
+            </a>
+          ))}
+        </div>
         </section>
       </div>
     </main>
