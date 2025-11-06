@@ -128,6 +128,30 @@ export default function Home() {
               <li>
                 Holds <strong>Permanent Residency in Australia</strong>; eligible to work without visa sponsorship
               </li>
+              <li>               
+                <a 
+                    href="pdf/haowen_CV_SEP_2025.pdf"
+                    target="_blank"                   
+                    className="text-blue-600 hover:underline"
+                >Curriculum Vitae</a> {" "}|{" "}
+                <a 
+                    href="pdf/haowen_resume_nov.pdf"
+                    target="_blank"                   
+                    className="text-blue-600 hover:underline"
+                >Resume</a> {" "}|{" "}
+                 <a 
+                    href="https://www.researchgate.net/profile/Haowen-Xu-3"
+                    target="_blank"                   
+                    className="text-blue-600 hover:underline"
+                >ResearchGate</a> {" "}|{" "}
+                <a 
+                    href="mailto:haowen.xu.phd@gmail.com" 
+                    className="text-blue-600 hover:underline"
+                  >
+                    haowen.xu.phd@gmail.com
+                  </a>
+              </li>
+              
             </ul>
 
             {/* Quick stats / tags */}
@@ -169,6 +193,7 @@ export default function Home() {
                       <span> 🎮 See my selected work with demos 🕹️ </span>
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
                     </Link>
+                    
             </div>
 
             {/* Actions 
