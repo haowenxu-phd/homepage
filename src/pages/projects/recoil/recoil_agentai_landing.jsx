@@ -532,6 +532,14 @@ export function RecoilDetail() {
       publications={[
         {
           authors: "Xu, H., et al.",
+          title: "Towards Fully Automated City Operations: Integrating Agentic AI with Urban Digital Twins",
+          venue: "CEUS (Under Review)",
+          year: "2025",
+          doi: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5596992",
+          badges: ["Open Access", "Preprint"],
+        },
+        {
+          authors: "Xu, H., et al.",
           title: "Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol",
           venue: "IJPR (In Revision)",
           year: "2025",

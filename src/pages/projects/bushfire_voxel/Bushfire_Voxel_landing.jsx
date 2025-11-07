@@ -482,7 +482,7 @@ export function VoxelFireDetail() {
         },
         {
           authors: "Xu, H., et al.",
-          title: "Generative AI as a Pillar for Predicting 2D and 3D Wildfire Spread: Beyond Physics-Based Models and Traditional Deep Learning",
+          title: "A Modular Light-weight Voxel-Based 3D Wildfire Propagation Simulator in Python Using LiDAR Data, High-Performance Computing (HPC), and Immersive Scientific Visualization",
           venue: "ISPRS ICWG III/IV Conference on Geoinformation (Accepted) ",
           year: "2025",
           doi: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5611510",
