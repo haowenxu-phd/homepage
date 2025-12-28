@@ -113,6 +113,9 @@ export default function Home() {
                 and <strong>IBPSA (International Building Performance Simulation Association)</strong>.
               </li>
               <li>
+                <strong>Senior Member</strong> of the <strong>IEEE</strong>.
+              </li>
+              <li>
                 Served as a <strong>Co-Investigator</strong> on multiple nationally
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
