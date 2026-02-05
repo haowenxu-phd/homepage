@@ -423,8 +423,11 @@ export function VoxelFireDetail() {
       introColumns={2}
       introLeft={
         <>
+        <p>
+          This research is conducted as part of the <strong>UNSW Geospatial Research Innovation Development (GRID) project</strong>, which advances cutting-edge geospatial science, digital twin technologies, and high-performance environmental simulation for resilient cities and infrastructure.
+        </p>
           <p>
-            
+          
            The <strong>Voxel Wildfire Simulator</strong> is a lightweight, <strong>Python-based 3D modeling framework</strong> for simulating wildfire propagation across complex <strong>urban and natural environments</strong>. Built on the <strong>Taichi parallel computing engine</strong>, it integrates <strong>LiDAR-derived voxel models</strong>, <strong>GIS-based fuel classifications</strong>, and <strong>physics-informed heat-transfer equations</strong> to capture dynamic fire behavior in both vertical and horizontal dimensions. The simulator models <strong>convection</strong>, <strong>radiation</strong>, and <strong>conduction</strong> across 3D voxel grids, enabling realistic visualization of surface and crown fires at <strong>meter-level resolution</strong>. Designed for <strong>modularity and scalability</strong>, it supports <strong>high-performance execution</strong> on CPUs and GPUs, <strong>real-time visualization</strong> in Blender and Unity, and seamless integration with <strong>urban digital twins</strong> and <strong>environmental simulation platforms</strong>. A <strong>case study in Newcastle, Australia</strong> demonstrates how detailed LiDAR data and voxelized urban topography reveal critical fire-spread pathways—providing <strong>actionable insights</strong> for firefighting, hazard reduction, and emergency response planning.
           </p>
           <p className="mt-3">

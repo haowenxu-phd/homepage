@@ -67,7 +67,7 @@ export default function Home() {
             </h4>
 
             <p className="text-slate-600 leading-relaxed">
-                Currently an <strong>Urban AI Research Fellow (Level B/lecturer)</strong> at{" "}
+                Currently an <strong>Urban AI Research Fellow (Level B)</strong> at{" "}
                 <strong>UNSW Sydney</strong>.
               </p>
 
@@ -120,7 +120,7 @@ export default function Home() {
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
               <li>
-                <strong>Over 1000 citations</strong> with an h-index of <strong>17</strong> on {" "}
+                <strong>Over 1100 citations</strong> with an h-index of <strong>17</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
