@@ -411,8 +411,28 @@ export function VoxelFireDetail() {
           alt: "VoxelFire",
           autoPlay:true,
           caption: "Fire spread simulation scenario under no-wind conditions, with the ignition point located in a high-rise building."
+        },
+        {
+          kind: "image",
+          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/flowchart.png`,
+          alt: "VoxelFire",
+          autoPlay:true,
+          caption: "Agentic AI workflow for autormating fire simulation through AI agents.",
+           wpercentage: 50
+        },      
+        {
+          kind: "image",
+          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/3D_hologram.png`,
+          alt: "VoxelFire",
+          autoPlay:true,
+          caption: "Mixed-reality visualization of 3D fire simulations on holographic display tables (implemented) and a mobile augmented reality interface (under development).",
+           wpercentage: 50
         }
+         
+
+        
       ]}
+
       title="Simulating Fire Spread in Urban Environments using 3D Voxels and High-performance Parallel Programing"
       subtitle="City-scale identification of wildland–urban interface (WUI) fire spread paths using real-world GIS data for real-time decision support"
       sponsor_logos={[

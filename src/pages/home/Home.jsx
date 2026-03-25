@@ -84,7 +84,7 @@ export default function Home() {
                 <strong>35+ conference papers</strong> in prestigious scientific venues.
               </li>
               <li className="leading-relaxed">
-                Holder of <strong>two U.S. patent applications</strong>:
+                Holder of <strong>three U.S. patent applications</strong>:
                  
                           {" "}<a
                             href="https://patents.google.com/patent/US20250128708A1/en"
@@ -94,7 +94,7 @@ export default function Home() {
                           >
                             US20250128708A1
                           </a>{" "}
-                          and{" "}
+                          ,{" "}
                           <a
                             href="https://patents.google.com/patent/US20250131819A1/en"
                             target="_blank"
@@ -102,6 +102,15 @@ export default function Home() {
                             className="text-blue-600 hover:underline"
                           >
                             US20250131819A1
+                          </a>{" "}
+                          and{" "}
+                          <a
+                            href="https://patents.google.com/patent/US20250209911A1/en"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:underline"
+                          >
+                            US20250209911A1
                           </a>
                       
               </li>
@@ -113,14 +122,14 @@ export default function Home() {
                 and <strong>IBPSA (International Building Performance Simulation Association)</strong>.
               </li>
               <li>
-                <strong>Senior Member</strong> of the <strong>IEEE</strong>.
+                <strong>Senior Member</strong> of the <strong>IEEE</strong>, serve <strong>Guest Editor</strong> at ISPRS International Journal of Geo-Information.
               </li>
               <li>
                 Served as a <strong>Co-Investigator</strong> on multiple nationally
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
               <li>
-                <strong>Over 1100 citations</strong> with an h-index of <strong>17</strong> on {" "}
+                <strong>Over 1200 citations</strong> with an h-index of <strong>18</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
