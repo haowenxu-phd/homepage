@@ -506,9 +506,17 @@ export function VoxelFireDetail() {
         {
           authors: "Xu, H., et al.",
           title: "A Modular Light-weight Voxel-Based 3D Wildfire Propagation Simulator in Python Using LiDAR Data, High-Performance Computing (HPC), and Immersive Scientific Visualization",
-          venue: "ISPRS ICWG III/IV Conference on Geoinformation (Accepted) ",
-          year: "2025",
-          doi: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5611510",
+          venue: "ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences",
+          year: "2026",
+          doi: "https://isprs-annals.copernicus.org/articles/X-3-W3-2025/127/2026/isprs-annals-X-3-W3-2025-127-2026.html",
+          badges: ["Conference Paper", "Journal Paper"],
+        },
+        {
+          authors: "Xu, H., et al.",
+          title: "Collaborative Fire Management for Community Wildfire Prevention Using Agentic AI, Simulation, and Mixed-Reality Visualization",
+          venue: " ISPRS Congress",
+          year: "2026",
+          doi: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5762363",
           badges: ["Conference Paper"],
         },
       
