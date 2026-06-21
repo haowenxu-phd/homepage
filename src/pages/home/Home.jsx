@@ -21,6 +21,11 @@ export default function Home() {
       caption: "Best Presentation - AWRA 2016" },
     { id: 5, src: `${import.meta.env.BASE_URL}/img/awards/CIE_2024.jpeg`, alt: "Award 5", 
       caption: "Best Paper Award - CIE 2024"  },
+      { id: 6, src: `${import.meta.env.BASE_URL}/img/awards/ieee_senior_member.png`, alt: "Award 6", 
+      caption: "IEEE Senior Member"  },
+{ id: 7, src: `${import.meta.env.BASE_URL}/img/awards/utk_adjunct_faculty.png`, alt: "Award 7", 
+      caption: "Adjunct Faculty at University of Tennessee "  },
+      
     // Add more awards here...
   ];
   const [isOpen_award, setIsOpen_award] = useState(true);
@@ -67,8 +72,9 @@ export default function Home() {
             </h4>
 
             <p className="text-slate-600 leading-relaxed">
-                Currently an <strong>Urban AI Research Fellow (Level B)</strong> at{" "}
-                <strong>UNSW Sydney</strong>.
+                Currently an <strong>Urban AI Research Fellow (Level B/ Lecturer)</strong> at{" "}
+                <strong>UNSW Sydney</strong> and <strong>Adjunct Associate Professor</strong> at{" "}
+                <strong>University of Tennessee, Knoxville</strong> 
               </p>
 
               <ul className="text-slate-600 leading-relaxed list-disc list-inside space-y-2">
@@ -80,7 +86,7 @@ export default function Home() {
                 <strong> University of Tennessee, Knoxville (UTK)</strong>.
               </li>
               <li>
-                Author of <strong>25+ peer-reviewed journal articles</strong> and{" "}
+                Author of <strong>30+ peer-reviewed journal articles</strong> and{" "}
                 <strong>35+ conference papers</strong> in prestigious scientific venues.
               </li>
               <li className="leading-relaxed">
@@ -129,7 +135,7 @@ export default function Home() {
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
               <li>
-                <strong>Over 1200 citations</strong> with an h-index of <strong>18</strong> on {" "}
+                <strong>Over 1350 citations</strong> with an h-index of <strong>20</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
@@ -184,7 +190,10 @@ export default function Home() {
                 Visual Analytics
               </li>
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                3D Voxels
+                Voxel-based 3D Simulations
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Environmental World Model
               </li>
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 VR & AR & Serious Gaming
@@ -271,7 +280,7 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 cc2">
+                  <div className="grid grid-cols-2 md:grid-cols-2 gap-6 cc2">
                     {awards.slice(0, 4).map((award) => (
                       <div
                         key={award.id}
@@ -291,6 +300,29 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
+
+                  <div className="col-span-2 grid grid-cols-2 gap-6">
+                    {awards.slice(5, 7).map((award) => (
+                      <div
+                        key={award.id}
+                        className="rounded-xl overflow-hidden shadow ring-1 ring-slate-200 hover:ring-blue-400 transition bg-white"
+                        onClick={() => setSelectedAward(award)}
+                      >
+                        <img
+                          src={award.src}
+                          alt={award.alt}
+                          className="w-full h-auto object-contain"
+                        />
+                        <div className="px-3 py-2 text-center">
+                          <p className="text-sm font-medium text-slate-700">
+                            {award.caption}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  
                 </div>
               )}
             </section>

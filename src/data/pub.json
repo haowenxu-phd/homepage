@@ -1,11 +1,23 @@
 [
     { 
-        "name":"Xu, H., Zlatanova, S., Li, X., Wachowicz, M., & Batty, M. (2025). Towards Fully Automated City Operations: Integrating Agentic AI with Urban Digital Twins. Available at SSRN 5596992.",
-        "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5596992"
+        "name":"Xu, H., Zlatanova, S., Gorte, B., Lamsal, R., Heslop， D., Liang, R., & Canbulat, I. (2026). A Pilot Study on a GPU-Accelerated Voxel Simulation Framework for 3D Indoor and Urban-Scale Gas Dispersion and Aerosol Transport. Available at Pre-print",
+        "url":"https://www.preprints.org/manuscript/202606.1036"
     },
     { 
-        "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2025). A Modular Light-weight Voxel-Based 3D Wildfire Propagation Simulator in Python Using LiDAR Data, High-Performance Computing (HPC), and Immersive Scientific Visualization. High-Performance Computing (HPC), and Immersive Scientific Visualization (October 15, 2025).",
-        "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5611510"
+        "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I.(2026). An Exploratory Study of Transformer-based Generative AI Surrogate Modeling for 3D Wildfire Spread Simulation in Voxelized City. Available at SSRN 6572079",
+        "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572079"
+    },
+    { 
+        "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2026). Collaborative Fire Management for Community Wildfire Prevention Using Agentic AI, Simulation, and Mixed-Reality Visualization. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences",
+        "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5762363"
+    },
+    { 
+        "name":"Xu, H., Zlatanova, S., Li, X., Wachowicz, M., & Batty, M. (2026). Towards Fully Automated City Operations: Integrating Agentic AI with Urban Digital Twins. Computers, Environment and Urban Systems",
+        "url":"https://www.sciencedirect.com/science/article/pii/S0198971526000517"
+    },
+    { 
+        "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2026). A Modular Light-weight Voxel-Based 3D Wildfire Propagation Simulator in Python Using LiDAR Data, High-Performance Computing (HPC), and Immersive Scientific Visualization. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences",
+        "url":"https://isprs-annals.copernicus.org/articles/X-3-W3-2025/127/2026/isprs-annals-X-3-W3-2025-127-2026.html"
     },
     { 
         "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2025). Generative AI as a Pillar for Predicting 2D and 3D Wildfire Spread: Beyond Physics-Based Models and Traditional Deep Learning. Fire, 8(8), 293.",
