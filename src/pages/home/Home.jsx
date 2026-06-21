@@ -48,7 +48,7 @@ export default function Home() {
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/60" />
               </div>
-              <p className="mt-2 text-sm text-slate-600">Invited Talk — Virtual Reality and Digital Twin, U.S. National Academy of Sciences (NAS)  </p>
+              <p className="mt-2 text-sm text-slate-600">Invited Talk — Virtual Reality and Digital Twin, U.S. National Academy of Sciences (NAS/美国国家科学院)  </p>
             </div>
 
             {/* Photo 2 */}
@@ -61,7 +61,7 @@ export default function Home() {
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/60" />
               </div>
-              <p className="mt-2 text-sm text-slate-600"> Led and contributed to numerous U.S. Department of Energy–funded projects as a federal government scientist</p>
+              <p className="mt-2 text-sm text-slate-600"> Led and contributed to numerous U.S. Department of Energy (美国能源部) –funded projects as a federal government scientist</p>
             </div>
           </div>
 
@@ -88,6 +88,15 @@ export default function Home() {
               <li>
                 Author of <strong>30+ peer-reviewed journal articles</strong> and{" "}
                 <strong>35+ conference papers</strong> in prestigious scientific venues.
+              </li>
+              <li>
+                <strong>Over 1370 citations</strong> with an h-index of <strong>20</strong> on {" "}
+                <a 
+                    href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
+                    target="_blank"                   
+                    className="text-blue-600 hover:underline"
+                >Google
+                Scholar</a>. 
               </li>
               <li className="leading-relaxed">
                 Holder of <strong>three U.S. patent applications</strong>:
@@ -134,15 +143,7 @@ export default function Home() {
                 Served as a <strong>Co-Investigator</strong> on multiple nationally
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
-              <li>
-                <strong>Over 1350 citations</strong> with an h-index of <strong>20</strong> on {" "}
-                <a 
-                    href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
-                    target="_blank"                   
-                    className="text-blue-600 hover:underline"
-                >Google
-                Scholar</a>. 
-              </li>
+              
               <li>
                 Holds <strong>Permanent Residency in Australia</strong>; eligible to work without visa sponsorship
               </li>
