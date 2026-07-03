@@ -10,6 +10,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@kitware/vtk.js": "^36.2.1",
     "axios": "^1.12.2",
     "bootstrap": "^5.3.8",
     "d3": "^7.9.0",

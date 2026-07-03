@@ -87,10 +87,10 @@ export default function Home() {
               </li>
               <li>
                 Author of <strong>30+ peer-reviewed journal articles</strong> and{" "}
-                <strong>35+ conference papers</strong> in prestigious scientific venues.
+                <strong>30+ conference papers</strong> in prestigious scientific venues.
               </li>
               <li>
-                <strong>Over 1370 citations</strong> with an h-index of <strong>20</strong> on {" "}
+                <strong>Over 1401 citations</strong> with an h-index of <strong>21</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
@@ -142,6 +142,9 @@ export default function Home() {
               <li>
                 Served as a <strong>Co-Investigator</strong> on multiple nationally
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
+              </li>
+              <li>
+                Served as a <strong>Topic Editor</strong> for the special topic <strong>"Agentic and Generative AI for Spatial Data Science: Toward Intelligent, Interactive, and Predictive Urban Systems"</strong> in <strong>ISPRS International Journal of Geo-Information (ISPRS IJGI)</strong>.
               </li>
               
               <li>

@@ -26,145 +26,153 @@ const defaultIcon = new L.Icon({
 });
 L.Marker.prototype.options.icon = defaultIcon;
 
+// --- Color maps (0..1 -> [r,g,b]) ---
+const ColorMaps = {
+  gray: (t) => {
+    t = Math.max(0, Math.min(1, t));
+    const g = Math.round(255 * t);
+    return [g, g, g];
+  },
+  "blue-red": (t) => {
+    t = Math.max(0, Math.min(1, t));
+    const r = Math.round(255 * Math.min(1, Math.max(0, 2*(t-0.5))));
+    const g = Math.round(255 * (1 - Math.abs(2*t - 1)));
+    const b = Math.round(255 * Math.min(1, Math.max(0, 2*(0.5 - t))));
+    return [r, g, b];
+  },
+  "magma-ish": (t) => {
+    t = Math.max(0, Math.min(1, t));
+    const r = Math.round(255 * Math.pow(t, 0.65));
+    const g = Math.round(255 * Math.pow(t, 1.8) * 0.52);
+    const b = Math.round(255 * Math.pow(1 - t, 2.0));
+    return [r, g, b];
+  },
+};
+
+// Percentile clip (to avoid a few outliers blowing out the stretch)
+function computeMinMaxPercentiles(f32, nodata, pLow = 2, pHigh = 98) {
+  const vals = [];
+  const ND_THRESH = -2.1e9; // robust NoData guard for -2147483648
+  for (let i = 0; i < f32.length; i++) {
+    const v = f32[i];
+    if (!Number.isFinite(v)) continue;
+    if (nodata !== undefined && (v === nodata || v < ND_THRESH)) continue;
+    vals.push(v);
+  }
+  if (!vals.length) return { min: 0, max: 1 };
+  vals.sort((a, b) => a - b);
+  const lo = vals[Math.floor((pLow/100)  * (vals.length-1))];
+  const hi = vals[Math.ceil ((pHigh/100) * (vals.length-1))];
+  if (!(isFinite(lo) && isFinite(hi)) || lo === hi) return { min: 0, max: 1 };
+  return { min: lo, max: hi };
+}
+
+// Build a legend canvas (small horizontal bar)
+function buildLegendDataURL(palette, w = 160, h = 10) {
+  const cmap = ColorMaps[palette] || ColorMaps["blue-red"];
+  const c = document.createElement("canvas");
+  c.width = w; c.height = h;
+  const ctx = c.getContext("2d");
+  const img = ctx.createImageData(w, h);
+  for (let x = 0; x < w; x++) {
+    const t = x / (w - 1);
+    const [r,g,b] = cmap(t);
+    for (let y = 0; y < h; y++) {
+      const p = (y*w + x) * 4;
+      img.data[p+0] = r; img.data[p+1] = g; img.data[p+2] = b; img.data[p+3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+  return c.toDataURL("image/png");
+}
+
 /**
  * Renders SPARK "10-aster_output_web_mercator" as a canvas-based imageOverlay.
  * Expects Web Mercator (EPSG:3857) xMin/xMax/yMin/yMax in metres.
  */
-function SparkRasterOverlay({ rasterMeta }) {
+function SparkRasterOverlay({ rasterMeta, palette = "magma-ish", opacity = 0.75 }) {
   const map = useMap();
 
   useEffect(() => {
     if (!rasterMeta || !rasterMeta.data) return;
-
     let overlay;
 
     try {
       const {
-        xCells,
-        yCells,
-        xMin,
-        yMin,
-        xMax,
-        yMax,
-        noDataValue,
-        encoding,
-        zipped,
-        data,
+        xCells, yCells, xMin, yMin, xMax, yMax,
+        noDataValue, encoding, zipped, data, dataByteOrder,
       } = rasterMeta;
 
-      // 1) Decode base64
       if (!(encoding === "b64" || encoding === "base64")) {
         console.error("Unsupported raster encoding:", encoding);
         return;
       }
 
-      const binaryString = atob(data);
-      const byteArray = new Uint8Array(binaryString.length);
-      for (let i = 0; i < binaryString.length; i++) {
-        byteArray[i] = binaryString.charCodeAt(i);
-      }
+      // Decode base64
+      const bin = atob(data);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
 
-      // 2) Decompress if needed
-      const rawBuffer = zipped
-        ? pako.inflate(byteArray).buffer
-        : byteArray.buffer;
+      // Decompress if needed
+      const raw = zipped ? pako.inflate(bytes) : bytes;
 
-      // 3) Interpret as Float32 raster
-      const raster = new Float32Array(rawBuffer);
-      const expected = xCells * yCells;
-      if (raster.length !== expected) {
-        console.warn(
-          "Raster length mismatch:",
-          raster.length,
-          "vs expected",
-          expected
-        );
-      }
+      // Interpret as float32 (Spark sends little-endian; browsers are LE too)
+      // If you ever receive BE, you'd re-pack via DataView with littleEndian=false.
+      const f32 = new Float32Array(raw.buffer);
 
-      // 4) Value range (ignore NoData)
-      let min = Infinity;
-      let max = -Infinity;
-      for (let i = 0; i < raster.length; i++) {
-        const v = raster[i];
-        if (
-          v !== noDataValue &&
-          !Number.isNaN(v) &&
-          v !== Infinity &&
-          v !== -Infinity
-        ) {
-          if (v < min) min = v;
-          if (v > max) max = v;
-        }
-      }
-      if (!isFinite(min) || !isFinite(max) || min === max) {
-        console.warn("Invalid/flat raster range", { min, max });
-        return;
-      }
+      // Compute robust range with percentile clipping
+      const { min, max } = computeMinMaxPercentiles(f32, noDataValue, 2, 98);
 
-      // 5) Draw to canvas (x = col, y = row)
+      // Draw to canvas with vertical flip (north up)
       const canvas = document.createElement("canvas");
       canvas.width = xCells;
       canvas.height = yCells;
       const ctx = canvas.getContext("2d");
       const img = ctx.createImageData(xCells, yCells);
+      const out = img.data;
+      const cmap = ColorMaps[palette] || ColorMaps["blue-red"];
+      const ND_THRESH = -2.1e9;
 
       for (let y = 0; y < yCells; y++) {
+        const srcY = yCells - 1 - y;         // vertical flip
         for (let x = 0; x < xCells; x++) {
-          const idx = y * xCells + x;
-          const v = raster[idx];
-          const p = idx * 4;
+          const srcIdx = srcY * xCells + x;  // read from flipped row
+          const v = f32[srcIdx];
+          const p = (y * xCells + x) * 4;
 
-          if (
-            v === noDataValue ||
-            Number.isNaN(v) ||
-            v === Infinity ||
-            v === -Infinity
-          ) {
-            img.data[p + 3] = 0; // transparent
+          if (!Number.isFinite(v) || v === noDataValue || v < ND_THRESH) {
+            out[p+3] = 0; // transparent for NoData
             continue;
           }
-
-          const t = (v - min) / (max - min); // 0..1
-
-          // Simple fire-style ramp: dark -> red -> yellow
-          const r = 255 * t;
-          const g = 200 * t;
-          const b = 40 * t;
-
-          img.data[p + 0] = Math.max(0, Math.min(255, r));
-          img.data[p + 1] = Math.max(0, Math.min(255, g));
-          img.data[p + 2] = Math.max(0, Math.min(255, b));
-          img.data[p + 3] = 180; // alpha
+          const t = (v - min) / (max - min);
+          const [r, g, b] = cmap(Math.max(0, Math.min(1, t)));
+          out[p+0] = r; out[p+1] = g; out[p+2] = b; out[p+3] = Math.round(opacity * 255);
         }
       }
-
       ctx.putImageData(img, 0, 0);
 
-      // 6) Compute bounds in LatLng from EPSG:3857 metres
+      // Project WebMercator bounds -> LatLng
       const sw = map.options.crs.unproject(L.point(xMin, yMin));
       const ne = map.options.crs.unproject(L.point(xMax, yMax));
       const bounds = L.latLngBounds(sw, ne);
 
-      // 7) Add overlay
-      overlay = L.imageOverlay(canvas.toDataURL(), bounds, {
-        opacity: 0.7,
-      }).addTo(map);
-
-      // Optionally fit map to raster
+      overlay = L.imageOverlay(canvas.toDataURL(), bounds, { opacity }).addTo(map);
+      // Optional: fit to raster
       // map.fitBounds(bounds);
     } catch (err) {
       console.error("Failed to render SPARK raster overlay:", err);
     }
 
     return () => {
-      if (overlay) {
-        map.removeLayer(overlay);
-      }
+      if (overlay) map.removeLayer(overlay);
     };
-  }, [map, rasterMeta]);
+  }, [map, rasterMeta, palette, opacity]);
 
   return null;
 }
+
+
+
 
 export default function FireAgentChat() {
   const [input, setInput] = useState("");
@@ -175,6 +183,10 @@ export default function FireAgentChat() {
   const [mapCenter, setMapCenter] = useState([-33.86, 151.21]);
   const [markerPos, setMarkerPos] = useState([-33.86, 151.21]);
   const [rasterMeta, setRasterMeta] = useState(null);
+
+  const [palette, setPalette] = useState("magma-ish");
+  const [rasOpacity, setRasOpacity] = useState(0.75);
+  const legendURL = buildLegendDataURL(palette);
 
   async function send() {
     const text = input.trim();
@@ -341,19 +353,29 @@ export default function FireAgentChat() {
 
       {/* Right: Map panel (2/3) */}
       <div className="flex-1 h-full relative">
+        
+
+
         <MapContainer
           center={mapCenter}
           zoom={8}
           className="h-full w-full"
           scrollWheelZoom={true}
         >
+          
           <TileLayer
             attribution='&copy; OpenStreetMap contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
           {/* Raster overlay from SPARK */}
-          {rasterMeta && <SparkRasterOverlay rasterMeta={rasterMeta} />}
+          {rasterMeta && (
+            <SparkRasterOverlay
+              rasterMeta={rasterMeta}
+              palette={palette}
+              opacity={rasOpacity}
+            />
+          )}
 
           {/* Ignition marker */}
           {markerPos && (
@@ -367,11 +389,38 @@ export default function FireAgentChat() {
           )}
         </MapContainer>
 
-        <div className="absolute top-2 left-2 px-2 py-1 rounded bg-black/50 text-[10px] text-slate-100">
-          🗺️ Simulation Map View
+        
+
+       
+        
+        <div className="absolute bottom-2 left-2 px-2 py-1 w-7/11 rounded bg-black/60 text-[10px] text-slate-100 space-x-2 flex items-center overlaytop">
+          <span>🗺️ Simulation Map View</span>
           {rasterMeta && " — SPARK raster overlay active"}
+          <select
+            value={palette}
+            onChange={(e) => setPalette(e.target.value)}
+            className="bg-slate-800 border border-slate-700 rounded px-1 py-0.5 text-[10px]"
+          >
+            <option value="magma-ish">magma-ish</option>
+            <option value="blue-red">blue-red</option>
+            <option value="gray">gray</option>
+          </select>
+          <label className="flex items-center gap-1">
+            <span>opacity</span>
+            <input
+              type="range"
+              min="0.1"
+              max="1"
+              step="0.05"
+              value={rasOpacity}
+              onChange={(e) => setRasOpacity(parseFloat(e.target.value))}
+            />
+          </label>
+          <img src={legendURL} alt="legend" className="h-2 w-40 rounded border border-slate-700" />
         </div>
       </div>
+      
+      
     </div>
   );
 }

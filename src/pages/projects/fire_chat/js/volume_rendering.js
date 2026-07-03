@@ -1,10 +1,20 @@
+import "@kitware/vtk.js/Rendering/Profiles/Volume";
+
+import vtkColorTransferFunction from "@kitware/vtk.js/Rendering/Core/ColorTransferFunction";
+import vtkPiecewiseFunction from "@kitware/vtk.js/Common/DataModel/PiecewiseFunction";
+import vtkVolume from "@kitware/vtk.js/Rendering/Core/Volume";
+import vtkVolumeMapper from "@kitware/vtk.js/Rendering/Core/VolumeMapper";
+import vtkImageData from "@kitware/vtk.js/Common/DataModel/ImageData";
+import vtkDataArray from "@kitware/vtk.js/Common/Core/DataArray";
+
+
 export function makeSafeVolumeUpdater(renderer, renderWindow) {
-  const ColorTF   = vtk.Rendering.Core.vtkColorTransferFunction;
-  const Piecewise = vtk.Common.DataModel.vtkPiecewiseFunction;
-  const Volume    = vtk.Rendering.Core.vtkVolume;
-  const VolMapper = vtk.Rendering.Core.vtkVolumeMapper;
-  const ImageData = vtk.Common.DataModel.vtkImageData;
-  const DataArray = vtk.Common.Core.vtkDataArray;
+  const ColorTF = vtkColorTransferFunction;
+  const Piecewise = vtkPiecewiseFunction;
+  const Volume = vtkVolume;
+  const VolMapper = vtkVolumeMapper;
+  const ImageData = vtkImageData;
+  const DataArray = vtkDataArray;
 
   const STATE_COLORS = {
     0:[0.40,0.40,0.40],

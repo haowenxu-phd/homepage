@@ -15,3 +15,17 @@ figcaption { font-size: 20px}
 .maxw {max-width: 1300px;}
 .maxw2 {max-width: 500px;}
 .overlaytop{z-index:999}
+
+.content-full {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.content.fire-agent {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

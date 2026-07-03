@@ -1,6 +1,5 @@
 
-
-  export function upsertPairsInPlace(arr1, arr2) {
+export function upsertPairsInPlace(arr1, arr2) {
   // index existing keys in arr1 -> position
   const index = new Map();
   for (let i = 0; i < arr1.length; i++) {

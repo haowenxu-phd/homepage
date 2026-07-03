@@ -1,0 +1,9 @@
+simulate 2d fire spread at my home at burragorang, oakdale, nsw, 2570
+
+I want to simulate 2d fire spread at my home at 95-111 Kelsalls Rd, Lakesland NSW 2572
+
+simulate 3d fire spread at 5 Charles St, Liverpool NSW 2170 (very good)
+I want to simulate 3d fire spread at my home at 1 Charles St, Liverpool NSW 2170 (very good)
+
+
+I want to generate wind at 5 m/s at north direction

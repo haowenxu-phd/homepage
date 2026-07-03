@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import { Routes, Route, BrowserRouter, useLocation  } from 'react-router-dom'
 import Home from './pages/home/Home.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -22,10 +22,15 @@ import ProjectDetail6, { RTDetail } from "./pages/projects/realtwin/rt_landing.j
 import FireAgentChatPage from "./pages/projects/fire_chat/FireAgentChatPage.jsx";
 
 export default function App() {
+  const location = useLocation();
+
+  const isFirePage = location.pathname === "/portfolio/fire";
+
   return (
     <div className="app">
       <Nav />
-      <div className="content">
+
+      <div className={isFirePage ? "content-full" : "content"}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -45,5 +50,5 @@ export default function App() {
         </Routes>
       </div>
     </div>
-  )
+  );
 }
