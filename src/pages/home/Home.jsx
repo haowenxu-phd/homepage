@@ -90,7 +90,7 @@ export default function Home() {
                 <strong>30+ conference papers</strong> in prestigious scientific venues.
               </li>
               <li>
-                <strong>Over 1401 citations</strong> with an h-index of <strong>21</strong> on {" "}
+                <strong>Over 1440 citations</strong> with an h-index of <strong>21</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
