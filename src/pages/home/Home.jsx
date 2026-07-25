@@ -98,7 +98,7 @@ export default function Home() {
                 Scholar</a>. 
               </li>
               <li className="leading-relaxed">
-                Holder of <strong>three U.S. patent applications</strong>:
+                Inventer of <strong>three U.S. patent applications</strong>:
                  
                           {" "}<a
                             href="https://patents.google.com/patent/US20250128708A1/en"
@@ -106,7 +106,7 @@ export default function Home() {
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
                           >
-                            US20250128708A1
+                            US20250128708A1 (Granted)
                           </a>{" "}
                           ,{" "}
                           <a
@@ -115,7 +115,7 @@ export default function Home() {
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
                           >
-                            US20250131819A1
+                            US20250131819A1 (Pending)
                           </a>{" "}
                           and{" "}
                           <a
@@ -124,7 +124,7 @@ export default function Home() {
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
                           >
-                            US20250209911A1
+                            US20250209911A1 (Pending)
                           </a>
                       
               </li>
@@ -139,7 +139,7 @@ export default function Home() {
                 <strong>Senior Member</strong> of the <strong>IEEE</strong>, serve <strong>Guest Editor</strong> at ISPRS International Journal of Geo-Information.
               </li>
               <li>
-                Served as a <strong>Co-Investigator</strong> on multiple nationally
+                Served as a <strong> Co-Principal Investigator (Co-PI) </strong> on multiple nationally
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
               <li>
