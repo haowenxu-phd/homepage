@@ -72,9 +72,8 @@ export default function Home() {
             </h4>
 
             <p className="text-slate-600 leading-relaxed">
-                Currently an <strong>Urban AI Research Fellow (Level B/ Lecturer)</strong> at{" "}
-                <strong>UNSW Sydney</strong> and <strong>Adjunct Associate Professor</strong> at{" "}
-                <strong>University of Tennessee, Knoxville</strong> 
+                Currently an <strong>Research Fellow (Level B)</strong> at{" "}
+                <strong>UNSW Sydney</strong> 
               </p>
 
               <ul className="text-slate-600 leading-relaxed list-disc list-inside space-y-2">
