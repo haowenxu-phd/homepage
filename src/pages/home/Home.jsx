@@ -78,8 +78,7 @@ export default function Home() {
 
               <ul className="text-slate-600 leading-relaxed list-disc list-inside space-y-2">
               <li>
-                <strong>Over 6 years</strong> of post-PhD experience as an
-                award-winning <strong>Staff Research Scientist</strong> at the
+                Formerly an award-winning <strong>Staff Research Scientist</strong> at the
                 <strong> U.S. Department of Energy’s Oak Ridge National Laboratory (ORNL)</strong>,
                 and <strong>Adjunct Associate Professor</strong> at the
                 <strong> University of Tennessee, Knoxville (UTK)</strong>.
@@ -175,50 +174,7 @@ export default function Home() {
               
             </ul>
 
-            {/* Quick stats / tags */}
-            <ul className="mt-2 flex flex-wrap gap-2 text-xs">
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Urban Digital Twins
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                LLM Apps
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Agentic AI
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                HPC & Edge Computing
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Visual Analytics
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Voxel-based 3D Simulations
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Environmental World Model
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                VR & AR & Serious Gaming
-              </li>
-            </ul>
-
-            <div className="mt-7 w-full">
-                  <Link
-                      to="/portfolio"
-                      aria-label="See my selected work"
-                      className="group relative inline-flex w-full items-center justify-center 
-                                rounded-lg px-6 py-3 text-base font-semibold tracking-tight
-                                shadow-md ring-1 ring-black/5 transition hover:shadow-lg focus:outline-none
-                                focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
-                    >
-                      <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 
-                                      opacity-90 transition-opacity group-hover:opacity-100" />
-                      <span> 🎮 See my selected work with demos 🕹️ </span>
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
-                    
-            </div>
+            
 
             {/* Actions 
             
@@ -243,6 +199,81 @@ export default function Home() {
               </a>
             </div>*/}
           </div>
+        </section>
+
+        <section className=""> 
+              {/* Quick stats / tags */}
+            <ul className="mt-2 flex flex-wrap gap-2 text-xs">
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Urban Digital Twins
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Transportation Digital Twins
+              </li>              
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Intelligent Transportation System (ITS)
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Connected and Automated Vehicles (CAV)
+              </li> 
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Cyber-physical System (CPS)
+              </li> 
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">               
+                 Operations Research
+              </li> 
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                LLM Apps
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Agentic AI
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                HPC & Edge Computing
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Visual Analytics
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Voxel-based 3D Simulations
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Environmental World Model
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                VR & AR & Serious Gaming
+              </li>
+            </ul>
+
+            <div className="mt-7 flex flex-col gap-4 md:flex-row">
+              <Link
+                to="/portfolio"
+                aria-label="See my selected work"
+                className="group relative inline-flex flex-1 items-center justify-center
+                          rounded-lg px-6 py-3 text-base font-semibold tracking-tight
+                          shadow-md ring-1 ring-black/5 transition hover:shadow-lg
+                          focus:outline-none focus-visible:ring-2
+                          focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
+              >
+                <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 opacity-90 transition-opacity group-hover:opacity-100" />
+                <span>🎮 Selected Work with Demos 🕹️</span>
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+
+              <Link
+                to="/teaching"
+                aria-label="Teaching and Education Services"
+                className="group relative inline-flex flex-1 items-center justify-center
+                          rounded-lg px-6 py-3 text-base font-semibold tracking-tight
+                          shadow-md ring-1 ring-black/5 transition hover:shadow-lg
+                          focus:outline-none focus-visible:ring-2
+                          focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
+              >
+                <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 opacity-90 transition-opacity group-hover:opacity-100" />
+                <span>📚 Teaching & Education Services</span>
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
         </section>
 
         {/* 🎖️ Awards Section */}

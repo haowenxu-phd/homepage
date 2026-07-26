@@ -34,3 +34,8 @@ a {
 a:hover {
   color: #1d6fa5;
 }
+
+.margin0class{
+  margin-top: 0px;
+  margin-bottom: 0px
+}

@@ -17,6 +17,7 @@ import ProjectDetail4, { CtwinDetail } from "./pages/projects/ctwin/ctwin_agenta
 import ProjectDetail5, { GSLDetail } from "./pages/projects/gsl/gsl_landing.jsx"  
 import ProjectDetail6, { RTDetail } from "./pages/projects/realtwin/rt_landing.jsx"
 
+import Teaching from "./pages/teaching/teaching.jsx"
 
 // 🆕 Import the chatbot page
 import FireAgentChatPage from "./pages/projects/fire_chat/FireAgentChatPage.jsx";
@@ -47,6 +48,8 @@ export default function App() {
           <Route path="/portfolio/vr_digital_twins" element={<RTDetail />} />
 
           <Route path="/portfolio/fire" element={<FireAgentChatPage />} />
+          <Route path="/teaching" element={<Teaching />} />
+          
         </Routes>
       </div>
     </div>
