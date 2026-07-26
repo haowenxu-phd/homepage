@@ -13,7 +13,7 @@ export default function Projects() {
       
       {
         id: 1,
-        title: "LLM & Agentic AI for Urban Logistic Optimization",
+        title: "LLM & Agentic AI for Intermodal Freight Transport Optimization",
         image: "/img/thumbnail/tn_agentic_ai.png",
         blurb:
           "Agentic AI assistants orchestrating tools for planning, querying, and reporting.",

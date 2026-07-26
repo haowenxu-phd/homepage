@@ -413,13 +413,22 @@ export function VoxelFireDetail() {
           caption: "Fire spread simulation scenario under no-wind conditions, with the ignition point located in a high-rise building."
         },
         {
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/SA_1000x1000x100_1_1_1_s3_short.mp4`,
+          alt: "VoxelFire",
+          autoPlay:true,
+          caption: "Fire spread simulation scenario in residential area in South Australia.",
+           wpercentage: 100
+        },
+        {
           kind: "image",
           src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/flowchart.png`,
           alt: "VoxelFire",
           autoPlay:true,
           caption: "Agentic AI workflow for autormating fire simulation through AI agents.",
            wpercentage: 50
-        },      
+        },  
+        /*    
         {
           kind: "image",
           src: `${import.meta.env.BASE_URL}/landing/voxel_fire_sim/3D_hologram.png`,
@@ -427,7 +436,7 @@ export function VoxelFireDetail() {
           autoPlay:true,
           caption: "Mixed-reality visualization of 3D fire simulations on holographic display tables (implemented) and a mobile augmented reality interface (under development).",
            wpercentage: 50
-        }
+        }*/
          
 
         

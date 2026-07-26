@@ -62,7 +62,15 @@ export default function Teaching() {
                 </strong>
                 , I co-advised undergraduate researchers through the{" "}
                 <strong>
+
+                <a
+                href="https://science.osti.gov/wdts/suli"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline"
+                >                 
                   Science Undergraduate Laboratory Internships (SULI) Program
+                </a>
                 </strong>{" "}
                 and contributed to research mentoring through externally funded
                 internship and research programmes.
@@ -132,24 +140,24 @@ export default function Teaching() {
                               {mentor.name}
                             </h3>
 
-                            <p className="mt-1 text-sm text-slate-500">
+                            <p className="text-sm text-slate-500">
                               {mentor.title}
                             </p>
 
-                            <p className="mt-4 inline-block rounded-full bg-blue-50 px-4 py-1.5 text-xs font-semibold text-blue-700">
+                            <p className="inline-block rounded-full bg-blue-50 px-4 py-1.5 text-xs font-semibold text-blue-700">
                               {mentor.program}
                             </p>
 
-                            <p className="mt-5 text-sm leading-relaxed text-slate-600">
+                            <p className="text-sm leading-relaxed text-slate-600">
                               {mentor.role}
                             </p>
 
-                            <div className="mt-5 rounded-lg bg-slate-50 p-4">
+                            <div className="rounded-lg bg-slate-50">
                               <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                                 Student Outcome
                               </p>
 
-                              <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                              <p className="text-sm leading-relaxed text-slate-700">
                                 {mentor.outcome}
                               </p>
                             </div>

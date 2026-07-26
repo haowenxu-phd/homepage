@@ -17,6 +17,8 @@ import ProjectDetail4, { CtwinDetail } from "./pages/projects/ctwin/ctwin_agenta
 import ProjectDetail5, { GSLDetail } from "./pages/projects/gsl/gsl_landing.jsx"  
 import ProjectDetail6, { RTDetail } from "./pages/projects/realtwin/rt_landing.jsx"
 
+import ProjectDetail7, { VoxelGasDetail } from "./pages/projects/gas_dispersion_voxel/gas_voxel_landing.jsx"
+
 import Teaching from "./pages/teaching/teaching.jsx"
 
 // 🆕 Import the chatbot page
@@ -46,9 +48,12 @@ export default function App() {
           <Route path="/portfolio/ctwin" element={<CtwinDetail />} />
           <Route path="/portfolio/gsl" element={<GSLDetail />} />
           <Route path="/portfolio/vr_digital_twins" element={<RTDetail />} />
+          <Route path="/portfolio/3d_gas_dispersion" element={<VoxelGasDetail />} />
 
           <Route path="/portfolio/fire" element={<FireAgentChatPage />} />
-          <Route path="/teaching" element={<Teaching />} />
+          <Route path="/teaching" element={<Teaching />} /> 
+
+          
           
         </Routes>
       </div>

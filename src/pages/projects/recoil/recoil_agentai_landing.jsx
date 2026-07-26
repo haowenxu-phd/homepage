@@ -473,17 +473,25 @@ export function RecoilDetail() {
       mediaColumns={1}
       media={[
         {
+          kind: "video",
+          src: `${import.meta.env.BASE_URL}/landing/recoil/RECOIL_2.mp4`,
+          alt: "RECOIL",
+          caption: "Agentic AI chatbot for intermodal freight logistics optimization via automated scientific tool integration (e.g., Gurobi Optimizer).",
+          wpercentage: 100
+        },
+        /*{
           kind: "image",
           src: `${import.meta.env.BASE_URL}/landing/recoil/rtmcs_app.gif`,
           alt: "VoxelFire",
           title: "Demo",
           caption: "Agentic AI chatbot for intermodal freight logistics optimization via automated scientific tool integration (e.g., Gurobi Optimizer).",
           wpercentage: 60
-        },
+        },    */    
+        
         {
           kind: "video",
           src: `${import.meta.env.BASE_URL}/landing/recoil/dashboard.mp4`,
-          alt: "VoxelFire",
+          alt: "RECOIL",
           caption: "Real-time dashboard for monitoring intermodal freight transport (highway, waterway, rail) across USA.",
           wpercentage: 100
         }
@@ -498,8 +506,18 @@ export function RecoilDetail() {
       introColumns={2}
       introLeft={
         <>
-          <p>
-            This project, a core component of the USDOE and ARPA-E–funded multi-million-dollar research initiative RECOIL, tackles the urgent challenge of decarbonizing U.S. freight systems by developing an agentic AI–powered digital twin for intermodal transportation. By integrating large-language-model agents, retrieval-augmented knowledge, and advanced optimization platforms such as Gurobi and AnyLogic, the system transforms planning conversations into real-time, simulation-informed logistics decisions. Stakeholders can interact with dynamic dashboards and visualizations to explore optimized routing, modal transfers, and infrastructure deployment strategies that reduce costs, cut emissions, and enhance resiliency across maritime, rail, and road networks. Moving beyond static dashboards, this project advances digital twins into autonomous decision engines, paving the way for a more sustainable and intelligent freight ecosystem.
+           
+            <p>
+              This project, a core component of the USDOE and ARPA-E–funded multi-million-dollar research initiative RECOIL, tackles the urgent challenge of decarbonizing U.S. freight systems by developing an agentic AI–powered digital twin for intermodal transportation. By integrating large language model agents, retrieval-augmented generation (RAG), and advanced optimization platforms such as Gurobi and AnyLogic, the system transforms planning conversations into real-time, simulation-informed logistics decisions. Stakeholders can interact with dynamic dashboards and visualizations to explore optimized routing, modal transfers, and infrastructure deployment strategies that reduce costs, cut emissions, and enhance resiliency across maritime, rail, and road networks. Moving beyond static dashboards, this project advances digital twins into autonomous decision engines, paving the way for a more sustainable and intelligent freight ecosystem. The research has also been translated into the startup{" "}
+              <a
+                href="https://motionintel.ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline"
+              >
+                MotionIntel AI
+              </a>
+              , where I serve as a Research Advisor, supporting the commercialization of AI-enabled freight transportation planning and decision-support technologies.
             </p>
           <p className="mt-3">
     
@@ -513,6 +531,19 @@ export function RecoilDetail() {
           <li>Integrated input data from the Freight Analysis Framework (FAF) and the Freight and Fuel Transportation Optimization Tool (FTOT).</li>
           <li>Developed an LLM with a RAG pipeline to support decision-making on optimization models and tools, leveraging domain literature and knowledge graphs.</li>
           <li>Implemented the Model Context Protocol (MCP) to enable agentic AI digital twins to use specialized solvers such as Gurobi Optimizer.</li>
+          <li>
+            The RECOIL research has subsequently contributed to the development of{" "}
+            <a
+              href="https://motionintel.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 hover:text-blue-800 underline"
+            >
+              MotionIntel AI
+            </a>
+            , a research spinout focused on AI-enabled freight transportation planning
+            and decision support, where I serve as a Research Advisor.
+          </li>
         </ul>
       }
       relatedLinks={[
