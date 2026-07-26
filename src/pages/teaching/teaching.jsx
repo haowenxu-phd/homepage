@@ -32,12 +32,25 @@ export default function Teaching() {
           name: "Jose Tupayachi & Aliza Sharmin",
           title: "Graduate Researchers",
           program:
-            "University of Tennessee – Graduate Student Advising & Guest Lecturing",
+            "2024 University of Tennessee – Graduate Student Advising & Guest Lecturing",
           role:
             "Provided graduate student advising and delivered guest lectures within the Department of Industrial & Systems Engineering at the University of Tennessee, supporting research in intelligent transportation systems, digital twins, optimisation, AI-enabled decision support, and intermodal freight transportation.",
           outcome:
             "Published the peer-reviewed journal paper 'Towards Next-Generation Urban Decision Support Systems through AI-Powered Construction of Scientific Ontology Using Large Language Models—A Case in Optimizing Intermodal Freight Transportation' (Smart Cities, 2024)."
-        }
+        },
+        {
+          id: 3,
+          orientation: "landscape",
+          src: `${import.meta.env.BASE_URL}/img/teaching_engagement/ibpsa_advising.png`,
+          alt: "IBPSA Student",
+          name: "Matteo Calafiura-Soleri",
+          title: "Undergraduate Research Mentoring",
+          program: "IBPSA HackSimBuild",
+          role:
+            "Mentored an undergraduate student in developing augmented reality (AR) and virtual reality (VR) applications for immersive visualization of urban environments.",
+            outcome:
+              "Project received the IBPSA HackSimBuild Best Presentation Award in 2022",
+          }
       ];
 
   const [isOpen_award, setIsOpen_award] = useState(true);
@@ -131,8 +144,8 @@ export default function Teaching() {
                             rounded-xl overflow-hidden shadow ring-1 ring-slate-200
                             hover:ring-blue-400 transition bg-white
                             ${mentor.orientation === "landscape"
-                              ? "lg:col-span-7"
-                              : "lg:col-span-5"}
+                              ? "lg:col-span-8"
+                              : "lg:col-span-4"}
                           `}
                         >
                           <div className="px-6 py-5">
@@ -154,7 +167,7 @@ export default function Teaching() {
 
                             <div className="rounded-lg bg-slate-50">
                               <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                Student Outcome
+                                Mentorship Outcome
                               </p>
 
                               <p className="text-sm leading-relaxed text-slate-700">

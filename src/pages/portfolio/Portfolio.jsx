@@ -19,18 +19,9 @@ export default function Projects() {
           "Agentic AI assistants orchestrating tools for planning, querying, and reporting.",
         href: "/homepage/portfolio/agentic_ai_dt",
         badges: ["LLM", "Agents", "RAG", "Optimization Solver"],
-      },
+      },      
       {
         id: 2,
-        title: "HPC-accelerated 3D Wildfire Simulator using Voxels",
-        image: "/img/thumbnail/tn_wildfire.png",
-        blurb:
-          "Multi-kernel heat transfer (convection, radiation, conduction, wind) through 3D voxel City.",
-        href: "/homepage/portfolio/bushfire_sim",
-        badges: ["3D Voxels", "Simulation", "AI Surrogates"],
-      },
-      {
-        id: 3,
         title: "Speed Advisory Mobile App",
         image: "/img/thumbnail/tn_mobile_ad.png",
         blurb:
@@ -39,7 +30,44 @@ export default function Projects() {
         badges: ["V2I", "Mobile", "Optimization"],
       },
       {
+        id: 3,
+        title: "Cloud-based Chattanooga Digital Twin (CTwin) for Smart Mobility",
+        image: "/img/thumbnail/tn_ctwin.png",
+        blurb:
+          "Real-Time Mobility Simulation & Energy Analytics with Cyber-Physical Control of Traffic Control for Congestion Reduction in Chattanooga, TN",
+        href: "/homepage/portfolio/ctwin",
+        badges: ["Cloud-based","Digital Twin", "HPC", "Cyber-physical System"],
+      },
+      {
         id: 4,
+        title: "Realistic 3D Digital Twins Generation Pipeline for Autonomous Vehicles",
+        image: "/img/thumbnail/tn_photorealistic_dt.png",
+        blurb:
+          "VR Digital Twins & Vehicle/Driving Simulator",
+        href: "/homepage/portfolio/vr_digital_twins",
+        badges: ["Digital Twin", "HPC", "Edge"],
+      },
+      {
+        id: 5,
+        title: "GPU-accelerated 3D Gas Dispersion and Aerosol Transport Simulator",
+        image: "/img/thumbnail/tn_gas_dispersion.png",
+        blurb:
+          "Simulating hazardous gas leaks and airborne contaminant transport for emergency response and digital twins.",
+        href: "/homepage/portfolio/3d_gas_dispersion",
+        badges: ["Voxels", "3D Simulation", "Aerosol Transport"],
+      },
+      {
+        id: 6,
+        title: "GPU-accelerated 3D Wildfire Simulator using Voxels",
+        image: "/img/thumbnail/tn_wildfire.png",
+        blurb:
+          "Multi-kernel heat transfer (convection, radiation, conduction, wind) through 3D voxel City.",
+        href: "/homepage/portfolio/bushfire_sim",
+        badges: ["Voxels", "3D Fire Spread Simulation", "AI Surrogates"],
+      },
+      
+      {
+        id: 7,
         title: "Multivariate Time-Series Pattern Analysis with Transformers and VAEs",
         image: "/img/thumbnail/tn_xai_gsle.png",
         blurb:
@@ -49,27 +77,7 @@ export default function Projects() {
       },
 
       {
-        id: 4,
-        title: "Cloud-based Chattanooga Digital Twin (CTwin) for Smart Mobility",
-        image: "/img/thumbnail/tn_ctwin.png",
-        blurb:
-          "Real-Time Mobility & Energy Analytics with Cyber-Physical Control and Visual Analytics for Congestion Reduction in Chattanooga, TN",
-        href: "/homepage/portfolio/ctwin",
-        badges: ["Cloud-based","Digital Twin", "HPC", "Cyber-physical System"],
-      },
-
-      {
-        id: 6,
-        title: "Realistic 3D Digital Twins Generation Pipeline for Autonomous Vehicles",
-        image: "/img/thumbnail/tn_photorealistic_dt.png",
-        blurb:
-          "VR Digital Twins & Vehicle/Driving Simulator",
-        href: "/homepage/portfolio/vr_digital_twins",
-        badges: ["Digital Twin", "HPC", "Edge"],
-      },
-
-      {
-        id: 7,
+        id: 8,
         title: "Mobile Augmented Reality (AR) App for Building Operations (Coming Soon)",
         image: "/img/thumbnail/MAR_HVAC_control.jpg",
         blurb:
@@ -79,7 +87,7 @@ export default function Projects() {
         badges: ["Mobile Augumented Reality", ],
       },
       {
-        id: 8,
+        id: 9,
         title: "Visual Analytics for Ensemble COVID-19 Prediction Analysis (Coming Soon)",
         image: "/img/thumbnail/tn_va_epi.png",
         blurb:

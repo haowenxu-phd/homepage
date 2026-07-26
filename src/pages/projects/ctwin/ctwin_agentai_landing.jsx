@@ -575,9 +575,9 @@ export function CtwinDetail() {
         
         /*{ label: "Live demo (viewer)", href: "https://yourlink.example/voxel-viewer", tag: "demo" },
         { label: "CTwin platform", href: "https://yourlink.example/ctwin", tag: "platform" },*/
-        { label: "Digital-Twin Project Green-Lights Traffic Congestion Improvements", href: "https://www.nrel.gov/news/detail/program/2023/digital-twin-project-green-lights-traffic-congestion-improvements", tag: "government report" },
+        { label: "Digital-Twin Project Green-Lights Traffic Congestion Improvements", href: "https://www.nlr.gov/news/detail/program/2023/digital-twin-project-green-lights-traffic-congestion-improvements", tag: "government report" },
         { label: "CNN media coverage featured our CTwin research", href: "https://edition.cnn.com/2023/01/31/world/digital-twin-cities-tnf-spc-intl", tag: "press" },
-        { label: "Using Artificial Intelligence to Connect Vehicles and Traffic Infrastructure", href: "https://edition.cnn.com/2023/01/31/world/digital-twin-cities-tnf-spc-intl", tag: "press" },
+        { label: "Using Artificial Intelligence to Connect Vehicles and Traffic Infrastructure", href: "https://news.engineering.pitt.edu/using-artificial-intelligence-to-connect-vehicles-and-traffic-infrastructure/", tag: "press" },
         
       ]}
       awards={
@@ -587,6 +587,15 @@ export function CtwinDetail() {
           ]
     }
       publications={[
+        {
+          authors: "Yuan, J., et al.",
+          title: "Integration of Traffic Signal Control and Connected and Automated Vehicle Speed Planning for Energy-Efficient Mobility",
+          venue: "Nature Communications (Accepted in Principle)",
+          year: "2026",
+          //doi: "(Accepted in Principle)",
+          badges: ["Journal Paper"],
+        },
+        
         {
           authors: "Xu, H., et al.",
           title: "Smart Mobility in the Cloud: Enabling Real-Time Situational Awareness and Cyber-Physical Control Through a Digital Twin for Traffic",
@@ -602,7 +611,7 @@ export function CtwinDetail() {
           year: "2022",
           doi: "https://ieeexplore.ieee.org/ielaam/6979/9853713/9524550-aam.pdf",          
           badges: ["Journal Paper"],
-        },
+        },        
         {
           authors: "Moriano, P., Berres, A., Xu, H., & Sanyal, J. ",
           title: "Spatiotemporal Features of Traffic Help Reduce Automatic Accident Detection Time. ",
@@ -610,6 +619,14 @@ export function CtwinDetail() {
           year: "2024",
           doi: "https://www.sciencedirect.com/science/article/pii/S0957417423033158",          
           badges: ["Journal Paper"],
+        },
+        {
+          authors: "Yuan, J., et al.",
+          title: "Enhancing electric vehicle efficiency at intersections via connectivity: A roadmanship-aware eco-driving strategy",
+          venue: "SSRN ",
+          year: "2024",
+          doi: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4773153",
+          badges: ["Pre-Print"],
         },
          {
           authors: "Berres, A., Moriano, P., Xu, H., Tennille, S., Smith, L., Storey, J., & Sanyal, J. ",
