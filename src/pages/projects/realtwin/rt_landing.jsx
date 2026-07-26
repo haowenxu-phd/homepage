@@ -541,8 +541,35 @@ export function RTDetail() {
           alt: "Demo",
           caption: `Hardware-in-the-loop vehicle testing environment integrated with a virtual reality 3D city and traffic co-simulation platform.`,
           wpercentage: 100
-        }
+        },
+        {
+          kind: "image",
+          src: `${import.meta.env.BASE_URL}/landing/realtwin/Real-twin_3D_environment_CAV.png`,
+          alt: "Demo",
+          caption: `An example of our digital twin city created to replicate the Shallowford Road. The reality is depicted using Google street view.`,
+          wpercentage: 100
+        },
+        /*{
+          kind: "image",
+          src: `${import.meta.env.BASE_URL}/landing/realtwin/Real-twin_3D_environment_CAV2.png`,
+          alt: "Demo",
+          caption: `An overview of the Shallowford Road traffic corridor digital twin.`,
+          wpercentage: 100
+        },*/
+        {
+          kind: "image",
+          src: `${import.meta.env.BASE_URL}/landing/realtwin/Real-twin_3D_environment_CAV5.png`,
+          alt: "Demo",
+          caption: `Digital twin city of the Shallowford Road corridor: (a)
+                Google street view, and simulated three-dimensional (3D)
+                environment using geographic information system (GIS) data at (b)
+                sunset, (c) night, (d) rainstorm (e) blizzard, and (f) the environment is imported into and tested through the Carla simulator.`,
+          wpercentage: 50
+        },
+        
       ]}
+
+
       title="Semi-Automatic GIS Framework for Photorealistic Digital Twin Cities"
       subtitle="Integrating Geospatial Data, Procedural Modeling, and Visual Computing for Realistic 3D Urban Twins"
       sponsor_logos={[
@@ -577,7 +604,7 @@ export function RTDetail() {
         
         /*{ label: "Live demo (viewer)", href: "https://yourlink.example/voxel-viewer", tag: "demo" },
         { label: "CTwin platform", href: "https://yourlink.example/ctwin", tag: "platform" },*/
-        { label: "Real-Twin Project", href: "https://www.google.com/search?q=ornl+real-twin+traffic+vehicle&sca_esv=552fb68e3d08662a&rlz=1C1UEAD_en-GBAU1155AU1155&sxsrf=AE3TifN4iSgvy0pgMRPRHcTY1nOBTbm3vw%3A1760508395353&ei=6znvaMinFa_r1e8P57rEmAk&ved=0ahUKEwiIyZ3sxKWQAxWvdfUHHWcdEZMQ4dUDCBA&uact=5&oq=ornl+real-twin+traffic+vehicle&gs_lp=Egxnd3Mtd2l6LXNlcnAiHm9ybmwgcmVhbC10d2luIHRyYWZmaWMgdmVoaWNsZTIHECEYoAEYCkiXHFCPB1iDG3ACeACQAQCYAaUCoAGlF6oBBjAuMTQuMrgBA8gBAPgBAZgCEKAC-RTCAg0QIxjwBRiwAxgnGMkCwgILEAAYgAQYsAMYogTCAggQABiwAxjvBcICCxAAGLADGKIEGIkFwgIKECMY8AUYJxjJAsICBRAAGO8FwgIIEAAYogQYiQXCAgUQIRigAZgDAIgGAZAGBZIHBjIuMTIuMqAH8TGyBwYwLjEyLjK4B-kUwgcIMS4xMi4yLjHIByU&sclient=gws-wiz-serp", tag: "government report" },
+        { label: "Real-Twin Project", href: "https://impact.ornl.gov/en/publications/real-twin/", tag: "government report" },
 
         
       ]}
