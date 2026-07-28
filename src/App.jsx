@@ -9,6 +9,7 @@ import ProjectDetail, { VoxelFireDetail } from './pages/projects/bushfire_voxel/
 
 import DataVisGSL from './pages/projects/datavis_gsl/dataVisGSL.jsx';
 import Projects from "./pages/portfolio/Portfolio.jsx";
+ 
 
 import ProjectDetail2, { RecoilDetail } from "./pages/projects/recoil/recoil_agentai_landing.jsx"
 import ProjectDetail3, { RtmcsDetail } from "./pages/projects/rtmcs/rtmcs_landing.jsx"  
@@ -19,7 +20,10 @@ import ProjectDetail6, { RTDetail } from "./pages/projects/realtwin/rt_landing.j
 
 import ProjectDetail7, { VoxelGasDetail } from "./pages/projects/gas_dispersion_voxel/gas_voxel_landing.jsx"
 
+import ProjectDetail8, { AgentAIFire } from "./pages/projects/agentic_ai_fire/agentic_ai_fire.jsx"
+
 import Teaching from "./pages/teaching/teaching.jsx"
+import InteractiveLearning from "./pages/interactive_course/interative_course.jsx" 
 
 // 🆕 Import the chatbot page
 import FireAgentChatPage from "./pages/projects/fire_chat/FireAgentChatPage.jsx";
@@ -50,8 +54,11 @@ export default function App() {
           <Route path="/portfolio/vr_digital_twins" element={<RTDetail />} />
           <Route path="/portfolio/3d_gas_dispersion" element={<VoxelGasDetail />} />
 
+          <Route path="/portfolio/agenticAIFire" element={<AgentAIFire />} />
+
           <Route path="/portfolio/fire" element={<FireAgentChatPage />} />
           <Route path="/teaching" element={<Teaching />} /> 
+          <Route path="/learning" element={<InteractiveLearning />} /> 
 
           
           

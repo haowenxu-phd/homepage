@@ -58,6 +58,15 @@ export default function Projects() {
       },
       {
         id: 6,
+        title: "Agentic AI for 2D and 3D Wildfire Simulation",
+        image: "/img/thumbnail/tn_wildfire_agentic_ai.png",
+        blurb:
+          "AI-powered 2D and 3D wildfire simulation with voxel-based fire propagation, interactive visualization, and conversational scenario planning.",
+        href: "/homepage/portfolio/agenticAIFire",
+        badges: ["Agentic AI", "3D Wildfire", "Voxels"],
+      },
+      {
+        id: 7,
         title: "GPU-accelerated 3D Wildfire Simulator using Voxels",
         image: "/img/thumbnail/tn_wildfire.png",
         blurb:
@@ -67,7 +76,7 @@ export default function Projects() {
       },
       
       {
-        id: 7,
+        id: 8,
         title: "Multivariate Time-Series Pattern Analysis with Transformers and VAEs",
         image: "/img/thumbnail/tn_xai_gsle.png",
         blurb:
@@ -77,7 +86,7 @@ export default function Projects() {
       },
 
       {
-        id: 8,
+        id: 9,
         title: "Mobile Augmented Reality (AR) App for Building Operations (Coming Soon)",
         image: "/img/thumbnail/MAR_HVAC_control.jpg",
         blurb:
@@ -87,7 +96,7 @@ export default function Projects() {
         badges: ["Mobile Augumented Reality", ],
       },
       {
-        id: 9,
+        id: 10,
         title: "Visual Analytics for Ensemble COVID-19 Prediction Analysis (Coming Soon)",
         image: "/img/thumbnail/tn_va_epi.png",
         blurb:
