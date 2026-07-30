@@ -21,6 +21,8 @@ import ProjectDetail6, { RTDetail } from "./pages/projects/realtwin/rt_landing.j
 import ProjectDetail7, { VoxelGasDetail } from "./pages/projects/gas_dispersion_voxel/gas_voxel_landing.jsx"
 
 import ProjectDetail8, { AgentAIFire } from "./pages/projects/agentic_ai_fire/agentic_ai_fire.jsx"
+import ProjectDetail9, { VoxelAISurrogateModel } from "./pages/projects/fireSurrogateModel/AI_Voxel_landing.jsx"
+
 
 import Teaching from "./pages/teaching/teaching.jsx"
 import InteractiveLearning from "./pages/interactive_course/interative_course.jsx" 
@@ -55,11 +57,14 @@ export default function App() {
           <Route path="/portfolio/3d_gas_dispersion" element={<VoxelGasDetail />} />
 
           <Route path="/portfolio/agenticAIFire" element={<AgentAIFire />} />
+          <Route path="/portfolio/AIFireSurrogateModel" element={<VoxelAISurrogateModel />} /> 
+
 
           <Route path="/portfolio/fire" element={<FireAgentChatPage />} />
           <Route path="/teaching" element={<Teaching />} /> 
           <Route path="/learning" element={<InteractiveLearning />} /> 
 
+          
           
           
         </Routes>

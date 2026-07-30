@@ -65,8 +65,24 @@ export default function Projects() {
         href: "/homepage/portfolio/agenticAIFire",
         badges: ["Agentic AI", "3D Wildfire", "Voxels"],
       },
+      
       {
-        id: 7,
+          id: 7,
+          title: "Generative AI Surrogate Modeling for 3D Wildfire Simulation",
+          image: "/img/thumbnail/tn_fire_ai.png",
+          blurb:
+            "Physics-informed Transformer surrogate models for real-time 3D wildfire prediction in voxel-based digital twins.",
+          href: "/homepage/portfolio/AIFireSurrogateModel",
+          badges: [
+            "Generative AI",
+            "3D Transformer",
+            "Scientific AI",
+            "Voxel Simulation",
+          ],
+        },
+
+      {
+        id: 8,
         title: "GPU-accelerated 3D Wildfire Simulator using Voxels",
         image: "/img/thumbnail/tn_wildfire.png",
         blurb:
@@ -74,9 +90,10 @@ export default function Projects() {
         href: "/homepage/portfolio/bushfire_sim",
         badges: ["Voxels", "3D Fire Spread Simulation", "AI Surrogates"],
       },
+
       
       {
-        id: 8,
+        id: 9,
         title: "Multivariate Time-Series Pattern Analysis with Transformers and VAEs",
         image: "/img/thumbnail/tn_xai_gsle.png",
         blurb:
@@ -86,7 +103,7 @@ export default function Projects() {
       },
 
       {
-        id: 9,
+        id: 10,
         title: "Mobile Augmented Reality (AR) App for Building Operations (Coming Soon)",
         image: "/img/thumbnail/MAR_HVAC_control.jpg",
         blurb:
@@ -96,7 +113,7 @@ export default function Projects() {
         badges: ["Mobile Augumented Reality", ],
       },
       {
-        id: 10,
+        id: 11,
         title: "Visual Analytics for Ensemble COVID-19 Prediction Analysis (Coming Soon)",
         image: "/img/thumbnail/tn_va_epi.png",
         blurb:
@@ -114,10 +131,10 @@ export default function Projects() {
   );
 
   return (
-    <div className="w-full">
+    <div className="mx-auto max-w-9xl">
     <main className="w-full !max-w-none min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 via-white to-slate-100">
 
-      <div className="max-w-[1800px] mx-auto">  {/* or w-full for no cap */}
+      <div className="max-w-[2500px] mx-auto">  {/* or w-full for no cap */}
         {/* ---------- CTA Section ---------- */}
         <section className="w-full">
           <h4 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
@@ -170,7 +187,7 @@ export default function Projects() {
 
           {/* Responsive columns:
               <640px: 1,  >=640px: 2,  >=1024px: 3,  >=1280px: 4  */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
           {projects.map((p) => (
             <a
               key={p.id}

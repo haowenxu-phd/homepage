@@ -33,9 +33,9 @@ export default function Home() {
 
   return (
     <main className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      <div className="max-w-6xl m-0 p-0">
+          <div className="mx-auto max-w-[2500px] px-6">
         {/* Card */}
-        <section className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-8 p-6">
+        <section className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-8">
           {/* Photos (stacked) */}
           <div className="flex flex-col items-center xs:items-start gap-6">
             {/* Photo 1 */}         
@@ -142,7 +142,16 @@ export default function Home() {
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
               <li>
-                Served as a <strong>Topic Editor</strong> for the special topic <strong>"Agentic and Generative AI for Spatial Data Science: Toward Intelligent, Interactive, and Predictive Urban Systems"</strong> in <strong>ISPRS International Journal of Geo-Information (ISPRS IJGI)</strong>.
+                <strong>Topic Editor</strong> for the special topic &nbsp;                
+                  <a href="https://www.mdpi.com/topics/N3MS38231L">
+                    "Agentic and Generative AI for Spatial Data Science"
+                  </a>                
+                &nbsp; in <strong>ISPRS International Journal of Geo-Information (ISPRS IJGI)</strong>,
+                and former organizer of the
+                 &nbsp;
+                  <a href="https://dl.acm.org/doi/proceedings/10.1145/3681772">
+                    ACM SIGSPATIAL International Workshop on Computational Transportation Science (IWCTS)
+                  </a>.
               </li>
               
               <li>
@@ -173,37 +182,13 @@ export default function Home() {
               </li>
               
             </ul>
-
-            
-
-            {/* Actions 
-            
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-800 active:translate-y-[1px] transition"
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-medium text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50 transition"
-              >
-                Contact
-              </Link>
-              <a
-                href="/HaowenXu_CV.pdf"
-                className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 transition"
-              >
-                CV
-              </a>
-            </div>*/}
+ 
           </div>
         </section>
 
         <section className=""> 
               {/* Quick stats / tags */}
-            <ul className="mt-2 flex flex-wrap gap-2 text-xs">
+            <ul className="flex flex-wrap gap-2 text-xs">
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Urban Digital Twins
               </li>
