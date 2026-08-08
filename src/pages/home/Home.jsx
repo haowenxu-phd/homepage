@@ -258,6 +258,23 @@ export default function Home() {
                 <span>📚 Teaching & Education Services</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
               </Link>
+              </div>
+              <div className="mt-7 flex flex-col gap-4 md:flex-row">
+              <Link
+                    to="/learning"
+                    aria-label="Explore online interactive learning courses"
+                    className="group relative inline-flex flex-1 items-center justify-center
+                              rounded-lg px-6 py-3 text-base font-semibold tracking-tight
+                              shadow-md ring-1 ring-black/5 transition hover:shadow-lg
+                              focus:outline-none focus-visible:ring-2
+                              focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
+                  >
+                    <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 opacity-90 transition-opacity group-hover:opacity-100" />
+
+                    <span>🎓 Online Interactive Learning Courses</span>
+
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
             </div>
         </section>
 

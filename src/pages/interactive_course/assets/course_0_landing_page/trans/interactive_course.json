@@ -1,0 +1,172 @@
+{
+  "en": {
+    "language": "Language",
+
+    "header": {
+      "badge": "Interactive Transport Engineering Learning Lab",
+      "title": "Learn Transport Engineering Through Interactive Exploration",
+      "paragraph1": "This learning portfolio presents a collection of interactive modules for exploring the theories, algorithms, and technologies underlying modern transport engineering.",
+      "paragraph2": "Students can construct road networks, inspect origin–destination demand, visualise routing algorithms, experiment with traffic-flow models, operate traffic signals, and investigate intelligent transportation systems through browser-based simulations and visual analytics.",
+      "exploreButton": "Explore Learning Modules",
+      "collaborationButton": "Discuss Teaching Collaboration"
+    },
+
+    "principles": {
+      "experiment": {
+        "title": "Learn by Experimenting",
+        "description": "Change model parameters and immediately observe their effects on transport-system behaviour."
+      },
+      "visualise": {
+        "title": "Visualise the Algorithms",
+        "description": "Examine computational processes step by step rather than treating algorithms and simulation models as black boxes."
+      },
+      "practice": {
+        "title": "Connect Theory and Practice",
+        "description": "Apply transport theory to realistic road networks, traffic demand, signals, vehicles, and urban digital twins."
+      }
+    },
+
+    "gallery": {
+      "eyebrow": "Course Portfolio",
+      "title": "Select an Interactive Learning Module",
+      "description": "Begin with network fundamentals and progress towards simulation, optimisation, connected and automated vehicles, and AI-enabled transport systems.",
+      "availableSuffix": "modules available",
+      "launch": "Launch interactive module",
+      "comingSoon": "Coming Soon",
+      "underDevelopment": "Module under development"
+    },
+
+    "levels": {
+      "Foundation": "Foundation",
+      "Intermediate": "Intermediate",
+      "Advanced": "Advanced"
+    },
+
+    "courses": {
+      "1": {
+        "title": "Transport Network and Graph Modelling",
+        "subtitle": "Learn how road networks become mathematical graphs",
+        "description": "Explore nodes, links, directions, capacities, travel costs, and connectivity through an interactive road-network environment.",
+        "badges": [
+          "Graph Theory",
+          "Road Networks",
+          "Interactive Map"
+        ]
+      }
+    }
+  },
+
+  "zh": {
+    "language": "语言",
+
+    "header": {
+      "badge": "交通工程互动学习实验室",
+      "title": "通过互动探索学习交通工程",
+      "paragraph1": "本学习平台提供一系列互动教学模块，用于探索现代交通工程中的基础理论、计算算法与新兴技术。",
+      "paragraph2": "学生可以构建道路网络、分析起讫点需求、观察路径规划算法、实验交通流模型、操作交通信号，并通过浏览器仿真与可视分析探索智能交通系统。",
+      "exploreButton": "探索学习模块",
+      "collaborationButton": "讨论教学合作"
+    },
+
+    "principles": {
+      "experiment": {
+        "title": "在实验中学习",
+        "description": "调整模型参数，并即时观察这些变化对交通系统行为产生的影响。"
+      },
+      "visualise": {
+        "title": "可视化计算算法",
+        "description": "逐步观察计算过程，而不是将算法和仿真模型视为无法解释的黑箱。"
+      },
+      "practice": {
+        "title": "连接理论与实践",
+        "description": "将交通理论应用于真实道路网络、交通需求、信号控制、车辆以及城市数字孪生。"
+      }
+    },
+
+    "gallery": {
+      "eyebrow": "课程模块",
+      "title": "选择一个互动学习模块",
+      "description": "从道路网络基础开始，逐步学习交通仿真、优化、智能网联汽车以及人工智能赋能的交通系统。",
+      "availableSuffix": "个模块可用",
+      "launch": "进入互动学习模块",
+      "comingSoon": "即将推出",
+      "underDevelopment": "模块开发中"
+    },
+
+    "levels": {
+      "Foundation": "基础",
+      "Intermediate": "中级",
+      "Advanced": "高级"
+    },
+
+    "courses": {
+      "1": {
+        "title": "交通网络与图结构建模",
+        "subtitle": "学习如何将现实道路网络表示为数学图结构",
+        "description": "通过互动道路网络探索节点、连接、方向、通行能力、出行成本以及网络连通关系。",
+        "badges": [
+          "图论",
+          "道路网络",
+          "互动地图"
+        ]
+      }
+    }
+  },
+
+  "fa": {
+    "language": "زبان",
+
+    "header": {
+      "badge": "آزمایشگاه یادگیری تعاملی مهندسی حمل‌ونقل",
+      "title": "یادگیری مهندسی حمل‌ونقل از طریق کاوش تعاملی",
+      "paragraph1": "این مجموعه آموزشی شامل ماژول‌های تعاملی برای بررسی نظریه‌ها، الگوریتم‌ها و فناوری‌های مهندسی حمل‌ونقل مدرن است.",
+      "paragraph2": "دانشجویان می‌توانند شبکه‌های جاده‌ای را ایجاد کنند، تقاضای مبدأ–مقصد را بررسی کنند، الگوریتم‌های مسیریابی را مشاهده کنند، مدل‌های جریان ترافیک را آزمایش کنند و سامانه‌های حمل‌ونقل هوشمند را از طریق شبیه‌سازی و تحلیل بصری بررسی کنند.",
+      "exploreButton": "مشاهده ماژول‌های آموزشی",
+      "collaborationButton": "گفت‌وگو درباره همکاری آموزشی"
+    },
+
+    "principles": {
+      "experiment": {
+        "title": "یادگیری از طریق آزمایش",
+        "description": "پارامترهای مدل را تغییر دهید و اثر آن‌ها را بر رفتار سامانه حمل‌ونقل بلافاصله مشاهده کنید."
+      },
+      "visualise": {
+        "title": "مشاهده الگوریتم‌ها",
+        "description": "فرآیندهای محاسباتی را مرحله به مرحله بررسی کنید و الگوریتم‌ها و مدل‌های شبیه‌سازی را به‌صورت جعبه سیاه در نظر نگیرید."
+      },
+      "practice": {
+        "title": "پیوند نظریه و عمل",
+        "description": "نظریه حمل‌ونقل را در شبکه‌های جاده‌ای واقعی، تقاضای سفر، سیگنال‌ها، وسایل نقلیه و دوقلوهای دیجیتال شهری به کار ببرید."
+      }
+    },
+
+    "gallery": {
+      "eyebrow": "مجموعه دوره‌ها",
+      "title": "یک ماژول یادگیری تعاملی انتخاب کنید",
+      "description": "از مبانی شبکه آغاز کنید و به شبیه‌سازی، بهینه‌سازی، وسایل نقلیه متصل و خودکار و سامانه‌های حمل‌ونقل مبتنی بر هوش مصنوعی پیش بروید.",
+      "availableSuffix": "ماژول در دسترس است",
+      "launch": "اجرای ماژول تعاملی",
+      "comingSoon": "به‌زودی",
+      "underDevelopment": "ماژول در حال توسعه است"
+    },
+
+    "levels": {
+      "Foundation": "مقدماتی",
+      "Intermediate": "متوسط",
+      "Advanced": "پیشرفته"
+    },
+
+    "courses": {
+      "1": {
+        "title": "مدل‌سازی شبکه حمل‌ونقل و گراف",
+        "subtitle": "بیاموزید چگونه شبکه‌های جاده‌ای به گراف‌های ریاضی تبدیل می‌شوند",
+        "description": "گره‌ها، پیوندها، جهت‌ها، ظرفیت‌ها، هزینه‌های سفر و اتصال شبکه را در یک محیط تعاملی شبکه جاده‌ای بررسی کنید.",
+        "badges": [
+          "نظریه گراف",
+          "شبکه‌های جاده‌ای",
+          "نقشه تعاملی"
+        ]
+      }
+    }
+  }
+}
