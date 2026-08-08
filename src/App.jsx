@@ -26,6 +26,7 @@ import ProjectDetail9, { VoxelAISurrogateModel } from "./pages/projects/fireSurr
 
 import Teaching from "./pages/teaching/teaching.jsx"
 import InteractiveLearning from "./pages/interactive_course/interative_course.jsx" 
+import InteractiveLearning_c1_graph from "./pages/interactive_course/course_1_graph.jsx"
 
 // 🆕 Import the chatbot page
 import FireAgentChatPage from "./pages/projects/fire_chat/FireAgentChatPage.jsx";
@@ -63,6 +64,8 @@ export default function App() {
           <Route path="/portfolio/fire" element={<FireAgentChatPage />} />
           <Route path="/teaching" element={<Teaching />} /> 
           <Route path="/learning" element={<InteractiveLearning />} /> 
+          <Route path="/learning/course_1" element={<InteractiveLearning_c1_graph />} /> 
+          
 
           
           

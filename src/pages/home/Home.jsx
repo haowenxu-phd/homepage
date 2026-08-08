@@ -86,9 +86,9 @@ export default function Home() {
               <li>
                 Author of <strong>30+ peer-reviewed journal articles</strong> and{" "}
                 <strong>30+ conference papers</strong> in prestigious scientific venues.
-              </li>
+              </li> 
               <li>
-                <strong>Over 1440 citations</strong> with an h-index of <strong>21</strong> on {" "}
+                <strong>Over 1450 citations</strong> with an h-index of <strong>21</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
