@@ -468,7 +468,7 @@ export default function RoutingMap({
             8,
 
           opacity:
-            1,
+            0.6,
 
         };
 
@@ -488,7 +488,7 @@ export default function RoutingMap({
           5,
 
         opacity:
-          0.8,
+          0.3,
 
       };
 
@@ -504,135 +504,134 @@ export default function RoutingMap({
   // This is what makes the 0.5-second animation visible.
   // ==========================================================
 
-    
   useEffect(() => {
 
-    const geoJsonLayer =
-      roadLayerRef.current;
+      const geoJsonLayer =
+        roadLayerRef.current;
 
 
-    if (!geoJsonLayer) {
-      return;
-    }
+      if (!geoJsonLayer) {
+        return;
+      }
 
 
-    // ========================================================
-    // Step 1
-    // Update road styles
-    // ========================================================
+      // ========================================================
+      // Step 1
+      // Update road styles
+      // ========================================================
 
-    geoJsonLayer.setStyle(
-      roadStyle
-    );
-
-
-    // ========================================================
-    // Step 2
-    // First bring VISITED search edges forward
-    // ========================================================
-
-    geoJsonLayer.eachLayer(
-      (layer) => {
-
-        const feature =
-          layer.feature;
+      geoJsonLayer.setStyle(
+        roadStyle
+      );
 
 
-        const edgeId =
-          getFeatureEdgeId(
-            feature
-          );
+      // ========================================================
+      // Step 2
+      // First bring VISITED search edges forward
+      // ========================================================
+
+      geoJsonLayer.eachLayer(
+        (layer) => {
+
+          const feature =
+            layer.feature;
 
 
-        if (
-          edgeId != null &&
-          visitedEdgeIdSet.has(
-            edgeId
-          )
-        ) {
+          const edgeId =
+            getFeatureEdgeId(
+              feature
+            );
 
-          layer.bringToFront();
+
+          if (
+            edgeId != null &&
+            visitedEdgeIdSet.has(
+              edgeId
+            )
+          ) {
+
+            layer.bringToFront();
+
+          }
 
         }
-
-      }
-    );
+      );
 
 
-    // ========================================================
-    // Step 3
-    // Bring FINAL ROUTE above search edges
-    // ========================================================
+      // ========================================================
+      // Step 3
+      // Bring FINAL ROUTE above search edges
+      // ========================================================
 
-    geoJsonLayer.eachLayer(
-      (layer) => {
+      geoJsonLayer.eachLayer(
+        (layer) => {
 
-        const feature =
-          layer.feature;
-
-
-        const edgeId =
-          getFeatureEdgeId(
-            feature
-          );
+          const feature =
+            layer.feature;
 
 
-        if (
-          edgeId != null &&
-          routeEdgeIdSet.has(
-            edgeId
-          )
-        ) {
-
-          layer.bringToFront();
-
-        }
-
-      }
-    );
+          const edgeId =
+            getFeatureEdgeId(
+              feature
+            );
 
 
-    // ========================================================
-    // Step 4
-    // Bring CLOSED roads to absolute top
-    //
-    // Change this ordering if you want final route to have
-    // higher visual priority than closures.
-    // ========================================================
+          if (
+            edgeId != null &&
+            routeEdgeIdSet.has(
+              edgeId
+            )
+          ) {
 
-    geoJsonLayer.eachLayer(
-      (layer) => {
+            layer.bringToFront();
 
-        const feature =
-          layer.feature;
-
-
-        const edgeId =
-          getFeatureEdgeId(
-            feature
-          );
-
-
-        if (
-          edgeId != null &&
-          closedEdgeIdSet.has(
-            edgeId
-          )
-        ) {
-
-          layer.bringToFront();
+          }
 
         }
-
-      }
-    );
+      );
 
 
-  }, [
-    searchState,
-    routeResult,
-    closedEdgeIds,
-  ]);
+      // ========================================================
+      // Step 4
+      // Bring CLOSED roads to absolute top
+      //
+      // Change this ordering if you want final route to have
+      // higher visual priority than closures.
+      // ========================================================
+
+      geoJsonLayer.eachLayer(
+        (layer) => {
+
+          const feature =
+            layer.feature;
+
+
+          const edgeId =
+            getFeatureEdgeId(
+              feature
+            );
+
+
+          if (
+            edgeId != null &&
+            closedEdgeIdSet.has(
+              edgeId
+            )
+          ) {
+
+            layer.bringToFront();
+
+          }
+
+        }
+      );
+
+
+    }, [
+      searchState,
+      routeResult,
+      closedEdgeIds,
+    ]);
 
 
   // ==========================================================

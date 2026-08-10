@@ -52,6 +52,16 @@
           "Road Networks",
           "Interactive Map"
         ]
+      },
+      "2": {
+        "title": "Navigation Algorithms",
+        "subtitle": "Explore how algorithms find and optimize routes through road networks",
+        "description": "Interactively explore origin–destination routing, shortest-path search, route optimization, and dynamic routing while comparing how different algorithms explore the same road network.",
+        "badges": [
+          "Shortest Path",
+          "Route Optimization",
+          "Algorithm Comparison"
+        ]
       }
     }
   },
@@ -109,7 +119,17 @@
           "道路网络",
           "互动地图"
         ]
-      }
+      },
+       "2": {
+      "title": "导航算法",
+      "subtitle": "探索不同算法如何在道路网络中搜索并优化路径",
+      "description": "通过交互式道路网络探索起点—终点路径规划、最短路径搜索、路径优化与动态路径规划，并比较不同算法如何搜索同一个道路网络。",
+      "badges": [
+        "最短路径",
+        "路径优化",
+        "算法比较"
+      ]
+    }
     }
   },
 
@@ -166,7 +186,17 @@
           "شبکه‌های جاده‌ای",
           "نقشه تعاملی"
         ]
-      }
+      },
+      "2": {
+      "title": "الگوریتم‌های مسیریابی",
+      "subtitle": "بررسی کنید که الگوریتم‌ها چگونه مسیرها را در شبکه‌های جاده‌ای پیدا و بهینه می‌کنند",
+      "description": "به‌صورت تعاملی مسیریابی مبدأ–مقصد، جست‌وجوی کوتاه‌ترین مسیر، بهینه‌سازی مسیر و مسیریابی پویا را بررسی کنید و نحوه جست‌وجوی الگوریتم‌های مختلف در یک شبکه جاده‌ای را مقایسه کنید.",
+      "badges": [
+        "کوتاه‌ترین مسیر",
+        "بهینه‌سازی مسیر",
+        "مقایسه الگوریتم‌ها"
+      ]
+    }
     }
   }
 }

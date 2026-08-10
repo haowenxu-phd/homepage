@@ -610,7 +610,7 @@ const handlePlay = async () => {
       // ------------------------------------------------------
 
       await delay(
-        10
+        5
       );
 
     }
@@ -926,13 +926,18 @@ const handlePlay = async () => {
             Current OD status
         ----------------------------------------------------- */}
 
+        {/* ======================================================
+            Origin + Destination
+        ====================================================== */}
+
         <div
           className="
-            mt-3
-            grid
-            grid-cols-1
-            gap-2
-            text-xs
+            flex
+            w-full
+            flex-nowrap
+            items-center
+            gap-6
+            text-sm
           "
         >
 
@@ -943,6 +948,9 @@ const handlePlay = async () => {
           <div
             className="
               flex
+              min-w-0
+              flex-1
+              flex-nowrap
               items-center
               gap-2
             "
@@ -961,8 +969,11 @@ const handlePlay = async () => {
             />
 
 
+            {/* Origin label */}
+
             <span
               className="
+                shrink-0
                 font-semibold
                 text-red-600
               "
@@ -971,12 +982,16 @@ const handlePlay = async () => {
             </span>
 
 
+            {/* Origin coordinates */}
+
             <span
               className="
+                min-w-0
+                truncate
+                whitespace-nowrap
                 text-slate-500
               "
             >
-
               {
                 origin
                   ? `${formatCoordinate(
@@ -986,7 +1001,6 @@ const handlePlay = async () => {
                     )}`
                   : t.notSet
               }
-
             </span>
 
           </div>
@@ -999,6 +1013,9 @@ const handlePlay = async () => {
           <div
             className="
               flex
+              min-w-0
+              flex-1
+              flex-nowrap
               items-center
               gap-2
             "
@@ -1017,8 +1034,11 @@ const handlePlay = async () => {
             />
 
 
+            {/* Destination label */}
+
             <span
               className="
+                shrink-0
                 font-semibold
                 text-blue-600
               "
@@ -1027,12 +1047,16 @@ const handlePlay = async () => {
             </span>
 
 
+            {/* Destination coordinates */}
+
             <span
               className="
+                min-w-0
+                truncate
+                whitespace-nowrap
                 text-slate-500
               "
             >
-
               {
                 destination
                   ? `${formatCoordinate(
@@ -1042,7 +1066,6 @@ const handlePlay = async () => {
                     )}`
                   : t.notSet
               }
-
             </span>
 
           </div>
@@ -1052,47 +1075,50 @@ const handlePlay = async () => {
       </section>
 
 
-      {/* ======================================================
-          Routing objective
-      ====================================================== */}
+     {/* ======================================================
+    Routing objective + Navigation algorithm
+====================================================== */}
 
-      <section
-        className="
-          border-b
-          border-slate-200
-          p-3
-        "
-      >
+<section
+  className="
+    grid
+    grid-cols-1
+    gap-3
+    border-b
+    border-slate-200
+    p-3
+    sm:grid-cols-2
+  "
+>
+
+      {/* ====================================================
+          Routing objective
+      ==================================================== */}
+
+      <div className="min-w-0">
 
         <label
           htmlFor="routing-weight"
           className="
+            block
             text-xs
             font-semibold
             text-slate-700
           "
         >
-
-          {
-            t.routingObjective
-          }
-
+          {t.routingObjective}
         </label>
 
 
         <select
-
           id="routing-weight"
 
-          value={
-            edgeWeightMode
-          }
+          value={edgeWeightMode}
 
-          onChange={
-            (event) =>
-              setEdgeWeightMode(
-                event.target.value
-              )
+          onChange={(event) =>
+            setEdgeWeightMode(
+              event.target.value
+            )
           }
 
           className="
@@ -1108,73 +1134,47 @@ const handlePlay = async () => {
           "
         >
 
-          <option
-            value="distance"
-          >
-
-            {
-              t.shortestDistance
-            }
-
+          <option value="distance">
+            {t.shortestDistance}
           </option>
 
-
-          <option
-            value="time"
-          >
-
-            {
-              t.shortestTime
-            }
-
+          <option value="time">
+            {t.shortestTime}
           </option>
 
         </select>
 
-      </section>
+      </div>
 
 
-      {/* ======================================================
+      {/* ====================================================
           Navigation algorithm
-      ====================================================== */}
+      ==================================================== */}
 
-      <section
-        className="
-          border-b
-          border-slate-200
-          p-3
-        "
-      >
+      <div className="min-w-0">
 
         <label
           htmlFor="routing-algorithm"
           className="
+            block
             text-xs
             font-semibold
             text-slate-700
           "
         >
-
-          {
-            t.algorithm
-          }
-
+          {t.algorithm}
         </label>
 
 
         <select
-
           id="routing-algorithm"
 
-          value={
-            selectedAlgorithm
-          }
+          value={selectedAlgorithm}
 
-          onChange={
-            (event) =>
-              setSelectedAlgorithm(
-                event.target.value
-              )
+          onChange={(event) =>
+            setSelectedAlgorithm(
+              event.target.value
+            )
           }
 
           className="
@@ -1190,35 +1190,27 @@ const handlePlay = async () => {
           "
         >
 
-          <option
-            value="dijkstra"
-          >
+          <option value="dijkstra">
             Dijkstra
           </option>
 
-          <option
-            value="dijkstra_2way"
-          >
+          <option value="dijkstra_2way">
             Bidirectional Dijkstra
           </option>
 
-
-          <option
-            value="astar"
-          >
+          <option value="astar">
             A*
           </option>
 
-
-          <option
-            value="bfs"
-          >
+          <option value="bfs">
             Breadth-First Search
           </option>
 
         </select>
 
-      </section>
+      </div>
+
+    </section>
 
 
       {/* ======================================================

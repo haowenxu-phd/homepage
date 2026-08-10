@@ -58,6 +58,21 @@ export default function InteractiveLearning() {
           status:
             "Available",
         },
+        {
+          id: 2,
+
+          image:
+            "img/thumbnail_learning/T2_Nav.png",
+
+          href:
+            "/learning/course_2",
+            //https://haowenxu-phd.github.io/homepage/learning/course_1
+          level:
+            "Foundation",
+
+          status:
+            "Available",
+        },
       ],
       []
     );

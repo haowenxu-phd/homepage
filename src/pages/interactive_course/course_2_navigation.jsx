@@ -779,8 +779,15 @@ export default function InteractiveLearning_c2_navigation() {
 
 
       {/* ======================================================
-          Main learning interface
-      ====================================================== */}
+    Main learning interface
+
+    Desktop:
+    ~45% control panel
+    ~55% Leaflet map
+
+    Mobile:
+    stacked vertically
+====================================================== */}
 
       <section
         className="
@@ -788,7 +795,7 @@ export default function InteractiveLearning_c2_navigation() {
           grid
           grid-cols-1
           gap-2
-          lg:grid-cols-[300px_minmax(0,1fr)]
+          lg:grid-cols-[minmax(420px,0.9fr)_minmax(0,1.1fr)]
         "
       >
 
@@ -919,18 +926,18 @@ export default function InteractiveLearning_c2_navigation() {
             Shared persistent Leaflet map
         ===================================================== */}
 
-        <div
-          className="
-            flex
-            h-[620px]
-            min-w-0
-            flex-col
-            overflow-hidden
-            border
-            border-sky-400
-            bg-white
-          "
-        >
+          <div
+            className="
+              flex
+              h-[620px]
+              min-w-0
+              flex-col
+              overflow-hidden
+              border
+              border-sky-400
+              bg-white
+            "
+          >
 
           {/* Map header */}
 
