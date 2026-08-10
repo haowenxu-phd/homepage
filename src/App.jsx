@@ -24,9 +24,12 @@ import ProjectDetail8, { AgentAIFire } from "./pages/projects/agentic_ai_fire/ag
 import ProjectDetail9, { VoxelAISurrogateModel } from "./pages/projects/fireSurrogateModel/AI_Voxel_landing.jsx"
 
 
+
+
 import Teaching from "./pages/teaching/teaching.jsx"
 import InteractiveLearning from "./pages/interactive_course/interative_course.jsx" 
 import InteractiveLearning_c1_graph from "./pages/interactive_course/course_1_graph.jsx"
+import InteractiveLearning_c2_routing from "./pages/interactive_course/course_2_navigation.jsx"
 
 // 🆕 Import the chatbot page
 import FireAgentChatPage from "./pages/projects/fire_chat/FireAgentChatPage.jsx";
@@ -65,6 +68,7 @@ export default function App() {
           <Route path="/teaching" element={<Teaching />} /> 
           <Route path="/learning" element={<InteractiveLearning />} /> 
           <Route path="/learning/course_1" element={<InteractiveLearning_c1_graph />} /> 
+          <Route path="/learning/course_2" element={<InteractiveLearning_c2_routing />} /> 
           
 
           

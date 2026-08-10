@@ -1,0 +1,115 @@
+{
+  "en": {
+    "stepLabel": "Step 1",
+    "title": "Origin–Destination Routing",
+    "description": "Define an origin and destination and explore how different shortest-path algorithms search a real road network.",
+
+    "originWord": "origin",
+    "destinationWord": "destination",
+
+    "randomOD": "Generate Random OD",
+    "dragHint": "Generate a random origin and destination, or drag the O and D markers on the map to create your own routing problem.",
+    "notSet": "Not set",
+
+    "origin": "Origin",
+    "destination": "Destination",
+
+    "routingObjective": "Routing Objective",
+    "shortestDistance": "Shortest Distance",
+    "shortestTime": "Shortest Travel Time",
+
+    "algorithm": "Navigation Algorithm",
+    "dijkstra": "Dijkstra's Algorithm",
+    "dijkstra_2way": "Bidirectional Dijkstra",
+    "astar": "A* Algorithm",
+    "bfs": "Breadth-First Search",
+
+    "play": "Run Search Animation",
+    "running": "Searching...",
+    "animationHint": "Run the algorithm to observe how it progressively explores the road network before finding the final route.",
+
+    "searchTime": "Search Time",
+    "nodesVisited": "Nodes Visited",
+    "edgesVisited": "Edges Explored",
+    "routeCost": "Route Cost",
+    "routeDistance": "Route Distance",
+    "travelTime": "Travel Time",
+    "complexity": "Computational Complexity"
+  },
+
+  "zh": {
+    "stepLabel": "步骤 1",
+    "title": "起讫点路径规划",
+    "description": "定义起点和终点，并探索不同最短路径算法如何在真实道路网络中搜索路径。",
+
+    "originWord": "起点",
+    "destinationWord": "终点",
+
+    "randomOD": "随机生成起讫点",
+    "dragHint": "随机生成一个起点和终点，或者直接拖动地图上的 O 和 D 标记，自定义路径规划问题。",
+    "notSet": "未设置",
+
+    "origin": "起点",
+    "destination": "终点",
+
+    "routingObjective": "路径规划目标",
+    "shortestDistance": "最短距离",
+    "shortestTime": "最短旅行时间",
+
+    "algorithm": "路径规划算法",
+    "dijkstra": "Dijkstra 算法",
+    "dijkstra_2way": "双向Dijkstra 算法",
+    "astar": "A* 算法",
+    "bfs": "广度优先搜索",
+
+    "play": "运行搜索动画",
+    "running": "正在搜索……",
+    "animationHint": "运行算法并观察它如何逐步搜索道路网络，最终找到从起点到终点的路径。",
+
+    "searchTime": "搜索时间",
+    "nodesVisited": "访问节点数",
+    "edgesVisited": "搜索边数",
+    "routeCost": "路径成本",
+    "routeDistance": "路径距离",
+    "travelTime": "旅行时间",
+    "complexity": "计算复杂度"
+  },
+
+  "fa": {
+    "stepLabel": "مرحله ۱",
+    "title": "مسیریابی مبدأ–مقصد",
+    "description": "یک مبدأ و مقصد تعریف کنید و بررسی کنید که الگوریتم‌های مختلف کوتاه‌ترین مسیر چگونه یک شبکه جاده‌ای واقعی را جست‌وجو می‌کنند.",
+
+    "originWord": "مبدأ",
+    "destinationWord": "مقصد",
+
+    "randomOD": "تولید تصادفی مبدأ و مقصد",
+    "dragHint": "یک مبدأ و مقصد تصادفی ایجاد کنید یا نشانگرهای O و D را روی نقشه جابه‌جا کنید تا مسئله مسیریابی خود را تعریف کنید.",
+    "notSet": "تنظیم نشده",
+
+    "origin": "مبدأ",
+    "destination": "مقصد",
+
+    "routingObjective": "هدف مسیریابی",
+    "shortestDistance": "کمترین فاصله",
+    "shortestTime": "کمترین زمان سفر",
+
+    "algorithm": "الگوریتم مسیریابی",
+    "dijkstra": "الگوریتم دیکسترا",
+    "dijkstra_2way": "الگوریتم دیکسترا", 
+    "astar": "الگوریتم A*",
+    "bfs": "جست‌وجوی سطح‌اول",
+
+    "play": "اجرای پویانمایی جست‌وجو",
+    "running": "در حال جست‌وجو...",
+    "animationHint": "الگوریتم را اجرا کنید و مشاهده کنید که چگونه شبکه جاده‌ای را به‌تدریج بررسی می‌کند تا مسیر نهایی را پیدا کند.",
+
+    "searchTime": "زمان جست‌وجو",
+    "nodesVisited": "گره‌های بازدیدشده",
+    "edgesVisited": "یال‌های بررسی‌شده",
+    "routeCost": "هزینه مسیر",
+    "routeDistance": "فاصله مسیر",
+    "travelTime": "زمان سفر",
+    "complexity": "پیچیدگی محاسباتی"
+  }
+}

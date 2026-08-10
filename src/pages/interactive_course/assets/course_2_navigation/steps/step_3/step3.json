@@ -1,0 +1,94 @@
+{
+  "en": {
+    "stepLabel": "Step 3",
+    "title": "Dynamic and Multi-Criteria Routing",
+    "description": "Explore how routing decisions change when roads become unavailable, traffic conditions change, or different edge costs are used.",
+
+    "roadClosure": "Road Disruptions",
+    "roadClosureHint": "Close or restrict road segments to simulate incidents, construction, or other network disruptions.",
+
+    "closedEdges": "Closed Edges",
+    "clearClosures": "Clear Road Closures",
+
+    "routingObjective": "Routing Objective",
+    "shortestDistance": "Shortest Distance",
+    "shortestTime": "Shortest Travel Time",
+    "generalizedCost": "Minimum Generalized Cost",
+
+    "congestion": "Congestion Level",
+    "light": "Light",
+    "medium": "Medium",
+    "heavy": "Heavy",
+
+    "run": "Recalculate Route",
+    "running": "Recalculating...",
+
+    "animationHint": "Observe how changes in network topology, congestion, and edge weights can produce a different optimal route.",
+
+    "runtime": "Search Time",
+    "routeCost": "Route Cost",
+    "objective": "Current Objective"
+  },
+
+  "zh": {
+    "stepLabel": "步骤 3",
+    "title": "动态与多目标路径规划",
+    "description": "探索道路不可用、交通状况变化以及不同边权重如何影响路径规划决策。",
+
+    "roadClosure": "道路中断",
+    "roadClosureHint": "关闭或限制部分道路，以模拟交通事故、道路施工或其他网络中断情况。",
+
+    "closedEdges": "关闭道路数",
+    "clearClosures": "清除道路关闭",
+
+    "routingObjective": "路径规划目标",
+    "shortestDistance": "最短距离",
+    "shortestTime": "最短旅行时间",
+    "generalizedCost": "最小广义成本",
+
+    "congestion": "拥堵水平",
+    "light": "轻度",
+    "medium": "中度",
+    "heavy": "严重",
+
+    "run": "重新计算路径",
+    "running": "正在重新计算……",
+
+    "animationHint": "观察道路网络拓扑、交通拥堵和边权重发生变化后，最优路径如何随之改变。",
+
+    "runtime": "搜索时间",
+    "routeCost": "路径成本",
+    "objective": "当前路径目标"
+  },
+
+  "fa": {
+    "stepLabel": "مرحله ۳",
+    "title": "مسیریابی پویا و چندمعیاره",
+    "description": "بررسی کنید که چگونه بسته‌شدن جاده‌ها، تغییر شرایط ترافیک یا استفاده از هزینه‌های متفاوت برای یال‌ها بر تصمیم‌های مسیریابی تأثیر می‌گذارد.",
+
+    "roadClosure": "اختلالات جاده‌ای",
+    "roadClosureHint": "بخش‌هایی از جاده را ببندید یا محدود کنید تا تصادف، عملیات عمرانی یا سایر اختلالات شبکه شبیه‌سازی شوند.",
+
+    "closedEdges": "یال‌های بسته",
+    "clearClosures": "پاک‌کردن انسدادهای جاده‌ای",
+
+    "routingObjective": "هدف مسیریابی",
+    "shortestDistance": "کمترین فاصله",
+    "shortestTime": "کمترین زمان سفر",
+    "generalizedCost": "کمترین هزینه تعمیم‌یافته",
+
+    "congestion": "سطح ازدحام",
+    "light": "کم",
+    "medium": "متوسط",
+    "heavy": "زیاد",
+
+    "run": "محاسبه مجدد مسیر",
+    "running": "در حال محاسبه مجدد...",
+
+    "animationHint": "مشاهده کنید که تغییر توپولوژی شبکه، ازدحام و وزن یال‌ها چگونه می‌تواند مسیر بهینه متفاوتی ایجاد کند.",
+
+    "runtime": "زمان جست‌وجو",
+    "routeCost": "هزینه مسیر",
+    "objective": "هدف فعلی"
+  }
+}

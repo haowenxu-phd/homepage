@@ -1,0 +1,82 @@
+{
+  "en": {
+    "stepLabel": "Step 2",
+    "title": "Multi-Stop Route Optimisation",
+    "description": "Extend a simple origin–destination routing problem to multiple destinations and explore how optimisation algorithms search for an efficient visiting sequence.",
+
+    "numberOfStops": "Number of Stops",
+    "generateStops": "Generate Random Stops",
+    "stopHint": "Generate multiple destinations on the road network to create a travelling-salesman-style optimisation problem.",
+
+    "algorithm": "Optimisation Algorithm",
+    "nearestNeighbour": "Nearest Neighbour",
+    "aco": "Ant Colony Optimisation",
+    "sa": "Simulated Annealing",
+    "ga": "Genetic Algorithm",
+
+    "iterations": "Number of Iterations",
+
+    "run": "Run Optimisation",
+    "running": "Optimising...",
+    "animationHint": "Observe how candidate tours change as the optimisation algorithm searches for a lower-cost route.",
+
+    "runtime": "Runtime",
+    "bestCost": "Best Route Cost",
+    "iterationsCompleted": "Iterations",
+    "improvement": "Improvement"
+  },
+
+  "zh": {
+    "stepLabel": "步骤 2",
+    "title": "多站点路径优化",
+    "description": "将简单的起讫点路径规划扩展为多个目的地，并探索不同优化算法如何搜索更加高效的访问顺序。",
+
+    "numberOfStops": "站点数量",
+    "generateStops": "随机生成站点",
+    "stopHint": "在道路网络上随机生成多个目的地，从而构建一个类似旅行商问题的路径优化任务。",
+
+    "algorithm": "优化算法",
+    "nearestNeighbour": "最近邻算法",
+    "aco": "蚁群优化",
+    "sa": "模拟退火",
+    "ga": "遗传算法",
+
+    "iterations": "迭代次数",
+
+    "run": "运行优化",
+    "running": "正在优化……",
+    "animationHint": "观察候选巡回路径如何随着算法迭代不断变化，并逐步搜索成本更低的路线。",
+
+    "runtime": "运行时间",
+    "bestCost": "最佳路径成本",
+    "iterationsCompleted": "完成迭代数",
+    "improvement": "改进程度"
+  },
+
+  "fa": {
+    "stepLabel": "مرحله ۲",
+    "title": "بهینه‌سازی مسیر چندمقصدی",
+    "description": "مسئله ساده مسیریابی مبدأ–مقصد را به چند مقصد گسترش دهید و بررسی کنید که الگوریتم‌های بهینه‌سازی چگونه ترتیب بازدید کارآمدتری را جست‌وجو می‌کنند.",
+
+    "numberOfStops": "تعداد توقف‌ها",
+    "generateStops": "تولید تصادفی توقف‌ها",
+    "stopHint": "چند مقصد را روی شبکه جاده‌ای ایجاد کنید تا یک مسئله بهینه‌سازی مشابه مسئله فروشنده دوره‌گرد تشکیل شود.",
+
+    "algorithm": "الگوریتم بهینه‌سازی",
+    "nearestNeighbour": "نزدیک‌ترین همسایه",
+    "aco": "بهینه‌سازی کلونی مورچگان",
+    "sa": "بازپخت شبیه‌سازی‌شده",
+    "ga": "الگوریتم ژنتیک",
+
+    "iterations": "تعداد تکرارها",
+
+    "run": "اجرای بهینه‌سازی",
+    "running": "در حال بهینه‌سازی...",
+    "animationHint": "مشاهده کنید که مسیرهای کاندید در طول جست‌وجوی الگوریتم برای یافتن مسیر کم‌هزینه‌تر چگونه تغییر می‌کنند.",
+
+    "runtime": "زمان اجرا",
+    "bestCost": "بهترین هزینه مسیر",
+    "iterationsCompleted": "تکرارهای انجام‌شده",
+    "improvement": "میزان بهبود"
+  }
+}
