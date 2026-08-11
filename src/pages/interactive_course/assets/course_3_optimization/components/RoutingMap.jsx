@@ -78,6 +78,58 @@ const destinationIcon = L.divIcon({
 });
 
 
+
+// ============================================================
+// Intermediate optimisation stop marker
+// ============================================================
+
+const createWaypointIcon = (
+  stopNumber
+) => {
+
+  return L.divIcon({
+
+    className: "",
+
+    html: `
+      <div
+        style="
+          width: 20px;
+          height: 20px;
+          background: #facc15;
+          border: 3px solid white;
+          border-radius: 50%;
+          box-shadow: 0 1px 5px rgba(0,0,0,0.45);
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          color: #713f12;
+          font-size: 11px;
+          font-weight: 700;
+        "
+      >
+        ${stopNumber}
+      </div>
+    `,
+
+    iconSize: [
+      20,
+      20,
+    ],
+
+    iconAnchor: [
+      10,
+      10,
+    ],
+
+  });
+
+};
+
+
+
 // ============================================================
 // Fit map to Origin + Destination
 // ============================================================
@@ -468,7 +520,7 @@ export default function RoutingMap({
             8,
 
           opacity:
-            0.6,
+            1,
 
         };
 
@@ -488,7 +540,7 @@ export default function RoutingMap({
           5,
 
         opacity:
-          0.3,
+          0.8,
 
       };
 
@@ -504,134 +556,135 @@ export default function RoutingMap({
   // This is what makes the 0.5-second animation visible.
   // ==========================================================
 
+    
   useEffect(() => {
 
-      const geoJsonLayer =
-        roadLayerRef.current;
+    const geoJsonLayer =
+      roadLayerRef.current;
 
 
-      if (!geoJsonLayer) {
-        return;
+    if (!geoJsonLayer) {
+      return;
+    }
+
+
+    // ========================================================
+    // Step 1
+    // Update road styles
+    // ========================================================
+
+    geoJsonLayer.setStyle(
+      roadStyle
+    );
+
+
+    // ========================================================
+    // Step 2
+    // First bring VISITED search edges forward
+    // ========================================================
+
+    geoJsonLayer.eachLayer(
+      (layer) => {
+
+        const feature =
+          layer.feature;
+
+
+        const edgeId =
+          getFeatureEdgeId(
+            feature
+          );
+
+
+        if (
+          edgeId != null &&
+          visitedEdgeIdSet.has(
+            edgeId
+          )
+        ) {
+
+          layer.bringToFront();
+
+        }
+
       }
+    );
 
 
-      // ========================================================
-      // Step 1
-      // Update road styles
-      // ========================================================
+    // ========================================================
+    // Step 3
+    // Bring FINAL ROUTE above search edges
+    // ========================================================
 
-      geoJsonLayer.setStyle(
-        roadStyle
-      );
+    geoJsonLayer.eachLayer(
+      (layer) => {
 
-
-      // ========================================================
-      // Step 2
-      // First bring VISITED search edges forward
-      // ========================================================
-
-      geoJsonLayer.eachLayer(
-        (layer) => {
-
-          const feature =
-            layer.feature;
+        const feature =
+          layer.feature;
 
 
-          const edgeId =
-            getFeatureEdgeId(
-              feature
-            );
+        const edgeId =
+          getFeatureEdgeId(
+            feature
+          );
 
 
-          if (
-            edgeId != null &&
-            visitedEdgeIdSet.has(
-              edgeId
-            )
-          ) {
+        if (
+          edgeId != null &&
+          routeEdgeIdSet.has(
+            edgeId
+          )
+        ) {
 
-            layer.bringToFront();
-
-          }
+          layer.bringToFront();
 
         }
-      );
+
+      }
+    );
 
 
-      // ========================================================
-      // Step 3
-      // Bring FINAL ROUTE above search edges
-      // ========================================================
+    // ========================================================
+    // Step 4
+    // Bring CLOSED roads to absolute top
+    //
+    // Change this ordering if you want final route to have
+    // higher visual priority than closures.
+    // ========================================================
 
-      geoJsonLayer.eachLayer(
-        (layer) => {
+    geoJsonLayer.eachLayer(
+      (layer) => {
 
-          const feature =
-            layer.feature;
-
-
-          const edgeId =
-            getFeatureEdgeId(
-              feature
-            );
+        const feature =
+          layer.feature;
 
 
-          if (
-            edgeId != null &&
-            routeEdgeIdSet.has(
-              edgeId
-            )
-          ) {
-
-            layer.bringToFront();
-
-          }
-
-        }
-      );
+        const edgeId =
+          getFeatureEdgeId(
+            feature
+          );
 
 
-      // ========================================================
-      // Step 4
-      // Bring CLOSED roads to absolute top
-      //
-      // Change this ordering if you want final route to have
-      // higher visual priority than closures.
-      // ========================================================
+        if (
+          edgeId != null &&
+          closedEdgeIdSet.has(
+            edgeId
+          )
+        ) {
 
-      geoJsonLayer.eachLayer(
-        (layer) => {
-
-          const feature =
-            layer.feature;
-
-
-          const edgeId =
-            getFeatureEdgeId(
-              feature
-            );
-
-
-          if (
-            edgeId != null &&
-            closedEdgeIdSet.has(
-              edgeId
-            )
-          ) {
-
-            layer.bringToFront();
-
-          }
+          layer.bringToFront();
 
         }
-      );
+
+      }
+    );
 
 
-    }, [
-      searchState,
-      routeResult,
-      closedEdgeIds,
-    ]);
+  }, [
+    searchState,
+    routeResult,
+    closedEdgeIds,
+  ]);
 
 
   // ==========================================================
@@ -883,6 +936,41 @@ export default function RoutingMap({
         />
 
       )}
+
+      {/* ====================================================
+          Waypoints
+      ==================================================== */}
+            
+      {waypoints?.map(
+        (
+          waypoint,
+          index
+        ) => (
+
+          <Marker
+
+            key={
+              waypoint.nodeId ??
+              `waypoint-${index}`
+            }
+
+            position={[
+              waypoint.lat,
+              waypoint.lng,
+            ]}
+
+            icon={
+              createWaypointIcon(
+                index + 1
+              )
+            }
+
+          />
+
+        )
+      )}
+
+
 
     </MapContainer>
 

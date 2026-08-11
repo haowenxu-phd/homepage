@@ -9,13 +9,13 @@ import React, {
 // ============================================================
 
 import roadNodes
-from "./assets/course_2_navigation/data/coogee_drive_nodes.json";
+from "./assets/course_3_optimization/data/coogee_drive_nodes.json";
 
 import roadEdges
-from "./assets/course_2_navigation/data/coogee_drive_edges.json";
+from "./assets/course_3_optimization/data/coogee_drive_edges.json";
 
 import routingGraph
-from "./assets/course_2_navigation/data/coogee_routing_graph.json";
+from "./assets/course_3_optimization/data/coogee_routing_graph.json";
 
 
 // ============================================================
@@ -23,27 +23,24 @@ from "./assets/course_2_navigation/data/coogee_routing_graph.json";
 // ============================================================
 
 import RoutingMap
-from "./assets/course_2_navigation/components/RoutingMap";
+from "./assets/course_3_optimization/components/RoutingMap";
 
 import WorkflowProgress
-from "./assets/course_2_navigation/components/WorkflowProgress";
+from "./assets/course_3_optimization/components/WorkflowProgress";
 
 
 // ============================================================
 // Step components
 // ============================================================
 
-import Step1ODRouting
-from "./assets/course_2_navigation/steps/step_1/Step1ODRouting";
+/*import Step1ODRouting
+from "./assets/course_2_navigation/steps/step_1/Step1ODRouting";*/
 
-/*
-import Step2TSP
-from "./assets/course_2_navigation/steps/step_2/Step2TSP";
+import Step1TourOptimization
+from "./assets/course_3_optimization/steps/step_1/Step2TSP";
 
-import Step3DynamicRouting
-from "./assets/course_2_navigation/steps/step_3/Step3DynamicRouting";
-*/
-
+/*import Step3DynamicRouting
+from "./assets/course_2_navigation/steps/step_3/Step3DynamicRouting";*/
 
 import Step4Compare
 from "./assets/course_2_navigation/steps/step_4/Step4Compare";
@@ -54,11 +51,11 @@ from "./assets/course_2_navigation/steps/step_4/Step4Compare";
 // ============================================================
 
 import text
-from "./assets/course_2_navigation/trans/course.json";
+from "./assets/course_3_optimization/trans/course.json";
 
 
 
-export default function InteractiveLearning_c2_navigation() {
+export default function InteractiveLearning_c3_optimization() {
 
   // ============================================================
   // Course UI state
@@ -75,8 +72,13 @@ export default function InteractiveLearning_c2_navigation() {
     setCurrentStep,
   ] = useState(1);
 
+  const [
+  animationRouteResult,
+  setAnimationRouteResult,
+] = useState(null);
 
-  const totalSteps = 4;
+
+  const totalSteps = 2;
 
 
   // ============================================================
@@ -198,21 +200,15 @@ export default function InteractiveLearning_c2_navigation() {
   const workflowSteps =
     useMemo(
       () => [
+ 
 
         {
           id: 1,
           title:
-            t.steps?.step1 ??
-            "Find a Route",
-        },
-
-        /*{
-          id: 2,
-          title:
             t.steps?.step2 ??
             "Optimise a Tour",
         },
-
+        /*
         {
           id: 3,
           title:
@@ -282,180 +278,84 @@ export default function InteractiveLearning_c2_navigation() {
         // OD + Dijkstra / A*
         // ======================================================
 
-        case 1:
-
-          return (
-
-            <Step1ODRouting
-
-              language={
-                language
-              }
-
-
-              // -----------------------------------------------
-              // Raw network data
-              // -----------------------------------------------
-
-              roadNodes={
-                roadNodes
-              }
-
-              roadEdges={
-                roadEdges
-              }
-
-              routingGraph={
-                routingGraph
-              }
-
-
-              // -----------------------------------------------
-              // OD geographic coordinates
-              // -----------------------------------------------
-
-              origin={
-                origin
-              }
-
-              destination={
-                destination
-              }
-
-              setOrigin={
-                setOrigin
-              }
-
-              setDestination={
-                setDestination
-              }
-
-
-              // -----------------------------------------------
-              // OD graph IDs
-              // -----------------------------------------------
-
-              originNodeId={
-                originNodeId
-              }
-
-              destinationNodeId={
-                destinationNodeId
-              }
-
-              setOriginNodeId={
-                setOriginNodeId
-              }
-
-              setDestinationNodeId={
-                setDestinationNodeId
-              }
-
-
-              // -----------------------------------------------
-              // Routing
-              // -----------------------------------------------
-
-              selectedAlgorithm={
-                selectedAlgorithm
-              }
-
-              setSelectedAlgorithm={
-                setSelectedAlgorithm
-              }
-
-              edgeWeightMode={
-                edgeWeightMode
-              }
-
-              setEdgeWeightMode={
-                setEdgeWeightMode
-              }
-
-
-              // -----------------------------------------------
-              // Search / result
-              // -----------------------------------------------
-
-              searchState={
-                searchState
-              }
-
-              setSearchState={
-                setSearchState
-              }
-
-              routeResult={
-                routeResult
-              }
-
-              setRouteResult={
-                setRouteResult
-              }
-
-            />
-
-          );
-
+       
 
         // ======================================================
         // STEP 2
         // TSP / ACO / optimisation
         // ======================================================
-        /*
-        case 2:
+        
+        case 1:
 
           return (
 
-            <Step2TSP
+            <Step1TourOptimization
 
-              language={
-                language
-              }
+                              
+                  language={
+                    language
+                  }
 
-              roadNodes={
-                roadNodes
-              }
+                  routingGraph={
+                    routingGraph
+                  }
 
-              roadEdges={
-                roadEdges
-              }
 
-              routingGraph={
-                routingGraph
-              }
+                  origin={
+                    origin
+                  }
 
-              origin={
-                origin
-              }
+                  setOrigin={
+                    setOrigin
+                  }
 
-              destination={
-                destination
-              }
+                  originNodeId={
+                    originNodeId
+                  }
 
-              originNodeId={
-                originNodeId
-              }
+                  setOriginNodeId={
+                    setOriginNodeId
+                  }
 
-              destinationNodeId={
-                destinationNodeId
-              }
 
-              waypoints={
-                waypoints
-              }
+                  destination={
+                    destination
+                  }
 
-              setWaypoints={
-                setWaypoints
-              }
+                  setDestination={
+                    setDestination
+                  }
 
-              routeResult={
-                routeResult
-              }
+                  destinationNodeId={
+                    destinationNodeId
+                  }
 
-              setRouteResult={
-                setRouteResult
-              }
+                  setDestinationNodeId={
+                    setDestinationNodeId
+                  }
+
+
+                  waypoints={
+                    waypoints
+                  }
+
+                  setWaypoints={
+                    setWaypoints
+                  }
+
+
+                  routeResult={
+                    routeResult
+                  }
+
+                  setRouteResult={
+                    setRouteResult
+                  }
+
+                   setAnimationRouteResult={
+                      setAnimationRouteResult
+                    }
+
 
             />
 
@@ -467,86 +367,13 @@ export default function InteractiveLearning_c2_navigation() {
         // Dynamic network / road closure / weighted routing
         // ======================================================
 
-        case 3:
-
-          return (
-
-            <Step3DynamicRouting
-
-              language={
-                language
-              }
-
-              roadNodes={
-                roadNodes
-              }
-
-              roadEdges={
-                roadEdges
-              }
-
-              routingGraph={
-                routingGraph
-              }
-
-              origin={
-                origin
-              }
-
-              destination={
-                destination
-              }
-
-              originNodeId={
-                originNodeId
-              }
-
-              destinationNodeId={
-                destinationNodeId
-              }
-
-              closedEdgeIds={
-                closedEdgeIds
-              }
-
-              setClosedEdgeIds={
-                setClosedEdgeIds
-              }
-
-              edgeWeightMode={
-                edgeWeightMode
-              }
-
-              setEdgeWeightMode={
-                setEdgeWeightMode
-              }
-
-              searchState={
-                searchState
-              }
-
-              setSearchState={
-                setSearchState
-              }
-
-              routeResult={
-                routeResult
-              }
-
-              setRouteResult={
-                setRouteResult
-              }
-
-            />
-
-          );
-
+         
 
         // ======================================================
         // STEP 4
         // Compare algorithms
         // ======================================================
-*/
+
         case 2:
 
           return (
@@ -565,7 +392,8 @@ export default function InteractiveLearning_c2_navigation() {
                 edgeWeightMode
               }
 
-              routeResult={
+               routeResult={
+                animationRouteResult ??
                 routeResult
               }
 
@@ -1038,6 +866,9 @@ export default function InteractiveLearning_c2_navigation() {
                 roadEdges
               }
 
+              
+
+
 
               // ---------------------------------------------
               // Routing graph
@@ -1124,8 +955,14 @@ export default function InteractiveLearning_c2_navigation() {
               // ---------------------------------------------
               // Final route
               // ---------------------------------------------
+              /*
+              routeResult={
+                routeResult
+              }
+                */
 
               routeResult={
+                animationRouteResult ??
                 routeResult
               }
 

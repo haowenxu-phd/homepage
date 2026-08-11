@@ -1,0 +1,44 @@
+{
+  "en": {
+    "courseTitle": "Interactive Road Network Optimisation",
+    "introduction": "Explore how optimisation algorithms solve multi-stop routing problems on a real road network. Progress through the workflow to define an optimisation problem, observe how different algorithms search for efficient solutions, evaluate solution quality and computational performance, and compare different optimisation strategies.",
+    "language": "Language",
+    "mapTitle": "Interactive Road Network",
+    "previous": "Previous",
+    "next": "Next",
+    "steps": {
+      "step1": "Define the Problem",
+      "step2": "Optimise a Tour",
+      "step3": "Explore the Search Process",
+      "step4": "Compare & Apply"
+    }
+  },
+  "zh": {
+    "courseTitle": "互动式道路网络优化",
+    "introduction": "通过真实道路网络探索优化算法如何求解多站点路径优化问题。按照课程流程定义优化问题，观察不同算法如何搜索高效解，评估解的质量与计算性能，并比较不同优化策略的特点与适用场景。",
+    "language": "语言",
+    "mapTitle": "互动道路网络",
+    "previous": "上一步",
+    "next": "下一步",
+    "steps": {
+      "step1": "定义优化问题",
+      "step2": "优化巡回路线",
+      "step3": "探索搜索过程",
+      "step4": "比较与应用"
+    }
+  },
+  "fa": {
+    "courseTitle": "بهینه‌سازی تعاملی شبکه راه",
+    "introduction": "بررسی کنید که الگوریتم‌های بهینه‌سازی چگونه مسائل مسیر چندایستگاهی را در یک شبکه راه واقعی حل می‌کنند. در مراحل دوره، مسئله بهینه‌سازی را تعریف کنید، نحوه جست‌وجوی الگوریتم‌های مختلف برای یافتن راه‌حل‌های کارآمد را مشاهده کنید، کیفیت راه‌حل و عملکرد محاسباتی را ارزیابی کنید و راهبردهای مختلف بهینه‌سازی را با یکدیگر مقایسه کنید.",
+    "language": "زبان",
+    "mapTitle": "شبکه راه تعاملی",
+    "previous": "مرحله قبل",
+    "next": "مرحله بعد",
+    "steps": {
+      "step1": "تعریف مسئله بهینه‌سازی",
+      "step2": "بهینه‌سازی مسیر چندایستگاهی",
+      "step3": "بررسی فرایند جست‌وجو",
+      "step4": "مقایسه و کاربرد"
+    }
+  }
+}

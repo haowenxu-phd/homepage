@@ -1,6 +1,6 @@
 {
   "en": {
-    "stepLabel": "Step 2",
+    "stepLabel": "Step 1",
     "title": "Multi-Stop Route Optimisation",
     "description": "Extend a simple origin–destination routing problem to multiple destinations and explore how optimisation algorithms search for an efficient visiting sequence.",
 
@@ -27,7 +27,7 @@
   },
 
   "zh": {
-    "stepLabel": "步骤 2",
+    "stepLabel": "步骤 1",
     "title": "多站点路径优化",
     "description": "将简单的起讫点路径规划扩展为多个目的地，并探索不同优化算法如何搜索更加高效的访问顺序。",
 
@@ -54,7 +54,7 @@
   },
 
   "fa": {
-    "stepLabel": "مرحله ۲",
+    "stepLabel": "مرحله ۱",
     "title": "بهینه‌سازی مسیر چندمقصدی",
     "description": "مسئله ساده مسیریابی مبدأ–مقصد را به چند مقصد گسترش دهید و بررسی کنید که الگوریتم‌های بهینه‌سازی چگونه ترتیب بازدید کارآمدتری را جست‌وجو می‌کنند.",
 

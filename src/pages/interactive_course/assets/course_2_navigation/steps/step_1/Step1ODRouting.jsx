@@ -10,6 +10,9 @@ import {
   snapPointToRoutingGraph,
 } from "./step1.logic";
 
+
+ 
+
  
 
 // ============================================================
@@ -222,10 +225,23 @@ export default function Step1ODRouting({
   // Local UI state
   // ==========================================================
 
+ 
   const [
     isRunning,
     setIsRunning,
   ] = useState(false);
+
+  // ==========================================================
+  // Previous completed routing result
+  //
+  // Used to compare the latest run against the immediately
+  // preceding run.
+  // ==========================================================
+
+  const [
+    previousRouteResult,
+    setPreviousRouteResult,
+  ] = useState(null);
 
 
   // ==========================================================
@@ -301,6 +317,15 @@ export default function Step1ODRouting({
     setRouteResult(
       null
     );
+
+ 
+
+
+    setPreviousRouteResult(
+      null
+    );
+
+
 
   };
 
@@ -441,15 +466,27 @@ const handlePlay = async () => {
     // ========================================================
     // 5. Clear previous animation / route
     // ========================================================
+      if (
+        routeResult
+      ) {
 
-    setSearchState?.(
-      null
-    );
+        setPreviousRouteResult(
+          routeResult
+        );
+
+      }
 
 
-    setRouteResult?.(
-      null
-    );
+      // Clear current metrics + final route highlight
+      setRouteResult(
+        null
+      );
+
+
+      // Clear visited/search highlighting
+      setSearchState(
+        null
+      );
 
 
     // ========================================================
@@ -459,50 +496,50 @@ const handlePlay = async () => {
     // runRoutingDemo should return result immediately here.
     // It should NOT perform its own animation loop anymore.
     // ========================================================
-
-    console.log(
-      "Running algorithm:",
-      selectedAlgorithm
-    );
-
-
-    const result =
-      await runRoutingDemo({
-
-        routingGraph,
-
-        originNodeId:
-          resolvedOriginNodeId,
-
-        destinationNodeId:
-          resolvedDestinationNodeId,
-
-        algorithm:
-          selectedAlgorithm,
-
-        weightMode:
-          edgeWeightMode,
-
-      });
-
-
-    if (
-      !result
-    ) {
-
-      console.warn(
-        "Routing algorithm returned no result."
+      console.log(
+        "Running algorithm:",
+        selectedAlgorithm
       );
 
-      return;
 
-    }
+      const result =
+        await runRoutingDemo({
+
+          routingGraph,
+
+          originNodeId:
+            resolvedOriginNodeId,
+
+          destinationNodeId:
+            resolvedDestinationNodeId,
+
+          algorithm:
+            selectedAlgorithm,
+
+          weightMode:
+            edgeWeightMode,
+
+        });
 
 
-    console.log(
-      "Routing result:",
-      result
-    );
+      if (
+        !result
+      ) {
+
+        console.warn(
+          "Routing algorithm returned no result."
+        );
+
+        return;
+
+      }
+
+
+      console.log(
+        "Routing result:",
+        result
+      );
+
 
 
     // ========================================================
@@ -526,6 +563,17 @@ const handlePlay = async () => {
       );
 
 
+      if (
+        routeResult
+      ) {
+
+        setPreviousRouteResult(
+          routeResult
+        );
+
+      }
+
+
       setRouteResult(
         result
       );
@@ -536,84 +584,74 @@ const handlePlay = async () => {
     }
 
 
+
     // ========================================================
     // 8. Play iteration animation ONCE
     //
     // 500 ms = 0.5 seconds per iteration
     // ========================================================
 
-    for (
-      let i = 0;
-      i < iterations.length;
-      i++
-    ) {
+          
+      for (
+        let i = 0;
+        i < iterations.length;
+        i++
+      ) {
 
-      const iteration =
-        iterations[i];
-
-      /*
-      console.log(
-        `Animation iteration ${i + 1}/${iterations.length}`,
-        iteration
-      );
-    */
-
-      // ------------------------------------------------------
-      // Update Leaflet visualization state
-      // ------------------------------------------------------
-
-      setSearchState?.({
-
-        algorithm:
-          selectedAlgorithm,
-
-        iteration:
-          iteration.iteration,
-
-        currentNodeId:
-          iteration.currentNodeId,
-
-        currentCost:
-          iteration.currentCost,
-
-        visitedNodeIds:
-          iteration.visitedNodeIds ??
-          [],
-
-        visitedEdgeIds:
-          iteration.visitedEdgeIds ??
-          [],
-
-        frontierNodeIds:
-          iteration.frontierNodeIds ??
-          [],
-
-        relaxedEdges:
-          iteration.relaxedEdges ??
-          [],
-
-        destinationReached:
-          iteration.destinationReached ??
-          false,
-
-        isComplete:
-          false,
-
-        version:
-          Date.now(),
-
-      });
+        const iteration =
+          iterations[i];
 
 
-      // ------------------------------------------------------
-      // Wait 0.5 seconds before next iteration
-      // ------------------------------------------------------
+        setSearchState?.({
 
-      await delay(
-        5
-      );
+          algorithm:
+            selectedAlgorithm,
 
-    }
+          iteration:
+            iteration.iteration,
+
+          currentNodeId:
+            iteration.currentNodeId,
+
+          currentCost:
+            iteration.currentCost,
+
+          visitedNodeIds:
+            iteration.visitedNodeIds ??
+            [],
+
+          visitedEdgeIds:
+            iteration.visitedEdgeIds ??
+            [],
+
+          frontierNodeIds:
+            iteration.frontierNodeIds ??
+            [],
+
+          relaxedEdges:
+            iteration.relaxedEdges ??
+            [],
+
+          destinationReached:
+            iteration.destinationReached ??
+            false,
+
+          isComplete:
+            false,
+
+          version:
+            Date.now(),
+
+        });
+
+
+        await delay(
+          5
+        );
+
+      }
+
+ 
 
 
     // ========================================================
@@ -621,10 +659,22 @@ const handlePlay = async () => {
     //
     // Now show final route
     // ========================================================
+      /*
+    if (
+        routeResult
+      ) {
+
+        setPreviousRouteResult(
+          routeResult
+        );
+
+      }*/
+
 
     setRouteResult(
       result
     );
+
 
 
     setSearchState?.({
@@ -702,25 +752,26 @@ const handlePlay = async () => {
   // Metrics
   // ==========================================================
 
-  const runtimeText =
-    routeResult?.runtimeMs != null
-      ? `${Number(
-          routeResult.runtimeMs
-        ).toFixed(2)} ms`
-      : "—";
+        const runtimeText =
+        routeResult?.runtimeMs != null
+          ? `${Number(
+              routeResult.runtimeMs
+            ).toFixed(2)} ms`
+          : "—";
 
 
-  const visitedText =
-    routeResult?.nodesVisited != null
-      ? routeResult.nodesVisited
-      : "—";
+      const visitedText =
+        routeResult?.nodesVisited != null
+          ? routeResult.nodesVisited
+          : "—";
 
 
-  const routeCostText =
-    routeResult?.cost != null
-      ? routeResult.cost
-      : "—";
+      const routeCostText =
+        routeResult?.cost != null
+          ? routeResult.cost
+          : "—";
 
+   
 
   const complexityText =
     (() => {
@@ -1299,36 +1350,99 @@ const handlePlay = async () => {
           label={
             t.searchTime
           }
+
           value={
-            runtimeText
+            routeResult?.runtimeMs
+          }
+
+          previousValue={
+            previousRouteResult?.runtimeMs
+          }
+
+          formatter={
+            (value) =>
+              `${Number(value).toFixed(2)} ms`
           }
         />
 
+
+        {/* ======================================================
+            Nodes Visited
+        ====================================================== */}
 
         <Metric
           label={
             t.nodesVisited
           }
+
           value={
-            visitedText
+            routeResult?.nodesVisited
+          }
+
+          previousValue={
+            previousRouteResult?.nodesVisited
+          }
+
+          formatter={
+            (value) =>
+              Number(value).toLocaleString()
           }
         />
 
+
+        {/* ======================================================
+            Route Cost
+        ====================================================== */}
 
         <Metric
           label={
             t.routeCost
           }
+
           value={
-            routeCostText
+            routeResult?.cost
+          }
+
+          previousValue={
+            previousRouteResult?.cost
+          }
+
+          formatter={
+            (value) => {
+
+              const number =
+                Number(value);
+
+
+              if (
+                !Number.isFinite(
+                  number
+                )
+              ) {
+
+                return "∞";
+
+              }
+
+
+              return number.toFixed(
+                2
+              );
+
+            }
           }
         />
 
+
+        {/* ======================================================
+            Computational Complexity
+        ====================================================== */}
 
         <Metric
           label={
             t.complexity
           }
+
           value={
             complexityText
           }
@@ -1343,59 +1457,158 @@ const handlePlay = async () => {
 }
 
 
-// ============================================================
-// Metric display
-// ============================================================
+  // ============================================================
+  // Metric display
+  // ============================================================
+  function Metric({
 
-function Metric({
-  label,
-  value,
-}) {
+    label,
 
-  return (
+    value,
 
-    <div
-      className="
-        rounded
-        bg-slate-50
-        p-2
-        ring-1
-        ring-slate-200
-      "
-    >
+    previousValue = null,
 
-      <div
-        className="
-          text-[11px]
-          text-slate-500
-        "
-      >
+      formatter =
+        (value) =>
+          value,
 
-        {
-          label
-        }
+    }) {
 
-      </div>
+      // ==========================================================
+      // Check values
+      // ==========================================================
+
+      const hasValue =
+        value !== null &&
+        value !== undefined;
 
 
-      <div
-        className="
-          mt-1
-          break-words
-          text-sm
-          font-semibold
-          text-slate-800
-        "
-      >
+      const hasPreviousValue =
+        previousValue !== null &&
+        previousValue !== undefined;
 
-        {
-          value
-        }
 
-      </div>
+      // ==========================================================
+      // Render
+      // ==========================================================
 
-    </div>
+      return (
 
-  );
+        <div
+          className="
+            rounded
+            bg-slate-50
+            p-2
+            ring-1
+            ring-slate-200
+          "
+        >
 
-}
+          {/* ------------------------------------------------------
+              Label
+          ------------------------------------------------------ */}
+
+          <div
+            className="
+              text-[11px]
+              text-slate-500
+            "
+          >
+
+            {
+              label
+            }
+
+          </div>
+
+
+          {/* ------------------------------------------------------
+              Value
+          ------------------------------------------------------ */}
+
+          <div
+            className="
+              mt-1
+              break-words
+              text-sm
+            "
+          >
+
+            {
+              !hasValue
+                ? (
+
+                  <span
+                    className="
+                      font-semibold
+                      text-slate-800
+                    "
+                  >
+                    —
+                  </span>
+
+                )
+                : (
+
+                  <>
+
+                    {/* ============================================
+                        Current result
+                    ============================================ */}
+
+                    <span
+                      className="
+                        font-bold
+                        text-slate-900
+                      "
+                    >
+
+                      {
+                        formatter(
+                          value
+                        )
+                      }
+
+                    </span>
+
+
+                    {/* ============================================
+                        Previous result
+                    ============================================ */}
+
+                    {
+                      hasPreviousValue && (
+
+                        <span
+                          className="
+                            ml-1.5
+                            font-normal
+                            text-slate-400
+                          "
+                        >
+
+                          (
+                          {
+                            formatter(
+                              previousValue
+                            )
+                          }
+                          )
+
+                        </span>
+
+                      )
+                    }
+
+                  </>
+
+                )
+            }
+
+          </div>
+
+        </div>
+
+      );
+
+    }
