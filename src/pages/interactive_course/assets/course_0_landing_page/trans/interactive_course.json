@@ -3,28 +3,30 @@
     "language": "Language",
 
     "header": {
-      "badge": "Interactive Transport Engineering Learning Lab",
-      "title": "Learn Transport Engineering Through Interactive Exploration",
-      "paragraph1": "This learning portfolio presents a collection of interactive modules for exploring the theories, algorithms, and technologies underlying modern transport engineering.",
-      "paragraph2": "Students can construct road networks, inspect origin–destination demand, visualise routing algorithms, experiment with traffic-flow models, operate traffic signals, and investigate intelligent transportation systems through browser-based simulations and visual analytics.",
-      "exploreButton": "Explore Learning Modules",
-      "collaborationButton": "Discuss Teaching Collaboration"
+    "badge": "Visual & Interactive Transport Learning",
+    "title": "Learn Transport Engineering by Exploring, Simulating, and Solving",
+    "paragraph1": "Interactive learning modules connect transport theory and algorithms with real-world problems, data, simulation, and emerging technologies.",
+    "paragraph2": "Complex concepts are transformed into intuitive visual experiences through visual analytics, interactive storytelling, and game-inspired scientific exploration.",
+    "exploreButton": "Explore Learning Modules",
+    "collaborationButton": "Discuss Teaching Collaboration"
+  },
+
+  "principles": {
+    "experiment": {
+      "title": "Learn by Exploring",
+      "description": "Experiment with models, parameters, and scenarios and immediately observe their effects."
     },
 
-    "principles": {
-      "experiment": {
-        "title": "Learn by Experimenting",
-        "description": "Change model parameters and immediately observe their effects on transport-system behaviour."
-      },
-      "visualise": {
-        "title": "Visualise the Algorithms",
-        "description": "Examine computational processes step by step rather than treating algorithms and simulation models as black boxes."
-      },
-      "practice": {
-        "title": "Connect Theory and Practice",
-        "description": "Apply transport theory to realistic road networks, traffic demand, signals, vehicles, and urban digital twins."
-      }
+    "visualise": {
+      "title": "Make Complexity Visible",
+      "description": "Use visual analytics and step-by-step animation to reveal how algorithms and models work."
     },
+
+    "practice": {
+      "title": "Solve Real-World Problems",
+      "description": "Connect theory with real transport networks, data, simulation, and decision-making challenges."
+    }
+  },
 
     "gallery": {
       "eyebrow": "Course Portfolio",
@@ -70,28 +72,31 @@
     "language": "语言",
 
     "header": {
-      "badge": "交通工程互动学习实验室",
-      "title": "通过互动探索学习交通工程",
-      "paragraph1": "本学习平台提供一系列互动教学模块，用于探索现代交通工程中的基础理论、计算算法与新兴技术。",
-      "paragraph2": "学生可以构建道路网络、分析起讫点需求、观察路径规划算法、实验交通流模型、操作交通信号，并通过浏览器仿真与可视分析探索智能交通系统。",
-      "exploreButton": "探索学习模块",
-      "collaborationButton": "讨论教学合作"
-    },
+    "badge": "可视化与交互式交通工程学习",
+    "title": "在探索、模拟与解决问题中学习交通工程",
+    "paragraph1": "交互式学习模块将交通工程理论与算法同真实世界问题、数据、仿真及新兴技术相结合。",
+    "paragraph2": "通过可视分析、交互式叙事和游戏化的科学探索，将复杂概念转化为直观、易于理解的可视化学习体验。",
+    "exploreButton": "探索学习模块",
+    "collaborationButton": "探讨教学合作"
+  },
 
-    "principles": {
-      "experiment": {
-        "title": "在实验中学习",
-        "description": "调整模型参数，并即时观察这些变化对交通系统行为产生的影响。"
+      "principles": {
+        "experiment": {
+          "title": "在探索中学习",
+          "description": "通过改变模型、参数和场景进行实验，并即时观察其产生的影响。"
+        },
+
+        "visualise": {
+          "title": "让复杂概念可视化",
+          "description": "利用可视分析与逐步动画，直观呈现算法和模型的运行过程。"
+        },
+
+        "practice": {
+          "title": "解决真实世界问题",
+          "description": "将理论与真实交通网络、数据、仿真及决策问题相结合。"
+        }
       },
-      "visualise": {
-        "title": "可视化计算算法",
-        "description": "逐步观察计算过程，而不是将算法和仿真模型视为无法解释的黑箱。"
-      },
-      "practice": {
-        "title": "连接理论与实践",
-        "description": "将交通理论应用于真实道路网络、交通需求、信号控制、车辆以及城市数字孪生。"
-      }
-    },
+    
 
     "gallery": {
       "eyebrow": "课程模块",
@@ -129,35 +134,39 @@
         "路径优化",
         "算法比较"
       ]
+    
     }
-    }
+  }
   },
 
   "fa": {
-    "language": "زبان",
+      "language": "زبان",
 
-    "header": {
-      "badge": "آزمایشگاه یادگیری تعاملی مهندسی حمل‌ونقل",
-      "title": "یادگیری مهندسی حمل‌ونقل از طریق کاوش تعاملی",
-      "paragraph1": "این مجموعه آموزشی شامل ماژول‌های تعاملی برای بررسی نظریه‌ها، الگوریتم‌ها و فناوری‌های مهندسی حمل‌ونقل مدرن است.",
-      "paragraph2": "دانشجویان می‌توانند شبکه‌های جاده‌ای را ایجاد کنند، تقاضای مبدأ–مقصد را بررسی کنند، الگوریتم‌های مسیریابی را مشاهده کنند، مدل‌های جریان ترافیک را آزمایش کنند و سامانه‌های حمل‌ونقل هوشمند را از طریق شبیه‌سازی و تحلیل بصری بررسی کنند.",
-      "exploreButton": "مشاهده ماژول‌های آموزشی",
+      "header": {
+      "badge": "یادگیری بصری و تعاملی مهندسی حمل‌ونقل",
+      "title": "یادگیری مهندسی حمل‌ونقل از طریق کاوش، شبیه‌سازی و حل مسئله",
+      "paragraph1": "ماژول‌های یادگیری تعاملی، نظریه‌ها و الگوریتم‌های حمل‌ونقل را به مسائل دنیای واقعی، داده‌ها، شبیه‌سازی و فناوری‌های نوظهور پیوند می‌دهند.",
+      "paragraph2": "مفاهیم پیچیده از طریق تحلیل بصری، روایت تعاملی و کاوش علمی الهام‌گرفته از بازی، به تجربه‌های یادگیری بصری و قابل‌درک تبدیل می‌شوند.",
+      "exploreButton": "کاوش ماژول‌های آموزشی",
       "collaborationButton": "گفت‌وگو درباره همکاری آموزشی"
     },
 
     "principles": {
       "experiment": {
-        "title": "یادگیری از طریق آزمایش",
-        "description": "پارامترهای مدل را تغییر دهید و اثر آن‌ها را بر رفتار سامانه حمل‌ونقل بلافاصله مشاهده کنید."
+        "title": "یادگیری از طریق کاوش",
+        "description": "با مدل‌ها، پارامترها و سناریوها آزمایش کنید و تأثیر آن‌ها را بلافاصله مشاهده کنید."
       },
+
       "visualise": {
-        "title": "مشاهده الگوریتم‌ها",
-        "description": "فرآیندهای محاسباتی را مرحله به مرحله بررسی کنید و الگوریتم‌ها و مدل‌های شبیه‌سازی را به‌صورت جعبه سیاه در نظر نگیرید."
+        "title": "پیچیدگی را قابل مشاهده کنید",
+        "description": "با استفاده از تحلیل بصری و پویانمایی گام‌به‌گام، نحوه عملکرد الگوریتم‌ها و مدل‌ها را آشکار کنید."
       },
+
       "practice": {
-        "title": "پیوند نظریه و عمل",
-        "description": "نظریه حمل‌ونقل را در شبکه‌های جاده‌ای واقعی، تقاضای سفر، سیگنال‌ها، وسایل نقلیه و دوقلوهای دیجیتال شهری به کار ببرید."
+        "title": "حل مسائل دنیای واقعی",
+        "description": "نظریه را به شبکه‌های واقعی حمل‌ونقل، داده‌ها، شبیه‌سازی و چالش‌های تصمیم‌گیری پیوند دهید."
       }
+  
     },
 
     "gallery": {
