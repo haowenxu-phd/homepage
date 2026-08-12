@@ -591,22 +591,125 @@ export default function InteractiveLearning_c3_optimization() {
       {/* ======================================================
           Workflow progress
       ====================================================== */}
+      <section
+          className="
+            border-t
+            border-slate-200
+            px-2
+            py-2
+          "
+        >
 
-      <WorkflowProgress
+          <div
+            className="
+              grid
+              grid-cols-[auto_minmax(0,1fr)_auto]
+              items-center
+              gap-3
+            "
+          >
 
-        currentStep={
-          currentStep
-        }
+            {/* ==================================================
+                Previous Step
+            ================================================== */}
 
-        steps={
-          workflowSteps
-        }
+            <button
+              type="button"
 
-        language={
-          language
-        }
+              onClick={
+                goPrevious
+              }
 
-      />
+              disabled={
+                currentStep === 1
+              }
+
+              className="
+                shrink-0
+                whitespace-nowrap
+                rounded
+                border
+                border-slate-300
+                px-3
+                py-2
+                text-sm
+                font-medium
+                text-slate-700
+                transition
+                hover:bg-slate-50
+                disabled:cursor-not-allowed
+                disabled:opacity-40
+              "
+            >
+              ← {t.previous}
+            </button>
+
+
+            {/* ==================================================
+                Workflow Progress
+            ================================================== */}
+
+            <div
+              className="
+                min-w-0
+                w-full
+              "
+            >
+              <WorkflowProgress
+                currentStep={
+                  currentStep
+                }
+
+                steps={
+                  workflowSteps
+                }
+
+                language={
+                  language
+                }
+              />
+            </div>
+
+
+            {/* ==================================================
+                Next Step
+            ================================================== */}
+
+            <button
+              type="button"
+
+              onClick={
+                goNext
+              }
+
+              disabled={
+                currentStep ===
+                totalSteps
+              }
+
+              className="
+                shrink-0
+                whitespace-nowrap
+                rounded
+                bg-sky-600
+                px-3
+                py-2
+                text-sm
+                font-medium
+                text-white
+                transition
+                hover:bg-sky-700
+                disabled:cursor-not-allowed
+                disabled:opacity-40
+              "
+            >
+              {t.next} →
+            </button>
+
+          </div>
+
+        </section>
+      
 
 
       {/* ======================================================
@@ -656,99 +759,15 @@ export default function InteractiveLearning_c3_optimization() {
             "
           >
 
-            {
+            { 
+         
               renderStep()
             }
 
           </div>
 
 
-          {/* ==================================================
-              Navigation
-          =================================================== */}
-
-          <div
-            className="
-              grid
-              shrink-0
-              grid-cols-2
-              gap-2
-              border-t
-              border-slate-200
-              p-2
-            "
-          >
-
-            <button
-
-              type="button"
-
-              onClick={
-                goPrevious
-              }
-
-              disabled={
-                currentStep === 1
-              }
-
-              className="
-                rounded
-                border
-                border-slate-300
-                px-2
-                py-2
-                text-sm
-                font-medium
-                text-slate-700
-                transition
-                hover:bg-slate-50
-                disabled:cursor-not-allowed
-                disabled:opacity-40
-              "
-            >
-
-              {
-                t.previous
-              }
-
-            </button>
-
-
-            <button
-
-              type="button"
-
-              onClick={
-                goNext
-              }
-
-              disabled={
-                currentStep ===
-                totalSteps
-              }
-
-              className="
-                rounded
-                bg-sky-600
-                px-2
-                py-2
-                text-sm
-                font-medium
-                text-white
-                transition
-                hover:bg-sky-700
-                disabled:cursor-not-allowed
-                disabled:opacity-40
-              "
-            >
-
-              {
-                t.next
-              }
-
-            </button>
-
-          </div>
+          
 
         </aside>
 
