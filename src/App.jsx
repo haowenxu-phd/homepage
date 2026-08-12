@@ -31,6 +31,8 @@ import InteractiveLearning from "./pages/interactive_course/interative_course.js
 import InteractiveLearning_c1_graph from "./pages/interactive_course/course_1_graph.jsx"
 import InteractiveLearning_c2_routing from "./pages/interactive_course/course_2_navigation.jsx"
 import InteractiveLearning_c3_optimization from "./pages/interactive_course/course_3_optimization.jsx"
+import InteractiveLearning_c4_Greenshields from "./pages/interactive_course/course_4_greenshields.jsx"
+
 
 // 🆕 Import the chatbot page
 import FireAgentChatPage from "./pages/projects/fire_chat/FireAgentChatPage.jsx";
@@ -71,7 +73,7 @@ export default function App() {
           <Route path="/learning/course_1" element={<InteractiveLearning_c1_graph />} /> 
           <Route path="/learning/course_2" element={<InteractiveLearning_c2_routing />} /> 
           <Route path="/learning/course_3" element={<InteractiveLearning_c3_optimization />} /> 
-
+          <Route path="/learning/course_4" element={<InteractiveLearning_c4_Greenshields />} /> 
           
           
           

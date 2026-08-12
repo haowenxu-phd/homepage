@@ -1,0 +1,1302 @@
+{
+  "type": "FeatureCollection",
+  "name": "sydney_lane_centerlines",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "lane_0001",
+      "properties": {
+        "lane_id": "lane_0001",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0024",
+          "lane_0025"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.22508,
+            -33.919532
+          ],
+          [
+            151.225727,
+            -33.919465
+          ],
+          [
+            151.2262445,
+            -33.919402500000004
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0002",
+      "properties": {
+        "lane_id": "lane_0002",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0030",
+          "lane_0040"
+        ],
+        "downstream": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226256,
+            -33.919449
+          ],
+          [
+            151.225734,
+            -33.919517
+          ],
+          [
+            151.225089,
+            -33.919594
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0003",
+      "properties": {
+        "lane_id": "lane_0003",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0025",
+          "lane_0026",
+          "lane_0038",
+          "lane_0039"
+        ],
+        "downstream": [
+          "lane_0033",
+          "lane_0034"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.22632049999999,
+            -33.9193035
+          ],
+          [
+            151.226234,
+            -33.918724
+          ],
+          [
+            151.226102,
+            -33.9179995
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0004",
+      "properties": {
+        "lane_id": "lane_0004",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0025",
+          "lane_0026",
+          "lane_0038",
+          "lane_0039"
+        ],
+        "downstream": [
+          "lane_0036"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2263505,
+            -33.9193085
+          ],
+          [
+            151.226271,
+            -33.918764
+          ],
+          [
+            151.226138,
+            -33.9180035
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0005",
+      "properties": {
+        "lane_id": "lane_0005",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0007"
+        ],
+        "downstream": [
+          "lane_0030"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226291,
+            -33.917992
+          ],
+          [
+            151.226293,
+            -33.918251
+          ],
+          [
+            151.22648,
+            -33.9193
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0006",
+      "properties": {
+        "lane_id": "lane_0006",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0007"
+        ],
+        "downstream": [
+          "lane_0031"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226291,
+            -33.917992
+          ],
+          [
+            151.22634,
+            -33.918323
+          ],
+          [
+            151.2265155,
+            -33.9192965
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0007",
+      "properties": {
+        "lane_id": "lane_0007",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0005",
+          "lane_0006"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226139,
+            -33.917248
+          ],
+          [
+            151.226291,
+            -33.917992
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0009",
+      "properties": {
+        "lane_id": "lane_0009",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0035"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.225388,
+            -33.917771
+          ],
+          [
+            151.225758,
+            -33.917818
+          ],
+          [
+            151.2259865,
+            -33.9178085
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0010",
+      "properties": {
+        "lane_id": "lane_0010",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0034"
+        ],
+        "downstream": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2260415,
+            -33.9177255
+          ],
+          [
+            151.225962,
+            -33.917388
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0011",
+      "properties": {
+        "lane_id": "lane_0011",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0035",
+          "lane_0036"
+        ],
+        "downstream": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.22607499999998,
+            -33.917719500000004
+          ],
+          [
+            151.226,
+            -33.917402
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0012",
+      "properties": {
+        "lane_id": "lane_0012",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0032",
+          "lane_0041"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226177,
+            -33.917263
+          ],
+          [
+            151.226304,
+            -33.917905
+          ],
+          [
+            151.226468,
+            -33.918847
+          ],
+          [
+            151.2265555,
+            -33.9192935
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0013",
+      "properties": {
+        "lane_id": "lane_0013",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0014"
+        ],
+        "downstream": [
+          "lane_0026",
+          "lane_0027",
+          "lane_0038"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226551,
+            -33.9203
+          ],
+          [
+            151.226504,
+            -33.919935
+          ],
+          [
+            151.2264255,
+            -33.919574999999995
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0014",
+      "properties": {
+        "lane_id": "lane_0014",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0013"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226548,
+            -33.920361
+          ],
+          [
+            151.226551,
+            -33.9203
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0015",
+      "properties": {
+        "lane_id": "lane_0015",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0026",
+          "lane_0027",
+          "lane_0038"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226548,
+            -33.920361
+          ],
+          [
+            151.2263975,
+            -33.919578
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0016",
+      "properties": {
+        "lane_id": "lane_0016",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0024",
+          "lane_0027",
+          "lane_0041"
+        ],
+        "downstream": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226657,
+            -33.9194355
+          ],
+          [
+            151.228085,
+            -33.919636
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0017",
+      "properties": {
+        "lane_id": "lane_0017",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0029",
+          "lane_0039",
+          "lane_0040"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.228074,
+            -33.919676
+          ],
+          [
+            151.22728,
+            -33.919562
+          ],
+          [
+            151.227001,
+            -33.919524
+          ],
+          [
+            151.22666900000002,
+            -33.919469
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0018",
+      "properties": {
+        "lane_id": "lane_0018",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0029",
+          "lane_0039",
+          "lane_0040"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.227001,
+            -33.919524
+          ],
+          [
+            151.226839,
+            -33.919523
+          ],
+          [
+            151.2266765,
+            -33.919497500000006
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0019",
+      "properties": {
+        "lane_id": "lane_0019",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [],
+        "downstream": [
+          "lane_0037"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226138,
+            -33.917249
+          ],
+          [
+            151.226206,
+            -33.917741500000005
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0020",
+      "properties": {
+        "lane_id": "lane_0020",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0033",
+          "lane_0037"
+        ],
+        "downstream": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226012,
+            -33.917908499999996
+          ],
+          [
+            151.225613,
+            -33.917869
+          ],
+          [
+            151.225373,
+            -33.917839
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0022",
+      "properties": {
+        "lane_id": "lane_0022",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0029",
+          "lane_0032"
+        ],
+        "downstream": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2265885,
+            -33.919568
+          ],
+          [
+            151.226641,
+            -33.919863
+          ],
+          [
+            151.22672,
+            -33.920324
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0023",
+      "properties": {
+        "lane_id": "lane_0023",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "road",
+        "upstream": [
+          "lane_0031"
+        ],
+        "downstream": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2265535,
+            -33.9195725
+          ],
+          [
+            151.226583,
+            -33.919713
+          ],
+          [
+            151.226672,
+            -33.920244
+          ],
+          [
+            151.226686,
+            -33.920331
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0024",
+      "properties": {
+        "lane_id": "lane_0024",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0001"
+        ],
+        "downstream": [
+          "lane_0016"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2262445,
+            -33.919402500000004
+          ],
+          [
+            151.22666,
+            -33.919436
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0025",
+      "properties": {
+        "lane_id": "lane_0025",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0001"
+        ],
+        "downstream": [
+          "lane_0003",
+          "lane_0004"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226245,
+            -33.919404
+          ],
+          [
+            151.226311,
+            -33.919365
+          ],
+          [
+            151.22632049999999,
+            -33.9193035
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0026",
+      "properties": {
+        "lane_id": "lane_0026",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0013",
+          "lane_0015"
+        ],
+        "downstream": [
+          "lane_0003",
+          "lane_0004"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2263975,
+            -33.919578
+          ],
+          [
+            151.226322,
+            -33.919304
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0027",
+      "properties": {
+        "lane_id": "lane_0027",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0013",
+          "lane_0015"
+        ],
+        "downstream": [
+          "lane_0016"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2264255,
+            -33.919574999999995
+          ],
+          [
+            151.226418,
+            -33.919502
+          ],
+          [
+            151.226479,
+            -33.919447
+          ],
+          [
+            151.22666,
+            -33.919436
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0029",
+      "properties": {
+        "lane_id": "lane_0029",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0017",
+          "lane_0018"
+        ],
+        "downstream": [
+          "lane_0022"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226673,
+            -33.919497
+          ],
+          [
+            151.226603,
+            -33.919493
+          ],
+          [
+            151.226585,
+            -33.919519
+          ],
+          [
+            151.2265885,
+            -33.919568
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0030",
+      "properties": {
+        "lane_id": "lane_0030",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0005"
+        ],
+        "downstream": [
+          "lane_0002"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.22648,
+            -33.9193
+          ],
+          [
+            151.226484,
+            -33.91939
+          ],
+          [
+            151.226256,
+            -33.919449
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0031",
+      "properties": {
+        "lane_id": "lane_0031",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0006"
+        ],
+        "downstream": [
+          "lane_0023"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2265155,
+            -33.9192965
+          ],
+          [
+            151.2265535,
+            -33.9195725
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0032",
+      "properties": {
+        "lane_id": "lane_0032",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0012"
+        ],
+        "downstream": [
+          "lane_0022"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226556,
+            -33.919301
+          ],
+          [
+            151.226587,
+            -33.919566
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0033",
+      "properties": {
+        "lane_id": "lane_0033",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0003"
+        ],
+        "downstream": [
+          "lane_0020"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226102,
+            -33.9179995
+          ],
+          [
+            151.226091,
+            -33.91795
+          ],
+          [
+            151.226012,
+            -33.917908499999996
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0034",
+      "properties": {
+        "lane_id": "lane_0034",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0003"
+        ],
+        "downstream": [
+          "lane_0010"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2261,
+            -33.917999
+          ],
+          [
+            151.2260415,
+            -33.9177255
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0035",
+      "properties": {
+        "lane_id": "lane_0035",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0009"
+        ],
+        "downstream": [
+          "lane_0011"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2259865,
+            -33.9178085
+          ],
+          [
+            151.226028,
+            -33.917803
+          ],
+          [
+            151.22607499999998,
+            -33.917719500000004
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0036",
+      "properties": {
+        "lane_id": "lane_0036",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0004"
+        ],
+        "downstream": [
+          "lane_0011"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226138,
+            -33.9180035
+          ],
+          [
+            151.226078,
+            -33.917721
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0037",
+      "properties": {
+        "lane_id": "lane_0037",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0019"
+        ],
+        "downstream": [
+          "lane_0020"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226206,
+            -33.917741500000005
+          ],
+          [
+            151.226149,
+            -33.917849
+          ],
+          [
+            151.226012,
+            -33.917909
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0038",
+      "properties": {
+        "lane_id": "lane_0038",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0013",
+          "lane_0015"
+        ],
+        "downstream": [
+          "lane_0003",
+          "lane_0004"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.226397,
+            -33.91958
+          ],
+          [
+            151.2263505,
+            -33.9193085
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0039",
+      "properties": {
+        "lane_id": "lane_0039",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0017",
+          "lane_0018"
+        ],
+        "downstream": [
+          "lane_0003",
+          "lane_0004"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.22666900000002,
+            -33.919469
+          ],
+          [
+            151.226435,
+            -33.919457
+          ],
+          [
+            151.226383,
+            -33.919415
+          ],
+          [
+            151.226349,
+            -33.919309
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0040",
+      "properties": {
+        "lane_id": "lane_0040",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0017",
+          "lane_0018"
+        ],
+        "downstream": [
+          "lane_0002"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2266765,
+            -33.919497500000006
+          ],
+          [
+            151.22626,
+            -33.919448
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lane_0041",
+      "properties": {
+        "lane_id": "lane_0041",
+        "road_id": null,
+        "lane_index": null,
+        "direction_rule": "coordinate_order",
+        "speed_limit_kmh": 50,
+        "lane_type": "intersect",
+        "upstream": [
+          "lane_0012"
+        ],
+        "downstream": [
+          "lane_0016"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.2265555,
+            -33.9192935
+          ],
+          [
+            151.226591,
+            -33.919411
+          ],
+          [
+            151.226657,
+            -33.9194355
+          ]
+        ]
+      }
+    }
+  ]
+}

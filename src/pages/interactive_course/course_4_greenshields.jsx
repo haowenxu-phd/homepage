@@ -1,1173 +1,1443 @@
+
 import React, {
+  useEffect,
   useMemo,
   useState,
 } from "react";
 
+ 
 
-// ============================================================
-// Course data
-// ============================================================
-
-import roadNodes
-from "./assets/course_2_navigation/data/coogee_drive_nodes.json";
-
-import roadEdges
-from "./assets/course_2_navigation/data/coogee_drive_edges.json";
-
-import routingGraph
-from "./assets/course_2_navigation/data/coogee_routing_graph.json";
+import text from "./assets/course_4_greenshields/trans/course.json";
 
 
-// ============================================================
-// Shared components
-// ============================================================
+  
+import laneCenterlines from "./assets/course_4_greenshields/data/unsw_lane_centerlines_cleaned.json";
+import routingGraph from "./assets/course_4_greenshields/data/unsw_lane_routing_graph.json";
 
-import RoutingMap
-from "./assets/course_2_navigation/components/RoutingMap";
+import TrafficMap
+  from "./assets/course_4_greenshields/components/TrafficMap";
 
-import WorkflowProgress
-from "./assets/course_2_navigation/components/WorkflowProgress";
+import {
+  astar
+} from "./assets/course_4_greenshields/routing/astar";
 
+import {
+  Vehicle
+} from "./assets/course_4_greenshields/simulation/vehicle";
 
-// ============================================================
-// Step components
-// ============================================================
+import {
+  moveVehicle
+} from "./assets/course_4_greenshields/simulation/laneMovement";
 
-import Step1ODRouting
-from "./assets/course_2_navigation/steps/step_1/Step1ODRouting";
+// =========================================================
+// Course 4
+// Microscopic Traffic Simulation + Greenshields
+// =========================================================
 
-/*
-import Step2TSP
-from "./assets/course_2_navigation/steps/step_2/Step2TSP";
-
-import Step3DynamicRouting
-from "./assets/course_2_navigation/steps/step_3/Step3DynamicRouting";
-*/
-
-
-import Step4Compare
-from "./assets/course_2_navigation/steps/step_4/Step4Compare";
-
-
-// ============================================================
-// Course translation
-// ============================================================
-
-import text
-from "./assets/course_2_navigation/trans/course.json";
-
-
-
-export default function InteractiveLearning_c2_navigation() {
-
-  // ============================================================
-  // Course UI state
-  // ============================================================
-
+export default function InteractiveLearning_c4_Greenshields() {
+  
   const [
-    language,
-    setLanguage,
-  ] = useState("en");
+  selectedRoute,
+  setSelectedRoute
+] = useState([]);
 
 
-  const [
-    currentStep,
-    setCurrentStep,
-  ] = useState(1);
+  // =======================================================
+  // Language
+  // =======================================================
 
-
-  const totalSteps = 4;
-
-
-  // ============================================================
-  // Shared OD state
-  //
-  // Store coordinates here.
-  // Later these can be snapped to routingGraph node IDs.
-  // ============================================================
-
-  const [
-    origin,
-    setOrigin,
-  ] = useState(null);
-
-
-  const [
-    destination,
-    setDestination,
-  ] = useState(null);
-
-
-  // ============================================================
-  // Snapped routing-node IDs
-  //
-  // Keep these separate from geographic coordinates.
-  // ============================================================
-
-  const [
-    originNodeId,
-    setOriginNodeId,
-  ] = useState(null);
-
-
-  const [
-    destinationNodeId,
-    setDestinationNodeId,
-  ] = useState(null);
-
-
-  // ============================================================
-  // Step 2 shared state
-  // ============================================================
-
-  const [
-    waypoints,
-    setWaypoints,
-  ] = useState([]);
-
-
-  // ============================================================
-  // Routing algorithm
-  // ============================================================
-
-  const [
-    selectedAlgorithm,
-    setSelectedAlgorithm,
-  ] = useState(
-    "dijkstra"
-  );
-
-
-  const [
-    edgeWeightMode,
-    setEdgeWeightMode,
-  ] = useState(
-    "distance"
-  );
-
-
-  // ============================================================
-  // Algorithm animation / search state
-  // ============================================================
-
-  const [
-    searchState,
-    setSearchState,
-  ] = useState(null);
-
-
-  // ============================================================
-  // Final route result
-  // ============================================================
-
-  const [
-    routeResult,
-    setRouteResult,
-  ] = useState(null);
-
-
-  // ============================================================
-  // Dynamic-network state
-  // ============================================================
-
-  const [
-    closedEdgeIds,
-    setClosedEdgeIds,
-  ] = useState([]);
-
-
-  // ============================================================
-  // Translation
-  // ============================================================
+  const [language, setLanguage] =
+    useState("en");
 
   const t =
-    text?.[language] ??
-    text.en;
+    text[language] ?? text.en;
+
+  const isRTL =
+    language === "fa";
 
 
-  const textDirection =
-    language === "fa"
-      ? "rtl"
-      : "ltr";
+  // =======================================================
+  // Simulation controls
+  // =======================================================
+
+  const [numberOfVehicles, setNumberOfVehicles] =
+    useState(20);
+
+  const [freeFlowSpeed, setFreeFlowSpeed] =
+    useState(50);
+
+  const [jamDensity, setJamDensity] =
+    useState(120);
+
+  const [isRunning, setIsRunning] =
+    useState(false);
 
 
-  // ============================================================
-  // Workflow labels
-  // ============================================================
+  // =======================================================
+  // Simulation results
+  // =======================================================
 
-  const workflowSteps =
+  const [density, setDensity] =
+    useState(0);
+
+  const [averageSpeed, setAverageSpeed] =
+    useState(0);
+
+  const [flow, setFlow] =
+    useState(0);
+
+
+  // =======================================================
+  // Vehicle state
+  //
+  // Later this will contain:
+  //
+  // {
+  //   id,
+  //   route,
+  //   routeIndex,
+  //   currentLaneId,
+  //   distanceAlongLane,
+  //   speedMps,
+  //   accelerationMps2,
+  //   lat,
+  //   lon
+  // }
+  //
+  // =======================================================
+
+  const [vehicles, setVehicles] =
+    useState([]);
+
+
+  // =======================================================
+  // Optional selected OD
+  // =======================================================
+
+  const [originLaneId, setOriginLaneId] =
+    useState("lane_0015");
+
+  const [destinationLaneId, setDestinationLaneId] =
+    useState("lane_0010");
+
+  // =======================================================
+  // Inspect data
+  // =======================================================
+
+  useEffect(() => {
+
+    console.log(
+      "Lane centerline GeoJSON:",
+      laneCenterlines
+    );
+
+    console.log(
+      "Routing graph:",
+      routingGraph
+    );
+
+  }, []);
+
+
+  // =======================================================
+  // Entry / exit lanes
+  // =======================================================
+/*
+  const entryLanes =
+    routingGraph?.entry_lanes ?? ["lane_0015"];
+
+  const exitLanes =
+    routingGraph?.exit_lanes ?? ["lane_0010"];
+*/
+ const entryLanes =
+    ["lane_0015", "lane_0013", "lane_0007"];
+
+  const exitLanes =
+   ["lane_0010", "lane_0011", "lane_0020", "lane_0002", "lane_0016"];
+
+  // =======================================================
+  // Default OD
+  // =======================================================
+
+  useEffect(() => {
+
+    if (
+      !originLaneId &&
+      entryLanes.length > 0
+    ) {
+      setOriginLaneId(
+        entryLanes[0]
+      );
+    }
+
+    if (
+      !destinationLaneId &&
+      exitLanes.length > 0
+    ) {
+      setDestinationLaneId(
+        exitLanes[0]
+      );
+    }
+
+  }, [
+    entryLanes,
+    exitLanes,
+    originLaneId,
+    destinationLaneId,
+  ]);
+
+  // =======================================================
+  // Animation
+  // =======================================================
+
+  useEffect(() => {
+
+        if (!isRunning) {
+          return;
+        }
+
+
+        let animationFrameId;
+
+        let previousTime =
+          performance.now();
+
+
+        const animate = (
+          currentTime
+        ) => {
+
+          // ---------------------------------------------
+          // Real elapsed time in seconds
+          // ---------------------------------------------
+
+          const dt =
+            Math.min(
+              (
+                currentTime -
+                previousTime
+              ) / 1000,
+              0.1
+            );
+
+
+          previousTime =
+            currentTime;
+
+
+          // ---------------------------------------------
+          // Update all vehicles
+          // ---------------------------------------------
+
+         
+          setVehicles(
+              currentVehicles => {
+
+                return currentVehicles
+                  .map(
+                    vehicle => {
+
+                      const updatedVehicle = {
+                        ...vehicle
+                      };
+
+                      moveVehicle(
+                        updatedVehicle,
+                        routingGraph,
+                        dt
+                      );
+
+                      return updatedVehicle;
+                    }
+                  )
+                  .filter(
+                    vehicle =>
+                      !vehicle.finished
+                  );
+
+              }
+            );
+           /*
+          
+
+          setVehicles(
+              currentVehicles => {
+
+                return currentVehicles
+                  .map(
+                    vehicle => {
+
+                      const updatedVehicle = {
+                        ...vehicle,
+                      };
+
+
+                      moveVehicle(
+                        updatedVehicle,
+                        routingGraph,
+                        dt
+                      );
+
+
+                      return updatedVehicle;
+
+                    }
+                  )
+
+                  // Remove vehicles that reached destination
+                  .filter(
+                    vehicle =>
+                      !vehicle.finished
+                  );
+
+              }
+            );
+          */
+
+          animationFrameId =
+            requestAnimationFrame(
+              animate
+            );
+
+        };
+
+
+        animationFrameId =
+          requestAnimationFrame(
+            animate
+          );
+
+
+        return () => {
+
+          cancelAnimationFrame(
+            animationFrameId
+          );
+
+        };
+
+      }, [
+        isRunning
+      ]);
+
+  // =======================================================
+  // Map center
+  // =======================================================
+
+  const mapCenter =
     useMemo(
       () => [
-
-        {
-          id: 1,
-          title:
-            t.steps?.step1 ??
-            "Find a Route",
-        },
-
-        /*{
-          id: 2,
-          title:
-            t.steps?.step2 ??
-            "Optimise a Tour",
-        },
-
-        {
-          id: 3,
-          title:
-            t.steps?.step3 ??
-            "Respond to Change",
-        },*/
-
-        {
-          id: 2,
-          title:
-            t.steps?.step4 ??
-            "Compare & Apply",
-        },
-
+        -33.9195,
+        151.2255,
       ],
-      [t]
+      []
     );
 
 
-  // ============================================================
-  // Previous step
-  // ============================================================
+  // =======================================================
+  // Lane style
+  // =======================================================
 
-  const goPrevious = () => {
-
-    setCurrentStep(
-      (step) =>
-        Math.max(
-          1,
-          step - 1
-        )
-    );
-
-  };
+  const laneStyle = () => ({
+    color: "#2563eb",
+    weight: 3,
+    opacity: 0.85,
+  });
 
 
-  // ============================================================
-  // Next step
-  // ============================================================
+  // =======================================================
+  // Simulation handlers
+  // =======================================================
 
-  const goNext = () => {
+    const handleStartSimulation = () => {
 
-    setCurrentStep(
-      (step) =>
-        Math.min(
-          totalSteps,
-          step + 1
-        )
-    );
-
-  };
-
-
-  // ============================================================
-  // Render current step
-  // ============================================================
-
-  const renderStep =
-    () => {
-
-      switch (
-        currentStep
+      if (
+        !selectedRoute ||
+        selectedRoute.length === 0
       ) {
 
-        // ======================================================
-        // STEP 1
-        // OD + Dijkstra / A*
-        // ======================================================
-
-        case 1:
-
-          return (
-
-            <Step1ODRouting
-
-              language={
-                language
-              }
-
-
-              // -----------------------------------------------
-              // Raw network data
-              // -----------------------------------------------
-
-              roadNodes={
-                roadNodes
-              }
-
-              roadEdges={
-                roadEdges
-              }
-
-              routingGraph={
-                routingGraph
-              }
-
-
-              // -----------------------------------------------
-              // OD geographic coordinates
-              // -----------------------------------------------
-
-              origin={
-                origin
-              }
-
-              destination={
-                destination
-              }
-
-              setOrigin={
-                setOrigin
-              }
-
-              setDestination={
-                setDestination
-              }
-
-
-              // -----------------------------------------------
-              // OD graph IDs
-              // -----------------------------------------------
-
-              originNodeId={
-                originNodeId
-              }
-
-              destinationNodeId={
-                destinationNodeId
-              }
-
-              setOriginNodeId={
-                setOriginNodeId
-              }
-
-              setDestinationNodeId={
-                setDestinationNodeId
-              }
-
-
-              // -----------------------------------------------
-              // Routing
-              // -----------------------------------------------
-
-              selectedAlgorithm={
-                selectedAlgorithm
-              }
-
-              setSelectedAlgorithm={
-                setSelectedAlgorithm
-              }
-
-              edgeWeightMode={
-                edgeWeightMode
-              }
-
-              setEdgeWeightMode={
-                setEdgeWeightMode
-              }
-
-
-              // -----------------------------------------------
-              // Search / result
-              // -----------------------------------------------
-
-              searchState={
-                searchState
-              }
-
-              setSearchState={
-                setSearchState
-              }
-
-              routeResult={
-                routeResult
-              }
-
-              setRouteResult={
-                setRouteResult
-              }
-
-            />
-
-          );
-
-
-        // ======================================================
-        // STEP 2
-        // TSP / ACO / optimisation
-        // ======================================================
-        /*
-        case 2:
-
-          return (
-
-            <Step2TSP
-
-              language={
-                language
-              }
-
-              roadNodes={
-                roadNodes
-              }
-
-              roadEdges={
-                roadEdges
-              }
-
-              routingGraph={
-                routingGraph
-              }
-
-              origin={
-                origin
-              }
-
-              destination={
-                destination
-              }
-
-              originNodeId={
-                originNodeId
-              }
-
-              destinationNodeId={
-                destinationNodeId
-              }
-
-              waypoints={
-                waypoints
-              }
-
-              setWaypoints={
-                setWaypoints
-              }
-
-              routeResult={
-                routeResult
-              }
-
-              setRouteResult={
-                setRouteResult
-              }
-
-            />
-
-          );
-
-
-        // ======================================================
-        // STEP 3
-        // Dynamic network / road closure / weighted routing
-        // ======================================================
-
-        case 3:
-
-          return (
-
-            <Step3DynamicRouting
-
-              language={
-                language
-              }
-
-              roadNodes={
-                roadNodes
-              }
-
-              roadEdges={
-                roadEdges
-              }
-
-              routingGraph={
-                routingGraph
-              }
-
-              origin={
-                origin
-              }
-
-              destination={
-                destination
-              }
-
-              originNodeId={
-                originNodeId
-              }
-
-              destinationNodeId={
-                destinationNodeId
-              }
-
-              closedEdgeIds={
-                closedEdgeIds
-              }
-
-              setClosedEdgeIds={
-                setClosedEdgeIds
-              }
-
-              edgeWeightMode={
-                edgeWeightMode
-              }
-
-              setEdgeWeightMode={
-                setEdgeWeightMode
-              }
-
-              searchState={
-                searchState
-              }
-
-              setSearchState={
-                setSearchState
-              }
-
-              routeResult={
-                routeResult
-              }
-
-              setRouteResult={
-                setRouteResult
-              }
-
-            />
-
-          );
-
-
-        // ======================================================
-        // STEP 4
-        // Compare algorithms
-        // ======================================================
-*/
-        case 2:
-
-          return (
-
-            <Step4Compare
-
-              language={
-                language
-              }
-
-              selectedAlgorithm={
-                selectedAlgorithm
-              }
-
-              edgeWeightMode={
-                edgeWeightMode
-              }
-
-              routeResult={
-                routeResult
-              }
-
-              routingGraphMetadata={
-                routingGraph?.metadata
-              }
-
-            />
-
-          );
-
-
-        default:
-
-          return null;
-
+        console.warn(
+          "Generate a route first."
+        );
+
+        return;
       }
+
+
+      const vehicle =
+        new Vehicle({
+          id: "vehicle_001",
+
+          route:
+            selectedRoute,
+
+          routingGraph,
+
+          speedMps:
+            50,
+        });
+
+
+      setVehicles([
+        vehicle
+      ]);
+
+
+      setIsRunning(
+        true
+      );
 
     };
 
 
-  // ============================================================
-  // Render page
-  // ============================================================
+  const handlePauseSimulation = () => {
+
+    setIsRunning(false);
+
+  };
+
+
+  const handleResetSimulation = () => {
+
+    setIsRunning(false);
+
+    setVehicles([]);
+
+    setDensity(0);
+
+    setAverageSpeed(0);
+
+    setFlow(0);
+
+  };
+
+
+  // =======================================================
+  // Routing placeholder
+  //
+  // Later replace this with:
+  //
+  // const route = astar(
+  //   routingGraph,
+  //   originLaneId,
+  //   destinationLaneId
+  // );
+  //
+  // =======================================================
+
+    const handleGenerateRoute = () => {
+
+        if (
+          !originLaneId ||
+          !destinationLaneId
+        ) {
+          console.warn(
+            "Origin or destination lane is missing."
+          );
+
+          return;
+        }
+
+
+        const route = astar(
+          routingGraph,
+          originLaneId,
+          destinationLaneId
+        );
+
+
+        console.log(
+          "Origin:",
+          originLaneId
+        );
+
+        console.log(
+          "Destination:",
+          destinationLaneId
+        );
+
+        console.log(
+          "Generated route:",
+          route
+        );
+
+
+        setSelectedRoute(
+          route
+        );
+
+      };
+
+  // =======================================================
+  // Render
+  // =======================================================
 
   return (
 
     <main
+      dir={
+        isRTL
+          ? "rtl"
+          : "ltr"
+      }
       className="
+        flex
+        h-screen
         w-full
-        bg-white
-        px-3
-        py-3
+        flex-col
+        bg-slate-50
+        p-4
       "
     >
 
-      {/* ======================================================
-          Header
-      ====================================================== */}
+      {/* ==================================================
+          Top bar
+      =================================================== */}
 
-      <section
+      <header
         className="
-          grid
-          grid-cols-[minmax(0,1fr)_120px]
-          gap-2
-        "
-      >
-
-        {/* Course title */}
-
-        <div
-          className="
-            flex
-            items-center
-            justify-center
-            border
-            border-sky-400
-            px-3
-            py-2
-          "
-        >
-
-          <h2
-            dir={
-              textDirection
-            }
-            className="
-              text-center
-              text-2xl
-              font-semibold
-              text-slate-900
-            "
-          >
-
-            {
-              t.courseTitle
-            }
-
-          </h2>
-
-        </div>
-
-
-        {/* Language */}
-
-        <div
-          className="
-            flex
-            flex-col
-            justify-center
-            border
-            border-sky-400
-            px-2
-            py-1
-          "
-        >
-
-          <label
-            htmlFor="navigation-language"
-            className="
-              mb-1
-              text-xs
-              text-slate-500
-            "
-          >
-
-            {
-              t.language
-            }
-
-          </label>
-
-
-          <select
-
-            id="navigation-language"
-
-            value={
-              language
-            }
-
-            onChange={
-              (event) =>
-                setLanguage(
-                  event.target.value
-                )
-            }
-
-            className="
-              w-full
-              rounded
-              border
-              border-slate-300
-              bg-white
-              px-2
-              py-1
-              text-sm
-            "
-          >
-
-            <option value="en">
-              English
-            </option>
-
-            <option value="zh">
-              中文
-            </option>
-
-            <option value="fa">
-              فارسی
-            </option>
-
-          </select>
-
-        </div>
-
-      </section>
-
-
-      {/* ======================================================
-          Introduction
-      ====================================================== */}
-
-      <section
-        className="
-          mt-2
+          mb-3
+          flex
+          shrink-0
+          items-center
+          justify-between
+          gap-4
+          rounded-lg
           border
-          border-sky-400
-          px-3
-          py-2
+          border-slate-200
+          bg-white
+          px-4
+          py-3
+          shadow-sm
         "
       >
 
-        <p
-          dir={
-            textDirection
+        <div
+          className="
+            min-w-0
+            flex-1
+            text-center
+          "
+        >
+
+          <h3
+            className="
+              text-xl
+              font-semibold
+              text-slate-800
+            "
+          >
+            {t.courseTitle}
+          </h3>
+
+        </div>
+
+
+        {/* Language selector */}
+
+        <select
+          value={language}
+          onChange={
+            (event) =>
+              setLanguage(
+                event.target.value
+              )
           }
           className="
-            text-center
+            shrink-0
+            rounded-md
+            border
+            border-slate-300
+            bg-white
+            px-3
+            py-2
             text-sm
-            leading-5
             text-slate-700
           "
         >
 
-          {
-            t.introduction
-          }
+          <option value="en">
+            English
+          </option>
 
-        </p>
+          <option value="zh">
+            中文
+          </option>
 
-      </section>
+          <option value="fa">
+            فارسی
+          </option>
 
+        </select>
 
-      {/* ======================================================
-          Workflow progress
-      ====================================================== */}
-      <section
-                className="
-                  border-t
-                  border-slate-200
-                  px-2
-                  py-2
-                "
-              >
-      
-                <div
-                  className="
-                    grid
-                    grid-cols-[auto_minmax(0,1fr)_auto]
-                    items-center
-                    gap-3
-                  "
-                >
-      
-                  {/* ==================================================
-                      Previous Step
-                  ================================================== */}
-      
-                  <button
-                    type="button"
-      
-                    onClick={
-                      goPrevious
-                    }
-      
-                    disabled={
-                      currentStep === 1
-                    }
-      
-                    className="
-                      shrink-0
-                      whitespace-nowrap
-                      rounded
-                      border
-                      border-slate-300
-                      px-3
-                      py-2
-                      text-sm
-                      font-medium
-                      text-slate-700
-                      transition
-                      hover:bg-slate-50
-                      disabled:cursor-not-allowed
-                      disabled:opacity-40
-                    "
-                  >
-                    ← {t.previous}
-                  </button>
-      
-      
-                  {/* ==================================================
-                      Workflow Progress
-                  ================================================== */}
-      
-                  <div
-                    className="
-                      min-w-0
-                      w-full
-                    "
-                  >
-                    <WorkflowProgress
-                      currentStep={
-                        currentStep
-                      }
-      
-                      steps={
-                        workflowSteps
-                      }
-      
-                      language={
-                        language
-                      }
-                    />
-                  </div>
-      
-      
-                  {/* ==================================================
-                      Next Step
-                  ================================================== */}
-      
-                  <button
-                    type="button"
-      
-                    onClick={
-                      goNext
-                    }
-      
-                    disabled={
-                      currentStep ===
-                      totalSteps
-                    }
-      
-                    className="
-                      shrink-0
-                      whitespace-nowrap
-                      rounded
-                      bg-sky-600
-                      px-3
-                      py-2
-                      text-sm
-                      font-medium
-                      text-white
-                      transition
-                      hover:bg-sky-700
-                      disabled:cursor-not-allowed
-                      disabled:opacity-40
-                    "
-                  >
-                    {t.next} →
-                  </button>
-      
-                </div>
-      
-              </section>
+      </header>
 
 
-      {/* ======================================================
-    Main learning interface
-
-    Desktop:
-    ~45% control panel
-    ~55% Leaflet map
-
-    Mobile:
-    stacked vertically
-====================================================== */}
+      {/* ==================================================
+          Main layout
+      =================================================== */}
 
       <section
         className="
-          mt-2
           grid
-          grid-cols-1
-          gap-2
-          lg:grid-cols-[minmax(420px,0.9fr)_minmax(0,1.1fr)]
+          min-h-0
+          flex-1
+          grid-cols-[300px_minmax(0,1fr)]
+          gap-4
         "
       >
 
-        {/* ====================================================
-            Step control panel
-        ===================================================== */}
+        {/* =================================================
+            Left sidebar
+        ================================================== */}
 
         <aside
           className="
             flex
-            h-[620px]
+            min-h-0
             flex-col
-            overflow-hidden
-            border
-            border-sky-400
-            bg-white
+            gap-3
+            overflow-y-auto
           "
         >
 
-          {/* Current step content */}
+          {/* -----------------------------------------------
+              Course introduction
+          ------------------------------------------------ */}
 
-          <div
+          <section
             className="
-              min-h-0
-              flex-1
-              overflow-y-auto
+              rounded-lg
+              border
+              border-slate-200
+              bg-white
+              p-4
+              shadow-sm
             "
           >
 
-            {
-              renderStep()
-            }
+            <h4
+              className="
+                text-sm
+                font-semibold
+                text-slate-800
+              "
+            >
+              {t.introductionTitle}
+            </h4>
 
-          </div>
+            <p
+              className="
+                mt-2
+                text-sm
+                leading-5
+                text-slate-600
+              "
+            >
+              {t.introductionText}
+            </p>
 
 
-          {/* ==================================================
-              Navigation
-          =================================================== */}
+            <div
+              className="
+                mt-3
+                rounded-md
+                bg-slate-50
+                p-3
+              "
+            >
 
-          
+              <div
+                className="
+                  text-xs
+                  font-semibold
+                  text-slate-700
+                "
+              >
+                {t.learningGoal}
+              </div>
+
+              <p
+                className="
+                  mt-1
+                  text-xs
+                  leading-5
+                  text-slate-600
+                "
+              >
+                {t.learningGoalText}
+              </p>
+
+            </div>
+
+          </section>
+
+
+          {/* -----------------------------------------------
+              Simulation controls
+          ------------------------------------------------ */}
+
+          <section
+            className="
+              rounded-lg
+              border
+              border-slate-200
+              bg-white
+              p-4
+              shadow-sm
+            "
+          >
+
+            <h4
+              className="
+                mb-4
+                text-sm
+                font-semibold
+                text-slate-800
+              "
+            >
+              {t.simulationControls}
+            </h4>
+
+
+            {/* Number of vehicles */}
+
+            <div
+              className="
+                mb-4
+              "
+            >
+
+              <div
+                className="
+                  mb-1
+                  flex
+                  items-center
+                  justify-between
+                  gap-2
+                "
+              >
+
+                <label
+                  htmlFor="vehicle-count"
+                  className="
+                    text-xs
+                    font-medium
+                    text-slate-700
+                  "
+                >
+                  {t.numberOfVehicles}
+                </label>
+
+                <span
+                  className="
+                    text-xs
+                    text-slate-500
+                  "
+                >
+                  {numberOfVehicles}
+                </span>
+
+              </div>
+
+              <input
+                id="vehicle-count"
+                type="range"
+                min="1"
+                max="100"
+                step="1"
+                value={
+                  numberOfVehicles
+                }
+                onChange={
+                  (event) =>
+                    setNumberOfVehicles(
+                      Number(
+                        event.target.value
+                      )
+                    )
+                }
+                className="
+                  w-full
+                "
+              />
+
+            </div>
+
+
+            {/* Free-flow speed */}
+
+            <div
+              className="
+                mb-4
+              "
+            >
+
+              <div
+                className="
+                  mb-1
+                  flex
+                  items-center
+                  justify-between
+                  gap-2
+                "
+              >
+
+                <label
+                  htmlFor="free-flow-speed"
+                  className="
+                    text-xs
+                    font-medium
+                    text-slate-700
+                  "
+                >
+                  {t.freeFlowSpeed}
+                </label>
+
+                <span
+                  className="
+                    text-xs
+                    text-slate-500
+                  "
+                >
+                  {freeFlowSpeed}
+                  {" "}
+                  {t.speedUnit}
+                </span>
+
+              </div>
+
+              <input
+                id="free-flow-speed"
+                type="range"
+                min="20"
+                max="100"
+                step="5"
+                value={
+                  freeFlowSpeed
+                }
+                onChange={
+                  (event) =>
+                    setFreeFlowSpeed(
+                      Number(
+                        event.target.value
+                      )
+                    )
+                }
+                className="
+                  w-full
+                "
+              />
+
+            </div>
+
+
+            {/* Jam density */}
+
+            <div
+              className="
+                mb-4
+              "
+            >
+
+              <div
+                className="
+                  mb-1
+                  flex
+                  items-center
+                  justify-between
+                  gap-2
+                "
+              >
+
+                <label
+                  htmlFor="jam-density"
+                  className="
+                    text-xs
+                    font-medium
+                    text-slate-700
+                  "
+                >
+                  {t.jamDensity}
+                </label>
+
+                <span
+                  className="
+                    text-xs
+                    text-slate-500
+                  "
+                >
+                  {jamDensity}
+                  {" "}
+                  {t.densityUnit}
+                </span>
+
+              </div>
+
+              <input
+                id="jam-density"
+                type="range"
+                min="50"
+                max="200"
+                step="5"
+                value={
+                  jamDensity
+                }
+                onChange={
+                  (event) =>
+                    setJamDensity(
+                      Number(
+                        event.target.value
+                      )
+                    )
+                }
+                className="
+                  w-full
+                "
+              />
+
+            </div>
+
+
+            {/* ---------------------------------------------
+                Origin lane
+            ---------------------------------------------- */}
+
+            <div
+              className="
+                mb-3
+              "
+            >
+
+              <label
+                className="
+                  mb-1
+                  block
+                  text-xs
+                  font-medium
+                  text-slate-700
+                "
+              >
+                Origin Lane
+              </label>
+
+              <select
+                value={
+                  originLaneId
+                }
+                onChange={
+                  (event) =>
+                    setOriginLaneId(
+                      event.target.value
+                    )
+                }
+                className="
+                  w-full
+                  rounded-md
+                  border
+                  border-slate-300
+                  bg-white
+                  px-2
+                  py-2
+                  text-xs
+                  text-slate-700
+                "
+              >
+
+                {entryLanes.map(
+                  (laneId) => (
+
+                    <option
+                      key={
+                        laneId
+                      }
+                      value={
+                        laneId
+                      }
+                    >
+                      {laneId}
+                    </option>
+
+                  )
+                )}
+
+              </select>
+
+            </div>
+
+
+            {/* ---------------------------------------------
+                Destination lane
+            ---------------------------------------------- */}
+
+            <div
+              className="
+                mb-4
+              "
+            >
+
+              <label
+                className="
+                  mb-1
+                  block
+                  text-xs
+                  font-medium
+                  text-slate-700
+                "
+              >
+                Destination Lane
+              </label>
+
+              <select
+                value={
+                  destinationLaneId
+                }
+                onChange={
+                  (event) =>
+                    setDestinationLaneId(
+                      event.target.value
+                    )
+                }
+                className="
+                  w-full
+                  rounded-md
+                  border
+                  border-slate-300
+                  bg-white
+                  px-2
+                  py-2
+                  text-xs
+                  text-slate-700
+                "
+              >
+
+                {exitLanes.map(
+                  (laneId) => (
+
+                    <option
+                      key={
+                        laneId
+                      }
+                      value={
+                        laneId
+                      }
+                    >
+                      {laneId}
+                    </option>
+
+                  )
+                )}
+
+              </select>
+
+            </div>
+
+
+            {/* Generate route */}
+
+            <button
+              type="button"
+              onClick={
+                handleGenerateRoute
+              }
+              className="
+                mb-2
+                w-full
+                rounded-md
+                border
+                border-blue-500
+                bg-blue-50
+                px-3
+                py-2
+                text-sm
+                font-medium
+                text-blue-700
+                transition
+                hover:bg-blue-100
+              "
+            >
+              {t.generateRoute}
+            </button>
+
+
+            {/* Start / Pause / Reset */}
+
+            <div
+              className="
+                grid
+                grid-cols-2
+                gap-2
+              "
+            >
+
+              {!isRunning ? (
+
+                <button
+                  type="button"
+                  onClick={
+                    handleStartSimulation
+                  }
+                  className="
+                    rounded-md
+                    bg-blue-600
+                    px-3
+                    py-2
+                    text-sm
+                    font-medium
+                    text-white
+                    transition
+                    hover:bg-blue-700
+                  "
+                >
+                  {t.start}
+                </button>
+
+              ) : (
+
+                <button
+                  type="button"
+                  onClick={
+                    handlePauseSimulation
+                  }
+                  className="
+                    rounded-md
+                    bg-amber-500
+                    px-3
+                    py-2
+                    text-sm
+                    font-medium
+                    text-white
+                    transition
+                    hover:bg-amber-600
+                  "
+                >
+                  {t.pause}
+                </button>
+
+              )}
+
+
+              <button
+                type="button"
+                onClick={
+                  handleResetSimulation
+                }
+                className="
+                  rounded-md
+                  border
+                  border-slate-300
+                  bg-white
+                  px-3
+                  py-2
+                  text-sm
+                  font-medium
+                  text-slate-700
+                  transition
+                  hover:bg-slate-50
+                "
+              >
+                {t.reset}
+              </button>
+
+            </div>
+
+          </section>
+
+
+          {/* -----------------------------------------------
+              Results
+          ------------------------------------------------ */}
+
+          <section
+            className="
+              rounded-lg
+              border
+              border-slate-200
+              bg-white
+              p-4
+              shadow-sm
+            "
+          >
+
+            <h4
+              className="
+                mb-3
+                text-sm
+                font-semibold
+                text-slate-800
+              "
+            >
+              {t.resultSummary}
+            </h4>
+
+
+            <div
+              className="
+                grid
+                gap-2
+              "
+            >
+
+              <Metric
+                label={
+                  t.density
+                }
+                value={
+                  `${density.toFixed(1)} ${t.densityUnit}`
+                }
+              />
+
+              <Metric
+                label={
+                  t.averageSpeed
+                }
+                value={
+                  `${averageSpeed.toFixed(1)} ${t.speedUnit}`
+                }
+              />
+
+              <Metric
+                label={
+                  t.trafficFlow
+                }
+                value={
+                  `${flow.toFixed(1)} ${t.flowUnit}`
+                }
+              />
+
+            </div>
+
+
+            {/* Chart placeholder */}
+
+            <div
+              className="
+                mt-4
+                flex
+                min-h-[130px]
+                items-center
+                justify-center
+                rounded-md
+                border
+                border-dashed
+                border-slate-300
+                bg-slate-50
+                p-4
+                text-center
+                text-xs
+                text-slate-400
+              "
+            >
+              {t.speedDensityRelationship}
+            </div>
+
+          </section>
 
         </aside>
 
 
-        {/* ====================================================
-            Shared persistent Leaflet map
-        ===================================================== */}
+        {/* =================================================
+            Leaflet simulation area
+        ================================================== */}
 
-          <div
+        
+
+          <section
             className="
-              flex
-              h-[620px]
-              min-w-0
-              flex-col
+              relative
+              min-h-0
               overflow-hidden
+              rounded-lg
               border
-              border-sky-400
+              border-slate-200
               bg-white
+              shadow-sm
             "
           >
+            <TrafficMap
+              laneGeoJSON={
+                laneCenterlines
+              }
+              selectedRoute={
+                selectedRoute
+              }
+              vehicles={
+                vehicles
+              }
+              t={
+                t
+              }
+            />
+          </section>
 
-          {/* Map header */}
+
+          {/* -----------------------------------------------
+              Map title
+          ------------------------------------------------ */}
 
           <div
             className="
-              shrink-0
-              border-b
+              pointer-events-none
+              absolute
+              left-4
+              top-4
+              z-[1000]
+              rounded-lg
+              border
               border-slate-200
-              px-3
-              py-2
+              bg-white/95
+              px-4
+              py-3
+              shadow-md
+              backdrop-blur
             "
           >
 
             <div
               className="
-                flex
-                items-center
-                justify-between
-                gap-3
+                text-sm
+                font-semibold
+                text-slate-800
               "
             >
+              {t.mapTitle}
+            </div>
 
-              <h4
-                dir={
-                  textDirection
-                }
-                className="
-                  text-base
-                  font-semibold
-                  text-slate-900
-                "
-              >
-
-                {
-                  t.mapTitle
-                }
-
-              </h4>
-
-
-              {/* Optional network stats */}
-
-              <div
-                className="
-                  text-xs
-                  text-slate-500
-                "
-              >
-
-                {
-                  routingGraph
-                    ?.metadata
-                    ?.node_count ??
-                  "—"
-                }
-
-                {" nodes · "}
-
-                {
-                  routingGraph
-                    ?.metadata
-                    ?.edge_count ??
-                  "—"
-                }
-
-                {" directed edges"}
-
-              </div>
-
+            <div
+              className="
+                mt-1
+                text-xs
+                text-slate-500
+              "
+            >
+              {t.mapSubtitle}
             </div>
 
           </div>
 
 
-          {/* Leaflet */}
+          {/* -----------------------------------------------
+              Simulation status
+          ------------------------------------------------ */}
 
           <div
             className="
-              min-h-0
-              flex-1
+              pointer-events-none
+              absolute
+              right-4
+              top-4
+              z-[1000]
+              rounded-lg
+              border
+              border-slate-200
+              bg-white/95
+              px-3
+              py-2
+              shadow-md
             "
           >
 
-            <RoutingMap
-
-              // ---------------------------------------------
-              // Geographic display data
-              // ---------------------------------------------
-
-              roadNodes={
-                roadNodes
+            <span
+              className="
+                text-xs
+                font-medium
+                text-slate-700
+              "
+            >
+              {t.status}
+              {": "}
+              {
+                isRunning
+                  ? t.running
+                  : t.paused
               }
-
-              roadEdges={
-                roadEdges
-              }
-
-
-              // ---------------------------------------------
-              // Routing graph
-              // ---------------------------------------------
-
-              routingGraph={
-                routingGraph
-              }
-
-
-              // ---------------------------------------------
-              // Current workflow
-              // ---------------------------------------------
-
-              currentStep={
-                currentStep
-              }
-
-
-              // ---------------------------------------------
-              // OD geographic coordinates
-              // ---------------------------------------------
-
-              origin={
-                origin
-              }
-
-              destination={
-                destination
-              }
-
-              setOrigin={
-                setOrigin
-              }
-
-              setDestination={
-                setDestination
-              }
-
-
-              // ---------------------------------------------
-              // OD routing IDs
-              // ---------------------------------------------
-
-              originNodeId={
-                originNodeId
-              }
-
-              destinationNodeId={
-                destinationNodeId
-              }
-
-              setOriginNodeId={
-                setOriginNodeId
-              }
-
-              setDestinationNodeId={
-                setDestinationNodeId
-              }
-
-
-              // ---------------------------------------------
-              // Step 2
-              // ---------------------------------------------
-
-              waypoints={
-                waypoints
-              }
-
-              setWaypoints={
-                setWaypoints
-              }
-
-
-              // ---------------------------------------------
-              // Search visualization
-              // ---------------------------------------------
-
-              searchState={
-                searchState
-              }
-
-
-              // ---------------------------------------------
-              // Final route
-              // ---------------------------------------------
-
-              routeResult={
-                routeResult
-              }
-
-
-              // ---------------------------------------------
-              // Step 3
-              // ---------------------------------------------
-
-              closedEdgeIds={
-                closedEdgeIds
-              }
-
-            />
+            </span>
 
           </div>
 
-        </div>
 
-      </section>
+          {/* -----------------------------------------------
+              Debug / vehicle count
+          ------------------------------------------------ */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              bottom-4
+              right-4
+              z-[1000]
+              rounded-md
+              bg-white/95
+              px-3
+              py-2
+              text-xs
+              text-slate-600
+              shadow
+            "
+          >
+            {vehicles.length}
+            {" "}
+            {t.vehicleUnit}
+          </div>
+
+        </section>
+
+ 
 
     </main>
+
+  );
+
+}
+
+
+// =========================================================
+// Metric component
+// =========================================================
+
+function Metric({
+  label,
+  value,
+}) {
+
+  return (
+
+    <div
+      className="
+        flex
+        items-center
+        justify-between
+        gap-3
+        rounded-md
+        bg-slate-50
+        px-3
+        py-2
+      "
+    >
+
+      <span
+        className="
+          text-xs
+          text-slate-500
+        "
+      >
+        {label}
+      </span>
+
+
+      <span
+        className="
+          whitespace-nowrap
+          text-sm
+          font-semibold
+          text-slate-800
+        "
+      >
+        {value}
+      </span>
+
+    </div>
 
   );
 

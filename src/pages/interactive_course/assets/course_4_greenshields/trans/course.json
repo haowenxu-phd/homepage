@@ -1,0 +1,119 @@
+{
+  "en": {
+    "courseTitle": "Course 4: Microscopic Traffic Simulation and Greenshields Traffic Flow Theory",
+
+    "introductionTitle": "Course Introduction",
+    "introductionText": "Explore how the movement of individual vehicles produces macroscopic traffic-flow relationships.",
+
+    "learningGoal": "Learning Goal",
+    "learningGoalText": "Understand the relationship between traffic density, average speed, and traffic flow using the Greenshields model.",
+
+    "simulationControls": "Simulation Controls",
+    "numberOfVehicles": "Number of Vehicles",
+    "freeFlowSpeed": "Free-flow Speed",
+    "jamDensity": "Jam Density",
+
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+
+    "resultSummary": "Result Summary",
+    "density": "Density",
+    "averageSpeed": "Average Speed",
+    "trafficFlow": "Traffic Flow",
+    "speedDensityRelationship": "Speed–Density Relationship",
+
+    "mapTitle": "UNSW Lane-based Road Network",
+    "mapSubtitle": "Continuous microscopic traffic simulation",
+
+    "status": "Status",
+    "running": "Running",
+    "paused": "Paused",
+
+    "vehicleUnit": "vehicles",
+    "densityUnit": "veh/km",
+    "speedUnit": "km/h",
+    "flowUnit": "veh/h",
+
+    "generateRoute": "Generate Route"
+
+
+  },
+
+  "zh": {
+    "courseTitle": "课程 4：微观交通仿真与 Greenshields 交通流理论",
+
+    "introductionTitle": "课程介绍",
+    "introductionText": "通过微观车辆运动观察个体车辆行为如何形成宏观交通流关系。",
+
+    "learningGoal": "学习目标",
+    "learningGoalText": "理解 Greenshields 模型中交通密度、平均速度与交通流量之间的关系。",
+
+    "simulationControls": "仿真控制",
+    "numberOfVehicles": "车辆数量",
+    "freeFlowSpeed": "自由流速度",
+    "jamDensity": "拥堵密度",
+
+    "start": "开始",
+    "pause": "暂停",
+    "reset": "重置",
+
+    "resultSummary": "结果汇总",
+    "density": "交通密度",
+    "averageSpeed": "平均速度",
+    "trafficFlow": "交通流量",
+    "speedDensityRelationship": "速度–密度关系",
+
+    "mapTitle": "UNSW 车道级道路网络",
+    "mapSubtitle": "连续微观交通仿真",
+
+    "status": "状态",
+    "running": "运行中",
+    "paused": "已暂停",
+
+    "vehicleUnit": "辆",
+    "densityUnit": "辆/公里",
+    "speedUnit": "公里/小时",
+    "flowUnit": "辆/小时",
+
+    "generateRoute": "生成路线"
+  },
+
+  "fa": {
+    "courseTitle": "درس ۴: شبیه‌سازی میکروسکوپی ترافیک و نظریه جریان ترافیک گرین‌شیلدز",
+
+    "introductionTitle": "معرفی درس",
+    "introductionText": "بررسی کنید که چگونه حرکت خودروهای منفرد به روابط ماکروسکوپی جریان ترافیک منجر می‌شود.",
+
+    "learningGoal": "هدف یادگیری",
+    "learningGoalText": "رابطه میان چگالی ترافیک، سرعت متوسط و جریان ترافیک را با استفاده از مدل گرین‌شیلدز درک کنید.",
+
+    "simulationControls": "کنترل شبیه‌سازی",
+    "numberOfVehicles": "تعداد خودروها",
+    "freeFlowSpeed": "سرعت جریان آزاد",
+    "jamDensity": "چگالی تراکم",
+
+    "start": "شروع",
+    "pause": "توقف",
+    "reset": "بازنشانی",
+
+    "resultSummary": "خلاصه نتایج",
+    "density": "چگالی",
+    "averageSpeed": "سرعت متوسط",
+    "trafficFlow": "جریان ترافیک",
+    "speedDensityRelationship": "رابطه سرعت–چگالی",
+
+    "mapTitle": "شبکه جاده‌ای مبتنی بر خطوط UNSW",
+    "mapSubtitle": "شبیه‌سازی پیوسته میکروسکوپی ترافیک",
+
+    "status": "وضعیت",
+    "running": "در حال اجرا",
+    "paused": "متوقف",
+
+    "vehicleUnit": "خودرو",
+    "densityUnit": "خودرو/کیلومتر",
+    "speedUnit": "کیلومتر/ساعت",
+    "flowUnit": "خودرو/ساعت",
+    "generateRoute": "Generate Route"
+  }
+}
