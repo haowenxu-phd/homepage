@@ -1,8 +1,9 @@
 
 import React, {
-  useEffect,
-  useMemo,
-  useState,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
 } from "react";
 
  
@@ -28,6 +29,20 @@ import {
 import {
   moveVehicle
 } from "./assets/course_4_greenshields/simulation/laneMovement";
+
+import {
+  buildLaneIndex
+} from "./assets/course_4_greenshields/simulation/laneIndex";
+
+
+import {
+  findLeader
+} from "./assets/course_4_greenshields/simulation/leaderDetection";
+
+
+import {
+  updateVehicleSpeed
+} from "./assets/course_4_greenshields/simulation/carFollowing";
 
 // =========================================================
 // Course 4
@@ -72,6 +87,12 @@ export default function InteractiveLearning_c4_Greenshields() {
   const [isRunning, setIsRunning] =
     useState(false);
 
+    
+  const [simulationTime, setSimulationTime] =
+  useState(0);
+
+  const [spawnedVehicleIds, setSpawnedVehicleIds] =
+  useState(new Set());
 
   // =======================================================
   // Simulation results
@@ -109,6 +130,14 @@ export default function InteractiveLearning_c4_Greenshields() {
   const [vehicles, setVehicles] =
     useState([]);
 
+   const simulationTimeRef =
+      useRef(0);
+
+    const spawnedVehicleIdsRef =
+      useRef(
+        new Set()
+      );
+
 
   // =======================================================
   // Optional selected OD
@@ -119,6 +148,8 @@ export default function InteractiveLearning_c4_Greenshields() {
 
   const [destinationLaneId, setDestinationLaneId] =
     useState("lane_0010");
+
+   
 
   // =======================================================
   // Inspect data
@@ -190,135 +221,236 @@ export default function InteractiveLearning_c4_Greenshields() {
   // Animation
   // =======================================================
 
-  useEffect(() => {
+    useEffect(() => {
 
-        if (!isRunning) {
-          return;
-        }
-
-
-        let animationFrameId;
-
-        let previousTime =
-          performance.now();
+    if (!isRunning) {
+      return;
+    }
 
 
-        const animate = (
-          currentTime
-        ) => {
-
-          // ---------------------------------------------
-          // Real elapsed time in seconds
-          // ---------------------------------------------
-
-          const dt =
-            Math.min(
-              (
-                currentTime -
-                previousTime
-              ) / 1000,
-              0.1
-            );
+    let animationFrameId;
 
 
-          previousTime =
-            currentTime;
+    let previousTime =
+      performance.now();
 
 
-          // ---------------------------------------------
-          // Update all vehicles
-          // ---------------------------------------------
+    const animate = (
+      currentTime
+    ) => {
 
-         
-          setVehicles(
-              currentVehicles => {
+      // =============================================
+      // Calculate timestep
+      // =============================================
 
-                return currentVehicles
-                  .map(
-                    vehicle => {
-
-                      const updatedVehicle = {
-                        ...vehicle
-                      };
-
-                      moveVehicle(
-                        updatedVehicle,
-                        routingGraph,
-                        dt
-                      );
-
-                      return updatedVehicle;
-                    }
-                  )
-                  .filter(
-                    vehicle =>
-                      !vehicle.finished
-                  );
-
-              }
-            );
-           /*
-          
-
-          setVehicles(
-              currentVehicles => {
-
-                return currentVehicles
-                  .map(
-                    vehicle => {
-
-                      const updatedVehicle = {
-                        ...vehicle,
-                      };
+      const dt =
+        Math.min(
+          (
+            currentTime -
+            previousTime
+          ) / 1000,
+          0.1
+        );
 
 
-                      moveVehicle(
-                        updatedVehicle,
-                        routingGraph,
-                        dt
+      previousTime =
+        currentTime;
+
+
+      // =============================================
+      // Advance simulation clock
+      // =============================================
+
+      simulationTimeRef.current +=
+        dt;
+
+
+      // =============================================
+      // Update simulation
+      // =============================================
+
+      setVehicles(
+          currentVehicles => {
+
+            // =============================================
+            // 1. Build shared lane occupancy index
+            // =============================================
+
+            const laneIndex =
+              buildLaneIndex(
+                currentVehicles
+              );
+
+
+            // =============================================
+            // 2. Update driving behavior + movement
+            // =============================================
+
+            let updatedVehicles =
+              currentVehicles
+                .map(
+                  vehicle => {
+
+                    const updatedVehicle = {
+                      ...vehicle
+                    };
+
+
+                    // -------------------------------------
+                    // Find leader
+                    // -------------------------------------
+
+                    const leaderInfo =
+                      findLeader(
+                        vehicle,
+                        laneIndex
                       );
 
 
-                      return updatedVehicle;
+                    // -------------------------------------
+                    // Update speed
+                    // -------------------------------------
 
-                    }
-                  )
+                    updateVehicleSpeed(
+                      updatedVehicle,
+                      leaderInfo,
+                      dt
+                    );
 
-                  // Remove vehicles that reached destination
-                  .filter(
-                    vehicle =>
-                      !vehicle.finished
+
+                    // -------------------------------------
+                    // Move vehicle using updated speed
+                    // -------------------------------------
+
+                    moveVehicle(
+                      updatedVehicle,
+                      routingGraph,
+                      dt
+                    );
+
+
+                    return updatedVehicle;
+
+                  }
+                )
+
+                // -----------------------------------------
+                // Remove completed vehicles
+                // -----------------------------------------
+
+                .filter(
+                  vehicle =>
+                    !vehicle.finished
+                );
+
+
+            // =============================================
+            // EXISTING SPAWN CODE GOES HERE
+            // =============================================
+
+            for (
+              const spec
+              of TEST_VEHICLE_SCHEDULE
+            ) {
+
+              const alreadySpawned =
+                spawnedVehicleIdsRef
+                  .current
+                  .has(
+                    spec.id
+                  );
+
+
+              const shouldSpawn =
+                simulationTimeRef.current >=
+                spec.spawnTimeS;
+
+
+              if (
+                !alreadySpawned &&
+                shouldSpawn
+              ) {
+
+                const newVehicle =
+                  new Vehicle({
+
+                    id:
+                      spec.id,
+
+                    route:
+                      selectedRoute,
+
+                    routingGraph,
+
+                    // Initial speed
+                    speedMps:
+                      spec.speedMps,
+
+                    // Desired free speed
+                    desiredSpeedMps:
+                      spec.speedMps,
+
+                  });
+
+
+                updatedVehicles.push(
+                  newVehicle
+                );
+
+
+                spawnedVehicleIdsRef
+                  .current
+                  .add(
+                    spec.id
                   );
 
               }
-            );
-          */
 
-          animationFrameId =
-            requestAnimationFrame(
-              animate
-            );
-
-        };
+            }
 
 
-        animationFrameId =
-          requestAnimationFrame(
-            animate
-          );
+            return updatedVehicles;
+
+          }
+        );
 
 
-        return () => {
+      // =============================================
+      // Request next animation frame
+      // =============================================
 
-          cancelAnimationFrame(
-            animationFrameId
-          );
+      animationFrameId =
+        requestAnimationFrame(
+          animate
+        );
 
-        };
+    };
 
-      }, [
-        isRunning
-      ]);
+
+    animationFrameId =
+      requestAnimationFrame(
+        animate
+      );
+
+
+    // ===============================================
+    // Cleanup
+    // ===============================================
+
+    return () => {
+
+      cancelAnimationFrame(
+        animationFrameId
+      );
+
+    };
+
+
+  }, [
+    isRunning,
+    routingGraph,
+    selectedRoute
+  ]);
 
   // =======================================================
   // Map center
@@ -349,45 +481,58 @@ export default function InteractiveLearning_c4_Greenshields() {
   // Simulation handlers
   // =======================================================
 
+  const TEST_VEHICLE_SCHEDULE  = [
+      {
+        id: "vehicle_001",
+        spawnTimeS: 0,
+        speedMps: 12,
+      },
+      {
+        id: "vehicle_002",
+        spawnTimeS: 2,
+        speedMps: 9,
+      },
+      {
+        id: "vehicle_003",
+        spawnTimeS: 4,
+        speedMps: 14,
+      },
+      {
+        id: "vehicle_004",
+        spawnTimeS: 7,
+        speedMps: 10,
+      },
+    ];
+
     const handleStartSimulation = () => {
 
-      if (
-        !selectedRoute ||
-        selectedRoute.length === 0
-      ) {
+          if (
+            !selectedRoute ||
+            selectedRoute.length === 0
+          ) {
 
-        console.warn(
-          "Generate a route first."
-        );
+            console.warn(
+              "Generate a route first."
+            );
 
-        return;
-      }
-
-
-      const vehicle =
-        new Vehicle({
-          id: "vehicle_001",
-
-          route:
-            selectedRoute,
-
-          routingGraph,
-
-          speedMps:
-            50,
-        });
+            return;
+          }
 
 
-      setVehicles([
-        vehicle
-      ]);
+          setVehicles([]);
 
 
-      setIsRunning(
-        true
-      );
+          simulationTimeRef.current =
+            0;
 
-    };
+
+          spawnedVehicleIdsRef.current =
+            new Set();
+
+
+          setIsRunning(true);
+
+        };
 
 
   const handlePauseSimulation = () => {

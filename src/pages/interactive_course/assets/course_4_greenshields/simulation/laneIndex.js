@@ -47,7 +47,8 @@ export function buildLaneIndex(
   }
 
 
-  // Sort vehicles from upstream to downstream
+  // Sort vehicles from beginning of lane
+  // toward end of lane
 
   for (
     const laneVehicles

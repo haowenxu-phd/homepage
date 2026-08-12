@@ -8,102 +8,91 @@ export class Vehicle {
     id,
     route,
     routingGraph,
-    speedMps = 10,
+
+    speedMps = 0,
+
+    desiredSpeedMps = 10,
+
     lengthM = 4.5,
+
   }) {
 
-    // -----------------------------------------------------
-    // Basic information
-    // -----------------------------------------------------
+    this.id =
+      id;
 
-    this.id = id;
+    this.route =
+      route;
 
-    this.route = route;
-
-
-    // -----------------------------------------------------
-    // Route state
-    // -----------------------------------------------------
-
-    this.routeIndex = 0;
+    this.routeIndex =
+      0;
 
     this.currentLaneId =
       route[0];
 
 
-    // -----------------------------------------------------
-    // Position along current lane geometry
-    // -----------------------------------------------------
+    this.segmentIndex =
+      0;
 
-    this.segmentIndex = 0;
+    this.distanceAlongSegmentM =
+      0;
 
-    this.distanceAlongSegmentM = 0;
-    this.distanceAlongLaneM = 0;
+    this.distanceAlongLaneM =
+      0;
 
 
-    // -----------------------------------------------------
-    // Vehicle dynamics
-    // -----------------------------------------------------
-
+    // Actual current speed
     this.speedMps =
       speedMps;
 
+
+    // Speed the driver would like to travel
+    this.desiredSpeedMps =
+      desiredSpeedMps;
+
+
     this.accelerationMps2 =
       0;
+
 
     this.lengthM =
       lengthM;
 
 
-    // -----------------------------------------------------
-    // Simulation state
-    // -----------------------------------------------------
+    this.finished =
+      false;
 
-    this.finished = false;
-
-
-    // -----------------------------------------------------
-    // Initial geographic position
-    // -----------------------------------------------------
 
     const firstLane =
       routingGraph.lanes[
         this.currentLaneId
       ];
 
-    if (!firstLane) {
 
-      throw new Error(
-        `Lane not found: ${this.currentLaneId}`
-      );
-
-    }
-
-
-    const firstCoordinate =
+    const [
+      lon,
+      lat
+    ] =
       firstLane.geometry_lonlat[0];
 
 
-    this.lon =
-      firstCoordinate[0];
-
-    this.lat =
-      firstCoordinate[1];
-
-
-    // -----------------------------------------------------
-    // Initial projected position
-    // -----------------------------------------------------
-
-    const firstXY =
+    const [
+      x,
+      y
+    ] =
       firstLane.geometry_xy[0];
 
 
+    this.lon =
+      lon;
+
+    this.lat =
+      lat;
+
     this.x =
-      firstXY[0];
+      x;
 
     this.y =
-      firstXY[1];
+      y;
 
   }
 

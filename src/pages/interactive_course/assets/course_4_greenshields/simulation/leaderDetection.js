@@ -2,7 +2,7 @@
 // leaderDetection.js
 // =========================================================
 
-export function findLeaderOnCurrentLane(
+export function findLeader(
   vehicle,
   laneIndex
 ) {
@@ -14,16 +14,18 @@ export function findLeaderOnCurrentLane(
 
 
   if (
-    !laneVehicles
+    !laneVehicles ||
+    laneVehicles.length <= 1
   ) {
+
     return null;
   }
 
 
-  let nearestLeader =
+  let leader =
     null;
 
-  let smallestGap =
+  let smallestGapM =
     Infinity;
 
 
@@ -32,6 +34,7 @@ export function findLeaderOnCurrentLane(
     of laneVehicles
   ) {
 
+    // Ignore self
     if (
       candidate.id ===
       vehicle.id
@@ -40,7 +43,16 @@ export function findLeaderOnCurrentLane(
     }
 
 
-    const gap =
+    // Candidate must be ahead
+    if (
+      candidate.distanceAlongLaneM <=
+      vehicle.distanceAlongLaneM
+    ) {
+      continue;
+    }
+
+
+    const gapM =
       candidate.distanceAlongLaneM
       -
       vehicle.distanceAlongLaneM
@@ -49,14 +61,14 @@ export function findLeaderOnCurrentLane(
 
 
     if (
-      gap >= 0 &&
-      gap < smallestGap
+      gapM <
+      smallestGapM
     ) {
 
-      smallestGap =
-        gap;
+      smallestGapM =
+        gapM;
 
-      nearestLeader =
+      leader =
         candidate;
 
     }
@@ -64,9 +76,7 @@ export function findLeaderOnCurrentLane(
   }
 
 
-  if (
-    !nearestLeader
-  ) {
+  if (!leader) {
     return null;
   }
 
@@ -74,10 +84,10 @@ export function findLeaderOnCurrentLane(
   return {
 
     vehicle:
-      nearestLeader,
+      leader,
 
     gapM:
-      smallestGap
+      smallestGapM,
 
   };
 
