@@ -1767,12 +1767,27 @@ export async function antColonyOptimization({
     null;
 
 
-  // ==========================================================
-  // Animation output
-  // ==========================================================
+    // ==========================================================
+    // Animation output
+    // ==========================================================
 
-  const animationFrames =
-    [];
+    const animationFrames =
+      [];
+
+
+    // ==========================================================
+    // Runtime measurement
+    //
+    // This measures cumulative ACO optimisation runtime.
+    //
+    // NOTE:
+    // Pairwise Dijkstra preprocessing has already happened above,
+    // so this measures the iterative ACO search itself.
+    // ==========================================================
+
+    const optimisationStartTime =
+      performance.now();
+
 
 
   // ==========================================================
@@ -2210,18 +2225,29 @@ export async function antColonyOptimization({
 
     const animationFrame = {
 
-      // ------------------------------------------------------
-      // Frame identity
-      // ------------------------------------------------------
+          // ------------------------------------------------------
+          // Frame identity
+          // ------------------------------------------------------
 
-      frameIndex:
-        iterationIndex,
+          frameIndex:
+            iterationIndex,
 
-      iteration:
-        iterationIndex + 1,
+          iteration:
+            iterationIndex + 1,
 
-      totalIterations:
-        safeIterations,
+          totalIterations:
+            safeIterations,
+
+
+          // ------------------------------------------------------
+          // Cumulative runtime up to THIS iteration
+          // ------------------------------------------------------
+
+          runtimeMs:
+            performance.now() -
+            optimisationStartTime,
+
+
 
 
       // ------------------------------------------------------
@@ -2321,13 +2347,7 @@ export async function antColonyOptimization({
 
                 improvement,
 
-
-      // ------------------------------------------------------
-      // Current improvement
-      // ------------------------------------------------------
-
-      improvement,
-
+ 
 
       // ------------------------------------------------------
       // Number of valid ants

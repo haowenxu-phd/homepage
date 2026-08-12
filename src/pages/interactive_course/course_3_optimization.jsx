@@ -456,7 +456,7 @@ export default function InteractiveLearning_c3_optimization() {
           "
         >
 
-          <h1
+          <h2
             dir={
               textDirection
             }
@@ -472,7 +472,7 @@ export default function InteractiveLearning_c3_optimization() {
               t.courseTitle
             }
 
-          </h1>
+          </h2>
 
         </div>
 
@@ -791,7 +791,7 @@ export default function InteractiveLearning_c3_optimization() {
               "
             >
 
-              <h2
+              <h4
                 dir={
                   textDirection
                 }
@@ -806,7 +806,7 @@ export default function InteractiveLearning_c3_optimization() {
                   t.mapTitle
                 }
 
-              </h2>
+              </h4>
 
 
               {/* Optional network stats */}

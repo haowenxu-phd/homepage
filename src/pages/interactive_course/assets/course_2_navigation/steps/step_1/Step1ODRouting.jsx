@@ -877,7 +877,7 @@ const handlePlay = async () => {
         </div>
 
 
-        <h2
+        <h4
           className="
             mt-1
             text-lg
@@ -890,7 +890,7 @@ const handlePlay = async () => {
             t.title
           }
 
-        </h2>
+        </h4>
 
 
         <p

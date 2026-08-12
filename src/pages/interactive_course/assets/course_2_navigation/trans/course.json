@@ -3,9 +3,9 @@
     "courseTitle": "Interactive Road Network Navigation",
     "introduction": "Explore how navigation and shortest-path algorithms operate on a real road network. Progress through the workflow to define an origin and destination, visualise how different algorithms search the network, evaluate route cost and computational performance, and compare their behaviour and applications.",
     "language": "Language",
-    "mapTitle": "Interactive Road Network",
-    "previous": "Previous",
-    "next": "Next",
+    "mapTitle": "Road Network (Randwick & Coogee)",
+    "previous": "Previous Step",
+    "next": "Next Step",
     "steps": {
       "step1": "Define OD Pair",
       "step2": "Search the Network",
@@ -17,7 +17,7 @@
     "courseTitle": "互动式道路网络导航",
     "introduction": "通过真实道路网络探索导航与最短路径算法的运行过程。按照课程流程定义起点与终点，观察不同算法如何搜索道路网络，评估路径成本与计算性能，并比较不同导航算法的搜索行为及适用场景。",
     "language": "语言",
-    "mapTitle": "互动道路网络",
+    "mapTitle": "道路网络 (Randwick & Coogee)",
     "previous": "上一步",
     "next": "下一步",
     "steps": {
@@ -31,7 +31,7 @@
     "courseTitle": "مسیریابی تعاملی شبکه راه",
     "introduction": "بررسی کنید که الگوریتم‌های مسیریابی و کوتاه‌ترین مسیر چگونه در یک شبکه راه واقعی عمل می‌کنند. در مراحل دوره، مبدأ و مقصد را تعریف کنید، نحوه جست‌وجوی الگوریتم‌های مختلف در شبکه را مشاهده کنید، هزینه مسیر و عملکرد محاسباتی را ارزیابی کنید و رفتار و کاربرد الگوریتم‌های مختلف مسیریابی را با یکدیگر مقایسه کنید.",
     "language": "زبان",
-    "mapTitle": "شبکه راه تعاملی",
+    "mapTitle": "شبکه راه‌ها (رندویک و کوجی)",
     "previous": "مرحله قبل",
     "next": "مرحله بعد",
     "steps": {

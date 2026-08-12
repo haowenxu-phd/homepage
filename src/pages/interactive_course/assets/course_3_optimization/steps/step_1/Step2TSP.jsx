@@ -9,6 +9,10 @@ from "./step2.json";
 import { antColonyOptimization }
 from "../../algorithms/antColonyOptimization";
 
+import {
+  simulatedAnnealing,
+} from "../../algorithms/SA";
+
 
 export default function Step1TourOptimization({
   
@@ -701,7 +705,50 @@ export default function Step1TourOptimization({
                       0
                     );
 
-            }
+            } //this is the end of aco if
+            
+            else if (
+                  selectedAlgorithm === "sa"
+                ) {
+
+                  optimisationResult =
+                    await simulatedAnnealing({
+
+                      routingGraph,
+
+                      originNodeId,
+
+                      destinationNodeId,
+
+                      waypointNodeIds:
+                        waypoints.map(
+                          waypoint =>
+                            String(
+                              waypoint.nodeId
+                            )
+                        ),
+
+                      iterations,
+
+
+                      // ================================================
+                      // SA-specific parameters
+                      // ================================================
+
+                      initialTemperature:
+                        100,
+
+                      coolingRate:
+                        0.95,
+
+                      minimumTemperature:
+                        0.001,
+
+                    });
+
+                }
+                
+            
 
             else {
 
@@ -1055,6 +1102,101 @@ export default function Step1TourOptimization({
               null;
 
               // ============================================================
+              // Display metrics for current animation frame
+              // ============================================================
+
+              const displayedRuntime =
+                currentAnimationFrame
+                  ?.runtimeMs ??
+                metrics.runtimeMs;
+
+
+              const displayedBestCost =
+                currentAnimationFrame
+                  ?.bestCost ??
+                metrics.bestCost;
+
+
+              const displayedIterations =
+                currentAnimationFrame
+                  ?.iteration ??
+                metrics.iterationsCompleted;
+
+
+              const displayedTotalIterations =
+                currentAnimationFrame
+                  ?.totalIterations ??
+                metrics.iterationsCompleted;
+
+
+              const displayedImprovement =
+                currentAnimationFrame
+                  ?.improvement ??
+                metrics.improvement;
+
+            
+                // ------------------------------------------------------------
+// Current cost
+//
+// ACO:
+// best solution produced in THIS iteration
+//
+// SA:
+// current accepted solution
+// ------------------------------------------------------------
+
+const displayedCurrentCost =
+  selectedAlgorithm === "sa"
+    ? (
+        currentAnimationFrame
+          ?.currentCost ??
+        metrics.bestCost
+      )
+    : (
+        currentAnimationFrame
+          ?.iterationBestCost ??
+        currentAnimationFrame
+          ?.candidateCost ??
+        metrics.bestCost
+      );
+
+ 
+
+          // ------------------------------------------------------------
+          // Current iteration
+          // ------------------------------------------------------------
+
+        
+ 
+
+              // ============================================================
+                // Metrics displayed for the CURRENT animation iteration
+                // ============================================================
+              /*
+                const displayedRuntime =
+                  currentAnimationFrame
+                    ?.runtimeMs ??
+                  metrics.runtimeMs;
+
+                const displayedBestCost =
+                  currentAnimationFrame
+                    ?.bestCost ??
+                  metrics.bestCost;
+
+
+
+                const displayedIterations =
+                  currentAnimationFrame
+                    ?.iteration ??
+                  metrics.iterationsCompleted;
+
+
+                const displayedImprovement =
+                  currentAnimationFrame
+                    ?.improvement ??
+                  metrics.improvement;*/
+
+              // ============================================================
               // Send current ACO animation frame to parent / Leaflet
               // ============================================================
 
@@ -1166,7 +1308,8 @@ export default function Step1TourOptimization({
         className="
           border-b
           border-slate-200
-          p-3
+          px-3
+          py-1
         "
       >
 
@@ -1185,7 +1328,7 @@ export default function Step1TourOptimization({
         </div>
 
 
-        <h2
+        <h4
           className="
             mt-1
             text-lg
@@ -1196,7 +1339,7 @@ export default function Step1TourOptimization({
           {
             t.title
           }
-        </h2>
+        </h4>
 
 
         <p
@@ -1223,7 +1366,8 @@ export default function Step1TourOptimization({
         className="
           border-b
           border-slate-200
-          p-3
+          px-3
+          py-1
         "
       >
 
@@ -1280,7 +1424,7 @@ export default function Step1TourOptimization({
               border
               border-slate-300
               px-2
-              py-2
+              <py-1></py-1>
               text-sm
             "
           />
@@ -1315,7 +1459,7 @@ export default function Step1TourOptimization({
 
         <p
           className="
-            mt-2
+            mt-1
             text-xs
             leading-5
             text-slate-500
@@ -1333,87 +1477,8 @@ export default function Step1TourOptimization({
           Algorithm
       ====================================================== */}
 
-      <section
-        className="
-          border-b
-          border-slate-200
-          p-3
-        "
-      >
-
-        <label
-          htmlFor="tsp-algorithm"
-          className="
-            text-xs
-            font-semibold
-            text-slate-700
-          "
-        >
-          {
-            t.algorithm
-          }
-        </label>
-
-
-        <select
-
-          id="tsp-algorithm"
-
-          value={
-            selectedAlgorithm
-          }
-
-          onChange={
-            (event) =>
-              setSelectedAlgorithm(
-                event.target.value
-              )
-          }
-
-          className="
-            mt-1
-            w-full
-            rounded
-            border
-            border-slate-300
-            bg-white
-            px-2
-            py-2
-            text-sm
-          "
-        >
-
-          <option value="nearest-neighbour">
-            {
-              t.nearestNeighbour
-            }
-          </option>
-
-          <option value="aco">
-            {
-              t.aco
-            }
-          </option>
-
-          <option value="sa">
-            {
-              t.sa
-            }
-          </option>
-
-          <option value="ga">
-            {
-              t.ga
-            }
-          </option>
-
-        </select>
-
-      </section>
-
-
       {/* ======================================================
-          Iterations
+    Algorithm + Iterations
       ====================================================== */}
 
       <section
@@ -1424,54 +1489,159 @@ export default function Step1TourOptimization({
         "
       >
 
-        <label
-          htmlFor="iterations"
+        <div
           className="
-            text-xs
-            font-semibold
-            text-slate-700
+            grid
+            grid-cols-[minmax(0,2fr)_minmax(90px,1fr)]
+            gap-3
+            items-end
           "
         >
-          {
-            t.iterations
-          }
-        </label>
+
+          {/* ====================================================
+              Algorithm
+          ==================================================== */}
+
+          <div>
+
+            <label
+              htmlFor="tsp-algorithm"
+              className="
+                block
+                text-xs
+                font-semibold
+                text-slate-700
+              "
+            >
+              {
+                t.algorithm
+              }
+            </label>
 
 
-        <input
+            <select
+              id="tsp-algorithm"
 
-          id="iterations"
+              value={
+                selectedAlgorithm
+              }
 
-          type="number"
+              onChange={
+                (event) =>
+                  setSelectedAlgorithm(
+                    event.target.value
+                  )
+              }
 
-          min="1"
+              className="
+                mt-1
+                w-full
+                rounded
+                border
+                border-slate-300
+                bg-white
+                px-2
+                py-1
+                text-sm
+              "
+            >
 
-          max="1000"
+              <option
+                value="nearest-neighbour"
+                disabled
+              >
+                {
+                  t.nearestNeighbour
+                }
+              </option>
 
-          value={
-            iterations
-          }
 
-          onChange={
-            (event) =>
-              setIterations(
-                Number(
-                  event.target.value
-                )
-              )
-          }
+              <option value="aco">
+                {
+                  t.aco
+                }
+              </option>
 
-          className="
-            mt-1
-            w-full
-            rounded
-            border
-            border-slate-300
-            px-2
-            py-2
-            text-sm
-          "
-        />
+
+              <option value="sa">
+                {
+                  t.sa
+                }
+              </option>
+
+
+              <option
+                value="ga"
+                disabled
+              >
+                {
+                  t.ga
+                }
+              </option>
+
+            </select>
+
+          </div>
+
+
+          {/* ====================================================
+              Iterations
+          ==================================================== */}
+
+          <div>
+
+            <label
+              htmlFor="iterations"
+              className="
+                block
+                text-xs
+                font-semibold
+                text-slate-700
+              "
+            >
+              {
+                t.iterations
+              }
+            </label>
+
+
+            <input
+              id="iterations"
+
+              type="number"
+
+              min="1"
+              max="1000"
+
+              value={
+                iterations
+              }
+
+              onChange={
+                (event) =>
+                  setIterations(
+                    Number(
+                      event.target.value
+                    )
+                  )
+              }
+
+              className="
+                mt-1
+                w-full
+                rounded
+                border
+                border-slate-300
+                bg-white
+                px-2
+                py-1
+                text-sm
+              "
+            />
+
+          </div>
+
+        </div>
 
       </section>
 
@@ -1484,7 +1654,8 @@ export default function Step1TourOptimization({
         className="
           border-b
           border-slate-200
-          p-3
+          px-3
+          py-2
         "
       >
 
@@ -1529,7 +1700,7 @@ export default function Step1TourOptimization({
 
         <p
           className="
-            mt-2
+            mt-1
             text-xs
             leading-5
             text-slate-500
@@ -1542,208 +1713,223 @@ export default function Step1TourOptimization({
 
       </section>
 
- {/* ======================================================
-          Animation
-      ====================================================== */}
+      {/* ======================================================
+                Animation
+            ====================================================== */}
 
 
-      <section
+            <section
         className="
-          grid
-          grid-cols-2
-          gap-2
+          border-b
+          border-slate-200
           p-3
         "
       >
+
+        <div
+          className="
+            rounded-lg
+            border
+            border-slate-200
+            p-2.5
+          "
+        >
+
+          {/* ====================================================
+              Header
+          ==================================================== */}
+
           <div
+            className="
+              flex
+              items-center
+              justify-between
+              gap-3
+            "
+          >
+
+            <span
               className="
-                mt-3
-                rounded-lg
-                border
-                border-slate-200
-                p-3
+                text-sm
+                font-semibold
+                text-slate-700
               "
             >
-
-              <div
-                className="
-                  mb-2
-                  flex
-                  items-center
-                  justify-between
-                "
-              >
-
-                <span
-                  className="
-                    text-sm
-                    font-semibold
-                    text-slate-700
-                  "
-                >
-                  ACO Search Animation
-                </span>
+              Search Animation
+            </span>
 
 
-                <span
-                  className="
-                    text-xs
-                    text-slate-500
-                  "
-                >
-
-                  Iteration{" "}
-
-                  {
-                    currentAnimationFrame
-                      ?.iteration ??
-                    0
-                  }
-
-                  {" / "}
-
-                  {
-                    animationFrames.length
-                  }
-
-                </span>
-
-              </div>
-
-
-              <div
-                className="
-                  grid
-                  grid-cols-4
-                  gap-2
-                "
-              >
-
-                <button
-                  type="button"
-                  onClick={
-                    handlePreviousIteration
-                  }
-                  className="
-                    rounded
-                    border
-                    border-slate-300
-                    px-2
-                    py-1
-                    text-sm
-                  "
-                >
-                  ◀
-                </button>
-
-
-                <button
-                  type="button"
-                  onClick={
-                    isAnimating
-                      ? handlePauseAnimation
-                      : handlePlayAnimation
-                  }
-                  className="
-                    rounded
-                    bg-sky-600
-                    px-2
-                    py-1
-                    text-sm
-                    text-white
-                  "
-                >
-
-                  {
-                    isAnimating
-                      ? "Pause"
-                      : "Play"
-                  }
-
-                </button>
-
-
-                <button
-                  type="button"
-                  onClick={
-                    handleNextIteration
-                  }
-                  className="
-                    rounded
-                    border
-                    border-slate-300
-                    px-2
-                    py-1
-                    text-sm
-                  "
-                >
-                  ▶
-                </button>
-
-
-                <button
-                  type="button"
-                  onClick={
-                    handleResetAnimation
-                  }
-                  className="
-                    rounded
-                    border
-                    border-slate-300
-                    px-2
-                    py-1
-                    text-sm
-                  "
-                >
-                  Reset
-                </button>
-
-              </div>
-
-            </div>
-
-            <input
-
-              type="range"
-
-              min={
+            <span
+              className="
+                shrink-0
+                text-xs
+                text-slate-500
+              "
+            >
+              Iteration{" "}
+              {
+                currentAnimationFrame?.iteration ??
                 0
               }
-
-              max={
-                Math.max(
-                  animationFrames.length - 1,
-                  0
-                )
+              {" / "}
+              {
+                animationFrames.length
               }
+            </span>
 
-              value={
-                animationFrameIndex
+          </div>
+
+
+          {/* ====================================================
+              Controls
+          ==================================================== */}
+
+          <div
+            className="
+              mt-2
+              grid
+              grid-cols-[40px_minmax(70px,1fr)_40px_minmax(60px,0.8fr)]
+              gap-1.5
+            "
+          >
+
+            <button
+              type="button"
+              onClick={
+                handlePreviousIteration
               }
-
-              onChange={
-                event => {
-
-                  setIsAnimating(
-                    false
-                  );
-
-
-                  setAnimationFrameIndex(
-                    Number(
-                      event.target.value
-                    )
-                  );
-
-                }
-              }
-
               className="
-                mt-3
-                w-full
+                rounded
+                border
+                border-slate-300
+                px-2
+                py-1.5
+                text-sm
+                text-slate-700
+                transition
+                hover:bg-slate-50
               "
+            >
+              ◀
+            </button>
 
-            />
+
+            <button
+              type="button"
+              onClick={
+                isAnimating
+                  ? handlePauseAnimation
+                  : handlePlayAnimation
+              }
+              className="
+                rounded
+                bg-sky-600
+                px-2
+                py-1.5
+                text-sm
+                font-medium
+                text-white
+                transition
+                hover:bg-sky-700
+              "
+            >
+              {
+                isAnimating
+                  ? "Pause"
+                  : "Play"
+              }
+            </button>
+
+
+            <button
+              type="button"
+              onClick={
+                handleNextIteration
+              }
+              className="
+                rounded
+                border
+                border-slate-300
+                px-2
+                py-1.5
+                text-sm
+                text-slate-700
+                transition
+                hover:bg-slate-50
+              "
+            >
+              ▶
+            </button>
+
+
+            <button
+              type="button"
+              onClick={
+                handleResetAnimation
+              }
+              className="
+                rounded
+                border
+                border-slate-300
+                px-2
+                py-1.5
+                text-sm
+                text-slate-700
+                transition
+                hover:bg-slate-50
+              "
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          {/* ====================================================
+              Timeline
+          ==================================================== */}
+
+          <input
+            type="range"
+
+            min={
+              0
+            }
+
+            max={
+              Math.max(
+                animationFrames.length - 1,
+                0
+              )
+            }
+
+            value={
+              animationFrameIndex
+            }
+
+            onChange={
+              (event) => {
+
+                setIsAnimating(
+                  false
+                );
+
+                setAnimationFrameIndex(
+                  Number(
+                    event.target.value
+                  )
+                );
+
+              }
+            }
+
+            className="
+              mt-2
+              w-full
+            "
+          />
+
+        </div>
 
       </section>
 
@@ -1765,10 +1951,10 @@ export default function Step1TourOptimization({
             t.runtime
           }
           value={
-            metrics.runtimeMs != null
-              ? `${metrics.runtimeMs.toFixed(2)} ms`
-              : "—"
-          }
+              displayedRuntime != null
+                ? `${displayedRuntime.toFixed(2)} ms`
+                : "—"
+            }
         />
 
 
@@ -1777,8 +1963,10 @@ export default function Step1TourOptimization({
             t.bestCost
           }
           value={
-            metrics.bestCost ??
-            "—"
+            displayedCurrentCost != null &&
+            displayedBestCost != null
+              ? `${displayedCurrentCost.toFixed(2)} / ${displayedBestCost.toFixed(2)}`
+              : "—"
           }
         />
 
@@ -1788,9 +1976,10 @@ export default function Step1TourOptimization({
             t.iterationsCompleted
           }
           value={
-            metrics.iterationsCompleted ??
-            "—"
-          }
+          displayedIterations != null
+            ? `${displayedIterations} / ${displayedTotalIterations}`
+            : "—"
+        }
         />
 
 
@@ -1799,9 +1988,10 @@ export default function Step1TourOptimization({
             t.improvement
           }
           value={
-            metrics.improvement ??
-            "—"
-          }
+              displayedImprovement != null
+                ? `${displayedImprovement.toFixed(2)}%`
+                : "—"
+            }
         />
 
       </section>

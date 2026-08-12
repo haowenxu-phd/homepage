@@ -628,7 +628,7 @@ export default function InteractiveLearning_c2_navigation() {
           "
         >
 
-          <h1
+          <h2
             dir={
               textDirection
             }
@@ -644,7 +644,7 @@ export default function InteractiveLearning_c2_navigation() {
               t.courseTitle
             }
 
-          </h1>
+          </h2>
 
         </div>
 
@@ -963,7 +963,7 @@ export default function InteractiveLearning_c2_navigation() {
               "
             >
 
-              <h2
+              <h4
                 dir={
                   textDirection
                 }
@@ -978,7 +978,7 @@ export default function InteractiveLearning_c2_navigation() {
                   t.mapTitle
                 }
 
-              </h2>
+              </h4>
 
 
               {/* Optional network stats */}
