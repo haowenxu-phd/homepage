@@ -73,6 +73,21 @@ export default function InteractiveLearning() {
           status:
             "Available",
         },
+         {
+          id: 3,
+
+          image:
+            "img/thumbnail_learning/T3_Optimize.png",
+
+          href:
+            "/learning/course_3",
+            //https://haowenxu-phd.github.io/homepage/learning/course_1
+          level:
+            "Foundation",
+
+          status:
+            "Available",
+        },
       ],
       []
     );

@@ -64,7 +64,18 @@
           "Route Optimization",
           "Algorithm Comparison"
         ]
-      }
+      },
+       "3": {
+          "title": "Route Optimization Algorithms",
+          "subtitle": "Explore how optimization algorithms solve multi-stop routing problems on road networks",
+          "description": "Interactively explore multi-stop route optimization, compare heuristic and metaheuristic search strategies, and examine how different algorithms balance solution quality, convergence, and computational effort.",
+          "badges": [
+            "ACO",
+            "Simulated Annealing",
+            "Operations Research",
+            "Multi-Objective Optimization"
+          ]
+        }
     }
   },
 
@@ -135,7 +146,18 @@
         "算法比较"
       ]
     
-    }
+    },
+    "3": {
+        "title": "路径优化",
+        "subtitle": "利用启发式与元启发式算法优化多站点出行路径",
+        "description": "通过交互式网络优化探索 TSP 路径规划、蚁群算法、模拟退火、算法收敛以及多目标权衡。",
+        "badges": [
+          "TSP",
+          "蚁群算法",
+          "模拟退火",
+          "多目标优化"
+        ]
+      }
   }
   },
 
@@ -205,7 +227,18 @@
         "بهینه‌سازی مسیر",
         "مقایسه الگوریتم‌ها"
       ]
-    }
+    },
+    "3": {
+          "title": "بهینه‌سازی مسیر",
+          "subtitle": "بهینه‌سازی سفرهای چندایستگاهی با استفاده از الگوریتم‌های ابتکاری و فراابتکاری",
+          "description": "مسیریابی مبتنی بر TSP، الگوریتم کلونی مورچگان، تبرید شبیه‌سازی‌شده، همگرایی الگوریتم‌ها و مصالحه میان اهداف متعدد را از طریق بهینه‌سازی تعاملی شبکه بررسی کنید.",
+          "badges": [
+            "TSP",
+            "ACO",
+            "SA",
+            "بهینه‌سازی چندهدفه"
+          ]
+        }
     }
   }
 }
