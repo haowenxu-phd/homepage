@@ -21,168 +21,213 @@ export default function CollabGrants() {
 
   const grants = [
     {
-      id: "grant-1",
-      type: "grant",
+        id: "grant-1",
+        type: "grant",
 
-      logo: `${import.meta.env.BASE_URL}/img/funders/unsw.png`,
+        logo: `${import.meta.env.BASE_URL}/img/funders/unsw.png`,
+        pjimg: `${import.meta.env.BASE_URL}/img/funders/ada_frg.png`,
 
-      agency: "UNSW Arts, Design & Architecture",
+        agency: "UNSW Arts, Design & Architecture",
 
-      program: "Faculty Research Grant",
+        program: "2026 Faculty Research Grants Scheme",
 
-      title_s:
-        "UNSW ADA FRG",
+        title_s: "2026 UNSW ADA Faculty Research Grant",
 
-      title:
-        "Development of Competitive External Research Funding Proposals",
+        title:
+          "Development of Competitive External Research Funding Proposals - 3D GPU-acceletrate Gas Dispersion Simulation",
 
-      amount: "AUD $7,500",
+        amount: "AUD $7,500",
 
-      role: "Principal Investigator",
+        role: "Principal Investigator",
 
-      period: "2026",
+        period: "2026",
 
-      pi: "Haowen Xu",
+        pi: "Dr Haowen Xu",
 
-      description:
-        "Competitive internal research grant supporting the development of external competitive funding applications.",
+        description:
+          `Competitive internal seed grant awarded under the 2026 UNSW Arts, Design & Architecture Faculty Research Grants Scheme to support the development of an eligible external competitive research funding application. The funded work includes the development of a GPU-accelerated voxel-based environmental simulation prototype for 3D gas dispersion and aerosol transport. A working research prototype was developed within approximately two months and is available through the project website.`,
 
-      projectUrl: null,
+        projectUrl:
+          "https://haowenxu-phd.github.io/homepage/portfolio/3d_gas_dispersion",
 
-      agencyUrl: "#",
-    },
-
-    {
-      id: "grant-2",
-      type: "grant",
-
-      logo: `${import.meta.env.BASE_URL}/img/funders/usdoe.jpg`,
-
-      agency: "U.S. Department of Energy — ARPA-E",
-
-      program: "Advanced Research Projects Agency–Energy (ARPA-E)",
-
-      title_s:
-        "ARPA-E RECOIL",
-
-      title:
-        "A Cognitive Freight Transportation Digital Twin for Resiliency and Emission Control Through Optimizing Intermodal Logistics",
-
-      amount: "USD $1,900,000",
-
-      role: "Co-Principal Investigator",
-
-      period: "FY2023–Present",
-
-      pi: "Placeholder PI / Institution",
-
-      description:
-        "Placeholder description of the project and your research contribution.",
-
-      projectUrl: "https://recoil.utk.edu/",
-
-      agencyUrl: "https://arpa-e.energy.gov/",
-    },
+        agencyUrl: "#",
+      },
 
     {
-      id: "grant-3",
-      type: "grant",
+            id: "grant-2",
+            type: "grant",
 
-      logo: `${import.meta.env.BASE_URL}/img/funders/usdoe.jpg`,
+            logo: `${import.meta.env.BASE_URL}/img/funders/usdoe.jpg`,
+            pjimg: `${import.meta.env.BASE_URL}/img/funders/recoil.png`,
 
-      agency: "U.S. Department of Energy — NNSA",
+            agency:
+              "U.S. Department of Energy — ARPA-E",
 
-      program: "Nuclear Safety Research and Development (NSRD)",
+            program:
+              "INTERMODAL Exploratory Topic",
 
-      title_s:
-        "NSRD AU 32",
-      title:
-        "ML-Assisted Atmospheric Hazard Modeling for Effective Geospatial Risk Analysis",
+            title_s:
+              "ARPA-E RECOIL",
 
-      amount: "USD $500,000",
+            title:
+              "A Cognitive Freight Transportation Digital Twin for Resiliency and Emission Control Through Optimizing Intermodal Logistics (RECOIL)",
 
-      role: "Co-Principal Investigator",
+            amount:
+              "USD $1,900,000",
 
-      period: "FY2023–Present",
+            role:
+              "Co-Principal Investigator",
 
-      pi: "Placeholder PI / Institution",
+            period:
+              "FY2023–Present",
 
-      description:
-        "Placeholder description of the project, your technical contribution, and research outcomes.",
+            pi:
+              "Prof. Xueping Li, University of Tennessee, Knoxville",
 
-      projectUrl: null,
+            awardNumber:
+              "DE-AR0001780",
 
-      agencyUrl: "#",
-    },
+            description:
+              `ARPA-E-funded research project developing RECOIL, a cognitive digital twin of the U.S. intermodal freight transportation system spanning road, rail, and waterways. The project integrates heterogeneous freight data, ontology-driven knowledge graphs, advanced analytics, optimization, and machine learning to support national-scale freight flow planning, scheduling, and optimization, as well as rapid route rescheduling during disruptions. RECOIL aims to improve freight-system efficiency and resilience while reducing life-cycle greenhouse gas emissions. The project is led by the University of Tennessee, Knoxville, in collaboration with Oak Ridge National Laboratory and West Virginia University.`,
+
+            projectUrl:
+              "https://recoil.utk.edu/",
+
+            agencyUrl:
+              "https://arpa-e.energy.gov/",
+          },
+
+          {
+            id: "grant-3",
+            type: "grant",
+
+            logo: `${import.meta.env.BASE_URL}/img/funders/usdoe.jpg`,
+            pjimg: `${import.meta.env.BASE_URL}/img/funders/nsrd.png`,
+
+            agency: "U.S. Department of Energy — NNSA",
+
+            program:
+              "Nuclear Safety Research and Development (NSR&D)",
+
+            title_s:
+              "DOE NSR&D — Atmospheric Hazard Modeling",
+
+            title:
+              "ML-Assisted Atmospheric Hazard Modeling for Effective Geospatial Risk Analysis",
+
+            amount:
+              "USD $500,000",
+
+            role:
+              "Research Team / User Interface Development Lead",
+
+            period:
+              "FY2024–FY2025",
+
+            pi:
+              "Dr. Xiao-Ying Yu, Oak Ridge National Laboratory",
+
+            description:
+              `U.S. Department of Energy nuclear safety research project developing machine-learning-assisted methods for rapid geospatial risk analysis of accidental radiological and chemical releases in complex terrain. The project integrates long-term meteorological observations, machine learning and statistical analysis, and the CAPARS high-resolution 3D atmospheric dispersion modeling system to improve consequence assessment and safety-basis analysis. My technical responsibility focused on developing the web-based geospatial visualization and visual analytics framework, including interactive interfaces for discovering, analyzing, and visualizing CAPARS simulation outputs and plume-impact scenarios. The resulting architecture combines a web front end, Python-based APIs, geospatial web services, and an online simulation data repository to support interactive risk analysis and dissemination across DOE users.`,
+
+            projectUrl:
+              null,
+
+            agencyUrl:
+              "https://www.energy.gov/ehss/nuclear-safety-research-and-development-nsrd-program",
+          },
 
     {
-      id: "grant-4",
-      type: "grant",
+        id: "grant-4",
+        type: "grant",
 
-      logo: `${import.meta.env.BASE_URL}/img/funders/usdoe.jpg`,
+        logo: `${import.meta.env.BASE_URL}/img/funders/usdoe.jpg`,
+        pjimg: `${import.meta.env.BASE_URL}/img/funders/ctwin_project.png`,
 
-      agency:
-        "U.S. Department of Energy — Vehicle Technologies Office",
+        agency:
+          "U.S. Department of Energy — Vehicle Technologies Office",
 
-      program: "Vehicle Technologies Office",
+        program:
+          "Energy Efficient Mobility Systems (EEMS)",
 
-      title:
-        "Scaling up the Realtime Data, Simulation and Artificial Intelligence (AI) and Control for Optimizing Regional Mobility",
+        title_s:
+          "DOE VTO — Chattanooga Digital Twin",
 
-      amount: "USD $4,000,000",
+        title:
+          "Scaling up the Realtime Data, Simulation and Artificial Intelligence (AI) and Control for Optimizing Regional Mobility",
 
-      role: "Task Lead — Digital Twin Development",
+        amount:
+          "USD $4,000,000",
 
-      period: "FY2021–2023",
+        role:
+          "Task Lead — Digital Twin Development",
 
-      pi: "Placeholder PI / Institution",
+        period:
+          "FY2021–FY2023",
 
-      description:
-        "Placeholder explanation of your role in developing digital-twin capabilities for regional mobility research.",
+        pi:
+          "Dr. Jiboananda Sanyal, Oak Ridge National Laboratory",
 
-      projectUrl:
-        "https://www.energy.gov/eere/vehicles/articles/regional-mobility-chattanooga",
+        projectId:
+          "EEMS061",
 
-      agencyUrl: "#",
-    },
+        description:
+          `U.S. Department of Energy Vehicle Technologies Office project developing a real-time transportation digital twin for regional mobility optimization in Chattanooga, Tennessee. The project integrated real-time transportation data, traffic simulation, machine learning, high-performance computing, and cyber-physical control to provide regional-scale situational awareness and support data- and simulation-informed traffic management. I served as the task lead for digital twin development, contributing to the architecture and implementation of digital twin capabilities that connected transportation data, simulation, analytics, and interactive visualization. The project demonstrated real-world traffic signal optimization and adaptive control, achieving reductions in traffic delays and energy use, while establishing a transferable framework for transportation digital twins and congestion mitigation in other cities.`,
 
+        projectUrl:
+          "https://www.energy.gov/eere/vehicles/articles/regional-mobility-chattanooga",
+
+        agencyUrl:
+          "https://www.energy.gov/eere/vehicles/vehicle-technologies-office",
+      },
     {
-      id: "grant-5",
-      type: "grant",
+        id: "grant-5",
+        type: "grant",
 
-      logo: `${import.meta.env.BASE_URL}/img/funders/iowadot.png`,
+        logo: `${import.meta.env.BASE_URL}/img/funders/iowadot.png`,
+        pjimg: `${import.meta.env.BASE_URL}/img/funders/TR-744.png`,
 
-      agency: "Iowa Department of Transportation",
+        agency: "Iowa Department of Transportation",
 
-      program: "Iowa Highway Research Board (IHRB)",
+        program: "Iowa Highway Research Board (IHRB)",
 
-      title:
-        "TR-744: Transfer of the Iowa DOT Culverts web-tool prototype to Iowa DOT Mainframe",
+        title_s:
+          "Iowa DOT IHRB TR-744",
 
-      amount: " ",  //"USD $13,428",
+        title:
+          "Transfer of the Iowa DOT Culverts Web-Tool Prototype to Iowa DOT Mainframe",
 
-      role: "Co-Investigator",
+        amount: "",
 
-      period: "2020",
+        role:
+          "Co-Investigator",
 
-      pi: "Placeholder PI / Institution",
+        period:
+          "2020",
 
-      description:
-        "Placeholder description of the transportation infrastructure research project.",
+        pi:
+          "Prof. Marian Muste, University of Iowa",
 
-      projectUrl: "https://trid.trb.org/View/1715356",
+        description:
+          `Iowa Highway Research Board project supporting the technology transfer and operational deployment of a web-based culvert decision-support tool developed through prior Iowa DOT research. The project customized and transitioned the prototype into the Iowa DOT computing environment for internal use by transportation personnel involved in culvert design and operations. The web tool integrates relevant pre- and post-construction culvert data within an interactive interface, enabling users to review information in one place, develop systematic culvert monitoring plans, and perform quantitative assessments of potential sediment deposition. The project demonstrates the translation of academic research and cyberinfrastructure into an operational decision-support capability for a state transportation agency.`,
 
-      agencyUrl: "#",
-    },
+        projectUrl:
+          "https://trid.trb.org/View/1715356",
+
+        agencyUrl:
+          "#",
+      },
     {
       id: "grant-6",
       type: "grant",
 
       logo: `${import.meta.env.BASE_URL}/img/funders/iowadot.png`,
+      pjimg: `${import.meta.env.BASE_URL}/img/funders/tr-719.png`, 
 
       agency: "Iowa Department of Transportation",
 
       program: "Iowa Highway Research Board (IHRB)",
+      pjimg: `${import.meta.env.BASE_URL}/img/funders/tr-719.png`, 
 
       title:
         "TR-719: Development of Self-Cleaning Box Culvert Design Phase III",
@@ -193,7 +238,7 @@ export default function CollabGrants() {
 
       period: "2020",
 
-      pi: "Placeholder PI / Institution",
+      pi: "Dr. Marian Muste",
 
       description:
         "Placeholder description of the transportation infrastructure research project.",
@@ -983,11 +1028,11 @@ export default function CollabGrants() {
             >
               {selectedItem.type === "grant" ? (
                 <img
-                  src={selectedItem.logo}
+                  src={selectedItem.pjimg}
                   alt={`${selectedItem.agency} logo`}
                   className="
-                    max-h-[320px]
-                    max-w-[80%]
+                    max-h-[100%]
+                    max-w-[100%]
                     object-contain
                   "
                 />
