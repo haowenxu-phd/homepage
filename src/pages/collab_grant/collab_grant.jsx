@@ -67,7 +67,7 @@ export default function CollabGrants() {
               "INTERMODAL Exploratory Topic",
 
             title_s:
-              "ARPA-E RECOIL",
+              "ARPA-E RECOIL Freight Transportation Optimization",
 
             title:
               "A Cognitive Freight Transportation Digital Twin for Resiliency and Emission Control Through Optimizing Intermodal Logistics (RECOIL)",
@@ -79,10 +79,10 @@ export default function CollabGrants() {
               "Co-Principal Investigator",
 
             period:
-              "FY2023–Present",
+              "FY2023–FY2025",
 
             pi:
-              "Prof. Xueping Li, University of Tennessee, Knoxville",
+              "Prof. Xueping Li (xli27@utk.edu)",
 
             awardNumber:
               "DE-AR0001780",
@@ -119,7 +119,7 @@ export default function CollabGrants() {
               "USD $500,000",
 
             role:
-              "Research Team / User Interface Development Lead",
+              "Co-Principal Investigator",
 
             period:
               "FY2024–FY2025",
@@ -151,7 +151,7 @@ export default function CollabGrants() {
           "Energy Efficient Mobility Systems (EEMS)",
 
         title_s:
-          "DOE VTO — Chattanooga Digital Twin",
+          "DOE VTO — Chattanooga Transportation Digital Twin",
 
         title:
           "Scaling up the Realtime Data, Simulation and Artificial Intelligence (AI) and Control for Optimizing Regional Mobility",
@@ -218,35 +218,41 @@ export default function CollabGrants() {
           "#",
       },
     {
-      id: "grant-6",
-      type: "grant",
+        id: "grant-6",
+        type: "grant",
 
-      logo: `${import.meta.env.BASE_URL}/img/funders/iowadot.png`,
-      pjimg: `${import.meta.env.BASE_URL}/img/funders/tr-719.png`, 
+        logo: `${import.meta.env.BASE_URL}/img/funders/iowadot.png`,
+        pjimg: `${import.meta.env.BASE_URL}/img/funders/tr-719.png`,
 
-      agency: "Iowa Department of Transportation",
+        agency: "Iowa Department of Transportation",
 
-      program: "Iowa Highway Research Board (IHRB)",
-      pjimg: `${import.meta.env.BASE_URL}/img/funders/tr-719.png`, 
+        program: "Iowa Highway Research Board (IHRB)",
 
-      title:
-        "TR-719: Development of Self-Cleaning Box Culvert Design Phase III",
+        title_s:
+          "Iowa DOT IHRB TR-719",
 
-      amount:  " ", //"USD $ 14,108",
+        title:
+          "Development of Self-Cleaning Box Culvert Design — Phase III",
 
-      role: "Co-Investigator",
+        amount: "",
 
-      period: "2020",
+        role:
+          "Co-Investigator",
 
-      pi: "Dr. Marian Muste",
+        period:
+          "2020",
 
-      description:
-        "Placeholder description of the transportation infrastructure research project.",
+        pi:
+          "Prof. Marian Muste, University of Iowa",
 
-      projectUrl: "https://rosap.ntl.bts.gov/view/dot/79705/dot_79705_DS1.pdf/",
+        description:
+          `Iowa Highway Research Board project investigating self-cleaning culvert designs to mitigate sediment accumulation and maintain hydraulic conveyance in multi-barrel box culverts. Building on more than a decade of Iowa DOT-supported research, the project conducted full-scale field implementation and testing of a self-cleaning design at three-barrel culvert sites in Iowa. The study combined field monitoring, hydraulic and sediment-transport analysis, and laboratory-informed design concepts to evaluate sediment deposition and culvert performance under real-world conditions. Results demonstrated the effectiveness of the self-cleaning design in reducing sediment accumulation while maintaining flow conveyance, providing practical design and monitoring guidance for transportation agencies addressing culvert sedimentation problems.`,
 
-      agencyUrl: "#",
-    },
+        projectUrl:
+          "https://rosap.ntl.bts.gov/view/dot/79705/dot_79705_DS1.pdf/",
+
+        agencyUrl: "#",
+      },
   ];
 
   // =========================================================
@@ -255,76 +261,85 @@ export default function CollabGrants() {
 
   const industryPartnerships = [
     {
-      id: "industry-1",
-      type: "photo",
+        id: "industry-1",
+        type: "photo",
 
-      src: `${import.meta.env.BASE_URL}/img/collaboration/industry/industry_1.jpg`,
+        src: `${import.meta.env.BASE_URL}/img/industry/ornl_toyato.png`,
 
-      alt: "Industry collaboration placeholder 1",
+        alt: "ORNL and Toyota Research Collaboration",
 
-      title: "Industry Partnership 1",
+        title:
+          "ORNL–Toyota Partnership",
 
-      shortCaption: "Industry Research Collaboration",
+        shortCaption:
+          "National Laboratory–Industry Research Collaboration",
 
-      role: "Research Lead",
+        role: "Research Lead",
 
-      organization: "Placeholder Company",
+        organization:
+          "Oak Ridge National Laboratory (ORNL) & Toyota",
 
-      period: "2025–2026",
+        period: "2023-2024",
 
-      description:
-        "Placeholder description for an industry collaboration. This can explain the industry problem, your technical contribution, prototype or software development, and translational impact.",
+        description:
+          "Contributed to an industry research partnership between ORNL and Toyota on connected and automated mobility, developing digital-twin simulation and computational technologies for energy-efficient transportation. The research integrated vehicle control, traffic simulation, and traffic signal optimization, with related technologies demonstrated in real-world traffic environments.",
 
-      link: "#",
-    },
+        link:
+          "https://www.ornl.gov/news/real-world-traffic-demo-reveals-energy-savings",
+      },
+      {
+        id: "industry-2",
+        type: "photo",
+
+        src: `${import.meta.env.BASE_URL}/img/industry/hdr.jpg`,
+
+        alt: "HDR Research Collaboration",
+
+        title:
+          "Partnership Engagement with HDR",
+
+        shortCaption:
+          "Industry Engagement & Applied Research",
+
+        role:
+          "Research Scientist",
+
+        organization:
+          "HDR",
+
+        period:
+          "2026",
+
+        description:
+          "Engaged with technical leaders at HDR, a U.S.-based international engineering, architecture, and consulting firm, to explore research collaboration in civil infrastructure, environmental engineering, and transportation. Invited to present research and develop joint publications, with discussions focused on building longer-term university–industry partnerships and pursuing future Australian collaborative funding opportunities, including ARC Linkage Projects and CRC programs.",
+
+        link:
+          "https://www.hdrinc.com/",
+  },
 
     {
-      id: "industry-2",
-      type: "photo",
+        id: "industry-3",
+        type: "photo",
 
-      src: `${import.meta.env.BASE_URL}/img/collaboration/industry/industry_2.jpg`,
+        src: `${import.meta.env.BASE_URL}/img/industry/motionai_intel.png`,
 
-      alt: "Industry collaboration placeholder 2",
+        alt: "MotionIntel industry advisory and technology collaboration",
 
-      title: "Industry Partnership 2",
+        title: "MotionIntel Industry Advisory",
 
-      shortCaption: "Applied Research Partnership",
+        shortCaption: "AI & Transportation Technology Industry Advisory",
 
-      role: "Research Scientist",
+        role: "Industry Advisor",
 
-      organization: "Placeholder Company",
+        organization: "MotionIntel",
 
-      period: "2024–2025",
+        period: "2023–Present",
 
-      description:
-        "Placeholder description for this industry partnership.",
+        description:
+          "Industry advisory engagement supporting the development and application of AI-enabled mobility and transportation technologies.",
 
-      link: "#",
-    },
-
-    {
-      id: "industry-3",
-      type: "photo",
-
-      src: `${import.meta.env.BASE_URL}/img/collaboration/industry/industry_3.jpg`,
-
-      alt: "Industry collaboration placeholder 3",
-
-      title: "Industry Partnership 3",
-
-      shortCaption: "Technology Development Collaboration",
-
-      role: "Technical Contributor",
-
-      organization: "Placeholder Company",
-
-      period: "2023–2024",
-
-      description:
-        "Placeholder description explaining the collaboration and your contribution.",
-
-      link: "#",
-    },
+        link: "https://motionintel.ai/team",
+      },
   ];
 
   // =========================================================
@@ -332,101 +347,226 @@ export default function CollabGrants() {
   // =========================================================
 
   const governmentCollaborations = [
+    
     {
       id: "government-1",
-      type: "photo",
+      type: "gov",
 
-      src: `${import.meta.env.BASE_URL}/img/collaboration/government/government_1.jpg`,
+      src: `${import.meta.env.BASE_URL}/img/gov/ntsb_collab.png`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/ntsb_logo.jpg`,
 
-      alt: "Government agency collaboration placeholder 1",
+      alt: "National Transportation Safety Board Engagement",
 
-      title: "Government Agency Collaboration 1",
+      title: "U.S. National Transportation Safety Board",
 
-      shortCaption: "Public-Sector Research Collaboration",
+      shortCaption: "Public-Sector Research Engagement",
 
-      role: "Research Scientist",
+      role: "Collaberator",
 
-      organization: "Placeholder Government Agency",
+      organization: "National Transportation Safety Board",
 
-      period: "2024–2026",
+      period: "2022–2023",
 
       description:
-        "Placeholder description for a government or public-sector collaboration. You can describe the agency's research need, your contribution, and the resulting scientific or operational impact.",
+        " ",
 
       link: "#",
     },
-
-    {
+     {
       id: "government-2",
       type: "photo",
 
-      src: `${import.meta.env.BASE_URL}/img/collaboration/government/government_2.jpg`,
+      src: `${import.meta.env.BASE_URL}/img/gov/fhwa_collab.png`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/fhwa_logo.jpg`, 
+      alt: "Federal Highway Administration Engagement",
 
-      alt: "Government agency collaboration placeholder 2",
+      title: "Federal Highway Administration",
 
-      title: "Government Agency Collaboration 2",
+      shortCaption: "Public-Sector Research Engagement",
 
-      shortCaption: "Mission-Driven Research Project",
+      role: "Collaberator",
 
-      role: "Research Contributor",
+      organization: "Federal Highway Administration（FHWA）",
 
-      organization: "Placeholder Government Agency",
-
-      period: "2023–2025",
+      period: "2022–2023",
 
       description:
-        "Placeholder description for another government agency collaboration.",
+        " ",
 
       link: "#",
     },
-
     {
       id: "government-3",
-      type: "photo",
+      type: "gov",
 
-      src: `${import.meta.env.BASE_URL}/img/collaboration/government/government_3.jpg`,
+      src: `${import.meta.env.BASE_URL}/img/gov/fhwa_collab2.png`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/fhwa_logo.jpg`,
 
-      alt: "Government agency collaboration placeholder 3",
+      alt: "Federal Highway Administration Engagement",
 
-      title: "Government Agency Collaboration 3",
+      title: "U.S. Federal Highway Administration",
 
-      shortCaption: "Government Research Partnership",
+      shortCaption: "Public-Sector Research Engagement",
 
-      role: "Project Team Member",
+      role: "Collaberator",
 
-      organization: "Placeholder Government Agency",
+      organization: "Federal Highway Administration（FHWA）",
+
+      period: "2018–2019",
+
+      description:
+        " ",
+
+      link: "#",
+    },
+     {
+      id: "government-4",
+      type: "gov",
+
+      src: `${import.meta.env.BASE_URL}/img/gov/iowa_dot.png`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/iowa_dot_logo.jpg`,
+
+      alt: "Iowa Department of Transportation",
+
+      title: "Iowa Department of Transportation",
+
+      shortCaption: "Public-Sector Research Engagement",
+
+      role: "Collaberator",
+
+      organization: "Iowa Department of Transportation",
+
+      period: "2016–2019",
+
+      description:
+        " ",
+
+      link: "#",
+    },
+    {
+      id: "government-5",
+      type: "gov",
+
+      src: `${import.meta.env.BASE_URL}/img/gov/acm_iwcts.png`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/acm_sig.jpg`,
+      alt: "SigSpatial",
+
+      title: "Computational Transportation Workshop",
+
+      shortCaption: "Conference and Workshop Organization",
+
+      role: "Collaberator",
+
+      organization: "ACM Sig Spatial IWCTS",
 
       period: "2022–2024",
 
       description:
-        "Placeholder description explaining the project context, your role, and the research contribution.",
+        " ",
+
+      link: "#",
+    },
+    {
+      id: "government-6",
+      type: "gov",
+
+      src: `${import.meta.env.BASE_URL}/img/gov/USEPA.jpg`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/epa_logo.png`,
+
+      alt: "EPA",
+
+      title: "United States Environmental Protection Agency",
+
+      shortCaption: "Public-Sector Research Engagement",
+
+      role: "Collaberator",
+
+      organization: "Environmental Protection Agency (EPA）",
+
+      period: "2016",
+
+      description:
+        " ",
 
       link: "#",
     },
 
     {
-      id: "government-4",
-      type: "photo",
+      id: "government-7",
+      type: "gov",
 
-      src: `${import.meta.env.BASE_URL}/img/collaboration/government/government_4.jpg`,
+      src: `${import.meta.env.BASE_URL}/img/gov/NCSA.jpg`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/ncsa_logo.png`,
 
-      alt: "Government agency collaboration placeholder 4",
+      alt: "NCSA",
 
-      title: "Government Agency Collaboration 4",
+      title: "National Center for Supercomputing Applications ",
 
-      shortCaption: "Applied Public-Sector Research",
+      shortCaption: "Public-Sector Research Engagement",
 
-      role: "Researcher",
+      role: "Collaberator",
 
-      organization: "Placeholder Government Agency",
+      organization: "National Center for Supercomputing Applications (NCSA)",
 
-      period: "2021–2023",
+      period: "2016",
 
       description:
-        "Placeholder description for this collaboration.",
+        " ",
 
       link: "#",
     },
+
+    {
+      id: "government-8",
+      type: "gov",
+
+      src: `${import.meta.env.BASE_URL}/img/gov/usace.png`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/usace_logo.jpg`,
+
+      alt: "USACE IWR",
+
+      title: "United States Army Corps of Engineers",
+
+      shortCaption: "Public-Sector Research Engagement",
+
+      role: "Collaberator",
+
+      organization: "U.S. Army Engineer Institute for Water Resources (IWR)",
+
+      period: "2016-2019",
+
+      description:
+        " ",
+
+      link: "#",
+    },
+
+    {
+      id: "government-9",
+      type: "gov",
+
+      src: `${import.meta.env.BASE_URL}/img/gov/usgs.jpg`,
+      logosrc: `${import.meta.env.BASE_URL}/img/gov/USGS_logo_green.png`,
+
+      alt: "USGS",
+
+      title: "United States Geological Survey",
+
+      shortCaption: "Public-Sector Research Engagement",
+
+      role: "Collaberator",
+
+      organization: "United States Geological Survey (USGS)",
+
+      period: "2016",
+
+      description:
+        " ",
+
+      link: "#",
+    },
+
+
   ];
 
   // =========================================================
@@ -444,7 +584,7 @@ export default function CollabGrants() {
 
     {
       id: "industry",
-      title: "🤝 Industry & Technology Partnerships",
+      title: "🤝 Industry & Technology Collaberation",
       description:
         "Selected collaborations with industry partners involving applied research, technology development, and research translation.",
       items: industryPartnerships,
@@ -452,9 +592,9 @@ export default function CollabGrants() {
 
     {
       id: "government",
-      title: "🏛️ Government & Public-Sector Collaborations",
+      title: "🏛️ Government, Public-Sector & Professional Engagement",
       description:
-        "Selected research collaborations with government agencies and public-sector organizations.",
+        "Selected research collaborations and professional engagements with government agencies, public-sector organizations, and professional societies.",
       items: governmentCollaborations,
     },
   ];
@@ -473,6 +613,129 @@ export default function CollabGrants() {
   const closeModal = () => {
     setSelectedItem(null);
   };
+
+
+  // =========================================================
+  // PHOTO GALLERY CARD
+  // Used by industry + government sections
+  // =========================================================
+const LogoCard = ({ item }) => {
+  return (
+    <button
+      type="button"
+      onClick={() => setSelectedItem(item)}
+      className="
+        group
+        w-full
+        overflow-hidden
+        rounded-xl
+        bg-white
+        text-left
+        shadow-sm
+        ring-1
+        ring-slate-200
+        transition-all
+        duration-200
+        hover:-translate-y-1
+        hover:shadow-lg
+        hover:ring-blue-400
+      "
+    >
+      {/* Logo Area */}
+      <div
+        className="
+          relative
+          flex
+          h-[90px]
+          w-full
+          items-center
+          justify-center
+          overflow-hidden
+          bg-white
+          px-3
+          py-0
+        "
+      >
+        <img
+          src={item.logosrc}
+          alt={item.alt}
+          className="
+            h-full
+            w-full
+            object-contain
+            transition-transform
+            duration-300
+            group-hover:scale-[1.03]
+          "
+        />
+
+        {/* Hover Overlay */}
+        <div
+          className="
+            absolute
+            inset-0
+            flex
+            items-center
+            justify-center
+            bg-black/0
+            transition
+            group-hover:bg-black/10
+          "
+        >
+          <span
+            className="
+              translate-y-2
+              rounded-full
+              bg-white/95
+              px-1
+              py-1.5
+              text-xs
+              font-semibold
+              text-slate-800
+              opacity-0
+              shadow
+              transition
+              group-hover:translate-y-0
+              group-hover:opacity-100
+            "
+          >
+            View Details
+          </span>
+        </div>
+      </div>
+
+      {/* Card Content */}
+      <div className="p-4">
+       <div
+          className="
+            mt-1
+            flex
+            items-center
+            justify-between
+            gap-4
+            text-xs
+            text-slate-500
+          "
+        >
+          <span>
+            {item.organization}
+          </span>
+
+          <span className="shrink-0">
+            {item.period}
+          </span>
+        </div>
+
+        <p className="mt-1 text-sm text-slate-600">
+          {item.shortCaption}
+        </p>
+
+        
+      </div>
+    </button>
+  );
+};
+
 
   // =========================================================
   // PHOTO GALLERY CARD
@@ -558,7 +821,7 @@ export default function CollabGrants() {
         </div>
 
         <div className="p-4">
-          <h3
+          <h4
             className="
               text-base
               font-semibold
@@ -567,7 +830,7 @@ export default function CollabGrants() {
             "
           >
             {item.title}
-          </h3>
+          </h4>
 
           <p className="mt-1 text-sm text-slate-600">
             {item.shortCaption}
@@ -895,52 +1158,68 @@ export default function CollabGrants() {
                     "
                   >
                     {section.id === "grants" ? (
-                      /* ==========================
-                         GRANT CARDS
-                      ========================== */
+                          /* ==========================
+                            GRANT CARDS
+                          ========================== */
+                          <div
+                            className="
+                              grid
+                              grid-cols-1
+                              gap-4
+                              lg:grid-cols-3
+                            "
+                          >
+                            {section.items.map((grant) => (
+                              <GrantCard
+                                key={grant.id}
+                                grant={grant}
+                              />
+                            ))}
+                          </div>
 
-                      <div
-                        className="
-                          grid
-                          grid-cols-1
-                          gap-4
-                          lg:grid-cols-3
-                        "
-                      >
-                        {section.items.map(
-                          (grant) => (
-                            <GrantCard
-                              key={grant.id}
-                              grant={grant}
-                            />
-                          )
-                        )}
-                      </div>
-                    ) : (
-                      /* ==========================
-                         PHOTO GALLERY
-                      ========================== */
+                        ) : section.id === "government" ? (
+                          /* ==========================
+                            GOVERNMENT CARDS
+                          ========================== */
+                          <div
+                            className="
+                              grid
+                              grid-cols-1
+                              gap-4
+                              lg:grid-cols-3
+                            "
+                          >
+                            {section.items.map((item) => (
+                              <LogoCard
+                                key={item.id}
+                                item={item}
+                              />
+                            ))}
+                          </div>
 
-                      <div
-                        className="
-                          grid
-                          grid-cols-1
-                          gap-6
-                          sm:grid-cols-2
-                          lg:grid-cols-3
-                          xl:grid-cols-4
-                        "
-                      >
-                        {section.items.map(
-                          (item) => (
-                            <GalleryCard
-                              key={item.id}
-                              item={item}
-                            />
-                          )
+                        ) : (
+                          /* ==========================
+                            PHOTO GALLERY
+                            Industry / everything else
+                          ========================== */
+                          <div
+                            className="
+                              grid
+                              grid-cols-1
+                              gap-6
+                              sm:grid-cols-2
+                              lg:grid-cols-3
+                              xl:grid-cols-4
+                            "
+                          >
+                            {section.items.map((item) => (
+                              <GalleryCard
+                                key={item.id}
+                                item={item}
+                              />
+                            ))}
+                          </div>
                         )}
-                      </div>
-                    )}
                   </div>
                 )}
               </section>
@@ -1026,28 +1305,43 @@ export default function CollabGrants() {
                 lg:p-10
               "
             >
-              {selectedItem.type === "grant" ? (
-                <img
-                  src={selectedItem.pjimg}
-                  alt={`${selectedItem.agency} logo`}
-                  className="
-                    max-h-[100%]
-                    max-w-[100%]
-                    object-contain
-                  "
-                />
-              ) : (
-                <img
-                  src={selectedItem.src}
-                  alt={selectedItem.alt}
-                  className="
-                    max-h-[75vh]
-                    w-full
-                    object-contain
-                    rounded-lg
-                  "
-                />
-              )}
+             {selectedItem.type === "grant" ? (
+                    /* Grant project image */
+                    <img
+                      src={selectedItem.pjimg}
+                      alt={`${selectedItem.title} project`}
+                      className="
+                        max-h-full
+                        max-w-full
+                        object-contain
+                        rounded-lg
+                      "
+                    />
+                  ) : selectedItem.type === "gov" ? (
+                    /* Government collaboration image */
+                    <img
+                      src={selectedItem.src }
+                      alt={selectedItem.alt}
+                      className="
+                        max-h-[75vh]
+                        w-full
+                        object-contain
+                        rounded-lg
+                      "
+                    />
+                  ) : (
+                    /* Industry / other collaboration image */
+                    <img
+                      src={selectedItem.src}
+                      alt={selectedItem.alt}
+                      className="
+                        max-h-[75vh]
+                        w-full
+                        object-contain
+                        rounded-lg
+                      "
+                    />
+                  )}
             </div>
 
             {/* =================================================
@@ -1324,36 +1618,7 @@ export default function CollabGrants() {
                 )}
               </div>
 
-              {/* =================================================
-                  DESCRIPTION
-              ================================================= */}
-
-              <div className="mt-6">
-                <h3
-                  className="
-                    text-sm
-                    font-bold
-                    text-slate-800
-                  "
-                >
-                  {selectedItem.type === "grant"
-                    ? "About this project"
-                    : "About this collaboration"}
-                </h3>
-
-                <p
-                  className="
-                    mt-3
-                    text-sm
-                    leading-7
-                    text-slate-600
-                  "
-                >
-                  {selectedItem.description}
-                </p>
-              </div>
-
-              {/* =================================================
+                {/* =================================================
                   LINKS
               ================================================= */}
 
@@ -1427,6 +1692,37 @@ export default function CollabGrants() {
                       <ExternalLink size={16} />
                     </a>
                   )}
+
+              {/* =================================================
+                  DESCRIPTION
+              ================================================= */}
+
+              <div className="mt-6">
+                <h3
+                  className="
+                    text-sm
+                    font-bold
+                    text-slate-800
+                  "
+                >
+                  {selectedItem.type === "grant"
+                    ? "About this project"
+                    : "About this collaboration"}
+                </h3>
+
+                <p
+                  className="
+                    mt-3
+                    text-sm
+                    leading-7
+                    text-slate-600
+                  "
+                >
+                  {selectedItem.description}
+                </p>
+              </div>
+
+            
 
                 {/* Industry / government link */}
                 {selectedItem.type !== "grant" &&
