@@ -94,6 +94,62 @@ export class Vehicle {
     this.y =
       y;
 
+  // =========================================================
+    // Initial vehicle heading
+    // =========================================================
+
+    const firstGeometryXY =
+      firstLane.geometry_xy;
+
+
+    if (
+      firstGeometryXY &&
+      firstGeometryXY.length >= 2
+    ) {
+
+      const [
+        x0,
+        y0
+      ] =
+        firstGeometryXY[0];
+
+
+      const [
+        x1,
+        y1
+      ] =
+        firstGeometryXY[1];
+
+
+      const dx =
+        x1 - x0;
+
+      const dy =
+        y1 - y0;
+
+
+      this.headingRad =
+        Math.atan2(
+          dy,
+          dx
+        );
+
+
+      this.headingDeg =
+        this.headingRad *
+        180 /
+        Math.PI;
+
+    } else {
+
+      this.headingRad =
+        0;
+
+      this.headingDeg =
+        0;
+
+    }
+
   }
 
 }

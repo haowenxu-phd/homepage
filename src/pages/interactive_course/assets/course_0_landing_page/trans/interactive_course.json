@@ -75,7 +75,18 @@
             "Operations Research",
             "Multi-Objective Optimization"
           ]
-        }
+        },
+        "4": {
+            "title": "Microscopic Traffic Simulation & Traffic Flow Theory",
+            "subtitle": "Explore how individual vehicle interactions produce macroscopic traffic flow patterns",
+            "description": "Interactively explore lane-based microscopic traffic simulation, experiment with traffic demand and free-flow speed, observe vehicle following behavior, and examine how density, speed, and flow relationships emerge and compare with the Greenshields traffic flow model.",
+            "badges": [
+              "Microscopic Simulation",
+              "Traffic Flow Theory",
+              "Greenshields Model",
+              "Car Following"
+            ]
+          }
     }
   },
 
@@ -157,7 +168,20 @@
           "模拟退火",
           "多目标优化"
         ]
+      },
+      "4": {
+        "title": "微观交通仿真与交通流理论",
+        "subtitle": "探索微观车辆交互如何形成宏观交通流特征",
+        "description": "通过交互式车道级微观交通仿真，调整交通需求和自由流速度，观察车辆跟驰行为，并分析交通密度、速度与流量之间的关系，以及这些仿真结果与 Greenshields 交通流模型之间的联系。",
+        "badges": [
+          "微观交通仿真",
+          "交通流理论",
+          "Greenshields 模型",
+          "车辆跟驰"
+        ]
       }
+      
+
   }
   },
 
@@ -238,7 +262,18 @@
             "SA",
             "بهینه‌سازی چندهدفه"
           ]
-        }
+        },
+        "4": {
+            "title": "شبیه‌سازی میکروسکوپی ترافیک و نظریه جریان ترافیک",
+            "subtitle": "بررسی چگونگی شکل‌گیری الگوهای کلان جریان ترافیک از تعامل خودروهای منفرد",
+            "description": "با شبیه‌سازی تعاملی و مبتنی بر خط عبور، تأثیر تقاضای ترافیک و سرعت جریان آزاد را بررسی کنید، رفتار تعقیب خودروها را مشاهده کنید و روابط میان چگالی، سرعت و جریان ترافیک و ارتباط آن‌ها با مدل جریان ترافیک گرین‌شیلدز را تحلیل کنید.",
+            "badges": [
+              "شبیه‌سازی میکروسکوپی",
+              "نظریه جریان ترافیک",
+              "مدل گرین‌شیلدز",
+              "تعقیب خودرو"
+            ]
+          }
     }
   }
 }

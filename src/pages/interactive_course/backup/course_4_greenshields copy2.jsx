@@ -54,162 +54,45 @@ export default function InteractiveLearning_c4_Greenshields() {
   const [
   selectedRoute,
   setSelectedRoute
-  ] = useState([]);
-
-const [
-  trafficStreams,
-  setTrafficStreams
 ] = useState([]);
 
 
-  // =========================================================
-  // Check whether a new vehicle can enter its first lane
-  // =========================================================
+  const routeLengthM =
+    useMemo(() => {
 
-  function canSpawnVehicle({
-    route,
-    vehicles,
-    minimumSpawnGapM = 8,
-  }) {
+      if (
+        !selectedRoute ||
+        selectedRoute.length === 0
+      ) {
+        return 0;
+      }
 
-    if (
-      !Array.isArray(route) ||
-      route.length === 0
-    ) {
-      return false;
-    }
+      return selectedRoute.reduce(
+        (totalLength, laneId) => {
 
+          const lane =
+            routingGraph?.lanes?.[
+              laneId
+            ];
 
-    const entryLaneId =
-      route[0];
-
-
-    // Find active vehicles currently on
-    // the same entry lane.
-    const vehiclesOnEntryLane =
-      vehicles.filter(
-        vehicle =>
-          !vehicle.finished &&
-          vehicle.currentLaneId ===
-            entryLaneId
-      );
-
-
-    // No vehicle currently on entry lane.
-    if (
-      vehiclesOnEntryLane.length === 0
-    ) {
-      return true;
-    }
-
-
-    // Find the vehicle closest to the
-    // beginning of the lane.
-    const nearestVehicle =
-      vehiclesOnEntryLane.reduce(
-        (nearest, vehicle) => {
-
-          if (!nearest) {
-            return vehicle;
-          }
+          const laneLength =
+            Number(
+              lane?.length_m
+            ) || 0;
 
           return (
-            vehicle.distanceAlongLaneM <
-            nearest.distanceAlongLaneM
-              ? vehicle
-              : nearest
+            totalLength +
+            laneLength
           );
 
         },
-        null
+        0
       );
 
+    }, [
+      selectedRoute
+    ]);
 
-    if (!nearestVehicle) {
-      return true;
-    }
-
-
-    // Distance from lane start to the rear
-    // of the nearest existing vehicle.
-    const availableGapM =
-      nearestVehicle.distanceAlongLaneM -
-      (
-        nearestVehicle.lengthM ?? 4.5
-      );
-
-
-    return (
-      availableGapM >=
-      minimumSpawnGapM
-    );
-
-  }
-// =========================================================
-// Active simulation lanes
-//
-// Union of all lanes used by all traffic streams.
-// A lane shared by multiple streams is counted only once.
-// =========================================================
-
-const simulationLaneIds =
-  useMemo(() => {
-
-    const laneIds =
-      trafficStreams.flatMap(
-        stream =>
-          stream.route ?? []
-      );
-
-
-    return [
-      ...new Set(
-        laneIds
-      )
-    ];
-
-  }, [
-    trafficStreams
-  ]);
-
-
-    // =========================================================
-    // Total length of active simulation network
-    // =========================================================
-
-    const simulationNetworkLengthM =
-      useMemo(() => {
-
-        return simulationLaneIds.reduce(
-          (
-            totalLength,
-            laneId
-          ) => {
-
-            const lane =
-              routingGraph?.lanes?.[
-                laneId
-              ];
-
-
-            const laneLengthM =
-              Number(
-                lane?.length_m
-              ) || 0;
-
-
-            return (
-              totalLength +
-              laneLengthM
-            );
-
-          },
-          0
-        );
-
-      }, [
-        simulationLaneIds
-      ]);
 
   // =======================================================
   // Language
@@ -446,51 +329,60 @@ const simulationLaneIds =
             // =============================================
 
             const movedVehicles =
-                  currentVehicles.map(
-                    vehicle => {
+                currentVehicles.map(
+                  vehicle => {
 
-                      const updatedVehicle = {
-                        ...vehicle
-                      };
-
-
-                      // -------------------------------------
-                      // Find leader
-                      // -------------------------------------
-
-                      const leaderInfo =
-                        findLeader(
-                          vehicle,
-                          laneIndex
-                        );
+                    const updatedVehicle = {
+                      ...vehicle
+                    };
 
 
-                      // -------------------------------------
-                      // Car-following behavior
-                      // -------------------------------------
+                    // -------------------------------------
+                    // Find leader
+                    // -------------------------------------
 
-                      updateVehicleSpeed(
-                        updatedVehicle,
-                        leaderInfo,
-                        dt
+                    const leaderInfo =
+                      findLeader(
+                        vehicle,
+                        laneIndex
                       );
 
 
-                      // -------------------------------------
-                      // Move vehicle
-                      // -------------------------------------
+                    // -------------------------------------
+                    // Car-following behavior
+                    // -------------------------------------
 
-                      moveVehicle(
-                        updatedVehicle,
-                        routingGraph,
-                        dt
-                      );
+                    updateVehicleSpeed(
+                      updatedVehicle,
+                      leaderInfo,
+                      dt
+                    );
 
 
-                      return updatedVehicle;
+                    // -------------------------------------
+                    // Vehicle movement
+                    // -------------------------------------
 
-                    }
-                  );
+                    moveVehicle(
+                      updatedVehicle,
+                      routingGraph,
+                      dt
+                    );
+
+
+                    return updatedVehicle;
+
+                  }
+                )
+
+                // -----------------------------------------
+                // Remove completed vehicles
+                // -----------------------------------------
+
+                .filter(
+                  vehicle =>
+                    !vehicle.finished
+                );
 
 
                 // =============================================
@@ -526,11 +418,7 @@ const simulationLaneIds =
             for (
               const spec
               of vehicleScheduleRef.current
-            ) {
-
-              // -------------------------------------------
-              // Has this vehicle already entered?
-              // -------------------------------------------
+            ){
 
               const alreadySpawned =
                 spawnedVehicleIdsRef
@@ -540,129 +428,51 @@ const simulationLaneIds =
                   );
 
 
-              if (
-                alreadySpawned
-              ) {
-                continue;
-              }
-
-
-              // -------------------------------------------
-              // Has its requested entry time arrived?
-              // -------------------------------------------
-
               const shouldSpawn =
                 simulationTimeRef.current >=
                 spec.spawnTimeS;
 
 
               if (
-                !shouldSpawn
+                !alreadySpawned &&
+                shouldSpawn
               ) {
-                continue;
+
+                const newVehicle =
+                  new Vehicle({
+
+                    id:
+                      spec.id,
+
+                    route:
+                      selectedRoute,
+
+                    routingGraph,
+
+                    // Initial speed
+                    speedMps:
+                      spec.speedMps,
+
+                    // Desired free speed
+                    desiredSpeedMps:
+                      spec.speedMps,
+
+                  });
+
+
+                updatedVehicles.push(
+                  newVehicle
+                );
+
+
+                spawnedVehicleIdsRef
+                  .current
+                  .add(
+                    spec.id
+                  );
+
               }
 
-
-              // -------------------------------------------
-              // Is there enough space on the entry lane?
-              // -------------------------------------------
-
-              const entryAvailable =
-                canSpawnVehicle({
-
-                  route:
-                    spec.route,
-
-                  vehicles:
-                    updatedVehicles,
-
-                  minimumSpawnGapM:
-                    8,
-
-                });
-
-
-              // Entry lane occupied.
-              //
-              // IMPORTANT:
-              // Do NOT add the ID to spawnedVehicleIdsRef.
-              // Therefore the vehicle will try again
-              // during the next simulation frame.
-              if (
-                !entryAvailable
-              ) {
-                continue;
-              }
-
-
-              // -------------------------------------------
-              // Create vehicle
-              // -------------------------------------------
-
-              const newVehicle =
-                      new Vehicle({
-
-                        id:
-                          spec.id,
-
-                        route:
-                          spec.route,
-
-                        routingGraph,
-
-                        speedMps:
-                          spec.speedMps,
-
-                        desiredSpeedMps:
-                          spec.desiredSpeedMps,
-
-                      });
-
-
-                    // -------------------------------------------
-                    // Preserve stream / spawning information
-                    // -------------------------------------------
-
-                    newVehicle.streamId =
-                      spec.streamId;
-
-
-                    newVehicle.requestedSpawnTimeS =
-                      spec.spawnTimeS;
-
-
-                    newVehicle.actualSpawnTimeS =
-                      simulationTimeRef.current;
-
-
-                    newVehicle.entryDelayS =
-                      Math.max(
-                        0,
-                        simulationTimeRef.current -
-                        spec.spawnTimeS
-                      );
-
-
-                    // ===========================================
-                    // IMPORTANT:
-                    // Add vehicle to active simulation
-                    // ===========================================
-
-                    updatedVehicles.push(
-                      newVehicle
-                    );
-
-
-                    // -------------------------------------------
-                    // Only AFTER successful insertion,
-                    // mark the vehicle as spawned.
-                    // -------------------------------------------
-
-                    spawnedVehicleIdsRef
-                      .current
-                      .add(
-                        spec.id
-                      );
             }
 
 
@@ -732,142 +542,111 @@ const simulationLaneIds =
 
 
   // =======================================================
-  // Live traffic metrics
-  // =======================================================
-  useEffect(() => {
+// Live traffic metrics
+// =======================================================
 
-    // -----------------------------------------------------
-    // No active simulation network
-    // -----------------------------------------------------
+useEffect(() => {
 
-    if (
-      simulationNetworkLengthM <= 0
-    ) {
+  // ---------------------------------------------
+  // No valid route
+  // ---------------------------------------------
 
-      setDensity(0);
+  if (
+    routeLengthM <= 0
+  ) {
 
-      setAverageSpeed(0);
+    setDensity(0);
+    setAverageSpeed(0);
 
-      return;
-
-    }
-
-
-    // -----------------------------------------------------
-    // Build lookup of all lanes currently participating
-    // in the simulation.
-    // -----------------------------------------------------
-
-    const simulationLaneSet =
-      new Set(
-        simulationLaneIds
-      );
+    return;
+  }
 
 
-    // -----------------------------------------------------
-    // Vehicles currently inside simulation network
-    // -----------------------------------------------------
+  // ---------------------------------------------
+  // Vehicles currently inside study corridor
+  // ---------------------------------------------
 
-    const networkVehicles =
-      vehicles.filter(
-        vehicle =>
-          !vehicle.finished &&
-          simulationLaneSet.has(
-            vehicle.currentLaneId
-          )
-      );
+      const routeLaneSet =
+        new Set(
+          selectedRoute
+        );
 
 
-    // =====================================================
-    // Density
-    //
-    // k = N / L
-    //
-    // N = vehicles currently inside network
-    // L = total active lane length in km
-    //
-    // unit: veh/km
-    // =====================================================
-
-    const networkLengthKm =
-      simulationNetworkLengthM /
-      1000;
-
-
-    const currentDensity =
-      networkLengthKm > 0
-        ? (
-            networkVehicles.length /
-            networkLengthKm
-          )
-        : 0;
-
-
-    setDensity(
-      currentDensity
-    );
-
-
-    // =====================================================
-    // Average speed
-    //
-    // Space-mean approximation for current vehicles
-    //
-    // unit: km/h
-    // =====================================================
-
-    if (
-      networkVehicles.length === 0
-    ) {
-
-      setAverageSpeed(0);
-
-      return;
-
-    }
-
-
-    const totalSpeedMps =
-      networkVehicles.reduce(
-        (
-          total,
-          vehicle
-        ) => {
-
-          return (
-            total +
-            (
-              Number(
-                vehicle.speedMps
-              ) || 0
+      const corridorVehicles =
+        vehicles.filter(
+          vehicle =>
+            routeLaneSet.has(
+              vehicle.currentLaneId
             )
+        );
+
+
+      // =============================================
+      // Density
+      //
+      // veh / km
+      // =============================================
+
+      const routeLengthKm =
+        routeLengthM / 1000;
+
+
+      const currentDensity =
+        corridorVehicles.length /
+        routeLengthKm;
+
+
+      setDensity(
+        currentDensity
+      );
+
+
+      // =============================================
+      // Average speed
+      //
+      // mean actual vehicle speed
+      // =============================================
+
+      if (
+        corridorVehicles.length === 0
+      ) {
+
+        setAverageSpeed(0);
+
+      } else {
+
+        const totalSpeedMps =
+          corridorVehicles.reduce(
+            (
+              sum,
+              vehicle
+            ) =>
+              sum +
+              vehicle.speedMps,
+            0
           );
 
-        },
-        0
-      );
+
+        const meanSpeedMps =
+          totalSpeedMps /
+          corridorVehicles.length;
 
 
-    const meanSpeedMps =
-      totalSpeedMps /
-      networkVehicles.length;
+        const meanSpeedKmh =
+          meanSpeedMps * 3.6;
 
 
-    const meanSpeedKmh =
-      meanSpeedMps *
-      3.6;
+        setAverageSpeed(
+          meanSpeedKmh
+        );
 
+      }
 
-    setAverageSpeed(
-      meanSpeedKmh
-    );
-
-
-  }, [
-    vehicles,
-    simulationLaneIds,
-    simulationNetworkLengthM
-  ]);
+    }, [
+      vehicles,
+      selectedRoute,
+      routeLengthM
+    ]);
 
   // =======================================================
   // Map center
@@ -897,336 +676,184 @@ const simulationLaneIds =
   // =======================================================
   // Simulation handlers
   // =======================================================
- 
+
+  const TEST_VEHICLE_SCHEDULE_2  = [
+      {
+        id: "vehicle_001",
+        spawnTimeS: 0,
+        speedMps: 12,
+      },
+      {
+        id: "vehicle_002",
+        spawnTimeS: 2,
+        speedMps: 9,
+      },
+      {
+        id: "vehicle_003",
+        spawnTimeS: 4,
+        speedMps: 14,
+      },
+      {
+        id: "vehicle_004",
+        spawnTimeS: 7,
+        speedMps: 10,
+      },
+    ];
     const generateVehicleSchedule = ({
-          trafficDemand,
-          freeFlowSpeed,
-          selectedRoute,
+        trafficDemand,
+        freeFlowSpeed,
+        durationS = 120,
+        speedVariationKmh = 5,
+      }) => {
 
-          durationS = 120,
+        // ---------------------------------------------
+        // Vehicle entry interval
+        // ---------------------------------------------
 
-          speedVariationKmh = 5,
-
-          streamId = "stream",
-        }) => {
-
-          if (
-            !Array.isArray(selectedRoute) ||
-            selectedRoute.length === 0 ||
-            trafficDemand <= 0
-          ) {
-            return [];
-          }
+        const spawnIntervalS =
+          3600 / trafficDemand;
 
 
-          // =====================================================
-          // Mean arrival interval
-          // =====================================================
+        // ---------------------------------------------
+        // Build schedule
+        // ---------------------------------------------
 
-          const meanSpawnIntervalS =
-            3600 /
-            trafficDemand;
+        const schedule = [];
 
+        let spawnTimeS = 0;
 
-          const schedule =
-            [];
+        let vehicleIndex = 1;
 
 
-          let spawnTimeS =
-            0;
+        while (
+          spawnTimeS <= durationS
+        ) {
 
-          let vehicleIndex =
-            1;
+          // Random desired speed around
+          // the free-flow speed.
+          //
+          // Example:
+          // freeFlowSpeed = 50 km/h
+          // variation = ±5 km/h
 
-
-          while (
-            spawnTimeS <=
-            durationS
-          ) {
-
-            // ===================================================
-            // Random desired speed
-            // ===================================================
-
-            const randomVariationKmh =
-              (
-                Math.random() * 2 -
-                1
-              ) *
-              speedVariationKmh;
+          const randomVariationKmh =
+            (
+              Math.random() * 2 - 1
+            ) *
+            speedVariationKmh;
 
 
-            const desiredSpeedKmh =
-              Math.max(
-                5,
-                freeFlowSpeed +
-                randomVariationKmh
-              );
+          const desiredSpeedKmh =
+            Math.max(
+              5,
+              freeFlowSpeed +
+              randomVariationKmh
+            );
 
 
-            const desiredSpeedMps =
-              desiredSpeedKmh /
-              3.6;
+          const desiredSpeedMps =
+            desiredSpeedKmh / 3.6;
 
 
-            // ===================================================
-            // Add vehicle
-            // ===================================================
+          schedule.push({
 
-            schedule.push({
+            id:
+              `vehicle_${String(
+                vehicleIndex
+              ).padStart(
+                3,
+                "0"
+              )}`,
 
-              id:
-                `${streamId}_vehicle_${String(
-                  vehicleIndex
-                ).padStart(
-                  3,
-                  "0"
-                )}`,
+            spawnTimeS,
 
-              streamId,
+            speedMps:
+              desiredSpeedMps,
 
-              spawnTimeS,
+            desiredSpeedMps:
+              desiredSpeedMps,
 
-              speedMps:
-                desiredSpeedMps,
-
-              desiredSpeedMps:
-                desiredSpeedMps,
-
-              route: [
-                ...selectedRoute
-              ],
-
-            });
+          });
 
 
-            vehicleIndex +=
-              1;
+          vehicleIndex += 1;
+
+          spawnTimeS +=
+            spawnIntervalS;
+
+        }
 
 
-            // ===================================================
-            // Random next arrival
-            //
-            // Exponential inter-arrival distribution
-            // ===================================================
+        return schedule;
 
-            const u =
-              Math.max(
-                Math.random(),
-                0.000001
-              );
-
-
-            const randomIntervalS =
-              -meanSpawnIntervalS *
-              Math.log(
-                u
-              );
-
-
-            spawnTimeS +=
-              randomIntervalS;
-
-          }
-
-
-          return schedule;
-
-        };
+      };
 
     const handleStartSimulation = () => {
 
-            // =====================================================
-            // Define multiple traffic streams
-            // =====================================================
+        if (
+          !selectedRoute ||
+          selectedRoute.length === 0
+        ) {
 
-            const streams = [
+          console.warn(
+            "Generate a route first."
+          );
 
-                {
-                  streamId:
-                    "stream_001",
-
-                  route: [
-                    "lane_0015",
-                    "lane_0026",
-                    "lane_0003",
-                    "lane_0034",
-                    "lane_0010"
-                  ],
-
-                  trafficDemand:
-                    trafficDemand /2 ,
-
-                  freeFlowSpeed:
-                    freeFlowSpeed,
-                },
+          return;
+        }
 
 
-                {
-                  streamId:
-                    "stream_002",
+        const schedule =
+          generateVehicleSchedule({
 
-                  route: [
-                    "lane_0015",
-                    "lane_0026",
-                    "lane_0003",
-                    "lane_0033",
-                    "lane_0020"
-                  ],
+            trafficDemand,
 
-                  trafficDemand:
-                    trafficDemand / 2,
+            freeFlowSpeed,
 
-                  freeFlowSpeed:
-                    freeFlowSpeed,
-                },
+            durationS:
+              120,
 
-              ];
+            speedVariationKmh:
+              5,
+
+          });
 
 
-            // =====================================================
-            // Validate routes
-            // =====================================================
-
-            /*
-            const validStreams =
-              trafficStreams.filter(
-                stream =>
-                  Array.isArray(
-                    stream.selectedRoute
-                  ) &&
-                  stream.selectedRoute.length > 0
-              );*/
-             const validStreams =
-              streams.filter(
-                stream =>
-                  Array.isArray(
-                    stream.route
-                  ) &&
-                  stream.route.length > 0
-              );
-
-            if (
-              validStreams.length === 0
-            ) {
-
-              console.warn(
-                "No valid traffic routes were provided."
-              );
-
-              return;
-
-            }
-
-            setTrafficStreams(
-              validStreams
-            );
+        console.log(
+          "Generated vehicle schedule:",
+          schedule
+        );
 
 
-            // =====================================================
-            // Generate one schedule for every traffic stream
-            // =====================================================
-
-            const schedules =
-              validStreams.map(
-                stream => {
-
-                  return generateVehicleSchedule({
-
-                    trafficDemand:
-                      stream.trafficDemand,
-
-                    freeFlowSpeed:
-                      stream.freeFlowSpeed,
-
-                    selectedRoute:
-                      stream.route,
-
-                    durationS:
-                      120,
-
-                    speedVariationKmh:
-                      5,
-
-                    streamId:
-                      stream.streamId,
-
-                  });
-
-                }
-              );
+        vehicleScheduleRef.current =
+          schedule;
 
 
-            // =====================================================
-            // Merge schedules
-            // =====================================================
-
-            const combinedSchedule =
-              schedules
-                .flat()
-                .sort(
-                  (a, b) =>
-                    a.spawnTimeS -
-                    b.spawnTimeS
-                );
-            
-            vehicleScheduleRef.current =
-              combinedSchedule;
+        setVehicles([]);
 
 
-            console.log(
-              "Generated traffic schedules:",
-              schedules
-            );
+        simulationTimeRef.current =
+          0;
 
 
-            console.log(
-              "Combined vehicle schedule:",
-              combinedSchedule
-            );
+        spawnedVehicleIdsRef.current =
+          new Set();
 
 
-            // =====================================================
-            // Store combined schedule
-            // =====================================================
-
-            vehicleScheduleRef.current =
-              combinedSchedule;
+        completedVehicleCountRef.current =
+          0;
 
 
-            // =====================================================
-            // Reset simulation
-            // =====================================================
+        setDensity(0);
 
-            setVehicles([]);
+        setAverageSpeed(0);
 
-
-            simulationTimeRef.current =
-              0;
+        setFlow(0);
 
 
-            spawnedVehicleIdsRef.current =
-              new Set();
+        setIsRunning(true);
 
-
-            completedVehicleCountRef.current =
-              0;
-
-
-            setDensity(0);
-
-            setAverageSpeed(0);
-
-            setFlow(0);
-
-
-            // =====================================================
-            // Start simulation
-            // =====================================================
-
-            setIsRunning(true);
-
-          };
+      };
 
 
   const handlePauseSimulation = () => {
@@ -1706,169 +1333,161 @@ const simulationLaneIds =
                 Origin lane
             ---------------------------------------------- */}
 
-            {
-            /*
+            <div
+              className="
+                mb-3
+              "
+            >
+
+              <label
+                className="
+                  mb-1
+                  block
+                  text-xs
+                  font-medium
+                  text-slate-700
+                "
+              >
+                Origin Lane
+              </label>
+
+              <select
+                value={
+                  originLaneId
+                }
+                onChange={
+                  (event) =>
+                    setOriginLaneId(
+                      event.target.value
+                    )
+                }
+                className="
+                  w-full
+                  rounded-md
+                  border
+                  border-slate-300
+                  bg-white
+                  px-2
+                  py-2
+                  text-xs
+                  text-slate-700
+                "
+              >
+
+                {entryLanes.map(
+                  (laneId) => (
+
+                    <option
+                      key={
+                        laneId
+                      }
+                      value={
+                        laneId
+                      }
+                    >
+                      {laneId}
+                    </option>
+
+                  )
+                )}
+
+              </select>
+
+            </div>
+
+
+            {/* ---------------------------------------------
+                Destination lane
+            ---------------------------------------------- */}
 
             <div
-                          className="
-                            mb-3
-                          "
-                        >
+              className="
+                mb-4
+              "
+            >
 
-                          <label
-                            className="
-                              mb-1
-                              block
-                              text-xs
-                              font-medium
-                              text-slate-700
-                            "
-                          >
-                            Origin Lane
-                          </label>
+              <label
+                className="
+                  mb-1
+                  block
+                  text-xs
+                  font-medium
+                  text-slate-700
+                "
+              >
+                Destination Lane
+              </label>
 
-                          <select
-                            value={
-                              originLaneId
-                            }
-                            onChange={
-                              (event) =>
-                                setOriginLaneId(
-                                  event.target.value
-                                )
-                            }
-                            className="
-                              w-full
-                              rounded-md
-                              border
-                              border-slate-300
-                              bg-white
-                              px-2
-                              py-2
-                              text-xs
-                              text-slate-700
-                            "
-                          >
+              <select
+                value={
+                  destinationLaneId
+                }
+                onChange={
+                  (event) =>
+                    setDestinationLaneId(
+                      event.target.value
+                    )
+                }
+                className="
+                  w-full
+                  rounded-md
+                  border
+                  border-slate-300
+                  bg-white
+                  px-2
+                  py-2
+                  text-xs
+                  text-slate-700
+                "
+              >
 
-                            {entryLanes.map(
-                              (laneId) => (
+                {exitLanes.map(
+                  (laneId) => (
 
-                                <option
-                                  key={
-                                    laneId
-                                  }
-                                  value={
-                                    laneId
-                                  }
-                                >
-                                  {laneId}
-                                </option>
-
-                              )
-                            )}
-
-                          </select>
-
-                        </div>
-
-
-
-                        <div
-                          className="
-                            mb-4
-                          "
-                        >
-
-                          <label
-                            className="
-                              mb-1
-                              block
-                              text-xs
-                              font-medium
-                              text-slate-700
-                            "
-                          >
-                            Destination Lane
-                          </label>
-
-                          <select
-                            value={
-                              destinationLaneId
-                            }
-                            onChange={
-                              (event) =>
-                                setDestinationLaneId(
-                                  event.target.value
-                                )
-                            }
-                            className="
-                              w-full
-                              rounded-md
-                              border
-                              border-slate-300
-                              bg-white
-                              px-2
-                              py-2
-                              text-xs
-                              text-slate-700
-                            "
-                          >
-
-                            {exitLanes.map(
-                              (laneId) => (
-
-                                <option
-                                  key={
-                                    laneId
-                                  }
-                                  value={
-                                    laneId
-                                  }
-                                >
-                                  {laneId}
-                                </option>
-
-                              )
-                            )}
-
-                          </select>
-
-                        </div>
-
-                    <button
-                      type="button"
-                      onClick={
-                        handleGenerateRoute
+                    <option
+                      key={
+                        laneId
                       }
-                      className="
-                        mb-2
-                        w-full
-                        rounded-md
-                        border
-                        border-blue-500
-                        bg-blue-50
-                        px-3
-                        py-2
-                        text-sm
-                        font-medium
-                        text-blue-700
-                        transition
-                        hover:bg-blue-100
-                      "
+                      value={
+                        laneId
+                      }
                     >
-                      {t.generateRoute}
-                    </button>
+                      {laneId}
+                    </option>
 
+                  )
+                )}
 
+              </select>
 
-            */
-            }
-           
+            </div>
 
 
             {/* Generate route */}
 
-            
+            <button
+              type="button"
+              onClick={
+                handleGenerateRoute
+              }
+              className="
+                mb-2
+                w-full
+                rounded-md
+                border
+                border-blue-500
+                bg-blue-50
+                px-3
+                py-2
+                text-sm
+                font-medium
+                text-blue-700
+                transition
+                hover:bg-blue-100
+              "
+            >
+              {t.generateRoute}
+            </button>
 
 
             {/* Start / Pause / Reset */}
@@ -1990,31 +1609,31 @@ const simulationLaneIds =
             >
 
               <Metric
-                  label={
-                    t.density
-                  }
-                  value={
-                    `${density.toFixed(0)} ${t.densityUnit}`
-                  }
-                />
+                label={
+                  t.density
+                }
+                value={
+                  `${density.toFixed(1)} ${t.densityUnit}`
+                }
+              />
 
-                <Metric
-                  label={
-                    t.averageSpeed
-                  }
-                  value={
-                    `${averageSpeed.toFixed(0)} ${t.speedUnit}`
-                  }
-                />
+              <Metric
+                label={
+                  t.averageSpeed
+                }
+                value={
+                  `${averageSpeed.toFixed(1)} ${t.speedUnit}`
+                }
+              />
 
-                <Metric
-                  label={
-                    t.trafficFlow
-                  }
-                  value={
-                    `${flow.toFixed(0)} ${t.flowUnit}`
-                  }
-                />
+              <Metric
+                label={
+                  t.trafficFlow
+                }
+                value={
+                  `${flow.toFixed(1)} ${t.flowUnit}`
+                }
+              />
 
             </div>
 
@@ -2066,26 +1685,19 @@ const simulationLaneIds =
             "
           >
             <TrafficMap
-                  laneGeoJSON={
-                    laneCenterlines
-                  }
-
-                  selectedRoute={
-                    selectedRoute
-                  }
-
-                  trafficStreams={
-                    trafficStreams
-                  }
-
-                  vehicles={
-                    vehicles
-                  }
-
-                  t={
-                    t
-                  }
-                />
+              laneGeoJSON={
+                laneCenterlines
+              }
+              selectedRoute={
+                selectedRoute
+              }
+              vehicles={
+                vehicles
+              }
+              t={
+                t
+              }
+            />
           </section>
 
 

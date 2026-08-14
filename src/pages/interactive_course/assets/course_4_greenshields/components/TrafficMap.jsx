@@ -4,12 +4,114 @@ import {
   MapContainer,
   TileLayer,
   GeoJSON,
-  CircleMarker,
+  Marker,
   Tooltip,
+  LayersControl 
 } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 
+
+    function createVehicleIcon(
+      vehicle
+    ) {
+
+      // Make it deliberately long for testing rotation.
+      const baseLengthPx =
+        12;
+
+      const baseWidthPx =
+        8;
+
+
+      const scale =
+        vehicle.lengthM
+          ? vehicle.lengthM / 4.5
+          : 1;
+
+
+      const lengthPx =
+        baseLengthPx *
+        scale;
+
+      const widthPx =
+        baseWidthPx *
+        scale;
+
+
+      const headingDeg =
+        Number(
+          vehicle.headingDeg
+        ) || 0;
+
+
+      return L.divIcon({
+
+        className:
+          "vehicle-marker-container",
+
+        html: `
+          <div
+            style="
+              position: relative;
+
+              width: ${lengthPx}px;
+              height: ${widthPx}px;
+
+              background: #f59e0b;
+
+              border: 1px solid #111827;
+
+              border-radius: 2px;
+
+              box-sizing: border-box;
+
+              transform:
+                rotate(${
+                  -headingDeg
+                }deg);
+
+              transform-origin:
+                center center;
+            "
+          >
+
+            <div
+              style="
+                position: absolute;
+
+                right: 1px;
+                top: 1px;
+
+                width: 3px;
+                height: ${Math.max(
+                  widthPx - 4,
+                  2
+                )}px;
+
+                background: white;
+
+                border-radius: 1px;
+              "
+            >
+            </div>
+
+          </div>
+        `,
+
+        iconSize: [
+          lengthPx,
+          widthPx
+        ],
+
+        iconAnchor: [
+          lengthPx / 2,
+          widthPx / 2
+        ]
+
+      });
+
+    }
 
 // =========================================================
 // TrafficMap
@@ -30,14 +132,15 @@ export default function TrafficMap({
 
   selectedRoute = [],
 
+  trafficStreams = [],
+
   vehicles = [],
 
   mapCenter = [
-    -33.9195,
-    151.2255,
+    -33.918692602538094, 151.22634405412714
   ],
 
-  zoom = 17,
+  zoom = 18,
 
   t,
 }) {
@@ -52,6 +155,13 @@ export default function TrafficMap({
   const selectedRouteSet =
     new Set(selectedRoute);
 
+    const simulationRouteSet =
+  new Set(
+    trafficStreams.flatMap(
+      stream =>
+        stream.route ?? []
+    )
+  );
 
   // -------------------------------------------------------
   // Lane styling
@@ -61,35 +171,62 @@ export default function TrafficMap({
   // to the currently selected A* route.
   // -------------------------------------------------------
 
-  const getLaneStyle = (
-    feature
-  ) => {
+      const getLaneStyle = (
+        feature
+      ) => {
 
-    const laneId =
-      feature?.properties?.lane_id;
+        const laneId =
+          feature?.properties?.lane_id;
 
-    const isSelected =
-      selectedRouteSet.has(
-        laneId
-      );
 
-    if (isSelected) {
+        const isSelected =
+          selectedRouteSet.has(
+            laneId
+          );
 
-      return {
-        color: "#ef4444",
-        weight: 6,
-        opacity: 1,
+
+        const isSimulationRoute =
+          simulationRouteSet.has(
+            laneId
+          );
+
+
+        // Current manually selected route
+        if (
+          isSelected
+        ) {
+
+          return {
+            color: "green",
+            weight: 6,
+            opacity: 0.7,
+          };
+
+        }
+
+
+        // Any route currently used by traffic simulation
+        if (
+          isSimulationRoute
+        ) {
+
+          return {
+            color: "green",
+            weight: 5,
+            opacity: 0.95,
+          };
+
+        }
+
+
+        // Normal lane
+        return {
+          color: "#2563eb",
+          weight: 4,
+          opacity: 0.6,
+        };
+
       };
-
-    }
-
-    return {
-      color: "#2563eb",
-      weight: 3,
-      opacity: 0.75,
-    };
-
-  };
 
 
   // -------------------------------------------------------
@@ -151,141 +288,205 @@ export default function TrafficMap({
       dir="ltr"
     >
 
-      <MapContainer
-        center={
-          mapCenter
+     <MapContainer
+  center={
+    mapCenter
+  }
+  zoom={
+    zoom
+  }
+  className="
+    h-full
+    w-full
+  "
+>
+
+  {/* ================================================
+      Base maps
+  ================================================= */}
+
+  <LayersControl
+    position="bottomleft"
+  >
+
+    {/* ----------------------------------------------
+        OpenStreetMap
+    ----------------------------------------------- */}
+
+    <LayersControl.BaseLayer
+      
+      name="OpenStreetMap"
+    >
+
+      <TileLayer
+        attribution="&copy; OpenStreetMap contributors"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+
+    </LayersControl.BaseLayer>
+
+
+    {/* ----------------------------------------------
+        Esri satellite imagery
+    ----------------------------------------------- */}
+
+    <LayersControl.BaseLayer
+    checked
+      name="Esri Satellite"
+    >
+
+      <TileLayer
+        attribution="Tiles &copy; Esri"
+        url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        maxZoom={19}
+      />
+
+    </LayersControl.BaseLayer>
+
+  </LayersControl>
+
+
+  {/* ================================================
+      Lane-based road network
+  ================================================= */}
+
+  {
+    laneGeoJSON && (
+
+      <GeoJSON
+        data={
+          laneGeoJSON
         }
-        zoom={
-          zoom
+        style={
+          getLaneStyle
         }
-        className="
-          h-full
-          w-full
-        "
-      >
+        onEachFeature={
+          onEachLane
+        }
+      />
 
-        {/* ================================================
-            Base map
-        ================================================= */}
-
-        <TileLayer
-          attribution='&copy; OpenStreetMap contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+    )
+  }
 
 
-        {/* ================================================
-            Lane-based road network
-        ================================================= */}
+  {/* ================================================
+      Vehicle layer
+  ================================================= */}
 
-        {
-          laneGeoJSON && (
+  {
+    vehicles.map(
+      (vehicle) => {
 
-                    <GeoJSON
-                    data={
-                        laneGeoJSON
-                    }
-                    style={
-                        getLaneStyle
-                    }
-                    onEachFeature={
-                        onEachLane
-                    }
-                    />
-          )
+        if (
+          vehicle.lat == null ||
+          vehicle.lon == null
+        ) {
+
+          return null;
+
         }
 
 
-        {/* ================================================
-            Vehicle layer
-           
-            Temporary implementation.
-            Later move this into VehicleLayer.jsx.
-        ================================================= */}
+        return (
 
-        {
-          vehicles.map(
-            (vehicle) => {
+          <Marker
+            key={
+              vehicle.id
+            }
 
-              if (
-                vehicle.lat == null
-                ||
-                vehicle.lon == null
-              ) {
+            position={[
+              vehicle.lat,
+              vehicle.lon
+            ]}
 
-                return null;
+            icon={
+              createVehicleIcon(
+                vehicle
+              )
+            }
+          >
 
-              }
+            <Tooltip>
 
-              return (
+              <div>
 
-                <CircleMarker
-                  key={
-                    vehicle.id
+                <strong>
+                  {vehicle.id}
+                </strong>
+
+
+                <div>
+                  Lane:
+                  {" "}
+                  {
+                    vehicle.currentLaneId
                   }
-                  center={[
-                    vehicle.lat,
-                    vehicle.lon,
-                  ]}
-                  radius={
-                    5
-                  }
-                  pathOptions={{
-                    color: "#111827",
-                    fillColor: "#f59e0b",
-                    fillOpacity: 1,
-                    weight: 1,
-                  }}
-                >
+                </div>
 
-                  <Tooltip>
+
+                <div>
+                  Speed:
+                  {" "}
+                  {
+                    (
+                      vehicle.speedMps *
+                      3.6
+                    ).toFixed(1)
+                  }
+                  {" "}
+                  km/h
+                </div>
+
+
+                {
+                  vehicle.desiredSpeedMps != null && (
 
                     <div>
-
-                      <div>
-                        <strong>
-                          {vehicle.id}
-                        </strong>
-                      </div>
-
-                      <div>
-                        Lane:
-                        {" "}
-                        {
-                          vehicle.currentLaneId
-                          ?? "—"
-                        }
-                      </div>
-
-                      <div>
-                        Speed:
-                        {" "}
-                        {
-                          vehicle.speedMps
-                          != null
-                            ? (
-                                vehicle.speedMps
-                                * 3.6
-                              ).toFixed(1)
-                            : "—"
-                        }
-                        {" "}
-                        km/h
-                      </div>
-
+                      Desired Speed:
+                      {" "}
+                      {
+                        (
+                          vehicle.desiredSpeedMps *
+                          3.6
+                        ).toFixed(1)
+                      }
+                      {" "}
+                      km/h
                     </div>
 
-                  </Tooltip>
+                  )
+                }
 
-                </CircleMarker>
 
-              );
+                {
+                  vehicle.lengthM != null && (
 
-            }
-          )
-        }
+                    <div>
+                      Length:
+                      {" "}
+                      {
+                        vehicle.lengthM.toFixed(1)
+                      }
+                      {" "}
+                      m
+                    </div>
 
-      </MapContainer>
+                  )
+                }
+
+              </div>
+
+            </Tooltip>
+
+          </Marker>
+
+        );
+
+      }
+    )
+  }
+
+</MapContainer>
 
 
       {/* ==================================================
@@ -296,7 +497,7 @@ export default function TrafficMap({
         className="
           pointer-events-none
           absolute
-          left-4
+          right-4
           top-4
           z-[1000]
           rounded-lg

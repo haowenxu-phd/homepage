@@ -196,7 +196,7 @@ export default function Home() {
                 Transportation Digital Twins
               </li>              
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Intelligent Transportation System (ITS)
+                Intelligent Transportation Systems (ITS)
               </li>
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Connected and Automated Vehicles (CAV)

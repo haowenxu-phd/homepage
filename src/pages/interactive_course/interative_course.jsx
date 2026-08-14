@@ -88,6 +88,21 @@ export default function InteractiveLearning() {
           status:
             "Available",
         },
+        {
+          id: 4,
+
+          image:
+            "img/thumbnail_learning/T4_traffic_flow.png",
+
+          href:
+            "/learning/course_4",
+            //https://haowenxu-phd.github.io/homepage/learning/course_1
+          level:
+            "Foundation",
+
+          status:
+            "Available",
+        },
       ],
       []
     );

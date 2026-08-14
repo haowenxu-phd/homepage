@@ -99,56 +99,78 @@ export function moveVehicle(
 
     const geometryLonLat =
       lane.geometry_lonlat;
+    
+    // =========================================================
+    // Update vehicle heading from current geometry segment
+    // =========================================================
+      const segmentIndex =
+        vehicle.segmentIndex;
 
 
-    // -----------------------------------------------------
-    // Current segment
-    //
-    // segmentIndex = 0:
-    // point 0 -> point 1
-    //
-    // segmentIndex = 1:
-    // point 1 -> point 2
-    // -----------------------------------------------------
+      const startXY =
+        geometryXY[
+          segmentIndex
+        ];
 
-    const segmentIndex =
-      vehicle.segmentIndex;
+      const endXY =
+        geometryXY[
+          segmentIndex + 1
+        ];
 
 
-    const startXY =
-      geometryXY[
-        segmentIndex
-      ];
+      // -----------------------------------------------------
+      // Current lane has no more segments
+      // -----------------------------------------------------
 
-    const endXY =
-      geometryXY[
-        segmentIndex + 1
-      ];
+          if (
+            !startXY ||
+            !endXY
+          ) {
 
+            moveToNextLane(
+              vehicle,
+              routingGraph
+            );
 
-    // -----------------------------------------------------
-    // Current lane has no more segments
-    // -----------------------------------------------------
-
-    if (
-      !startXY ||
-      !endXY
-    ) {
-
-      moveToNextLane(
-        vehicle,
-        routingGraph
-      );
-
-      continue;
-    }
+            continue;
+          }
 
 
-    const segmentLengthM =
-      distance2D(
-        startXY,
-        endXY
-      );
+          // =====================================================
+          // Update vehicle heading
+          // =====================================================
+
+          const dx =
+            endXY[0] -
+            startXY[0];
+
+          const dy =
+            endXY[1] -
+            startXY[1];
+
+
+          vehicle.headingRad =
+            Math.atan2(
+              dy,
+              dx
+            );
+
+
+          vehicle.headingDeg =
+            vehicle.headingRad *
+            180 /
+            Math.PI;
+
+
+          // -----------------------------------------------------
+          // Segment length
+          // -----------------------------------------------------
+
+          const segmentLengthM =
+            distance2D(
+              startXY,
+              endXY
+            );
 
 
     // Avoid zero-length geometry

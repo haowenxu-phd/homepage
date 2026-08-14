@@ -12,6 +12,9 @@
     "numberOfVehicles": "Number of Vehicles",
     "freeFlowSpeed": "Free-flow Speed",
     "jamDensity": "Jam Density",
+    "trafficDemand": "Traffic Demand",
+    "vehicleSpawnInterval": "Vehicle Entry Interval",
+    "secondsPerVehicle": "s/vehicle",
 
     "start": "Start",
     "pause": "Pause",
@@ -53,6 +56,9 @@
     "numberOfVehicles": "车辆数量",
     "freeFlowSpeed": "自由流速度",
     "jamDensity": "拥堵密度",
+      "trafficDemand": "交通需求",
+    "vehicleSpawnInterval": "车辆进入间隔",
+    "secondsPerVehicle": "秒/辆",
 
     "start": "开始",
     "pause": "暂停",
@@ -92,6 +98,9 @@
     "numberOfVehicles": "تعداد خودروها",
     "freeFlowSpeed": "سرعت جریان آزاد",
     "jamDensity": "چگالی تراکم",
+     "trafficDemand": "تقاضای ترافیک",
+    "vehicleSpawnInterval": "فاصله ورود خودرو",
+    "secondsPerVehicle": "ثانیه/خودرو",
 
     "start": "شروع",
     "pause": "توقف",
