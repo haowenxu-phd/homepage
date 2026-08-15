@@ -24,7 +24,7 @@ import ProjectDetail8, { AgentAIFire } from "./pages/projects/agentic_ai_fire/ag
 import ProjectDetail9, { VoxelAISurrogateModel } from "./pages/projects/fireSurrogateModel/AI_Voxel_landing.jsx"
 
 
-
+import ProjectDetail10, { RtmcsSimDetail } from "./pages/projects/rtmcs_sim_vis/rtmcs_sim_landing.jsx"
 
 import Teaching from "./pages/teaching/teaching.jsx"
 import CollabGrants from "./pages/collab_grant/collab_grant.jsx"
@@ -65,6 +65,8 @@ export default function App() {
           <Route path="/portfolio/gsl" element={<GSLDetail />} />
           <Route path="/portfolio/vr_digital_twins" element={<RTDetail />} />
           <Route path="/portfolio/3d_gas_dispersion" element={<VoxelGasDetail />} />
+          <Route path="/portfolio/rtmcs" element={<RtmcsSimDetail />} />
+          
 
           <Route path="/portfolio/agenticAIFire" element={<AgentAIFire />} />
           <Route path="/portfolio/AIFireSurrogateModel" element={<VoxelAISurrogateModel />} /> 
