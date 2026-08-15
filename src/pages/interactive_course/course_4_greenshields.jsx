@@ -10,7 +10,8 @@ import React, {
 
 import text from "./assets/course_4_greenshields/trans/course.json";
 
-
+import SpeedDensityChart
+  from "./assets/course_4_greenshields/components/SpeedDensityChart";
   
 import laneCenterlines from "./assets/course_4_greenshields/data/unsw_lane_centerlines_cleaned.json";
 import routingGraph from "./assets/course_4_greenshields/data/unsw_lane_routing_graph.json";
@@ -232,8 +233,16 @@ const simulationLaneIds =
     const [trafficDemand, setTrafficDemand] =
       useState(900);
 
-    const [freeFlowSpeed, setFreeFlowSpeed] =
-      useState(50);
+      /*
+   const [
+      freeFlowSpeed,
+      setFreeFlowSpeed
+    ] = useState(50);
+*/
+    const [
+  speedLimit,
+  setSpeedLimit
+] = useState(50);
 
   const [isRunning, setIsRunning] =
     useState(false);
@@ -562,24 +571,37 @@ const simulationLaneIds =
                 continue;
               }
 
+               // -------------------------------------------
+              // Now I have to change spawn model
+              // -------------------------------------------
+
+              const desiredSpawnSpeedMps =
+              spec.desiredSpeedMps;
+
+
+            const minimumSpawnGapM =
+              4.5 +
+              2.5 +
+              desiredSpawnSpeedMps *
+              1.5;
 
               // -------------------------------------------
               // Is there enough space on the entry lane?
               // -------------------------------------------
 
               const entryAvailable =
-                canSpawnVehicle({
+              canSpawnVehicle({
 
-                  route:
-                    spec.route,
+                route:
+                  spec.route,
 
-                  vehicles:
-                    updatedVehicles,
+                vehicles:
+                  updatedVehicles,
 
-                  minimumSpawnGapM:
-                    8,
+                minimumSpawnGapM:
+                  minimumSpawnGapM,
 
-                });
+              });
 
 
               // Entry lane occupied.
@@ -899,140 +921,138 @@ const simulationLaneIds =
   // =======================================================
  
     const generateVehicleSchedule = ({
-          trafficDemand,
-          freeFlowSpeed,
-          selectedRoute,
+            trafficDemand,
+            speedLimit,
+            selectedRoute,
 
-          durationS = 120,
+            durationS = 120,
 
-          speedVariationKmh = 5,
+            streamId = "stream",
+          }) => {
 
-          streamId = "stream",
-        }) => {
-
-          if (
-            !Array.isArray(selectedRoute) ||
-            selectedRoute.length === 0 ||
-            trafficDemand <= 0
-          ) {
-            return [];
-          }
-
-
-          // =====================================================
-          // Mean arrival interval
-          // =====================================================
-
-          const meanSpawnIntervalS =
-            3600 /
-            trafficDemand;
+            if (
+              !Array.isArray(selectedRoute) ||
+              selectedRoute.length === 0 ||
+              trafficDemand <= 0 ||
+              speedLimit <= 0
+            ) {
+              return [];
+            }
 
 
-          const schedule =
-            [];
+            // =====================================================
+            // Mean arrival interval
+            //
+            // trafficDemand: veh/h
+            // =====================================================
+
+            const meanSpawnIntervalS =
+              3600 /
+              trafficDemand;
 
 
-          let spawnTimeS =
-            0;
-
-          let vehicleIndex =
-            1;
+            const schedule =
+              [];
 
 
-          while (
-            spawnTimeS <=
-            durationS
-          ) {
+            let spawnTimeS =
+              0;
 
-            // ===================================================
-            // Random desired speed
-            // ===================================================
-
-            const randomVariationKmh =
-              (
-                Math.random() * 2 -
-                1
-              ) *
-              speedVariationKmh;
-
-
-            const desiredSpeedKmh =
-              Math.max(
-                5,
-                freeFlowSpeed +
-                randomVariationKmh
-              );
-
-
-            const desiredSpeedMps =
-              desiredSpeedKmh /
-              3.6;
-
-
-            // ===================================================
-            // Add vehicle
-            // ===================================================
-
-            schedule.push({
-
-              id:
-                `${streamId}_vehicle_${String(
-                  vehicleIndex
-                ).padStart(
-                  3,
-                  "0"
-                )}`,
-
-              streamId,
-
-              spawnTimeS,
-
-              speedMps:
-                desiredSpeedMps,
-
-              desiredSpeedMps:
-                desiredSpeedMps,
-
-              route: [
-                ...selectedRoute
-              ],
-
-            });
-
-
-            vehicleIndex +=
+            let vehicleIndex =
               1;
 
 
-            // ===================================================
-            // Random next arrival
-            //
-            // Exponential inter-arrival distribution
-            // ===================================================
+            while (
+              spawnTimeS <=
+              durationS
+            ) {
 
-            const u =
-              Math.max(
-                Math.random(),
-                0.000001
-              );
+              // ===================================================
+              // Desired vehicle speed
+              //
+              // Vehicles travel between approximately
+              // 85% and 100% of the speed limit.
+              // ===================================================
 
-
-            const randomIntervalS =
-              -meanSpawnIntervalS *
-              Math.log(
-                u
-              );
+              const speedFactor =
+                0.85 +
+                Math.random() * 0.15;
 
 
-            spawnTimeS +=
-              randomIntervalS;
+              const desiredSpeedKmh =
+                speedLimit *
+                speedFactor;
 
-          }
+
+              const desiredSpeedMps =
+                desiredSpeedKmh /
+                3.6;
 
 
-          return schedule;
+              // ===================================================
+              // Add vehicle specification
+              // ===================================================
 
-        };
+              schedule.push({
+
+                id:
+                  `${streamId}_vehicle_${String(
+                    vehicleIndex
+                  ).padStart(
+                    3,
+                    "0"
+                  )}`,
+
+                streamId,
+
+                spawnTimeS,
+
+                speedMps:
+                  desiredSpeedMps,
+
+                desiredSpeedMps:
+                  desiredSpeedMps,
+
+                route: [
+                  ...selectedRoute
+                ],
+
+              });
+
+
+              vehicleIndex +=
+                1;
+
+
+              // ===================================================
+              // Random arrival interval
+              //
+              // Exponential distribution
+              // ===================================================
+
+              const u =
+                Math.max(
+                  Math.random(),
+                  0.000001
+                );
+
+
+              const randomIntervalS =
+                -meanSpawnIntervalS *
+                Math.log(
+                  u
+                );
+
+
+              spawnTimeS +=
+                randomIntervalS;
+
+            }
+
+
+            return schedule;
+
+          };
 
     const handleStartSimulation = () => {
 
@@ -1057,8 +1077,8 @@ const simulationLaneIds =
                   trafficDemand:
                     trafficDemand /2 ,
 
-                  freeFlowSpeed:
-                    freeFlowSpeed,
+                  speedLimit:
+                          speedLimit,
                 },
 
 
@@ -1077,8 +1097,8 @@ const simulationLaneIds =
                   trafficDemand:
                     trafficDemand / 2,
 
-                  freeFlowSpeed:
-                    freeFlowSpeed,
+                  speedLimit:
+                      speedLimit,
                 },
 
               ];
@@ -1127,34 +1147,31 @@ const simulationLaneIds =
             // Generate one schedule for every traffic stream
             // =====================================================
 
-            const schedules =
-              validStreams.map(
-                stream => {
+           const schedules =
+                validStreams.map(
+                  stream => {
 
-                  return generateVehicleSchedule({
+                    return generateVehicleSchedule({
 
-                    trafficDemand:
-                      stream.trafficDemand,
+                      trafficDemand:
+                        stream.trafficDemand,
 
-                    freeFlowSpeed:
-                      stream.freeFlowSpeed,
+                      speedLimit:
+                        stream.speedLimit,
 
-                    selectedRoute:
-                      stream.route,
+                      selectedRoute:
+                        stream.route,
 
-                    durationS:
-                      120,
+                      durationS:
+                        120,
 
-                    speedVariationKmh:
-                      5,
+                      streamId:
+                        stream.streamId,
 
-                    streamId:
-                      stream.streamId,
+                    });
 
-                  });
-
-                }
-              );
+                  }
+                );
 
 
             // =====================================================
@@ -1325,889 +1342,727 @@ const simulationLaneIds =
   return (
 
     <main
-      dir={
-        isRTL
-          ? "rtl"
-          : "ltr"
-      }
+  dir={
+    isRTL
+      ? "rtl"
+      : "ltr"
+  }
+  className="
+    flex
+    min-h-screen
+    w-full
+    flex-col
+    overflow-x-hidden
+    bg-slate-50
+    p-2
+
+    sm:p-3
+
+    lg:h-screen
+    lg:min-h-0
+    lg:overflow-hidden
+    lg:p-4
+  "
+>
+
+  {/* ==================================================
+      Top bar
+  =================================================== */}
+
+  <header
+    className="
+      mb-3
+      flex
+      shrink-0
+      flex-col
+      gap-2
+      rounded-lg
+      border
+      border-slate-200
+      bg-white
+      px-3
+      py-3
+      shadow-sm
+
+      sm:flex-row
+      sm:items-center
+      sm:justify-between
+      sm:px-4
+    "
+  >
+
+    <div
       className="
-        flex
-        h-screen
-        w-full
-        flex-col
-        bg-slate-50
-        p-4
+        min-w-0
+        flex-1
       "
     >
 
-      {/* ==================================================
-          Top bar
-      =================================================== */}
-
-      <header
+      <h3
         className="
-          mb-3
-          flex
-          shrink-0
-          items-center
-          justify-between
-          gap-4
-          rounded-lg
-          border
-          border-slate-200
-          bg-white
-          px-4
-          py-3
-          shadow-sm
+          text-lg
+          font-semibold
+          leading-tight
+          text-slate-800
+
+          sm:text-center
+          sm:text-xl
+        "
+      >
+        {t.courseTitle}
+      </h3>
+
+    </div>
+
+
+    {/* Language selector */}
+
+    <select
+      value={
+        language
+      }
+      onChange={
+        (event) =>
+          setLanguage(
+            event.target.value
+          )
+      }
+      className="
+        w-full
+        shrink-0
+        rounded-md
+        border
+        border-slate-300
+        bg-white
+        px-3
+        py-2
+        text-sm
+        text-slate-700
+
+        sm:w-auto
+      "
+    >
+
+      <option value="en">
+        English
+      </option>
+
+      <option value="zh">
+        中文
+      </option>
+
+      <option value="fa">
+        فارسی
+      </option>
+
+    </select>
+
+  </header>
+
+
+  {/* ==================================================
+      Main responsive layout
+
+      MOBILE:
+      Introduction
+      Controls
+      Map
+      Results
+
+      DESKTOP:
+      Left column     | Map
+      -------------------------
+      Introduction    |
+      Controls        | Map
+      Results         |
+  =================================================== */}
+
+  <section
+  className="
+    grid
+    w-full
+    grid-cols-1
+    gap-3
+
+    lg:min-h-0
+    lg:flex-1
+    lg:grid-cols-[360px_minmax(0,1fr)]
+    lg:grid-rows-[auto_auto_minmax(0,1fr)]
+    lg:gap-4
+
+    xl:grid-cols-[420px_minmax(0,1fr)]
+  "
+>
+
+    {/* =================================================
+        Course introduction
+
+        Mobile: item 1
+        Desktop: left column / row 1
+    ================================================== */}
+
+    <section
+      className="
+        min-w-0
+        rounded-lg
+        border
+        border-slate-200
+        bg-white
+        p-3
+        shadow-sm
+
+        sm:p-4
+
+        lg:col-start-1
+        lg:row-start-1
+      "
+    >
+
+      <h4
+        className="
+          text-sm
+          font-semibold
+          text-slate-800
+        "
+      >
+        {t.introductionTitle}
+      </h4>
+
+
+      <p
+        className="
+          mt-2
+          text-sm
+          leading-5
+          text-slate-600
+        "
+      >
+        {t.introductionText}
+      </p>
+
+
+      <div
+        className="
+          mt-3
+          rounded-md
+          bg-slate-50
+          p-3
         "
       >
 
         <div
           className="
-            min-w-0
-            flex-1
-            text-center
+            text-xs
+            font-semibold
+            text-slate-700
+          "
+        >
+          {t.learningGoal}
+        </div>
+
+
+        <p
+          className="
+            mt-1
+            text-xs
+            leading-5
+            text-slate-600
+          "
+        >
+          {t.learningGoalText}
+        </p>
+
+      </div>
+
+    </section>
+
+
+    {/* =================================================
+        Simulation controls
+
+        Mobile: item 2
+        Desktop: left column / row 2
+    ================================================== */}
+
+    <section
+      className="
+        min-w-0
+        rounded-lg
+        border
+        border-slate-200
+        bg-white
+        p-3
+        shadow-sm
+
+        sm:p-4
+
+        lg:col-start-1
+        lg:row-start-2
+      "
+    >
+
+      <h4
+        className="
+          mb-4
+          text-sm
+          font-semibold
+          text-slate-800
+        "
+      >
+        {t.simulationControls}
+      </h4>
+
+
+      {/* ===============================================
+          Traffic demand
+      ================================================ */}
+
+      <div
+        className="
+          mb-4
+        "
+      >
+
+        <div
+          className="
+            mb-1
+            flex
+            items-center
+            justify-between
+            gap-2
           "
         >
 
-          <h3
+          <label
+            htmlFor="traffic-demand"
             className="
-              text-xl
-              font-semibold
-              text-slate-800
+              text-xs
+              font-medium
+              text-slate-700
             "
           >
-            {t.courseTitle}
-          </h3>
+            {t.trafficDemand}
+          </label>
+
+
+          <span
+            className="
+              shrink-0
+              text-xs
+              text-slate-500
+            "
+          >
+            {trafficDemand}
+            {" "}
+            {t.flowUnit}
+          </span>
 
         </div>
 
 
-        {/* Language selector */}
-
-        <select
-          value={language}
+        <input
+          id="traffic-demand"
+          type="range"
+          min="300"
+          max="2400"
+          step="100"
+          value={
+            trafficDemand
+          }
           onChange={
             (event) =>
-              setLanguage(
-                event.target.value
+              setTrafficDemand(
+                Number(
+                  event.target.value
+                )
               )
           }
           className="
-            shrink-0
+            w-full
+          "
+        />
+
+
+        <div
+          className="
+            mt-1
+            text-[11px]
+            text-slate-400
+          "
+        >
+          {t.vehicleSpawnInterval}
+          {": "}
+          {
+            (
+              3600 /
+              trafficDemand
+            ).toFixed(1)
+          }
+          {" "}
+          {t.secondsPerVehicle}
+        </div>
+
+      </div>
+
+
+      {/* ===============================================
+          Free-flow speed
+      ================================================ */}
+
+      <div
+        className="
+          mb-4
+        "
+      >
+
+        <div
+          className="
+            mb-1
+            flex
+            items-center
+            justify-between
+            gap-2
+          "
+        >
+
+          <label
+              htmlFor="speed-limit"
+            >
+              {t.speedLimit}
+            </label>
+
+            <span>
+              {speedLimit} km/h
+            </span>
+
+
+        </div>
+
+
+        <input
+              id="speed-limit"
+              type="range"
+              min="20"
+              max="80"
+              step="5"
+              value={
+                speedLimit
+              }
+              onChange={
+                (event) =>
+                  setSpeedLimit(
+                    Number(
+                      event.target.value
+                    )
+                  )
+              }
+              className="
+                w-full
+              "
+            />
+
+      </div>
+
+
+      {/* ===============================================
+          Start / Pause / Reset
+      ================================================ */}
+
+      <div
+        className="
+          grid
+          grid-cols-2
+          gap-2
+        "
+      >
+
+        {!isRunning ? (
+
+          <button
+            type="button"
+            onClick={
+              handleStartSimulation
+            }
+            className="
+              rounded-md
+              bg-blue-600
+              px-3
+              py-2.5
+              text-sm
+              font-medium
+              text-white
+              transition
+              hover:bg-blue-700
+            "
+          >
+            {t.start}
+          </button>
+
+        ) : (
+
+          <button
+            type="button"
+            onClick={
+              handlePauseSimulation
+            }
+            className="
+              rounded-md
+              bg-amber-500
+              px-3
+              py-2.5
+              text-sm
+              font-medium
+              text-white
+              transition
+              hover:bg-amber-600
+            "
+          >
+            {t.pause}
+          </button>
+
+        )}
+
+
+        <button
+          type="button"
+          onClick={
+            handleResetSimulation
+          }
+          className="
             rounded-md
             border
             border-slate-300
             bg-white
             px-3
-            py-2
+            py-2.5
             text-sm
+            font-medium
             text-slate-700
+            transition
+            hover:bg-slate-50
           "
         >
+          {t.reset}
+        </button>
 
-          <option value="en">
-            English
-          </option>
+      </div>
 
-          <option value="zh">
-            中文
-          </option>
-
-          <option value="fa">
-            فارسی
-          </option>
-
-        </select>
-
-      </header>
+    </section>
 
 
-      {/* ==================================================
-          Main layout
-      =================================================== */}
+    {/* =================================================
+        MAP
 
-      <section
+        Mobile:
+        full width and 55vh tall
+
+        Desktop:
+        entire right column and all rows
+    ================================================== */}
+
+    <section
+      className="
+        relative
+        min-w-0
+        overflow-hidden
+        rounded-lg
+        border
+        border-slate-200
+        bg-white
+        shadow-sm
+
+        h-[55vh]
+        min-h-[360px]
+
+        sm:h-[60vh]
+        sm:min-h-[440px]
+
+        lg:col-start-2
+        lg:row-start-1
+        lg:row-span-3
+        lg:h-auto
+        lg:min-h-0
+      "
+    >
+
+      <TrafficMap
+        laneGeoJSON={
+          laneCenterlines
+        }
+
+        selectedRoute={
+          selectedRoute
+        }
+
+        trafficStreams={
+          trafficStreams
+        }
+
+        vehicles={
+          vehicles
+        }
+
+        t={
+          t
+        }
+      />
+
+
+      {/* ===============================================
+          Vehicle count overlay
+      ================================================ */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          bottom-3
+          right-3
+          z-[1000]
+          rounded-md
+          bg-white/95
+          px-3
+          py-2
+          text-xs
+          text-slate-600
+          shadow
+        "
+      >
+        {vehicles.length}
+        {" "}
+        {t.vehicleUnit}
+      </div>
+
+    </section>
+
+
+    {/* =================================================
+        Results
+
+        Mobile: AFTER map
+        Desktop: left column / row 3
+    ================================================== */}
+
+    <section
+      className="
+        min-w-0
+        rounded-lg
+        border
+        border-slate-200
+        bg-white
+        p-3
+        shadow-sm
+
+        sm:p-4
+
+        lg:col-start-1
+        lg:row-start-3
+        lg:min-h-0
+        lg:overflow-y-auto
+      "
+    >
+
+      <h4
+        className="
+          mb-3
+          text-sm
+          font-semibold
+          text-slate-800
+        "
+      >
+        {t.resultSummary}
+      </h4>
+
+
+      <div
         className="
           grid
-          min-h-0
-          flex-1
-          grid-cols-[300px_minmax(0,1fr)]
-          gap-4
+          gap-2
+
+          sm:grid-cols-3
+
+          lg:grid-cols-1
         "
       >
 
-        {/* =================================================
-            Left sidebar
-        ================================================== */}
-
-        <aside
-          className="
-            flex
-            min-h-0
-            flex-col
-            gap-3
-            overflow-y-auto
-          "
-        >
-
-          {/* -----------------------------------------------
-              Course introduction
-          ------------------------------------------------ */}
-
-          <section
-            className="
-              rounded-lg
-              border
-              border-slate-200
-              bg-white
-              p-4
-              shadow-sm
-            "
-          >
-
-            <h4
-              className="
-                text-sm
-                font-semibold
-                text-slate-800
-              "
-            >
-              {t.introductionTitle}
-            </h4>
-
-            <p
-              className="
-                mt-2
-                text-sm
-                leading-5
-                text-slate-600
-              "
-            >
-              {t.introductionText}
-            </p>
-
-
-            <div
-              className="
-                mt-3
-                rounded-md
-                bg-slate-50
-                p-3
-              "
-            >
-
-              <div
-                className="
-                  text-xs
-                  font-semibold
-                  text-slate-700
-                "
-              >
-                {t.learningGoal}
-              </div>
-
-              <p
-                className="
-                  mt-1
-                  text-xs
-                  leading-5
-                  text-slate-600
-                "
-              >
-                {t.learningGoalText}
-              </p>
-
-            </div>
-
-          </section>
-
-
-          {/* -----------------------------------------------
-              Simulation controls
-          ------------------------------------------------ */}
-
-          <section
-            className="
-              rounded-lg
-              border
-              border-slate-200
-              bg-white
-              p-4
-              shadow-sm
-            "
-          >
-
-            <h4
-              className="
-                mb-4
-                text-sm
-                font-semibold
-                text-slate-800
-              "
-            >
-              {t.simulationControls}
-            </h4>
-
-            {/* Traffic demand */}
-
-            <div
-              className="
-                mb-4
-              "
-            >
-
-              <div
-                className="
-                  mb-1
-                  flex
-                  items-center
-                  justify-between
-                  gap-2
-                "
-              >
-
-                <label
-                  htmlFor="traffic-demand"
-                  className="
-                    text-xs
-                    font-medium
-                    text-slate-700
-                  "
-                >
-                  {t.trafficDemand}
-                </label>
-
-                <span
-                  className="
-                    text-xs
-                    text-slate-500
-                  "
-                >
-                  {trafficDemand}
-                  {" "}
-                  {t.flowUnit}
-                </span>
-
-              </div>
-
-              <input
-                id="traffic-demand"
-                type="range"
-                min="300"
-                max="2400"
-                step="100"
-                value={
-                  trafficDemand
-                }
-                onChange={
-                  (event) =>
-                    setTrafficDemand(
-                      Number(
-                        event.target.value
-                      )
-                    )
-                }
-                className="
-                  w-full
-                "
-              />
-
-              <div
-                className="
-                  mt-1
-                  text-[11px]
-                  text-slate-400
-                "
-              >
-                {t.vehicleSpawnInterval}:
-                {" "}
-                {
-                  (
-                    3600 /
-                    trafficDemand
-                  ).toFixed(1)
-                }
-                {""}
-                {t.secondsPerVehicle}
-              </div>
-
-            </div>
-
-
-            {/* Free-flow speed */}
-
-            <div
-              className="
-                mb-4
-              "
-            >
-
-              <div
-                className="
-                  mb-1
-                  flex
-                  items-center
-                  justify-between
-                  gap-2
-                "
-              >
-
-                <label
-                  htmlFor="free-flow-speed"
-                  className="
-                    text-xs
-                    font-medium
-                    text-slate-700
-                  "
-                >
-                  {t.freeFlowSpeed}
-                </label>
-
-                <span
-                  className="
-                    text-xs
-                    text-slate-500
-                  "
-                >
-                  {freeFlowSpeed}
-                  {" "}
-                  {t.speedUnit}
-                </span>
-
-              </div>
-
-              <input
-                id="free-flow-speed"
-                type="range"
-                min="30"
-                max="80"
-                step="5"
-                value={
-                  freeFlowSpeed
-                }
-                onChange={
-                  (event) =>
-                    setFreeFlowSpeed(
-                      Number(
-                        event.target.value
-                      )
-                    )
-                }
-                className="
-                  w-full
-                "
-              />
-
-            </div>
-
-
-            {/* ---------------------------------------------
-                Origin lane
-            ---------------------------------------------- */}
-
-            {
-            /*
-
-            <div
-                          className="
-                            mb-3
-                          "
-                        >
-
-                          <label
-                            className="
-                              mb-1
-                              block
-                              text-xs
-                              font-medium
-                              text-slate-700
-                            "
-                          >
-                            Origin Lane
-                          </label>
-
-                          <select
-                            value={
-                              originLaneId
-                            }
-                            onChange={
-                              (event) =>
-                                setOriginLaneId(
-                                  event.target.value
-                                )
-                            }
-                            className="
-                              w-full
-                              rounded-md
-                              border
-                              border-slate-300
-                              bg-white
-                              px-2
-                              py-2
-                              text-xs
-                              text-slate-700
-                            "
-                          >
-
-                            {entryLanes.map(
-                              (laneId) => (
-
-                                <option
-                                  key={
-                                    laneId
-                                  }
-                                  value={
-                                    laneId
-                                  }
-                                >
-                                  {laneId}
-                                </option>
-
-                              )
-                            )}
-
-                          </select>
-
-                        </div>
-
-
-
-                        <div
-                          className="
-                            mb-4
-                          "
-                        >
-
-                          <label
-                            className="
-                              mb-1
-                              block
-                              text-xs
-                              font-medium
-                              text-slate-700
-                            "
-                          >
-                            Destination Lane
-                          </label>
-
-                          <select
-                            value={
-                              destinationLaneId
-                            }
-                            onChange={
-                              (event) =>
-                                setDestinationLaneId(
-                                  event.target.value
-                                )
-                            }
-                            className="
-                              w-full
-                              rounded-md
-                              border
-                              border-slate-300
-                              bg-white
-                              px-2
-                              py-2
-                              text-xs
-                              text-slate-700
-                            "
-                          >
-
-                            {exitLanes.map(
-                              (laneId) => (
-
-                                <option
-                                  key={
-                                    laneId
-                                  }
-                                  value={
-                                    laneId
-                                  }
-                                >
-                                  {laneId}
-                                </option>
-
-                              )
-                            )}
-
-                          </select>
-
-                        </div>
-
-                    <button
-                      type="button"
-                      onClick={
-                        handleGenerateRoute
-                      }
-                      className="
-                        mb-2
-                        w-full
-                        rounded-md
-                        border
-                        border-blue-500
-                        bg-blue-50
-                        px-3
-                        py-2
-                        text-sm
-                        font-medium
-                        text-blue-700
-                        transition
-                        hover:bg-blue-100
-                      "
-                    >
-                      {t.generateRoute}
-                    </button>
-
-
-
-            */
-            }
-           
-
-
-            {/* Generate route */}
-
-            
-
-
-            {/* Start / Pause / Reset */}
-
-            <div
-              className="
-                grid
-                grid-cols-2
-                gap-2
-              "
-            >
-
-              {!isRunning ? (
-
-                <button
-                  type="button"
-                  onClick={
-                    handleStartSimulation
-                  }
-                  className="
-                    rounded-md
-                    bg-blue-600
-                    px-3
-                    py-2
-                    text-sm
-                    font-medium
-                    text-white
-                    transition
-                    hover:bg-blue-700
-                  "
-                >
-                  {t.start}
-                </button>
-
-              ) : (
-
-                <button
-                  type="button"
-                  onClick={
-                    handlePauseSimulation
-                  }
-                  className="
-                    rounded-md
-                    bg-amber-500
-                    px-3
-                    py-2
-                    text-sm
-                    font-medium
-                    text-white
-                    transition
-                    hover:bg-amber-600
-                  "
-                >
-                  {t.pause}
-                </button>
-
-              )}
-
-
-              <button
-                type="button"
-                onClick={
-                  handleResetSimulation
-                }
-                className="
-                  rounded-md
-                  border
-                  border-slate-300
-                  bg-white
-                  px-3
-                  py-2
-                  text-sm
-                  font-medium
-                  text-slate-700
-                  transition
-                  hover:bg-slate-50
-                "
-              >
-                {t.reset}
-              </button>
-
-            </div>
-
-          </section>
-
-
-          {/* -----------------------------------------------
-              Results
-          ------------------------------------------------ */}
-
-          <section
-            className="
-              rounded-lg
-              border
-              border-slate-200
-              bg-white
-              p-4
-              shadow-sm
-            "
-          >
-
-            <h4
-              className="
-                mb-3
-                text-sm
-                font-semibold
-                text-slate-800
-              "
-            >
-              {t.resultSummary}
-            </h4>
-
-
-            <div
-              className="
-                grid
-                gap-2
-              "
-            >
-
-              <Metric
-                  label={
-                    t.density
-                  }
-                  value={
-                    `${density.toFixed(0)} ${t.densityUnit}`
-                  }
-                />
-
-                <Metric
-                  label={
-                    t.averageSpeed
-                  }
-                  value={
-                    `${averageSpeed.toFixed(0)} ${t.speedUnit}`
-                  }
-                />
-
-                <Metric
-                  label={
-                    t.trafficFlow
-                  }
-                  value={
-                    `${flow.toFixed(0)} ${t.flowUnit}`
-                  }
-                />
-
-            </div>
-
-
-            {/* Chart placeholder */}
-
-            <div
+        <Metric
+          label={
+            t.density
+          }
+          value={
+            `${density.toFixed(0)} ${t.densityUnit}`
+          }
+        />
+
+
+        <Metric
+          label={
+            t.averageSpeed
+          }
+          value={
+            `${averageSpeed.toFixed(0)} ${t.speedUnit}`
+          }
+        />
+
+
+        <Metric
+          label={
+            t.trafficFlow
+          }
+          value={
+            `${flow.toFixed(0)} ${t.flowUnit}`
+          }
+        />
+
+      </div>
+
+
+      {/* ===============================================
+          Chart placeholder
+      ================================================ */}
+
+      <div
               className="
                 mt-4
-                flex
-                min-h-[130px]
-                items-center
-                justify-center
                 rounded-md
                 border
-                border-dashed
-                border-slate-300
-                bg-slate-50
-                p-4
-                text-center
-                text-xs
-                text-slate-400
+                border-slate-200
+                bg-white
+                p-2
               "
             >
-              {t.speedDensityRelationship}
+
+              <SpeedDensityChart
+
+                density={
+                  density
+                }
+
+                averageSpeed={
+                  averageSpeed
+                }
+
+                freeFlowSpeed={
+                  speedLimit
+                }
+
+                jamDensity={
+                  150
+                }
+
+                t={
+                  t
+                }
+
+              />
+
             </div>
 
-          </section>
+    </section>
 
-        </aside>
+  </section>
 
-
-        {/* =================================================
-            Leaflet simulation area
-        ================================================== */}
-
-        
-
-          <section
-            className="
-              relative
-              min-h-0
-              overflow-hidden
-              rounded-lg
-              border
-              border-slate-200
-              bg-white
-              shadow-sm
-            "
-          >
-            <TrafficMap
-                  laneGeoJSON={
-                    laneCenterlines
-                  }
-
-                  selectedRoute={
-                    selectedRoute
-                  }
-
-                  trafficStreams={
-                    trafficStreams
-                  }
-
-                  vehicles={
-                    vehicles
-                  }
-
-                  t={
-                    t
-                  }
-                />
-          </section>
-
-
-          {/* -----------------------------------------------
-              Map title
-          ------------------------------------------------ */}
-          {/**
-          <div
-            className="
-              pointer-events-none
-              absolute
-              left-4
-              top-4
-              z-[1000]
-              rounded-lg
-              border
-              border-slate-200
-              bg-white/95
-              px-4
-              py-3
-              shadow-md
-              backdrop-blur
-            "
-          >
-
-            <div
-              className="
-                text-sm
-                font-semibold
-                text-slate-800
-              "
-            >
-              {t.mapTitle}
-            </div>
-
-            <div
-              className="
-                mt-1
-                text-xs
-                text-slate-500
-              "
-            >
-              {t.mapSubtitle}
-            </div>
-
-          </div>
-            */}
-
-          {/* -----------------------------------------------
-              Simulation status
-          ------------------------------------------------ */}
-          {/**
-           * 
-           * 
-           * <div
-                      className="
-                        pointer-events-none
-                        absolute
-                        right-4
-                        top-4
-                        z-[1000]
-                        rounded-lg
-                        border
-                        border-slate-200
-                        bg-white/95
-                        px-3
-                        py-2
-                        shadow-md
-                      "
-                    >
-
-                      <span
-                        className="
-                          text-xs
-                          font-medium
-                          text-slate-700
-                        "
-                      >
-                        {t.status}
-                        {": "}
-                        {
-                          isRunning
-                            ? t.running
-                            : t.paused
-                        }
-                      </span>
-
-                    </div>
-          */}
-          
-
-
-          {/* -----------------------------------------------
-              Debug / vehicle count
-          ------------------------------------------------ */}
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              bottom-4
-              right-4
-              z-[1000]
-              rounded-md
-              bg-white/95
-              px-3
-              py-2
-              text-xs
-              text-slate-600
-              shadow
-            "
-          >
-            {vehicles.length}
-            {" "}
-            {t.vehicleUnit}
-          </div>
-
-        </section>
-
- 
-
-    </main>
+</main>
 
   );
 

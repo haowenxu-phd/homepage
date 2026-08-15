@@ -35,6 +35,7 @@ import InteractiveLearning_c2_routing from "./pages/interactive_course/course_2_
 import InteractiveLearning_c3_optimization from "./pages/interactive_course/course_3_optimization.jsx"
 import InteractiveLearning_c4_Greenshields from "./pages/interactive_course/course_4_greenshields.jsx"
 
+import InteractiveLearning_c_watershed from "./pages/interactive_course/courseWatershedFlow.jsx"
 
 // 🆕 Import the chatbot page
 import FireAgentChatPage from "./pages/projects/fire_chat/FireAgentChatPage.jsx";
@@ -78,7 +79,7 @@ export default function App() {
           <Route path="/learning/course_2" element={<InteractiveLearning_c2_routing />} /> 
           <Route path="/learning/course_3" element={<InteractiveLearning_c3_optimization />} /> 
           <Route path="/learning/course_4" element={<InteractiveLearning_c4_Greenshields />} /> 
-          
+          <Route path="/learning/course_9" element={<InteractiveLearning_c_watershed />} /> 
           
           
         </Routes>

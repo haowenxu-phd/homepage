@@ -103,6 +103,21 @@ export default function InteractiveLearning() {
           status:
             "Available",
         },
+        {
+          id: 5,
+
+          image:
+            "img/thumbnail_learning/Tw1_transportation_watershed.png",
+
+          href:
+            "/learning/course_9",
+            //https://haowenxu-phd.github.io/homepage/learning/course_1
+          level:
+            "Foundation",
+
+          status:
+            "Available",
+        },
       ],
       []
     );
@@ -183,28 +198,35 @@ export default function InteractiveLearning() {
     >
 
       <div
-        className="
-          w-full
-          px-3
-          py-4
-          sm:px-4
-          lg:px-6
-        "
-      >
+          className="
+            mx-auto
+            w-full
+            max-w-[2200px]
+            px-3
+            py-3
+            sm:px-4
+            sm:py-4
+            md:px-5
+            lg:px-6
+            xl:px-8
+          "
+        >
 
         {/* ====================================================
             Header / language
         ===================================================== */}
 
         <div
-          className="
-            mb-2
-            flex
-            items-center
-            justify-end
-            gap-2
-          "
-        >
+            className="
+              mb-3
+              flex
+              w-full
+              items-center
+              justify-between
+              gap-2
+              sm:justify-end
+            "
+          >
 
           <label
             htmlFor="learning-language"
@@ -233,15 +255,16 @@ export default function InteractiveLearning() {
             }
 
             className="
-              rounded-md
-              border
-              border-slate-300
-              bg-white
-              px-2
-              py-1
-              text-sm
-              text-slate-700
-            "
+                min-w-[110px]
+                rounded-md
+                border
+                border-slate-300
+                bg-white
+                px-2
+                py-1.5
+                text-sm
+                text-slate-700
+              "
           >
 
             <option value="en">
@@ -295,14 +318,17 @@ export default function InteractiveLearning() {
 
           <h2
             className="
-              mt-2
-              max-w-[1600px]
-              text-3xl
-              font-bold
-              tracking-tight
-              text-slate-900
-              lg:text-4xl
-            "
+            mt-2
+            max-w-[1600px]
+            break-words
+            text-2xl
+            font-bold
+            leading-tight
+            tracking-tight
+            text-slate-900
+            sm:text-3xl
+            lg:text-4xl
+          "
           >
             {
               t.header.title
@@ -312,21 +338,23 @@ export default function InteractiveLearning() {
 
           <div
             className="
-              mt-2
-              grid
-              w-full
-              grid-cols-1
-              gap-3
-              xl:grid-cols-2
-            "
+                  mt-3
+                  grid
+                  w-full
+                  grid-cols-1
+                  gap-3
+                  lg:grid-cols-2
+                  lg:gap-6
+                "
           >
 
             <p
               className="
-                text-sm
-                leading-6
-                text-slate-600
-                sm:text-base
+                break-words
+                  text-sm
+                  leading-6
+                  text-slate-600
+                  sm:text-base
               "
             >
               {
@@ -357,10 +385,14 @@ export default function InteractiveLearning() {
 
           <div
             className="
-              mt-2
+              mt-3
               flex
-              flex-wrap
+              w-full
+              flex-col
               gap-2
+              sm:w-auto
+              sm:flex-row
+              sm:flex-wrap
             "
           >
 
@@ -368,16 +400,19 @@ export default function InteractiveLearning() {
               href="#course-gallery"
               className="
                 inline-flex
+                w-full
                 items-center
+                justify-center
                 rounded-lg
                 bg-slate-900
                 px-4
-                py-2
+                py-2.5
                 text-sm
                 font-semibold
                 text-white
                 transition
                 hover:bg-slate-700
+                sm:w-auto
               "
             >
               {
@@ -389,19 +424,22 @@ export default function InteractiveLearning() {
             <a
               href="mailto:haowen.xu.phd@gmail.com"
               className="
-                inline-flex
-                items-center
-                rounded-lg
-                bg-white
-                px-4
-                py-2
-                text-sm
-                font-semibold
-                text-slate-800
-                ring-1
-                ring-slate-200
-                transition
-                hover:bg-slate-50
+                 inline-flex
+                  w-full
+                  items-center
+                  justify-center
+                  rounded-lg
+                  bg-white
+                  px-4
+                  py-2.5
+                  text-sm
+                  font-semibold
+                  text-slate-800
+                  ring-1
+                  ring-slate-200
+                  transition
+                  hover:bg-slate-50
+                  sm:w-auto
               "
             >
               {

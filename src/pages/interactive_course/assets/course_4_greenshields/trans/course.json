@@ -25,6 +25,7 @@
     "averageSpeed": "Average Speed",
     "trafficFlow": "Traffic Flow",
     "speedDensityRelationship": "Speed–Density Relationship",
+    "speedLimit":"Speed Limits:",
 
     "mapTitle": "UNSW Lane-based Road Network",
     "mapSubtitle": "Continuous microscopic traffic simulation",
@@ -81,6 +82,7 @@
     "densityUnit": "辆/公里",
     "speedUnit": "公里/小时",
     "flowUnit": "辆/小时",
+    "speedLimit":"限速",
 
     "generateRoute": "生成路线"
   },
@@ -101,6 +103,7 @@
      "trafficDemand": "تقاضای ترافیک",
     "vehicleSpawnInterval": "فاصله ورود خودرو",
     "secondsPerVehicle": "ثانیه/خودرو",
+    "speedLimit": "محدودیت سرعت:",
 
     "start": "شروع",
     "pause": "توقف",

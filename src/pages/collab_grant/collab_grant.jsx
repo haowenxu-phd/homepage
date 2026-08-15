@@ -318,28 +318,29 @@ export default function CollabGrants() {
   },
 
     {
-        id: "industry-3",
-        type: "photo",
+  id: "industry-3",
+  type: "photo",
 
-        src: `${import.meta.env.BASE_URL}/img/industry/motionai_intel.png`,
+  src: `${import.meta.env.BASE_URL}/img/industry/motionai_intel.png`,
 
-        alt: "MotionIntel industry advisory and technology collaboration",
+  alt: "MotionIntel research advisory collaboration",
 
-        title: "MotionIntel Industry Advisory",
+  title: "MotionIntel Research Advisory",
 
-        shortCaption: "AI & Transportation Technology Industry Advisory",
+  shortCaption:
+    "Research Advisory · AI-Enabled Transportation Technology",
 
-        role: "Industry Advisor",
+  role: "Research Advisor",
 
-        organization: "MotionIntel",
+  organization: "MotionIntel",
 
-        period: "2023–Present",
+  period: "2023–Present",
 
-        description:
-          "Industry advisory engagement supporting the development and application of AI-enabled mobility and transportation technologies.",
+  description:
+    `Research advisor to MotionIntel, a transportation technology startup developed from U.S. Department of Energy-funded research. I provide research and technical advice supporting the translation of advanced transportation research into practical mobility technologies, with a focus on AI, data-driven transportation systems, digital twins, simulation, and intelligent mobility applications.`,
 
-        link: "https://motionintel.ai/team",
-      },
+  link: "https://motionintel.ai/team",
+},
   ];
 
   // =========================================================
