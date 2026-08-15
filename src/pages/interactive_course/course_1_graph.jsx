@@ -210,18 +210,7 @@ export default function InteractiveLearning_c1_graph() {
         
       </section>
 
- <p>
-          This tool was also developed with support from the Ideation Laboratory (iLab)
-          at the University of Tennessee, Knoxville, led by{" "}
-          <a
-            href="https://tickle.utk.edu/ise/faculty/xueping-li/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline hover:text-blue-800"
-          >
-            Prof. Xueping Li
-          </a>.
-        </p>
+
 
       {/* =====================================================
           Introduction

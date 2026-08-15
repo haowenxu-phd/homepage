@@ -348,6 +348,30 @@ export default function CollabGrants() {
   // =========================================================
 
   const governmentCollaborations = [
+
+    {
+        id: "government-0",
+        type: "gov",
+
+        src: `${import.meta.env.BASE_URL}/img/gov/csiro_collab.png`,
+        logosrc: `${import.meta.env.BASE_URL}/img/gov/csiro_logo.png`,
+
+        alt: "Commonwealth Scientific and Industrial Research Organisation",
+
+        title: "Commonwealth Scientific and Industrial Research Organisation",
+
+        shortCaption: "Agentic AI & Operations Research Collaboration",
+
+        role: "Research Collaborator",
+
+        organization: "Commonwealth Scientific and Industrial Research Organisation (CSIRO)",
+
+        period: "2026",
+
+        description:
+          "Research collaboration with CSIRO Data61 Director Dr. Liming Zhu and Deputy Director Dr. Qinghua Lu, exploring the integration of agentic AI, operations research, and spatial decision-support systems. The collaboration focuses on uncertainty-aware and verifiable AI workflows that combine LLM-based agents with mathematical optimization for complex geospatial and scientific decision-making, resulting in a jointly authored book chapter.",
+        link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7229001",
+      },
     
     {
       id: "government-1",
@@ -369,7 +393,7 @@ export default function CollabGrants() {
       period: "2022–2023",
 
       description:
-        " ",
+         "Research collaboration discussion with NTSB Research Scientist Alice Park through the Transportation Research Board (TRB), exploring highway freight collision and traffic safety research through a proposed multi-domain simulation framework integrating transportation networks, vehicle operations, and safety analysis.",
 
       link: "#",
     },
@@ -392,7 +416,7 @@ export default function CollabGrants() {
       period: "2022–2023",
 
       description:
-        " ",
+         "Research collaboration discussion with FHWA Senior Research Scientist David Unkefer at the National Academy of Sciences (NAS), exploring photogrammetry-based 3D reconstruction of highway traffic scenes and its integration with ORNL's 3D digital twin environment for advanced transportation modeling, simulation, and analysis.",
 
       link: "#",
     },
@@ -416,7 +440,7 @@ export default function CollabGrants() {
       period: "2018–2019",
 
       description:
-        " ",
+       "Research collaboration with the FHWA J. Sterling Jones Hydraulics Research Laboratory to advance sustainable highway culvert and bridge design. The collaboration includes joint research activities and the development of an AASHTO (American Association of State Highway and Transportation Officials) pooled-fund proposal focused on improving the resilience and sustainability of highway hydraulic infrastructure.",
 
       link: "#",
     },
@@ -440,7 +464,7 @@ export default function CollabGrants() {
       period: "2016–2019",
 
       description:
-        " ",
+        "Long-term research collaboration with the Iowa Department of Transportation (Iowa DOT) through Iowa DOT-funded PhD research, developing advanced transportation asset management approaches that integrate AI, scientific computing, and geospatial informatics to protect highway culverts, bridges, and roadways at river crossings from flooding and sedimentation. The collaboration involved close engagement with Iowa DOT engineers and officials, as well as field investigations and transportation infrastructure assessments conducted with Iowa DOT personnel and government vehicles.",
 
       link: "#",
     },

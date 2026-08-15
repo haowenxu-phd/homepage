@@ -8,7 +8,10 @@
     "paragraph1": "Interactive learning modules connect transport theory and algorithms with real-world problems, data, simulation, and emerging technologies.",
     "paragraph2": "Complex concepts are transformed into intuitive visual experiences through visual analytics, interactive storytelling, and game-inspired scientific exploration.",
     "exploreButton": "Explore Learning Modules",
-    "collaborationButton": "Discuss Teaching Collaboration"
+    "collaborationButton": "Discuss Teaching Collaboration",
+   "attributes1": "This tool was also developed with support and collaboration from the Ideation Laboratory (iLab) at the University of Tennessee, Knoxville, led by",
+    "attributes2": "as well as with support and guidance from",
+    "attributes3": "of the National Transportation Research Center (NTRC) at Oak Ridge National Laboratory."
   },
 
   "principles": {
@@ -110,7 +113,10 @@
     "paragraph1": "交互式学习模块将交通工程理论与算法同真实世界问题、数据、仿真及新兴技术相结合。",
     "paragraph2": "通过可视分析、交互式叙事和游戏化的科学探索，将复杂概念转化为直观、易于理解的可视化学习体验。",
     "exploreButton": "探索学习模块",
-    "collaborationButton": "探讨教学合作"
+    "collaborationButton": "探讨教学合作",
+    "attributes1": "本工具的开发也得到了田纳西大学诺克斯维尔分校创意实验室（Ideation Laboratory, iLab）的支持与合作，该实验室由",
+    "attributes2": "领导；同时也得到了来自橡树岭国家实验室国家交通研究中心（National Transportation Research Center, NTRC）的",
+    "attributes3": "的支持与合作。"
   },
 
       "principles": {
@@ -216,7 +222,10 @@
       "paragraph1": "ماژول‌های یادگیری تعاملی، نظریه‌ها و الگوریتم‌های حمل‌ونقل را به مسائل دنیای واقعی، داده‌ها، شبیه‌سازی و فناوری‌های نوظهور پیوند می‌دهند.",
       "paragraph2": "مفاهیم پیچیده از طریق تحلیل بصری، روایت تعاملی و کاوش علمی الهام‌گرفته از بازی، به تجربه‌های یادگیری بصری و قابل‌درک تبدیل می‌شوند.",
       "exploreButton": "کاوش ماژول‌های آموزشی",
-      "collaborationButton": "گفت‌وگو درباره همکاری آموزشی"
+      "collaborationButton": "گفت‌وگو درباره همکاری آموزشی",
+      "attributes1": "این ابزار همچنین با حمایت و همکاری آزمایشگاه ایده‌پردازی (iLab) در دانشگاه تنسی، ناکسویل، که تحت مدیریت",
+      "attributes2": "قرار دارد، توسعه یافته است؛ همچنین از حمایت و همکاری",
+      "attributes3": "از مرکز ملی تحقیقات حمل‌ونقل (NTRC) در آزمایشگاه ملی اوک ریج بهره‌مند شده است."
     },
 
     "principles": {

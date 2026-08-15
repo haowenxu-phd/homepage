@@ -773,112 +773,142 @@ export default function InteractiveLearning_c2_navigation() {
               >
       
                 <div
-                  className="
-                    grid
-                    grid-cols-[auto_minmax(0,1fr)_auto]
-                    items-center
-                    gap-3
-                  "
-                >
-      
-                  {/* ==================================================
-                      Previous Step
-                  ================================================== */}
-      
-                  <button
-                    type="button"
-      
-                    onClick={
-                      goPrevious
-                    }
-      
-                    disabled={
-                      currentStep === 1
-                    }
-      
                     className="
-                      shrink-0
-                      whitespace-nowrap
-                      rounded
-                      border
-                      border-slate-300
-                      px-3
-                      py-2
-                      text-sm
-                      font-medium
-                      text-slate-700
-                      transition
-                      hover:bg-slate-50
-                      disabled:cursor-not-allowed
-                      disabled:opacity-40
-                    "
-                  >
-                    ← {t.previous}
-                  </button>
-      
-      
-                  {/* ==================================================
-                      Workflow Progress
-                  ================================================== */}
-      
-                  <div
-                    className="
-                      min-w-0
+                      grid
                       w-full
+                      grid-cols-2
+                      gap-3
+
+                      lg:grid-cols-[auto_minmax(0,1fr)_auto]
+                      lg:items-center
                     "
                   >
-                    <WorkflowProgress
-                      currentStep={
-                        currentStep
+
+                    {/* ==================================================
+                        Workflow Progress
+
+                        Mobile / Tablet:
+                        full-width first row
+
+                        Desktop:
+                        middle column
+                    ================================================== */}
+
+                    <div
+                      className="
+                        col-span-2
+                        min-w-0
+                        w-full
+
+                        lg:col-span-1
+                        lg:col-start-2
+                        lg:row-start-1
+                      "
+                    >
+
+                      <WorkflowProgress
+                        currentStep={
+                          currentStep
+                        }
+
+                        steps={
+                          workflowSteps
+                        }
+
+                        language={
+                          language
+                        }
+                      />
+
+                    </div>
+
+
+                    {/* ==================================================
+                        Previous Step
+                    ================================================== */}
+
+                    <button
+                      type="button"
+
+                      onClick={
+                        goPrevious
                       }
-      
-                      steps={
-                        workflowSteps
+
+                      disabled={
+                        currentStep === 1
                       }
-      
-                      language={
-                        language
+
+                      className="
+                        col-start-1
+                        row-start-2
+                        w-full
+                        whitespace-nowrap
+                        rounded
+                        border
+                        border-slate-300
+                        px-3
+                        py-2
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        transition
+                        hover:bg-slate-50
+                        disabled:cursor-not-allowed
+                        disabled:opacity-40
+
+                        lg:col-start-1
+                        lg:row-start-1
+                        lg:w-auto
+                        lg:shrink-0
+                      "
+                    >
+                      ← {t.previous}
+                    </button>
+
+
+                    {/* ==================================================
+                        Next Step
+                    ================================================== */}
+
+                    <button
+                      type="button"
+
+                      onClick={
+                        goNext
                       }
-                    />
+
+                      disabled={
+                        currentStep ===
+                        totalSteps
+                      }
+
+                      className="
+                        col-start-2
+                        row-start-2
+                        w-full
+                        whitespace-nowrap
+                        rounded
+                        bg-sky-600
+                        px-3
+                        py-2
+                        text-sm
+                        font-medium
+                        text-white
+                        transition
+                        hover:bg-sky-700
+                        disabled:cursor-not-allowed
+                        disabled:opacity-40
+
+                        lg:col-start-3
+                        lg:row-start-1
+                        lg:w-auto
+                        lg:shrink-0
+                      "
+                    >
+                      {t.next} →
+                    </button>
+
                   </div>
-      
-      
-                  {/* ==================================================
-                      Next Step
-                  ================================================== */}
-      
-                  <button
-                    type="button"
-      
-                    onClick={
-                      goNext
-                    }
-      
-                    disabled={
-                      currentStep ===
-                      totalSteps
-                    }
-      
-                    className="
-                      shrink-0
-                      whitespace-nowrap
-                      rounded
-                      bg-sky-600
-                      px-3
-                      py-2
-                      text-sm
-                      font-medium
-                      text-white
-                      transition
-                      hover:bg-sky-700
-                      disabled:cursor-not-allowed
-                      disabled:opacity-40
-                    "
-                  >
-                    {t.next} →
-                  </button>
-      
-                </div>
       
               </section>
 

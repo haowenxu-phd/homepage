@@ -601,112 +601,161 @@ export default function InteractiveLearning_c3_optimization() {
         >
 
           <div
-            className="
-              grid
-              grid-cols-[auto_minmax(0,1fr)_auto]
-              items-center
-              gap-3
-            "
-          >
+                className="
+                  w-full
+                  rounded-lg
+                  border
+                  border-slate-200
+                  bg-white
+                  p-3
+                "
+              >
 
-            {/* ==================================================
-                Previous Step
-            ================================================== */}
+                <div
+                  className="
+                    grid
+                    w-full
+                    grid-cols-2
+                    gap-3
 
-            <button
-              type="button"
+                    lg:grid-cols-[auto_minmax(0,1fr)_auto]
+                    lg:items-center
+                  "
+                >
 
-              onClick={
-                goPrevious
-              }
+                  {/* ==================================================
+                      Workflow Progress
 
-              disabled={
-                currentStep === 1
-              }
+                      Mobile:
+                      occupies the entire first row
 
-              className="
-                shrink-0
-                whitespace-nowrap
-                rounded
-                border
-                border-slate-300
-                px-3
-                py-2
-                text-sm
-                font-medium
-                text-slate-700
-                transition
-                hover:bg-slate-50
-                disabled:cursor-not-allowed
-                disabled:opacity-40
-              "
-            >
-              ← {t.previous}
-            </button>
+                      Desktop:
+                      occupies the middle column
+                  ================================================== */}
 
+                  <div
+                    className="
+                      col-span-2
+                      min-w-0
+                      w-full
 
-            {/* ==================================================
-                Workflow Progress
-            ================================================== */}
+                      lg:col-span-1
+                      lg:col-start-2
+                      lg:row-start-1
+                    "
+                  >
 
-            <div
-              className="
-                min-w-0
-                w-full
-              "
-            >
-              <WorkflowProgress
-                currentStep={
-                  currentStep
-                }
+                    <WorkflowProgress
+                      currentStep={
+                        currentStep
+                      }
 
-                steps={
-                  workflowSteps
-                }
+                      steps={
+                        workflowSteps
+                      }
 
-                language={
-                  language
-                }
-              />
-            </div>
+                      language={
+                        language
+                      }
+                    />
+
+                  </div>
 
 
-            {/* ==================================================
-                Next Step
-            ================================================== */}
+                  {/* ==================================================
+                      Previous Step
+                  ================================================== */}
 
-            <button
-              type="button"
+                  <button
+                    type="button"
 
-              onClick={
-                goNext
-              }
+                    onClick={
+                      goPrevious
+                    }
 
-              disabled={
-                currentStep ===
-                totalSteps
-              }
+                    disabled={
+                      currentStep === 1
+                    }
 
-              className="
-                shrink-0
-                whitespace-nowrap
-                rounded
-                bg-sky-600
-                px-3
-                py-2
-                text-sm
-                font-medium
-                text-white
-                transition
-                hover:bg-sky-700
-                disabled:cursor-not-allowed
-                disabled:opacity-40
-              "
-            >
-              {t.next} →
-            </button>
+                    className="
+                      col-start-1
+                      row-start-2
+                      w-full
+                      whitespace-nowrap
+                      rounded
+                      border
+                      border-slate-300
+                      px-3
+                      py-2
+                      text-sm
+                      font-medium
+                      text-slate-700
+                      transition
 
-          </div>
+                      hover:bg-slate-50
+
+                      disabled:cursor-not-allowed
+                      disabled:opacity-40
+
+                      lg:col-start-1
+                      lg:row-start-1
+                      lg:w-auto
+                    "
+                  >
+
+                    ← {t.previous}
+
+                  </button>
+
+
+                  {/* ==================================================
+                      Next Step
+                  ================================================== */}
+
+                  <button
+                    type="button"
+
+                    onClick={
+                      goNext
+                    }
+
+                    disabled={
+                      currentStep ===
+                      totalSteps
+                    }
+
+                    className="
+                      col-start-2
+                      row-start-2
+                      w-full
+                      whitespace-nowrap
+                      rounded
+                      bg-sky-600
+                      px-3
+                      py-2
+                      text-sm
+                      font-medium
+                      text-white
+                      transition
+
+                      hover:bg-sky-700
+
+                      disabled:cursor-not-allowed
+                      disabled:opacity-40
+
+                      lg:col-start-3
+                      lg:row-start-1
+                      lg:w-auto
+                    "
+                  >
+
+                    {t.next} →
+
+                  </button>
+
+                </div>
+
+              </div>
 
         </section>
       

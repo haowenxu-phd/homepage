@@ -384,70 +384,117 @@ export default function InteractiveLearning() {
           =================================================== */}
 
           <div
-            className="
-              mt-3
-              flex
-              w-full
-              flex-col
-              gap-2
-              sm:w-auto
-              sm:flex-row
-              sm:flex-wrap
-            "
-          >
-
-            <a
-              href="#course-gallery"
-              className="
-                inline-flex
-                w-full
-                items-center
-                justify-center
-                rounded-lg
-                bg-slate-900
-                px-4
-                py-2.5
-                text-sm
-                font-semibold
-                text-white
-                transition
-                hover:bg-slate-700
-                sm:w-auto
-              "
-            >
-              {
-                t.header.exploreButton
-              }
-            </a>
-
-
-            <a
-              href="mailto:haowen.xu.phd@gmail.com"
-              className="
-                 inline-flex
+                className="
+                  mt-3
+                  flex
                   w-full
+                  flex-row
                   items-center
-                  justify-center
-                  rounded-lg
-                  bg-white
-                  px-4
-                  py-2.5
-                  text-sm
-                  font-semibold
-                  text-slate-800
-                  ring-1
-                  ring-slate-200
-                  transition
-                  hover:bg-slate-50
-                  sm:w-auto
-              "
-            >
-              {
-                t.header.collaborationButton
-              }
-            </a>
+                  gap-3
+                "
+              >
 
-          </div>
+                {/* Explore button */}
+
+                <a
+                  href="#course-gallery"
+                  className="
+                    inline-flex
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-lg
+                    bg-slate-900
+                    px-4
+                    py-2.5
+                    text-sm
+                    font-semibold
+                    text-white
+                    transition
+                    hover:bg-slate-700
+                  "
+                >
+                  {
+                    t.header.exploreButton
+                  }
+                </a>
+
+
+                {/* Collaboration button */}
+
+                <a
+                  href="mailto:haowen.xu.phd@gmail.com"
+                  className="
+                    inline-flex
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-lg
+                    bg-white
+                    px-4
+                    py-2.5
+                    text-sm
+                    font-semibold
+                    text-slate-800
+                    ring-1
+                    ring-slate-200
+                    transition
+                    hover:bg-slate-50
+                  "
+                >
+                  {
+                    t.header.collaborationButton
+                  }
+                </a>
+
+
+                {/* iLab acknowledgement */}
+
+                <span
+                  className="
+                    min-w-0
+                    flex-1
+                    text-sm
+                    leading-relaxed
+                    text-slate-600
+                  "
+                >
+                  {t.header.attributes1}{" "}
+
+                  <a
+                    href="https://tickle.utk.edu/ise/faculty/xueping-li/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      font-medium
+                      text-blue-600
+                      underline
+                      hover:text-blue-800
+                    "
+                  >
+                    Prof. Xueping Li
+                  </a>
+
+                 {" "} {t.header.attributes2}{" "}
+
+                  <a
+                    href="https://www.ornl.gov/staff-profile/wan-li"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      font-medium
+                      text-blue-600
+                      underline
+                      hover:text-blue-800
+                    "
+                  >
+                    Dr. Wan Li
+                  </a>
+
+                  {" "}{t.header.attributes3}.
+                </span>
+
+              </div>
 
         </section>
 
