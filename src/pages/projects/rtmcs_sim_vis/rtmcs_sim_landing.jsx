@@ -54,9 +54,9 @@ import { Link } from "react-router-dom";
 // ---------- Small helpers ----------
 function SectionTitle({ children }) {
   return (
-    <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
+    <span className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
       {children}
-    </h2>
+    </span>
   );
 }
 
@@ -554,7 +554,7 @@ export function RtmcsSimDetail() {
 
     title="Interactive Web Platform for Traffic Simulation Data Management, Sharing, Fusion, and Visualization"
 
-    subtitle="A scalable cyberinfrastructure for archiving, standardizing, discovering, streaming, visualizing, and comparing large-scale traffic simulation outputs from VISSIM and SUMO"
+    subtitle="A scalable cyberinfrastructure for archiving, standardizing, sharing, visualizing, and comparing large-scale traffic simulation outputs from VISSIM and SUMO"
 
 
     /* =========================================================
@@ -627,80 +627,33 @@ export function RtmcsSimDetail() {
 
     introRight={
       <ul className="list-inside list-disc space-y-2 text-slate-700">
+            <li>
+              Developed an interactive web platform for managing,
+              sharing, and visualizing large-scale traffic simulation data.
+            </li>
 
-        <li>
-          Developed an interactive web platform for uploading,
-          archiving, searching, sharing, and visualizing
-          large-scale microscopic traffic simulation outputs.
-        </li>
+            <li>
+              Integrated simulation outputs from
+              <strong> VISSIM and SUMO</strong> into a standardized
+              and searchable data framework.
+            </li>
 
-        <li>
-          Integrated heterogeneous outputs from
-          <strong> VISSIM and SUMO</strong> using a standardized
-          JSON-based data and metadata model.
-        </li>
+            <li>
+              Enabled users to discover and explore simulation scenarios
+              through spatial and attribute-based searches.
+            </li>
 
-        <li>
-          Designed an automated
-          <strong> Extract–Transform–Load (ETL)</strong> workflow
-          for converting simulator-specific outputs into
-          web-ready data structures.
-        </li>
+            <li>
+              Supported interactive browser-based visualization of
+              vehicle movements, traffic conditions, and signal operations.
+            </li>
 
-        <li>
-          Standardized simulation coordinate systems to
-          <strong> WGS84</strong>, allowing trajectories generated
-          by different traffic simulators to be visualized within
-          the same geospatial environment.
-        </li>
+            <li>
+              Enabled comparison of multiple simulation scenarios to
+              support transportation modeling, analysis, and research.
+            </li>
 
-        <li>
-          Developed metadata and controlled vocabularies for
-          discovering simulation scenarios through spatial and
-          attribute-based queries.
-        </li>
-
-        <li>
-          Implemented a
-          <strong> Django-based application layer</strong> and
-          <strong> MongoDB NoSQL data layer</strong> for scalable
-          simulation-data ingestion, management, retrieval, and
-          querying.
-        </li>
-
-        <li>
-          Used parallel Python data-processing workflows to
-          accelerate the standardization and ingestion of
-          large simulation datasets.
-        </li>
-
-        <li>
-          Developed
-          <strong> WebGL and OpenLayers</strong> visualization
-          components for browser-based animation of microscopic
-          vehicle trajectories and traffic conditions.
-        </li>
-
-        <li>
-          Implemented an optimized real-time data-streaming
-          strategy that retrieves only simulation records near the
-          current animation timestamp instead of transferring an
-          entire large trajectory dataset to the browser.
-        </li>
-
-        <li>
-          Enabled coordinated and comparative visualization of
-          multiple simulation scenarios, including outputs
-          produced by different traffic simulation software.
-        </li>
-
-        <li>
-          Supported multiscale visual analytics ranging from
-          individual vehicle movements and traffic-signal phases
-          to corridor-scale congestion patterns.
-        </li>
-
-      </ul>
+          </ul>
     }
 
 
@@ -711,7 +664,7 @@ export function RtmcsSimDetail() {
     relatedLinks={[
       {
         label:
-          "Interactive Web Application for Traffic Simulation Data Management and Visualization",
+          "Interactive Web Application for Traffic Simulation Outputs Management and Visualization",
 
         href:
           "https://doi.org/10.1177/03611981211035760",
@@ -770,6 +723,29 @@ export function RtmcsSimDetail() {
           "Cyberinfrastructure",
         ],
       },
+      {
+          authors:
+            "Xu, H., Berres, A., Wang, C. R., LaClair, T. J., & Sanyal, J.",
+
+          title:
+            "Visualizing Vehicle Acceleration and Braking Energy at Intersections Along a Major Traffic Corridor",
+
+          venue:
+            "Proceedings of the 12th ACM International Conference on Future Energy Systems (ACM e-Energy), 401–405",
+
+          year: "2021",
+
+          doi:
+            "",
+
+          badges: [
+            "Conference Paper",
+            "Intelligent Transportation Systems",
+            "Vehicle Energy",
+            "Traffic Visualization",
+            "Eco-Mobility",
+          ],
+        },
     ]}
   />
 );
