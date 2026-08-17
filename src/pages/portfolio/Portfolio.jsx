@@ -18,7 +18,7 @@ export default function Projects() {
         blurb:
           "Agentic AI assistants orchestrating tools for planning, querying, and reporting.",
         href: "/homepage/portfolio/agentic_ai_dt",
-        badges: ["LLM", "Agents", "RAG", "Optimization Solver"],
+        badges: ["LLM", "AI Agents", "RAG", "Optimization Solver", "FTOT", "Freight Analysis Framework (FAF) "],
       },      
       {
         id: 2,
@@ -58,7 +58,7 @@ export default function Projects() {
       },
       {
         id: 5,
-        title: "GPU-accelerated 3D Gas Dispersion and Aerosol Transport Simulator",
+        title: "3D World Model for GPU-Accelerated Gas Dispersion & Aerosol Transport",
         image: "/img/thumbnail/tn_gas_dispersion.png",
         blurb:
           "Simulating hazardous gas leaks and airborne contaminant transport for emergency response and digital twins.",
@@ -92,7 +92,7 @@ export default function Projects() {
 
       {
         id: 8,
-        title: "GPU-accelerated 3D Wildfire Simulator using Voxels",
+        title: "3D World Model for GPU-Accelerated Wildfire Simulation using Voxels",
         image: "/img/thumbnail/tn_wildfire.png",
         blurb:
           "Multi-kernel heat transfer (convection, radiation, conduction, wind) through 3D voxel City.",

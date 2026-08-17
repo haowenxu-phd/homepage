@@ -48,7 +48,7 @@ export default function Home() {
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/60" />
               </div>
-              <p className="mt-2 text-sm text-slate-600">Invited Talk — Virtual Reality and Digital Twin, U.S. National Academy of Sciences (NAS/美国国家科学院)  </p>
+              <p className="mt-2 text-sm text-slate-600">Invited Talk — Virtual Reality and Digital Twin, U.S. National Academy of Sciences (NAS)  </p>
             </div>
 
             {/* Photo 2 */}
@@ -61,7 +61,7 @@ export default function Home() {
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/60" />
               </div>
-              <p className="mt-2 text-sm text-slate-600"> Led and contributed to numerous U.S. Department of Energy (美国能源部) –funded projects as a federal government scientist</p>
+              <p className="mt-2 text-sm text-slate-600"> Led and contributed to numerous U.S. Department of Energy –funded projects as a federal government scientist</p>
             </div>
           </div>
 
@@ -98,7 +98,7 @@ export default function Home() {
                 Scholar</a>. 
               </li>
               <li className="leading-relaxed">
-                Inventer of <strong>three U.S. patent applications</strong>:
+                Inventer of <strong>three U.S. patent applications in transportation technologies</strong>:
                  
                           {" "}<a
                             href="https://patents.google.com/patent/US20250128708A1/en"
@@ -195,7 +195,10 @@ export default function Home() {
               </li>
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Transportation Digital Twins
-              </li>              
+              </li>   
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Computational Transportation Science
+              </li>           
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Intelligent Transportation Systems (ITS)
               </li>
@@ -224,7 +227,10 @@ export default function Home() {
                 Voxel-based 3D Simulations
               </li>
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Environmental World Model
+                3D Digital Twins
+              </li>
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                3D Environmental World Model
               </li>
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 VR & AR & Serious Gaming
@@ -242,7 +248,7 @@ export default function Home() {
                           focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
               >
                 <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 opacity-90 transition-opacity group-hover:opacity-100" />
-                <span>🎮 Selected Work with Demos 🕹️</span>
+                <span>🎬 Selected Work with Demos 🕹️</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
               </Link>
 
@@ -256,7 +262,7 @@ export default function Home() {
                           focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
               >
                 <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 opacity-90 transition-opacity group-hover:opacity-100" />
-                <span>📚 Teaching & Education Services</span>
+                <span>📚 Teaching & Education Services 🏛️</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
               </Link>
               </div>
@@ -272,10 +278,50 @@ export default function Home() {
                   >
                     <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 opacity-90 transition-opacity group-hover:opacity-100" />
 
-                    <span>🎓 Online Interactive Learning Courses</span>
+                    <span>🎓 Online Interactive Learning & Gaming Courses 🎮</span>
 
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
                   </Link>
+
+                   <Link
+                        to="/grants"
+                          aria-label="Explore online interactive learning courses"
+                    className="group relative inline-flex flex-1 items-center justify-center
+                              rounded-lg px-6 py-3 text-base font-semibold tracking-tight
+                              shadow-md ring-1 ring-black/5 transition hover:shadow-lg
+                              focus:outline-none focus-visible:ring-2
+                              focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
+                      >
+                        <span
+                          className="
+                            absolute
+                            inset-0
+                            -z-10
+                            rounded-lg
+                            bg-gradient-to-r
+                            from-indigo-600
+                            to-cyan-500
+                            opacity-90
+                            transition-opacity
+                            group-hover:opacity-100
+                          "
+                        />
+
+                        <span>
+                         💰 Grants & Collaboration & Engagement 🤝
+                        </span>
+
+                        <ArrowRight
+                          className="
+                            ml-2
+                            h-5
+                            w-5
+                            shrink-0
+                            transition-transform
+                            group-hover:translate-x-0.5
+                          "
+                        />
+                      </Link>
             </div>
         </section>
 
