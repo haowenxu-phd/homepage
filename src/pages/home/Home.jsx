@@ -206,6 +206,9 @@ export default function Home() {
                 Connected and Automated Vehicles (CAV)
               </li> 
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                Smart Mobility
+              </li> 
+              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Cyber-physical System (CPS)
               </li> 
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">               
