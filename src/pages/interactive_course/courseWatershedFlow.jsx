@@ -5,202 +5,188 @@ export default function InteractiveLearning_c_watershed() {
   const [language, setLanguage] = useState("en");
 
   const translations = useMemo(
-    () => ({
-      en: {
-        title:
-          "Road Networks, Watersheds, and Flood Flow Visualization",
+  () => ({
+    en: {
+      title:
+        "Road Networks, Watersheds, and Flood Flow Visualization",
 
-        subtitle:
-          "Explore how terrain-driven water flow interacts with roads, transport corridors, and flood-prone areas.",
+      subtitle:
+        "Explore how terrain-driven surface-water flow interacts with roads, transportation corridors, and flood-prone infrastructure.",
 
-        overviewTitle:
-          "Learning Objectives",
+      overviewTitle:
+        "Learning Objectives",
 
-        overview:
-          "This interactive lesson uses WebGL-based flow visualization and a watershed flow-direction matrix to help students understand how surface water moves across terrain and how road networks may intersect, redirect, or become exposed to flood flows.",
+      overview:
+        "This interactive lesson combines WebGL-based flow visualization with a watershed flow-direction matrix to help students understand how surface water moves across terrain and how transportation infrastructure may intersect with, redirect, constrain, or become exposed to flood flows.",
 
-        objective1:
-          "Understand how a watershed flow-direction matrix represents local surface-water movement.",
+      objective1:
+        "Understand how a watershed flow-direction matrix represents local surface-water movement across terrain.",
 
-        objective2:
-          "Explore the spatial relationship between roads, drainage paths, and watershed structure.",
+      objective2:
+        "Explore the spatial relationships among roads, drainage paths, terrain, and watershed structure.",
 
-        objective3:
-          "Identify road segments that may be exposed to concentrated surface runoff or flooding.",
+      objective3:
+        "Identify transportation infrastructure that may be exposed to concentrated runoff or flood flows.",
 
-        objective4:
-          "Connect hydrologic flow patterns with transportation infrastructure planning and resilience.",
+      objective4:
+        "Connect hydrologic flow patterns with transportation infrastructure planning, design, and resilience.",
 
-        instructionsTitle:
-          "Interactive Exploration",
+      instructionsTitle:
+        "Interactive Exploration",
 
-        instructions:
-          "Pan and zoom the map, switch between available basemaps, and observe the animated flow field. Compare the direction and concentration of flow with the road network and surrounding terrain.",
+      instructions:
+        "Use the basemap selector to switch between transportation, satellite imagery, topographic, and other map layers. Observe the animated surface-water flow and compare its direction and concentration with terrain and elevation patterns. Zoom in and out across different parts of Iowa to examine transportation networks and infrastructure, and investigate where water flows toward, across, or around roads, bridges, culverts, and other infrastructure.",
 
-        questionTitle:
-          "Think About",
+      questionTitle:
+        "Think About",
 
-        question1:
-          "Where do major flow paths intersect the transportation network?",
+      question1:
+        "Where do major surface-water flow paths intersect the transportation network?",
 
-        question2:
-          "Which road segments appear most exposed to concentrated runoff?",
+      question2:
+        "Which road segments or transportation assets appear most exposed to concentrated runoff or flooding?",
 
-        question3:
-          "How could road embankments, bridges, culverts, or drainage infrastructure alter local flow patterns?",
+      question3:
+        "How might road embankments, bridges, culverts, or drainage infrastructure alter local flow paths?",
 
-        question4:
-          "How could this type of analysis support flood-resilient transportation planning?",
+      question4:
+        "How could this type of spatial analysis support flood-resilient transportation planning and infrastructure management?",
 
-        mapTitle:
-          "Interactive Watershed Flow Map",
+      mapTitle:
+        "Interactive Watershed Flow Map",
 
-        mapCaption:
-          "WebGL visualization of terrain-driven flow patterns and their relationship with transportation infrastructure.",
+      mapCaption:
+        "WebGL visualization of terrain-driven surface-water flow and its spatial relationship with transportation infrastructure.",
 
-        languageLabel:
-          "Language",
+      languageLabel:
+        "Language",
 
-        instructionsTitle: "Interactive Exploration",
+      attribution:
+        "This application was developed using watershed DEM data provided by the Iowa Flood Center and the U.S. Geological Survey (USGS).",
+    },
 
-        instructions:
-          "Use the basemap selector on the map to switch between transportation, imagery, topographic, and other map layers. Compare the animated surface-water flow with terrain and elevation patterns to observe where runoff converges. Zoom in and out across different parts of Iowa to examine transportation networks and infrastructure, and investigate how water flows toward, across, or around roads and other infrastructure.",
 
-        attribution:
-          "This application was developed using watershed DEM data provided by the Iowa Flood Center and the U.S. Geological Survey (USGS).",
-      },
+    zh: {
+      title:
+        "道路网络、流域与洪水流动可视化",
 
-      zh: {
-        title:
-          "道路网络、流域与洪水流动可视化",
+      subtitle:
+        "探索地形驱动的地表水流如何与道路、交通走廊及易受洪水影响的交通基础设施相互作用。",
 
-        subtitle:
-          "探索地形驱动的水流如何与道路、交通走廊以及洪水易发区域相互作用。",
+      overviewTitle:
+        "学习目标",
 
-        overviewTitle:
-          "学习目标",
+      overview:
+        "本互动课程结合基于 WebGL 的水流可视化与流域流向矩阵，帮助学生理解地表水如何沿地形运动，以及交通基础设施如何与水流路径相交、改变或限制局部水流，并可能暴露于洪水风险之中。",
 
-        overview:
-          "本互动课程利用基于 WebGL 的水流可视化和流域流向矩阵，帮助学生理解地表水如何沿地形移动，以及道路网络如何与这些水流路径发生交叉、阻挡、重定向或暴露于洪水风险之中。",
+      objective1:
+        "理解流域流向矩阵如何表示地形上的局部地表水流动方向。",
 
-        objective1:
-          "理解流域流向矩阵如何表示局部地表水流动方向。",
+      objective2:
+        "探索道路、排水路径、地形与流域空间结构之间的关系。",
 
-        objective2:
-          "探索道路、排水路径与流域空间结构之间的关系。",
+      objective3:
+        "识别可能暴露于集中径流或洪水影响的交通基础设施。",
 
-        objective3:
-          "识别可能暴露于集中径流或洪水影响的道路路段。",
+      objective4:
+        "将水文流动模式与交通基础设施规划、设计及韧性分析联系起来。",
 
-        objective4:
-          "将水文流动模式与交通基础设施规划和韧性分析联系起来。",
+      instructionsTitle:
+        "互动探索",
 
-        instructionsTitle:
-          "互动探索",
+      instructions:
+        "使用地图上的底图选择器，在交通地图、卫星影像、地形图及其他地图图层之间切换。观察动态地表水流，并将水流方向和汇聚区域与地形和高程变化进行比较。通过放大和缩小地图，探索爱荷华州不同地区的交通网络与基础设施，并分析水流在何处流向、穿越或绕过道路、桥梁、涵洞及其他交通基础设施。",
 
-        instructions:
-          "平移和缩放地图，切换不同底图，并观察动态水流场。比较水流方向和汇聚区域与道路网络及周围地形之间的空间关系。",
+      questionTitle:
+        "思考问题",
 
-        questionTitle:
-          "思考问题",
+      question1:
+        "主要地表水流路径在哪里与交通网络相交？",
 
-        question1:
-          "主要水流路径在哪里与交通网络相交？",
+      question2:
+        "哪些道路路段或交通基础设施最可能暴露于集中径流或洪水影响？",
 
-        question2:
-          "哪些道路路段最可能暴露于集中径流影响？",
+      question3:
+        "道路路堤、桥梁、涵洞或排水设施可能如何改变局部水流路径？",
 
-        question3:
-          "道路路堤、桥梁、涵洞或排水设施可能如何改变局部水流路径？",
+      question4:
+        "这种空间分析如何支持具有洪水韧性的交通规划与基础设施管理？",
 
-        question4:
-          "这种分析如何支持面向洪水韧性的交通规划？",
+      mapTitle:
+        "互动流域水流地图",
 
-        mapTitle:
-          "互动流域水流地图",
+      mapCaption:
+        "基于 WebGL 的地形驱动地表水流可视化，用于分析水流与交通基础设施之间的空间关系。",
 
-        mapCaption:
-          "基于 WebGL 的地形驱动水流可视化，用于分析水流与交通基础设施之间的关系。",
+      languageLabel:
+        "语言",
 
-        languageLabel:
-          "语言",
-        
-        instructionsTitle: "互动探索",
+      attribution:
+        "本应用使用由爱荷华洪水中心（Iowa Flood Center）和美国地质调查局（USGS）提供的流域 DEM 数据开发。",
+    },
 
-        instructions:
-          "使用地图上的底图选择器，在交通、影像、地形等不同地图图层之间进行切换。观察动态地表水流，并将水流方向和汇聚区域与地形、地势和高程变化进行比较。通过放大和缩小地图，探索爱荷华州不同地区的交通网络和基础设施，观察水流如何流向道路、穿越道路，或受到道路及其他基础设施空间分布的影响。",
 
-        attribution:
-          "本应用使用由 Iowa Flood Center 和美国地质调查局（USGS）提供的流域 DEM 数据开发。",
-      },
+    fa: {
+      title:
+        "شبکه‌های جاده‌ای، حوضه‌های آبریز و نمایش جریان سیلاب",
 
-      fa: {
-        title:
-          "شبکه‌های جاده‌ای، حوضه‌های آبریز و نمایش جریان سیلاب",
+      subtitle:
+        "بررسی کنید که چگونه جریان آب سطحی ناشی از توپوگرافی با جاده‌ها، کریدورهای حمل‌ونقل و زیرساخت‌های در معرض خطر سیلاب تعامل دارد.",
 
-        subtitle:
-          "بررسی کنید که چگونه جریان آب ناشی از توپوگرافی با جاده‌ها، کریدورهای حمل‌ونقل و مناطق مستعد سیلاب تعامل دارد.",
+      overviewTitle:
+        "اهداف یادگیری",
 
-        overviewTitle:
-          "اهداف یادگیری",
+      overview:
+        "این درس تعاملی، نمایش جریان مبتنی بر WebGL را با ماتریس جهت جریان حوضه آبریز ترکیب می‌کند تا دانشجویان درک کنند آب سطحی چگونه در امتداد توپوگرافی حرکت می‌کند و زیرساخت‌های حمل‌ونقل چگونه می‌توانند با مسیرهای جریان تلاقی داشته باشند، آن‌ها را تغییر دهند یا محدود کنند و در معرض خطر سیلاب قرار گیرند.",
 
-        overview:
-          "این درس تعاملی از نمایش جریان مبتنی بر WebGL و ماتریس جهت جریان حوضه آبریز استفاده می‌کند تا دانشجویان درک کنند آب سطحی چگونه روی زمین حرکت می‌کند و شبکه‌های جاده‌ای چگونه ممکن است با مسیرهای جریان تلاقی داشته باشند، آن‌ها را تغییر دهند یا در معرض سیلاب قرار گیرند.",
+      objective1:
+        "درک نحوه نمایش جهت حرکت محلی آب سطحی روی زمین توسط ماتریس جهت جریان حوضه آبریز.",
 
-        objective1:
-          "درک نحوه نمایش حرکت محلی آب سطحی توسط ماتریس جهت جریان حوضه آبریز.",
+      objective2:
+        "بررسی روابط مکانی میان جاده‌ها، مسیرهای زهکشی، توپوگرافی و ساختار حوضه آبریز.",
 
-        objective2:
-          "بررسی رابطه مکانی میان جاده‌ها، مسیرهای زهکشی و ساختار حوضه آبریز.",
+      objective3:
+        "شناسایی زیرساخت‌های حمل‌ونقلی که ممکن است در معرض رواناب متمرکز یا جریان‌های سیلابی قرار گیرند.",
 
-        objective3:
-          "شناسایی بخش‌هایی از شبکه جاده‌ای که ممکن است در معرض رواناب متمرکز یا سیلاب قرار گیرند.",
+      objective4:
+        "ارتباط دادن الگوهای جریان هیدرولوژیکی با برنامه‌ریزی، طراحی و تاب‌آوری زیرساخت‌های حمل‌ونقل.",
 
-        objective4:
-          "ارتباط دادن الگوهای جریان هیدرولوژیکی با برنامه‌ریزی و تاب‌آوری زیرساخت‌های حمل‌ونقل.",
+      instructionsTitle:
+        "کاوش تعاملی",
 
-        instructionsTitle:
-          "کاوش تعاملی",
+      instructions:
+        "از انتخابگر نقشه پایه برای جابه‌جایی میان نقشه‌های حمل‌ونقل، تصاویر ماهواره‌ای، نقشه‌های توپوگرافی و سایر لایه‌ها استفاده کنید. جریان متحرک آب سطحی را مشاهده کرده و جهت و تمرکز آن را با الگوهای توپوگرافی و ارتفاع مقایسه کنید. با بزرگ‌نمایی و کوچک‌نمایی در بخش‌های مختلف آیووا، شبکه‌ها و زیرساخت‌های حمل‌ونقل را بررسی کنید و ببینید آب در کجا به سمت جاده‌ها، از روی آن‌ها یا در اطراف جاده‌ها، پل‌ها، آبروها و سایر زیرساخت‌ها جریان پیدا می‌کند.",
 
-        instructions:
-          "نقشه را جابه‌جا و بزرگ‌نمایی کنید، میان نقشه‌های پایه مختلف جابه‌جا شوید و میدان جریان متحرک را مشاهده کنید. جهت و تمرکز جریان را با شبکه جاده‌ای و توپوگرافی اطراف مقایسه کنید.",
+      questionTitle:
+        "سؤالات برای بررسی",
 
-        questionTitle:
-          "سؤالات برای بررسی",
+      question1:
+        "مسیرهای اصلی جریان آب سطحی در کجا با شبکه حمل‌ونقل تلاقی دارند؟",
 
-        question1:
-          "مسیرهای اصلی جریان در کجا با شبکه حمل‌ونقل تلاقی دارند؟",
+      question2:
+        "کدام بخش‌های جاده‌ای یا زیرساخت‌های حمل‌ونقل بیشترین مواجهه را با رواناب متمرکز یا سیلاب دارند؟",
 
-        question2:
-          "کدام بخش‌های جاده‌ای بیشترین مواجهه را با رواناب متمرکز دارند؟",
+      question3:
+        "خاکریزهای جاده‌ای، پل‌ها، آبروها یا زیرساخت‌های زهکشی چگونه می‌توانند مسیرهای محلی جریان را تغییر دهند؟",
 
-        question3:
-          "خاکریزهای جاده‌ای، پل‌ها، آبروها یا زیرساخت‌های زهکشی چگونه می‌توانند الگوهای محلی جریان را تغییر دهند؟",
+      question4:
+        "این نوع تحلیل مکانی چگونه می‌تواند از برنامه‌ریزی حمل‌ونقل و مدیریت زیرساخت مقاوم در برابر سیلاب پشتیبانی کند؟",
 
-        question4:
-          "این نوع تحلیل چگونه می‌تواند از برنامه‌ریزی حمل‌ونقل مقاوم در برابر سیلاب پشتیبانی کند؟",
+      mapTitle:
+        "نقشه تعاملی جریان حوضه آبریز",
 
-        mapTitle:
-          "نقشه تعاملی جریان حوضه آبریز",
+      mapCaption:
+        "نمایش WebGL جریان آب سطحی ناشی از توپوگرافی و رابطه مکانی آن با زیرساخت‌های حمل‌ونقل.",
 
-        mapCaption:
-          "نمایش WebGL الگوهای جریان ناشی از توپوگرافی و رابطه آن‌ها با زیرساخت‌های حمل‌ونقل.",
+      languageLabel:
+        "زبان",
 
-        languageLabel:
-          "زبان",
-
-         instructionsTitle: "کاوش تعاملی",
-
-        instructions:
-          "از انتخابگر نقشه پایه برای جابه‌جایی میان لایه‌های حمل‌ونقل، تصاویر ماهواره‌ای، توپوگرافی و سایر نقشه‌ها استفاده کنید. جریان متحرک آب سطحی را با الگوهای زمین و ارتفاع مقایسه کنید و بررسی کنید که رواناب در چه نقاطی همگرا می‌شود. با بزرگ‌نمایی و کوچک‌نمایی در مناطق مختلف آیووا، شبکه‌های حمل‌ونقل و زیرساخت‌ها را بررسی کنید و ببینید آب چگونه به سمت جاده‌ها، از روی آن‌ها یا در اطراف زیرساخت‌ها جریان پیدا می‌کند.",
-
-        attribution:
-          "این برنامه با استفاده از داده‌های DEM حوضه آبریز ارائه‌شده توسط Iowa Flood Center و سازمان زمین‌شناسی ایالات متحده (USGS) توسعه یافته است.",
-
-      },
-    }),
-    []
-  );
+      attribution:
+        "این برنامه با استفاده از داده‌های DEM حوضه آبریز ارائه‌شده توسط مرکز سیلاب آیووا (Iowa Flood Center) و سازمان زمین‌شناسی ایالات متحده (USGS) توسعه یافته است.",
+    },
+  }),
+  []
+);
 
   const t = translations[language];
 

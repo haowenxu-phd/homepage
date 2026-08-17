@@ -1,12 +1,12 @@
 {
   "en": {
-    "courseTitle": "Course 4: Microscopic Traffic Simulation and Greenshields Traffic Flow Theory",
+    "courseTitle": "Course 5: Traffic Signal Control, Queue Formation, and Traffic Wave Propagation",
 
     "introductionTitle": "Course Introduction",
-    "introductionText": "Explore how the movement of individual vehicles produces macroscopic traffic-flow relationships.",
+    "introductionText": "Explore how traffic signal phasing and changing traffic demand influence vehicle movement, queue formation, congestion, and the propagation of stop-and-go traffic waves through an intersection.",
 
     "learningGoal": "Learning Goal",
-    "learningGoalText": "Understand the relationship between traffic density, average speed, and traffic flow using the Greenshields model.",
+    "learningGoalText": "Understand how red, yellow, and green signal phases regulate traffic flow, how traffic demand interacts with available green time, and how queues form, discharge, and propagate along a road network.",
 
     "simulationControls": "Simulation Controls",
     "numberOfVehicles": "Number of Vehicles",
@@ -15,20 +15,27 @@
     "trafficDemand": "Traffic Demand",
     "vehicleSpawnInterval": "Vehicle Entry Interval",
     "secondsPerVehicle": "s/vehicle",
+    "speedLimit": "Speed Limit",
+
+    "signalTiming": "Traffic Signal Timing",
+    "greenTime": "Green Time",
+    "yellowTime": "Yellow Time",
+    "redTime": "Red Time",
+    "cycleLength": "Cycle Length",
+    "currentSignal": "Current Signal",
 
     "start": "Start",
     "pause": "Pause",
     "reset": "Reset",
 
-    "resultSummary": "Result Summary",
-    "density": "Density",
+    "resultSummary": "Traffic Performance",
+    "density": "Traffic Density",
     "averageSpeed": "Average Speed",
     "trafficFlow": "Traffic Flow",
-    "speedDensityRelationship": "Speed–Density Relationship",
-    "speedLimit":"Speed Limits:",
+    "speedDensityRelationship": "Traffic State",
 
-    "mapTitle": "UNSW Lane-based Road Network",
-    "mapSubtitle": "Continuous microscopic traffic simulation",
+    "mapTitle": "UNSW Signal-Controlled Lane Network",
+    "mapSubtitle": "Microscopic simulation of signal-controlled traffic flow and queue propagation",
 
     "status": "Status",
     "running": "Running",
@@ -40,39 +47,45 @@
     "flowUnit": "veh/h",
 
     "generateRoute": "Generate Route"
-
-
   },
 
   "zh": {
-    "courseTitle": "课程 4：微观交通仿真与 Greenshields 交通流理论",
+    "courseTitle": "课程 5：交通信号控制、排队形成与交通波传播",
 
     "introductionTitle": "课程介绍",
-    "introductionText": "通过微观车辆运动观察个体车辆行为如何形成宏观交通流关系。",
+    "introductionText": "探索交通信号相位和交通需求变化如何影响车辆运行、排队形成、交通拥堵，以及停车—启动交通波在交叉口及道路上的传播。",
 
     "learningGoal": "学习目标",
-    "learningGoalText": "理解 Greenshields 模型中交通密度、平均速度与交通流量之间的关系。",
+    "learningGoalText": "理解红灯、黄灯和绿灯相位如何调控交通流，交通需求如何与可用绿灯时间相互作用，以及车辆排队如何形成、消散并沿道路网络传播。",
 
     "simulationControls": "仿真控制",
     "numberOfVehicles": "车辆数量",
     "freeFlowSpeed": "自由流速度",
     "jamDensity": "拥堵密度",
-      "trafficDemand": "交通需求",
+    "trafficDemand": "交通需求",
     "vehicleSpawnInterval": "车辆进入间隔",
     "secondsPerVehicle": "秒/辆",
+    "speedLimit": "限速",
+
+    "signalTiming": "交通信号配时",
+    "greenTime": "绿灯时间",
+    "yellowTime": "黄灯时间",
+    "redTime": "红灯时间",
+    "cycleLength": "信号周期",
+    "currentSignal": "当前信号状态",
 
     "start": "开始",
     "pause": "暂停",
     "reset": "重置",
 
-    "resultSummary": "结果汇总",
+    "resultSummary": "交通运行表现",
     "density": "交通密度",
     "averageSpeed": "平均速度",
     "trafficFlow": "交通流量",
-    "speedDensityRelationship": "速度–密度关系",
+    "speedDensityRelationship": "交通状态",
 
-    "mapTitle": "UNSW 车道级道路网络",
-    "mapSubtitle": "连续微观交通仿真",
+    "mapTitle": "UNSW 信号控制车道网络",
+    "mapSubtitle": "基于微观交通仿真的信号控制、车辆排队与交通波传播",
 
     "status": "状态",
     "running": "运行中",
@@ -82,41 +95,47 @@
     "densityUnit": "辆/公里",
     "speedUnit": "公里/小时",
     "flowUnit": "辆/小时",
-    "speedLimit":"限速",
 
     "generateRoute": "生成路线"
   },
 
   "fa": {
-    "courseTitle": "درس ۴: شبیه‌سازی میکروسکوپی ترافیک و نظریه جریان ترافیک گرین‌شیلدز",
+    "courseTitle": "درس ۵: کنترل چراغ راهنمایی، تشکیل صف و انتشار موج ترافیک",
 
     "introductionTitle": "معرفی درس",
-    "introductionText": "بررسی کنید که چگونه حرکت خودروهای منفرد به روابط ماکروسکوپی جریان ترافیک منجر می‌شود.",
+    "introductionText": "بررسی کنید که چگونه فازبندی چراغ راهنمایی و تغییرات تقاضای ترافیک بر حرکت خودروها، تشکیل صف، ازدحام و انتشار امواج توقف و حرکت در تقاطع و شبکه جاده‌ای تأثیر می‌گذارند.",
 
     "learningGoal": "هدف یادگیری",
-    "learningGoalText": "رابطه میان چگالی ترافیک، سرعت متوسط و جریان ترافیک را با استفاده از مدل گرین‌شیلدز درک کنید.",
+    "learningGoalText": "درک کنید که چگونه فازهای قرمز، زرد و سبز جریان ترافیک را کنترل می‌کنند، تقاضای ترافیک چگونه با زمان سبز در دسترس تعامل دارد، و صف‌های ترافیکی چگونه تشکیل، تخلیه و در امتداد شبکه جاده‌ای منتشر می‌شوند.",
 
     "simulationControls": "کنترل شبیه‌سازی",
     "numberOfVehicles": "تعداد خودروها",
     "freeFlowSpeed": "سرعت جریان آزاد",
     "jamDensity": "چگالی تراکم",
-     "trafficDemand": "تقاضای ترافیک",
+    "trafficDemand": "تقاضای ترافیک",
     "vehicleSpawnInterval": "فاصله ورود خودرو",
     "secondsPerVehicle": "ثانیه/خودرو",
-    "speedLimit": "محدودیت سرعت:",
+    "speedLimit": "محدودیت سرعت",
+
+    "signalTiming": "زمان‌بندی چراغ راهنمایی",
+    "greenTime": "زمان سبز",
+    "yellowTime": "زمان زرد",
+    "redTime": "زمان قرمز",
+    "cycleLength": "طول چرخه",
+    "currentSignal": "وضعیت فعلی چراغ",
 
     "start": "شروع",
     "pause": "توقف",
     "reset": "بازنشانی",
 
-    "resultSummary": "خلاصه نتایج",
-    "density": "چگالی",
+    "resultSummary": "عملکرد ترافیک",
+    "density": "چگالی ترافیک",
     "averageSpeed": "سرعت متوسط",
     "trafficFlow": "جریان ترافیک",
-    "speedDensityRelationship": "رابطه سرعت–چگالی",
+    "speedDensityRelationship": "وضعیت ترافیک",
 
-    "mapTitle": "شبکه جاده‌ای مبتنی بر خطوط UNSW",
-    "mapSubtitle": "شبیه‌سازی پیوسته میکروسکوپی ترافیک",
+    "mapTitle": "شبکه خطوط کنترل‌شده با چراغ راهنمایی در UNSW",
+    "mapSubtitle": "شبیه‌سازی میکروسکوپی جریان ترافیک کنترل‌شده با چراغ، تشکیل صف و انتشار موج ترافیک",
 
     "status": "وضعیت",
     "running": "در حال اجرا",
@@ -126,6 +145,7 @@
     "densityUnit": "خودرو/کیلومتر",
     "speedUnit": "کیلومتر/ساعت",
     "flowUnit": "خودرو/ساعت",
-    "generateRoute": "Generate Route"
+
+    "generateRoute": "ایجاد مسیر"
   }
 }

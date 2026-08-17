@@ -104,7 +104,22 @@ export default function InteractiveLearning() {
             "Available",
         },
         {
-          id: 5,
+            id: 5,
+
+            image:
+              "img/thumbnail_learning/T5_Signal.png",
+
+            href:
+              "/learning/course_5",
+
+            level:
+              "Intermediate",
+
+            status:
+              "Available",
+        },
+        {
+          id: 6,
 
           image:
             "img/thumbnail_learning/Tw1_transportation_watershed.png",
@@ -113,7 +128,7 @@ export default function InteractiveLearning() {
             "/learning/course_9",
             //https://haowenxu-phd.github.io/homepage/learning/course_1
           level:
-            "Foundation",
+            "Intermediate",
 
           status:
             "Available",
@@ -463,7 +478,7 @@ export default function InteractiveLearning() {
 
               {/* ==================================================
                   Collaboration Acknowledgement
-              ================================================== */}
+              ================================================== */} 
 
               <span
                 className="

@@ -91,16 +91,30 @@
             ]
           },
           "5": {
-              "title": "Watershed Flow & Transportation Infrastructure",
-              "subtitle": "Explore how terrain-driven water flow interacts with transportation networks and infrastructure",
-              "description": "Interactively explore watershed flow patterns using WebGL visualization, examine how terrain and flow direction influence water movement and accumulation, and investigate how roads, bridges, and other transportation infrastructure interact with surface runoff and potential flood pathways.",
-              "badges": [
-                "Watershed Flow",
-                "Transportation Infrastructure",
-                "Flood Exposure",
-                "WebGL Visualization"
-              ]
-            }
+        "title": "Traffic Signal Control & Queue Propagation",
+
+        "subtitle": "Explore how signal timing and traffic demand influence congestion, queues, and traffic-wave propagation",
+
+        "description": "Interactively explore signal-controlled traffic flow using microscopic simulation, adjust red, yellow, and green phase durations, vary traffic demand and speed limits, observe queue formation and discharge at intersections, and examine how stop-and-go traffic waves propagate along the road network.",
+
+        "badges": [
+          "Traffic Signal Control",
+          "Queue Formation",
+          "Traffic Wave Propagation",
+          "Microscopic Simulation"
+        ]
+      },
+      "6": {
+          "title": "Watershed Flow & Transportation Infrastructure",
+          "subtitle": "Explore how terrain-driven water flow interacts with transportation networks and infrastructure",
+          "description": "Interactively explore watershed flow patterns using WebGL visualization, examine how terrain and flow direction influence surface-water movement and accumulation, and investigate how roads, bridges, and other transportation infrastructure interact with surface runoff and potential flood pathways.",
+          "badges": [
+            "Watershed Flow",
+            "Transportation Infrastructure",
+            "Flood Exposure",
+            "WebGL Visualization"
+          ]
+        }
     }
   },
 
@@ -198,6 +212,17 @@
         ]
       },
       "5": {
+        "title": "交通信号控制、排队动态与交通波",
+        "subtitle": "探索信号配时与交通需求如何影响交叉口运行、车辆排队及拥堵传播",
+        "description": "通过互动式微观交通仿真实验交通信号配时，包括红灯、黄灯和绿灯时长。调节交通需求和道路限速，观察车辆停车与排队形成，分析绿灯期间的排队消散过程，并探索拥堵及停车—启动交通波如何在信号控制道路网络中形成与传播。",
+        "badges": [
+          "信号配时",
+          "排队动态",
+          "拥堵传播",
+          "交通控制"
+        ]
+      },
+      "6": {
         "title": "流域水流与交通基础设施",
         "subtitle": "探索地形驱动的水流如何与交通网络和基础设施相互作用",
         "description": "通过 WebGL 可视化交互式探索流域水流模式，分析地形和流向如何影响地表水的流动与汇聚，并研究道路、桥梁及其他交通基础设施如何与地表径流和潜在洪水路径相互作用。",
@@ -306,6 +331,17 @@
             ]
           },
           "5": {
+              "title": "کنترل چراغ راهنمایی، پویایی صف و امواج ترافیکی",
+              "subtitle": "بررسی تأثیر فازبندی چراغ و تقاضای ترافیک بر عملکرد تقاطع، تشکیل صف و انتشار ازدحام",
+              "description": "با استفاده از یک شبیه‌سازی تعاملی میکروسکوپی ترافیک، فازبندی چراغ راهنمایی شامل مدت‌زمان فازهای قرمز، زرد و سبز را آزمایش کنید. تقاضای ترافیک و محدودیت سرعت را تغییر دهید، توقف خودروها و تشکیل صف را مشاهده کنید، تخلیه صف در فاز سبز را بررسی کنید و چگونگی شکل‌گیری و انتشار ازدحام و امواج توقف و حرکت را در یک شبکه جاده‌ای کنترل‌شده با چراغ راهنمایی تحلیل کنید.",
+              "badges": [
+                "فازبندی چراغ",
+                "پویایی صف",
+                "انتشار ازدحام",
+                "کنترل ترافیک"
+              ]
+            },
+          "6": {
               "title": "جریان حوضه آبریز و زیرساخت‌های حمل‌ونقل",
               "subtitle": "بررسی تعامل جریان آب ناشی از توپوگرافی با شبکه‌ها و زیرساخت‌های حمل‌ونقل",
               "description": "با استفاده از نمایش تعاملی WebGL، الگوهای جریان در حوضه آبریز را بررسی کنید، تأثیر توپوگرافی و جهت جریان بر حرکت و تجمع آب را تحلیل کنید، و نحوه تعامل جاده‌ها، پل‌ها و سایر زیرساخت‌های حمل‌ونقل با رواناب سطحی و مسیرهای بالقوه سیلاب را مطالعه کنید.",

@@ -325,7 +325,7 @@ export default function CollabGrants() {
 
   alt: "MotionIntel research advisory collaboration",
 
-  title: "MotionIntel Research Advisory",
+  title: "Technology Startup Research Advisory",
 
   shortCaption:
     "Research Advisory · AI-Enabled Transportation Technology",
@@ -487,9 +487,9 @@ export default function CollabGrants() {
       period: "2022–2024",
 
       description:
-        " ",
+        "I served as an organizer of the ACM SIGSPATIAL International Workshop on Computational Transportation Science (IWCTS) for three consecutive years—2022, 2023, and 2024. The workshop brings together researchers and practitioners working at the intersection of transportation, geospatial computing, data science, and intelligent transportation systems. My involvement included supporting workshop organization, research community engagement, and the dissemination and discussion of emerging computational approaches for transportation research.",
 
-      link: "#",
+      link: "https://cusgornl.github.io/IWCTS2024/",
     },
     {
       id: "government-6",
@@ -511,7 +511,7 @@ export default function CollabGrants() {
       period: "2016",
 
       description:
-        " ",
+        "I was invited to the U.S. Environmental Protection Agency (EPA) Headquarters in Washington, D.C. to discuss potential research collaboration using EPA’s StreamCat datasets to characterize stream and watershed conditions relevant to transportation infrastructure. The discussion explored how large-scale watershed and environmental data could provide insights into riverine and water-related hazards affecting transportation assets, including roadway embankments, culverts, bridges, and river crossings. The engagement helped connect watershed science and geospatial data analytics with transportation infrastructure resilience and risk assessment.",
 
       link: "#",
     },
@@ -536,7 +536,7 @@ export default function CollabGrants() {
       period: "2016",
 
       description:
-        " ",
+        "I attended a high-performance computing (HPC) and scientific computing summer school at the National Center for Supercomputing Applications (NCSA), University of Illinois Urbana-Champaign, organized through the University Consortium for Geographic Information Science (UCGIS). The program provided hands-on training in HPC, parallel computing, and computational methods for geospatial and scientific applications. This experience helped build the computational foundation for my subsequent work in large-scale simulation, scientific computing, and data-intensive modeling across transportation and environmental systems.",
 
       link: "#",
     },
@@ -561,9 +561,14 @@ export default function CollabGrants() {
       period: "2016-2019",
 
       description:
-        " ",
+        `During my PhD, I worked closely with the **U.S. Army Corps of Engineers (USACE) Institute for Water Resources (IWR)** on research that was partially supported by USACE to develop **web-based serious games and scientific gamification tools for collaborative watershed and disaster management**.
 
-      link: "#",
+          The interactive platform was designed to bring together stakeholders from multiple government agencies， including **USACE, NRCS, USGS, USFS, and FEMA**，to explore watershed management strategies through shared scenarios. The serious-game environment supported **shared-vision planning, social learning, and collaborative decision-making**, allowing participants to evaluate management practices for mitigating **flooding, sedimentation, and water-quality degradation**.
+
+          The resulting application was subsequently **used by USACE in its multi-hazard tournament exercises**, demonstrating how interactive geospatial simulation and gamification can translate scientific models into practical tools for stakeholder engagement and multi-agency decision-making.
+        `,
+
+      link: "https://www.sciencedirect.com/science/article/abs/pii/S0301479719316056",
     },
 
     {
@@ -586,7 +591,9 @@ export default function CollabGrants() {
       period: "2016",
 
       description:
-        " ",
+        `I collaborated with the U.S. Geological Survey (USGS) on multiple environmental monitoring and field-survey activities, gaining hands-on experience in collecting and analyzing real-world geospatial and hydrologic data.
+
+The fieldwork involved technologies including UAV-based remote sensing, photogrammetry, and Acoustic Doppler Current Profiler (ADCP) measurements to characterize river and watershed environments. These collaborations connected field observations with geospatial analysis and environmental modeling, providing valuable data and practical insights for understanding river dynamics, watershed processes, and water-related hazards.`,
 
       link: "#",
     },
