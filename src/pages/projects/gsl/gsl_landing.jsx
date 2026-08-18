@@ -592,7 +592,7 @@ export function GSLDetail() {
         
         /*{ label: "Live demo (viewer)", href: "https://yourlink.example/voxel-viewer", tag: "demo" },
         { label: "CTwin platform", href: "https://yourlink.example/ctwin", tag: "platform" },*/
-        { label: "Digital-Twin Project Green-Lights Traffic Congestion Improvements", href: "https://www.nrel.gov/news/detail/program/2023/digital-twin-project-green-lights-traffic-congestion-improvements", tag: "government report" },
+        { label: "Grid Event Signature Library (GESL)", href: "https://gsl.ornl.gov/", tag: "government report" },
 
         
       ]}
