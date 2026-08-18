@@ -12,6 +12,11 @@ export default function Nav() {
         <NavLink to="/teaching">Teaching</NavLink>   
          
         <NavLink to="/learning">Online Learning Tool</NavLink>     
+
+        <NavLink to="/grants">Grants & Collaboration</NavLink>     
+
+
+         
       </div>
     </nav>
   )
