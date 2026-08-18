@@ -8,6 +8,10 @@
         "url":"https://www.preprints.org/manuscript/202606.1036"
     },
     { 
+        "name":"Xu, H., Lu, Q., Li, X., Liu, Z., Yu, X. Y., & Zhu, L. (2026). Bridging Industrial Engineering and Agentic AI: Integrating Operations Research Methods for Uncertainty-aware and Verifiable Spatial Decision Support. Available at SSRN 7229001",
+        "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7229001"
+    },
+    {
         "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I.(2026). An Exploratory Study of Transformer-based Generative AI Surrogate Modeling for 3D Wildfire Spread Simulation in Voxelized City. Available at SSRN 6572079",
         "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572079"
     },
@@ -28,11 +32,11 @@
         "url":"https://www.mdpi.com/2571-6255/8/8/293"
     },
     {
-        "name": "Xu, H., Sun, Y., Tupayachi, J., Omitaomu, O., Zlatanova, S., & Li, X. (2025). Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol. arXiv preprint arXiv:2506.13068.",
+        "name": "Xu, H., Sun, Y., Tupayachi, J., Omitaomu, O., Zlatanova, S., & Li, X. (2025). Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol. Computers & Industrial Engineering (In Revision)",
         "url":"https://www.arxiv.org/abs/2506.13068"
     },
     {
-        "name": "Xu, H., & Yu, X. Y. (2025). From powerpoint ui sketches to web-based applications: Pattern-driven code generation for gis dashboard development using knowledge-augmented llms, context-aware visual prompting, and the react framework. arXiv preprint arXiv:2502.08756.",
+        "name": "Xu, H., & Yu, X. Y. (2025). From powerpoint ui sketches to web-based applications: Pattern-driven code generation for gis dashboard development using knowledge-augmented llms, context-aware visual prompting, and the react framework. International Journal of Digital Earth (In Revision)",
         "url":"https://arxiv.org/abs/2502.08756"
     },
     {

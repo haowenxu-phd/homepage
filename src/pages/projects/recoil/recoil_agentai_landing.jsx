@@ -564,10 +564,10 @@ export function RecoilDetail() {
         {
           authors: "Xu, H., et al.",
           title: "Towards Fully Automated City Operations: Integrating Agentic AI with Urban Digital Twins",
-          venue: "CEUS (Under Review)",
+          venue: "Computers, Environment and Urban Systems",
           year: "2025",
-          doi: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5596992",
-          badges: ["Open Access", "Preprint"],
+          doi: "https://www.sciencedirect.com/science/article/pii/S0198971526000517",
+          badges: ["Open Access", "Journal Paper"],
         },
         {
           authors: "Xu, H., et al.",
@@ -593,16 +593,7 @@ export function RecoilDetail() {
           doi: "https://www.mdpi.com/2624-6511/7/5/94",          
           badges: ["Open Access","Journal Paper"],
         },
-
-        {
-          authors: "H Xu, S Zlatanova, X Li, M Wachowicz, M Batty",
-          title: "Towards Fully Automated City Operations: Integrating Agentic AI with Urban Digital Twins",
-          venue: "Under Review",
-          year: "2005",
-          doi: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5611510",          
-          badges: ["Preprint"],
-        },
-
+ 
         
       
       ]}

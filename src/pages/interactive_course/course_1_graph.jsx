@@ -342,55 +342,76 @@ export default function InteractiveLearning_c1_graph() {
             Interactive Code / JSON Viewer
         ================================================== */}
 
-        <div className="flex min-h-[260px] flex-col border border-sky-400 bg-white">
+     <div
+  className="
+    flex
+    h-[460px]
+    min-h-0
+    flex-col
+    overflow-hidden
+    border
+    border-sky-400
+    bg-white
+  "
+>
+  {/* Header — fixed / non-scrollable */}
+  <div className="shrink-0 border-b border-slate-200 px-2 py-1">
+    <h4 className="m-1 text-base font-semibold text-slate-900">
+      {t.code.title}
+    </h4>
 
-          <div className="border-b border-slate-200 px-2 py-1">
-            <h4 className="m-1 text-base font-semibold text-slate-900">
-              {t.code.title}
-            </h4>
+    <p className="m-2 text-xs text-slate-500">
+      {t.code.description}
+    </p>
+  </div>
 
-            <p className="m-2 text-xs text-slate-500">
-              {t.code.description}
-            </p>
-          </div>
-
-          <div className="flex flex-1 items-center justify-center p-1">
-
-            {selectedFeature ? (
-
-              <pre className="m-1 h-full w-full overflow-auto rounded bg-slate-950 p-2 text-xs text-slate-100">
-                {JSON.stringify(selectedFeature, null, 2)}
-              </pre>
-
-            ) : (
-
-              <div className="w-full min-w-0 flex-1">
-                 <NetworkInspector
-
-                      roadNetwork={
-                        roadNetwork
-                      }
-
-                      selectedLaneId={
-                        selectedLaneId
-                      }
-
-                      hoveredLaneId={
-                        hoveredLaneId
-                      }
-
-                      text={
-                        t.code
-                      }
-
-                    />
-              </div>
-
-            )}
-
-          </div>
-
-        </div>
+  {/* Content — constrained to remaining height */}
+  <div
+    className="
+      min-h-0
+      min-w-0
+      flex-1
+      overflow-hidden
+      p-1
+    "
+  >
+    {selectedFeature ? (
+      <pre
+        className="
+          m-0
+          h-full
+          w-full
+          overflow-auto
+          whitespace-pre
+          rounded
+          bg-slate-950
+          p-2
+          text-xs
+          text-slate-100
+        "
+      >
+        {JSON.stringify(selectedFeature, null, 2)}
+      </pre>
+    ) : (
+      <div
+        className="
+          h-full
+          min-h-0
+          min-w-0
+          w-full
+          overflow-auto
+        "
+      >
+        <NetworkInspector
+          roadNetwork={roadNetwork}
+          selectedLaneId={selectedLaneId}
+          hoveredLaneId={hoveredLaneId}
+          text={t.code}
+        />
+      </div>
+    )}
+  </div>
+</div>
 
 
         {/* =================================================
@@ -413,56 +434,173 @@ export default function InteractiveLearning_c1_graph() {
 
 
       {/* Scrollable content */}
-      <div className="min-h-0 flex-1 overflow-y-auto p-1">
+      {/* =================================================
+    Teaching Agent — Coming Soon
+================================================== */}
 
-        <div className="flex flex-col gap-2">
+<div
+  className="
+    relative
+    flex
+    h-[500px]
+    min-h-0
+    flex-col
+    overflow-hidden
+    border
+    border-sky-400
+    bg-white
+  "
+>
+  {/* =================================================
+      Disabled content underneath
+  ================================================== */}
 
-          <textarea
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            placeholder={t.agent.placeholder}
+  <div className="pointer-events-none flex h-full flex-col opacity-40">
+
+    {/* Fixed header */}
+
+    <div className="shrink-0 border-b border-slate-200 px-2 py-1">
+      <h4 className="m-1 text-base font-semibold text-slate-900">
+        {t.agent.title}
+      </h4>
+
+      <p className="m-1 text-xs text-slate-500">
+        {t.agent.description}
+      </p>
+    </div>
+
+
+    {/* Content */}
+
+    <div className="min-h-0 flex-1 overflow-hidden p-2">
+
+      <div className="flex flex-col gap-2">
+
+        <textarea
+          disabled
+          value=""
+          placeholder={t.agent.placeholder}
+          className="
+            min-h-[110px]
+            w-full
+            resize-none
+            rounded
+            border
+            border-slate-300
+            bg-slate-100
+            p-2
+            text-sm
+          "
+        />
+
+        <button
+          type="button"
+          disabled
+          className="
+            self-end
+            cursor-not-allowed
+            rounded
+            bg-sky-600
+            px-3
+            py-1
+            text-sm
+            font-medium
+            text-white
+          "
+        >
+          {t.agent.button}
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+      {/* =================================================
+          Coming Soon Overlay
+      ================================================== */}
+
+      <div
+        className="
+          absolute
+          inset-0
+          z-10
+          flex
+          items-center
+          justify-center
+          bg-white/55
+          backdrop-blur-[1px]
+        "
+      >
+
+        <div
+          className="
+            mx-4
+            max-w-sm
+            rounded-xl
+            border
+            border-sky-200
+            bg-white
+            px-6
+            py-5
+            text-center
+            shadow-lg
+          "
+        >
+
+          <div className="text-3xl">
+            🤖
+          </div>
+
+          <h3
             className="
-              min-h-[110px]
-              w-full
-              resize-none
-              rounded
-              border
-              border-slate-300
-              p-2
-              text-sm
-              outline-none
-              focus:border-sky-500
-            "
-          />
-
-          <button
-            type="button"
-            onMouseEnter={handleAskQuestion}
-            className="
-              self-end
-              rounded
-              bg-sky-600
-              px-3
-              py-1
-              text-sm
-              font-medium
-              text-white
-              transition
-              hover:bg-sky-700
+              mt-2
+              text-lg
+              font-semibold
+              text-slate-900
             "
           >
-            {t.agent.button}
-          </button>
+            AI Teaching Agent
+          </h3>
 
-          {/* 
-            Put generated teaching-agent content here.
-            If it becomes taller than the available space,
-            this section will scroll vertically.
-          */}
+          <div
+            className="
+              mt-2
+              inline-flex
+              rounded-full
+              bg-sky-100
+              px-3
+              py-1
+              text-xs
+              font-semibold
+              uppercase
+              tracking-wide
+              text-sky-700
+            "
+          >
+            Coming Soon
+          </div>
+
+          <p
+            className="
+              mt-3
+              text-sm
+              leading-6
+              text-slate-600
+            "
+          >
+            An AI-powered teaching assistant will provide interactive
+            explanations and help you understand the concepts explored
+            in this course.
+          </p>
 
         </div>
 
       </div>
+
+    </div>
 
     </div>
 

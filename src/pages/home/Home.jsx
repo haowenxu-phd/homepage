@@ -48,7 +48,7 @@ export default function Home() {
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/60" />
               </div>
-              <p className="mt-2 text-sm text-slate-600">Invited Talk — Virtual Reality and Digital Twin, U.S. National Academy of Sciences (NAS)  </p>
+              <p className="mt-2 text-sm text-slate-600">Invited Talk — Virtual Reality and Transportation Digital Twin, U.S. National Academy of Sciences (NAS)  </p>
             </div>
 
             {/* Photo 2 */}

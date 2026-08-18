@@ -76,7 +76,7 @@ export default function InteractiveLearning_c2_navigation() {
   ] = useState(1);
 
 
-  const totalSteps = 4;
+  const totalSteps = 2;
 
 
   // ============================================================

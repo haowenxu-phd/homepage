@@ -561,11 +561,11 @@ export default function CollabGrants() {
       period: "2016-2019",
 
       description:
-        `During my PhD, I worked closely with the **U.S. Army Corps of Engineers (USACE) Institute for Water Resources (IWR)** on research that was partially supported by USACE to develop **web-based serious games and scientific gamification tools for collaborative watershed and disaster management**.
+        `During my PhD, I worked closely with the U.S. Army Corps of Engineers (USACE) Institute for Water Resources (IWR) on research that was partially supported by USACE to develop web-based serious games and scientific gamification tools for collaborative watershed and disaster management.
 
-          The interactive platform was designed to bring together stakeholders from multiple government agencies， including **USACE, NRCS, USGS, USFS, and FEMA**，to explore watershed management strategies through shared scenarios. The serious-game environment supported **shared-vision planning, social learning, and collaborative decision-making**, allowing participants to evaluate management practices for mitigating **flooding, sedimentation, and water-quality degradation**.
+The interactive platform was designed to bring together stakeholders from multiple government agencies, including USACE, NRCS, USGS, USFS, and FEMA, to explore watershed management strategies through shared scenarios. The serious-game environment supported shared-vision planning, social learning, and collaborative decision-making, allowing participants to evaluate management practices for mitigating flooding, sedimentation, and water-quality degradation.
 
-          The resulting application was subsequently **used by USACE in its multi-hazard tournament exercises**, demonstrating how interactive geospatial simulation and gamification can translate scientific models into practical tools for stakeholder engagement and multi-agency decision-making.
+The resulting application was subsequently used by USACE in its multi-hazard tournament exercises, demonstrating how interactive geospatial simulation and gamification can translate scientific models into practical tools for stakeholder engagement and multi-agency decision-making.
         `,
 
       link: "https://www.sciencedirect.com/science/article/abs/pii/S0301479719316056",

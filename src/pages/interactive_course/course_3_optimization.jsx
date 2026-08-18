@@ -43,7 +43,7 @@ from "./assets/course_3_optimization/steps/step_1/Step2TSP";
 from "./assets/course_2_navigation/steps/step_3/Step3DynamicRouting";*/
 
 import Step4Compare
-from "./assets/course_2_navigation/steps/step_4/Step4Compare";
+from "./assets/course_3_optimization/steps/step_2/Step3Compare";
 
 
 // ============================================================
