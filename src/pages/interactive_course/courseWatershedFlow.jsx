@@ -17,7 +17,7 @@ export default function InteractiveLearning_c_watershed() {
         "Learning Objectives",
 
       overview:
-        "This interactive lesson combines WebGL-based flow visualization with a watershed flow-direction matrix to help students understand how surface water moves across terrain and how transportation infrastructure may intersect with, redirect, constrain, or become exposed to flood flows.",
+        "This interactive lesson combines WebGPU-based flow simulation and visualization with a watershed flow-direction matrix to help students understand how surface water moves across terrain and how transportation infrastructure may intersect with, redirect, constrain, or become exposed to flood flows.",
 
       objective1:
         "Understand how a watershed flow-direction matrix represents local surface-water movement across terrain.",
@@ -56,7 +56,7 @@ export default function InteractiveLearning_c_watershed() {
         "Interactive Watershed Flow Map",
 
       mapCaption:
-        "WebGL visualization of terrain-driven surface-water flow and its spatial relationship with transportation infrastructure.",
+        "WebGPU visualization of terrain-driven surface-water flow and its spatial relationship with transportation infrastructure.",
 
       languageLabel:
         "Language",
@@ -116,7 +116,7 @@ export default function InteractiveLearning_c_watershed() {
         "互动流域水流地图",
 
       mapCaption:
-        "基于 WebGL 的地形驱动地表水流可视化，用于分析水流与交通基础设施之间的空间关系。",
+        "基于 WebGPU 的地形驱动地表水流可视化，用于分析水流与交通基础设施之间的空间关系。",
 
       languageLabel:
         "语言",
@@ -137,7 +137,7 @@ export default function InteractiveLearning_c_watershed() {
         "اهداف یادگیری",
 
       overview:
-        "این درس تعاملی، نمایش جریان مبتنی بر WebGL را با ماتریس جهت جریان حوضه آبریز ترکیب می‌کند تا دانشجویان درک کنند آب سطحی چگونه در امتداد توپوگرافی حرکت می‌کند و زیرساخت‌های حمل‌ونقل چگونه می‌توانند با مسیرهای جریان تلاقی داشته باشند، آن‌ها را تغییر دهند یا محدود کنند و در معرض خطر سیلاب قرار گیرند.",
+        "این درس تعاملی، نمایش جریان مبتنی بر WebGPU را با ماتریس جهت جریان حوضه آبریز ترکیب می‌کند تا دانشجویان درک کنند آب سطحی چگونه در امتداد توپوگرافی حرکت می‌کند و زیرساخت‌های حمل‌ونقل چگونه می‌توانند با مسیرهای جریان تلاقی داشته باشند، آن‌ها را تغییر دهند یا محدود کنند و در معرض خطر سیلاب قرار گیرند.",
 
       objective1:
         "درک نحوه نمایش جهت حرکت محلی آب سطحی روی زمین توسط ماتریس جهت جریان حوضه آبریز.",

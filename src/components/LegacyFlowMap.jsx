@@ -7,7 +7,7 @@ export default function FlowMapWebGL() {
   return (
     <iframe
       src={legacyUrl}
-      title="WebGL Watershed Flow Map"
+      title="WebGPU Watershed Flow Map"
       className="
         block
         h-full
