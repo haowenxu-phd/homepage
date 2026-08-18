@@ -107,12 +107,12 @@
       "6": {
           "title": "Watershed Flow & Transportation Infrastructure",
           "subtitle": "Explore how terrain-driven water flow interacts with transportation networks and infrastructure",
-          "description": "Interactively explore watershed flow patterns using WebGPU visualization, examine how terrain and flow direction influence surface-water movement and accumulation, and investigate how roads, bridges, and other transportation infrastructure interact with surface runoff and potential flood pathways.",
+          "description": "Interactively explore watershed flow patterns using WebGPU simulation and visualization, examine how terrain and flow direction influence surface-water movement and accumulation, and investigate how roads, bridges, and other transportation infrastructure interact with surface runoff and potential flood pathways.",
           "badges": [
             "Watershed Flow",
             "Transportation Infrastructure",
             "Flood Exposure",
-            "WebGPU Visualization"
+            "WebGPU Simulation and Visualization"
           ]
         }
     }
@@ -225,12 +225,12 @@
       "6": {
         "title": "流域水流与交通基础设施",
         "subtitle": "探索地形驱动的水流如何与交通网络和基础设施相互作用",
-        "description": "通过 WebGPU 可视化交互式探索流域水流模式，分析地形和流向如何影响地表水的流动与汇聚，并研究道路、桥梁及其他交通基础设施如何与地表径流和潜在洪水路径相互作用。",
+        "description": "通过 WebGPU 河流模拟与可视化交互式探索流域水流模式，分析地形和流向如何影响地表水的流动与汇聚，并研究道路、桥梁及其他交通基础设施如何与地表径流和潜在洪水路径相互作用。",
         "badges": [
           "流域水流",
           "交通基础设施",
           "洪水暴露",
-          "WebGPU 可视化"
+          "WebGPU 模拟和可视化"
         ]
       }
       
