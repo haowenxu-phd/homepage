@@ -10,48 +10,66 @@ export default function Teaching() {
 
   // List of awards (update with your actual image file paths)
   const teaching_mentors = [
-        {
-          id: 1,
-          orientation: "portrait",
-          src: `${import.meta.env.BASE_URL}/img/teaching_engagement/US_Department_of_Energy_SULI_2023.jpg`,
-          alt: "Sidney Ozcan presenting her ORNL SULI research poster",
-          name: "Sidney Ozcan",
-          title: "Undergraduate Researcher",
-          program:
-            "2023 USDOE Science Undergraduate Laboratory Internships (SULI)",
-          role:
-            "Co-advised undergraduate researcher at Oak Ridge National Laboratory.",
-          outcome:
-            "Earthquake Vulnerability Assessment of California's Petroleum Distribution Network (ORNL SULI Research Poster)."
-        },
-        {
-          id: 2,
-          orientation: "landscape",
-          src: `${import.meta.env.BASE_URL}/img/teaching_engagement/ARPA-E_UTK_lecturing_advising_2024.jpg`,
-          alt: "Graduate student advising and guest lecturing at the University of Tennessee",
-          name: "Jose Tupayachi & Aliza Sharmin",
-          title: "Graduate Researchers",
-          program:
-            "2024 University of Tennessee – Graduate Student Advising & Guest Lecturing",
-          role:
-            "Provided graduate student advising and delivered guest lectures within the Department of Industrial & Systems Engineering at the University of Tennessee, supporting research in intelligent transportation systems, digital twins, optimisation, AI-enabled decision support, and intermodal freight transportation.",
-          outcome:
-            "Published the peer-reviewed journal paper 'Towards Next-Generation Urban Decision Support Systems through AI-Powered Construction of Scientific Ontology Using Large Language Models—A Case in Optimizing Intermodal Freight Transportation' (Smart Cities, 2024)."
-        },
-        {
-          id: 3,
-          orientation: "landscape",
-          src: `${import.meta.env.BASE_URL}/img/teaching_engagement/ibpsa_advising.png`,
-          alt: "IBPSA Student",
-          name: "Matteo Calafiura-Soleri",
-          title: "Undergraduate Research Mentoring",
-          program: "IBPSA HackSimBuild",
-          role:
-            "Mentored an undergraduate student in developing augmented reality (AR) and virtual reality (VR) applications for immersive visualization of urban environments.",
-            outcome:
-              "Project received the IBPSA HackSimBuild Best Presentation Award in 2022",
-          }
-      ];
+  {
+    id: 1,
+    orientation: "portrait",
+    src: `${import.meta.env.BASE_URL}/img/teaching_engagement/US_Department_of_Energy_SULI_2023.jpg`,
+    alt: "Sidney Ozcan presenting her ORNL SULI research poster",
+    name: "Sidney Ozcan",
+    title: "Undergraduate Research Mentoring",
+    program:
+      "2023 U.S. Department of Energy Science Undergraduate Laboratory Internships (SULI) Program",
+    role:
+      "Co-advised an undergraduate researcher at Oak Ridge National Laboratory (ORNL).",
+    outcome:
+      "Completed a research project on the earthquake vulnerability assessment of California's petroleum distribution network and presented the findings through an ORNL SULI research poster."
+  },
+  {
+    id: 2,
+    orientation: "landscape",
+    src: `${import.meta.env.BASE_URL}/img/teaching_engagement/ARPA-E_UTK_lecturing_advising_2024.jpg`,
+    alt: "Graduate student co-advising and guest lecturing at the University of Tennessee",
+    name: "Jose Tupayachi & Aliza Sharmin",
+    title: "Graduate Research Co-advising",
+    program:
+      "2024 University of Tennessee – Graduate Research Advising & Guest Lecturing",
+    role:
+      "Co-advised graduate researchers and delivered guest lectures in the Department of Industrial & Systems Engineering at the University of Tennessee, Knoxville (UTK), supporting research in intelligent transportation systems, digital twins, optimization, AI-enabled decision support, and intermodal freight transportation.",
+    outcome:
+      "Contributed to a peer-reviewed journal publication on LLM-enabled scientific ontology development for intermodal freight transportation and urban decision support (Smart Cities, 2024).",
+   link:"https://trace.tennessee.edu/entities/publication/b1256862-c64f-4a6c-acf2-153963b79814"
+    },
+  {
+    id: 3,
+    orientation: "landscape",
+    src: `${import.meta.env.BASE_URL}/img/teaching_engagement/ibpsa_advising.png`,
+    alt: "Matteo Calafiura-Soleri participating in the IBPSA HackSimBuild student project",
+    name: "Matteo Calafiura-Soleri",
+    title: "Undergraduate Research Mentoring",
+    program: "IBPSA HackSimBuild",
+    role:
+      "Mentored an undergraduate researcher in developing augmented reality (AR) and virtual reality (VR) applications for immersive visualization of urban environments.",
+    outcome:
+      "The student project received the Best Presentation Award at IBPSA HackSimBuild 2022.",
+       link:"https://www.ibpsa.us/hacksimbuild-2022/hacksimbuild-a-great-success/"
+  },
+  {
+    id: 4,
+    orientation: "portrait",
+    src: `${import.meta.env.BASE_URL}/img/teaching_engagement/US_Department_of_Energy_GRO_2022.jpg`,
+    alt: "Jillian Sturtevant participating in the U.S. Department of Energy Graduate Research Program at ORNL",
+    name: "Jillian Sturtevant",
+    title: "PhD Research Co-advising",
+    program:
+      "2022 U.S. Department of Energy Graduate Research Program (GRO)",
+    role:
+      "Co-advised a PhD researcher at Oak Ridge National Laboratory (ORNL).",
+    outcome:
+      "Investigated transportation and mobility impacts in and around Yellowstone National Park following the 2022 flooding as part of an NSF-funded research project.",
+    link: "pdf/YNP_Automobile_Traffic_Haowen.pdf"
+    }
+
+]
 
   const [isOpen_award, setIsOpen_award] = useState(true);
   const [isOpen_pub, setIsOpen_pub] = useState(true);
@@ -67,27 +85,32 @@ export default function Teaching() {
               </h4>
 
               <p className="mt-4 text-slate-600 leading-relaxed">
-                My teaching and mentoring experience spans undergraduate and doctoral
-                research across U.S. national laboratory and university environments.
-                At the{" "}
-                <strong>
-                  U.S. Department of Energy’s Oak Ridge National Laboratory (ORNL)
-                </strong>
-                , I co-advised undergraduate researchers through the{" "}
-                <strong>
-
-                <a
-                href="https://science.osti.gov/wdts/suli"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 underline"
-                >                 
-                  Science Undergraduate Laboratory Internships (SULI) Program
-                </a>
-                </strong>{" "}
-                and contributed to research mentoring through externally funded
-                internship and research programmes.
-              </p>
+                    My teaching and mentoring experience spans undergraduate, graduate, and
+                    doctoral research across U.S. national laboratory and university
+                    environments. At the{" "}
+                    <strong>
+                      U.S. Department of Energy’s Oak Ridge National Laboratory (ORNL)
+                    </strong>
+                    , I co-advised undergraduate researchers through the{" "}
+                    <strong>
+                      <a
+                        href="https://science.osti.gov/wdts/suli"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline"
+                      >
+                        Science Undergraduate Laboratory Internships (SULI) Program
+                      </a>
+                    </strong>{" "}
+                    and contributed to the mentoring of graduate and doctoral researchers
+                    through the <strong> <a
+                        href="https://phdplus.virginia.edu/sites/phdplus/files/documents/ORNL_Opportunities_2025.7.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline"
+                      >Graduate Research Program (GRO)</a></strong>, as well as
+                    externally funded internship and research programs.
+                  </p>
 
               <p className="mt-4 text-slate-600 leading-relaxed">
               Through my academic appointment as an{" "}
@@ -148,7 +171,7 @@ export default function Teaching() {
                               : "lg:col-span-4"}
                           `}
                         >
-                          <div className="px-6 py-5">
+                          <div className="px-6 py-1">
                             <h3 className="text-2xl font-semibold text-slate-900">
                               {mentor.name}
                             </h3>
@@ -166,13 +189,27 @@ export default function Teaching() {
                             </p>
 
                             <div className="rounded-lg bg-slate-50">
-                              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                              <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                                 Mentorship Outcome
-                              </p>
+                              </span>
 
                               <p className="text-sm leading-relaxed text-slate-700">
                                 {mentor.outcome}
-                              </p>
+
+                                {mentor.link && (
+                                  <>
+                                    {" "}
+                                    <a
+                                      href={mentor.link}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="font-medium text-blue-600 underline hover:text-blue-800"
+                                    >
+                                      [Link]
+                                    </a>
+                                  </>
+                                )}</p>
+                             
                             </div>
                           </div>
 

@@ -78,7 +78,7 @@ export default function Home() {
 
               <ul className="text-slate-600 leading-relaxed list-disc list-inside space-y-2">
               <li>
-                Formerly an award-winning <strong>Staff Research Scientist</strong> at the
+                Formerly a <strong>Staff Research Scientist</strong> at the
                 <strong> U.S. Department of Energy’s Oak Ridge National Laboratory (ORNL)</strong>,
                 and <strong>Adjunct Associate Professor</strong> at the
                 <strong> University of Tennessee, Knoxville (UTK)</strong>.
@@ -89,7 +89,7 @@ export default function Home() {
               across leading scientific and engineering venues.
             </li>
               <li>
-                <strong>Over 1490 citations</strong> with an h-index of <strong>21</strong> on {" "}
+                <strong>Over 1500 citations</strong> with an h-index of <strong>21</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
@@ -281,7 +281,7 @@ export default function Home() {
                   >
                     <span className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 opacity-90 transition-opacity group-hover:opacity-100" />
 
-                    <span>🎓 Online Interactive Learning & Gaming Courses 🎮</span>
+                    <span>🎓 Online Interactive Learning & Simulation Courses 🎮</span>
 
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
                   </Link>

@@ -581,6 +581,7 @@ export function RtmcsDetail() {
       awards={
           [ 
              { label: "Best Poster Award from the 19th IEEE International Conference on Mobile Ad-hoc and Smart Systems (MASS)", href: "https://linkedin.com/posts/haowen-xu-8818357a_oakridgenationallab-activity-6994736402139611136-BQrW/" },
+             { label: "U.S. Patent Application (US20250128708A1)", href: "https://patents.google.com/patent/US20250128708A1/en" },
         
           ]
     }

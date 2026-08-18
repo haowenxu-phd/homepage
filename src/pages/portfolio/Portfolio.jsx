@@ -18,7 +18,7 @@ export default function Projects() {
         blurb:
           "Agentic AI assistants orchestrating tools for planning, querying, and reporting.",
         href: "/homepage/portfolio/agentic_ai_dt",
-        badges: ["LLM", "AI Agents", "RAG", "Optimization Solver", "FTOT", "Freight Analysis Framework (FAF) "],
+        badges: ["LLM", "AI Agents", "RAG", "Optimization Solver", "FTOT", "Freight Analysis Framework (FAF)", "Decarbonization"],
       },      
       {
         id: 2,
@@ -27,7 +27,7 @@ export default function Projects() {
         blurb:
           "V2I-based intelligent speed advisory to smooth stop-and-go traffic and reduce fuel consumptuon.",
         href: "/homepage/portfolio/mobile_app_smart_speed",
-        badges: ["V2I", "Mobile", "Optimization"],
+        badges: ["V2I", "Vehicle speed optimization", "Mobile Edge Computing", "Eco-driving",  "Driver Assistance System"],
       },
       {
         id: 3,
@@ -36,7 +36,7 @@ export default function Projects() {
         blurb:
           "Real-Time Mobility Simulation & Energy Analytics with Cyber-Physical Control of Traffic Control for Congestion Reduction in Chattanooga, TN",
         href: "/homepage/portfolio/ctwin",
-        badges: ["Cloud-based","Digital Twin", "HPC", "Cyber-physical System"],
+        badges: ["Cloud Computing", "Traffic Control","Digital Twin", "HPC", "Cyber-physical System", "Congestion Reduction"],
       },
       {
         id: 4,
@@ -45,7 +45,7 @@ export default function Projects() {
         blurb:
           "VR Digital Twins & Vehicle/Driving Simulator",
         href: "/homepage/portfolio/vr_digital_twins",
-        badges: ["Digital Twin", "HPC", "Edge"],
+        badges: ["3D World Models", "Hardware-in-the-loop", "CARLA", "VR"],
       },
       {
         id: 41,
@@ -58,12 +58,12 @@ export default function Projects() {
       },
       {
         id: 5,
-        title: "3D World Model for GPU-Accelerated Gas Dispersion & Aerosol Transport",
+        title: "GPU-Accelerated 3D Environmental Simulation for Gas Dispersion & Aerosol Transport",
         image: "/img/thumbnail/tn_gas_dispersion.png",
         blurb:
           "Simulating hazardous gas leaks and airborne contaminant transport for emergency response and digital twins.",
         href: "/homepage/portfolio/3d_gas_dispersion",
-        badges: ["Voxels", "3D Simulation", "Aerosol Transport"],
+        badges: ["3D Simulation", "Aerosol Transport", "3D World Models"],
       },
       {
         id: 6,
@@ -92,12 +92,12 @@ export default function Projects() {
 
       {
         id: 8,
-        title: "3D World Model for GPU-Accelerated Wildfire Simulation using Voxels",
+        title: "GPU-Accelerated Voxel-Based 3D Wildfire Simulation",
         image: "/img/thumbnail/tn_wildfire.png",
         blurb:
           "Multi-kernel heat transfer (convection, radiation, conduction, wind) through 3D voxel City.",
         href: "/homepage/portfolio/bushfire_sim",
-        badges: ["Voxels", "3D Fire Spread Simulation", "AI Surrogates"],
+        badges: ["Voxels", "3D Fire Spread Simulation", "3D World Models"],
       },
 
       
@@ -150,16 +150,18 @@ export default function Projects() {
             Dr. Haowen Xu's Selected Projects 
           </h4>
           <p className="mt-3 text-slate-600">
-            I design and build <strong>Urban AI systems</strong> that integrate 
-            <strong> digital twins, simulation, visual analytics, IoT devices,
-            generative and agentic AI, and large language models (LLMs)</strong>  {" "}
-            to advance smart cities and enhance everyday life.  
-            Below are representative projects—funded by UNSW and the U.S. government—
-            with links to <strong>videos, live demos, publications, and awards</strong>.  
-            If you’re interested in collaboration or in exploring applications across {" "}
-            <strong>mobility, energy, or environmental systems</strong>, I’d love to connect.
-           
-          </p>
+              My research focuses on{" "}
+              <strong>computational transportation science</strong>, integrating{" "}
+              <strong>
+                digital twins, advanced simulation and optimization, high-performance
+                computing, cyber-physical systems, human–AI collaboration and visual
+                analytics, generative and agentic AI, and 3D world models
+              </strong>{" "}
+              to advance intelligent transportation systems, connected and automated
+              mobility, and resilient infrastructure. Below are selected projects with
+              links to{" "}
+              <strong>videos, live demos, and publications</strong>.
+            </p>
           <p> <strong>Email:</strong> haowen.xu.phd@gmail.com</p>
 
           {/* Strong CTA (edit bullets or turn into paragraph) */

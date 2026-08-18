@@ -550,8 +550,8 @@ export function RecoilDetail() {
         
         /*{ label: "Live demo (viewer)", href: "https://yourlink.example/voxel-viewer", tag: "demo" },
         { label: "CTwin platform", href: "https://yourlink.example/ctwin", tag: "platform" },*/
-        { label: "UTK RECOIL Project Website", href: "https://recoil.utk.edu/", tag: "press" },
-        { label: "Project Background", href: "https://arpa-e.energy.gov/technologies/exploratory-topics/intermodal-freight", tag: "press" },
+        { label: "UTK RECOIL Project Website", href: "https://motionintel.ai/", tag: "press" },
+        { label: "Project Background", href: "https://arpa-e.energy.gov/news-and-events/news-and-insights/us-department-energy-announces-9-million-projects-modeling-optimal-deployment-low-carbon-intermodal-freight-transportation-system", tag: "press" },
         
       ]}
       awards={
@@ -572,7 +572,7 @@ export function RecoilDetail() {
         {
           authors: "Xu, H., et al.",
           title: "Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol",
-          venue: "IJPR (In Revision)",
+          venue: "Computers & Industrial Engineering (In Revision)",
           year: "2025",
           doi: "https://arxiv.org/abs/2506.13068",
           badges: ["Open Access", "Preprint"],

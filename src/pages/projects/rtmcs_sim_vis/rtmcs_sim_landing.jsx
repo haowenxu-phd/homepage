@@ -676,14 +676,14 @@ export function RtmcsSimDetail() {
       },
 
       {
-        label: "Oak Ridge National Laboratory",
+        label: "Smart Mobility Project Backgounrd",
 
-        href: "https://www.ornl.gov/",
+        href: "https://www.energy.gov/sites/default/files/2021-06/eems095_laclair_2021_o_6-3_723am_LR_TM.pdf",
 
         desc:
           "Research institution where the RyThMiCCS traffic simulation cyberinfrastructure was developed.",
 
-        tag: "research",
+        tag: "government report",
       },
     ]}
 
