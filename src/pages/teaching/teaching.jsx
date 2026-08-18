@@ -46,9 +46,9 @@ export default function Teaching() {
     alt: "Matteo Calafiura-Soleri participating in the IBPSA HackSimBuild student project",
     name: "Matteo Calafiura-Soleri",
     title: "Undergraduate Student Mentoring",
-    program: "IBPSA HackSimBuild",
+    program: "International Building Performance Simulation Association (IBPSA) HackSimBuild",
     role:
-      "Mentored an undergraduate researcher in developing augmented reality (AR) and virtual reality (VR) applications for immersive visualization of urban environments.",
+      "Served on the IBPSA HackSimBuild program panel and provided technical and coding mentorship to undergraduate participants during the hackathon, supporting the development of a computational research project using augmented reality (AR) and virtual reality (VR) for immersive visualization of urban environments.",
     outcome:
       "The student project received the Best Presentation Award at IBPSA HackSimBuild 2022.",
        link:"https://www.ibpsa.us/hacksimbuild-2022/hacksimbuild-a-great-success/"
