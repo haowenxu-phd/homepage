@@ -136,7 +136,7 @@ export default function Home() {
                 and <strong>IBPSA (International Building Performance Simulation Association)</strong>.
               </li>
               <li>
-                <strong>Senior Member</strong> of the <strong>IEEE</strong>, serve <strong>Guest Editor</strong> at ISPRS International Journal of Geo-Information.
+                <strong>Senior Member</strong> of the <strong>IEEE</strong>.
               </li>
               <li>
                 Served as a <strong> Co-Principal Investigator (Co-PI) </strong> on multiple nationally
