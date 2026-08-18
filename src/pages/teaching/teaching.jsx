@@ -16,7 +16,7 @@ export default function Teaching() {
     src: `${import.meta.env.BASE_URL}/img/teaching_engagement/US_Department_of_Energy_SULI_2023.jpg`,
     alt: "Sidney Ozcan presenting her ORNL SULI research poster",
     name: "Sidney Ozcan",
-    title: "Undergraduate Research Mentoring",
+    title: "Undergraduate Student Mentoring",
     program:
       "2023 U.S. Department of Energy Science Undergraduate Laboratory Internships (SULI) Program",
     role:
@@ -30,7 +30,7 @@ export default function Teaching() {
     src: `${import.meta.env.BASE_URL}/img/teaching_engagement/ARPA-E_UTK_lecturing_advising_2024.jpg`,
     alt: "Graduate student co-advising and guest lecturing at the University of Tennessee",
     name: "Jose Tupayachi & Aliza Sharmin",
-    title: "Graduate Research Co-advising",
+    title: "Graduate Students Co-advising",
     program:
       "2024 University of Tennessee – Graduate Research Advising & Guest Lecturing",
     role:
@@ -45,7 +45,7 @@ export default function Teaching() {
     src: `${import.meta.env.BASE_URL}/img/teaching_engagement/ibpsa_advising.png`,
     alt: "Matteo Calafiura-Soleri participating in the IBPSA HackSimBuild student project",
     name: "Matteo Calafiura-Soleri",
-    title: "Undergraduate Research Mentoring",
+    title: "Undergraduate Student Mentoring",
     program: "IBPSA HackSimBuild",
     role:
       "Mentored an undergraduate researcher in developing augmented reality (AR) and virtual reality (VR) applications for immersive visualization of urban environments.",
@@ -59,7 +59,7 @@ export default function Teaching() {
     src: `${import.meta.env.BASE_URL}/img/teaching_engagement/US_Department_of_Energy_GRO_2022.jpg`,
     alt: "Jillian Sturtevant participating in the U.S. Department of Energy Graduate Research Program at ORNL",
     name: "Jillian Sturtevant",
-    title: "PhD Research Co-advising",
+    title: "PhD Student Co-advising",
     program:
       "2022 U.S. Department of Energy Graduate Research Program (GRO)",
     role:
