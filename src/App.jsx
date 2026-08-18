@@ -25,6 +25,8 @@ import ProjectDetail9, { VoxelAISurrogateModel } from "./pages/projects/fireSurr
 
 
 import ProjectDetail10, { RtmcsSimDetail } from "./pages/projects/rtmcs_sim_vis/rtmcs_sim_landing.jsx"
+import ProjectDetail11, { VoxelMine } from "./pages/projects/voxelMine/voxelMine.jsx"
+import ProjectDetail12, { ArBtric } from "./pages/projects/arBtric/arBtric.jsx"
 
 import Teaching from "./pages/teaching/teaching.jsx"
 import CollabGrants from "./pages/collab_grant/collab_grant.jsx"
@@ -68,11 +70,15 @@ export default function App() {
           <Route path="/portfolio/vr_digital_twins" element={<RTDetail />} />
           <Route path="/portfolio/3d_gas_dispersion" element={<VoxelGasDetail />} />
           <Route path="/portfolio/rtmcs" element={<RtmcsSimDetail />} />
+
+           <Route path="/portfolio/voxelCity" element={<VoxelMine />} /> 
           
 
           <Route path="/portfolio/agenticAIFire" element={<AgentAIFire />} />
           <Route path="/portfolio/AIFireSurrogateModel" element={<VoxelAISurrogateModel />} /> 
+          <Route path="/portfolio/ARBuilding" element={<ArBtric />} /> 
 
+ 
 
           <Route path="/portfolio/fire" element={<FireAgentChatPage />} />
           <Route path="/teaching" element={<Teaching />} /> 
@@ -85,7 +91,7 @@ export default function App() {
           <Route path="/learning/course_4" element={<InteractiveLearning_c4_Greenshields />} /> 
           <Route path="/learning/course_5" element={<InteractiveLearning_c5_Traffic_Control />} /> 
           <Route path="/learning/course_9" element={<InteractiveLearning_c_watershed />} /> 
-
+         
           
           
           

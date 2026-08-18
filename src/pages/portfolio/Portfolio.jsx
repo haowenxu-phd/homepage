@@ -100,9 +100,24 @@ export default function Projects() {
         badges: ["Voxels", "3D Fire Spread Simulation", "3D World Models"],
       },
 
+      {
+            id: 10,
+
+            title: "Voxel-Based 3D World Model Generation from Open Geospatial Data",
+
+            image: "/img/thumbnail/tn_voxelMine.png",
+
+            blurb:
+              "Automated voxelization of LiDAR, terrain, and land-cover data into simulation-ready 3D world models.",
+
+            href: "/homepage/portfolio/voxelCity",
+
+            badges: ["Voxels", "3D World Models", "Geospatial Data", "Mining Operations", "Environmental Characterization"],
+          },
+
       
       {
-        id: 9,
+        id: 10,
         title: "Multivariate Time-Series Pattern Analysis with Transformers and VAEs",
         image: "/img/thumbnail/tn_xai_gsle.png",
         blurb:
@@ -112,17 +127,17 @@ export default function Projects() {
       },
 
       {
-        id: 10,
+        id: 11,
         title: "Mobile Augmented Reality (AR) App for Building Operations (Coming Soon)",
         image: "/img/thumbnail/MAR_HVAC_control.jpg",
         blurb:
           "Smartphone AR for Real-Time Data Visualization and Fault Diagnosis",
-        href: "",
+        href: "", // "/homepage/portfolio/ARBuilding", 
         NA: true,
         badges: ["Mobile Augumented Reality", ],
       },
       {
-        id: 11,
+        id: 12,
         title: "Visual Analytics for Ensemble COVID-19 Prediction Analysis (Coming Soon)",
         image: "/img/thumbnail/tn_va_epi.png",
         blurb:
