@@ -147,11 +147,10 @@ export default function TrafficMap({
       simulationTime = 0,
 
       mapCenter = [
-        -33.9195,
-        151.2255,
+         -33.918692602538094, 151.22634405412714
       ],
 
-      zoom = 17,
+      zoom = 18,
 
       t,
 }) {
