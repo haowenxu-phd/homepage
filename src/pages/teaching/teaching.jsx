@@ -32,7 +32,7 @@ export default function Teaching() {
     name: "Jose Tupayachi & Aliza Sharmin",
     title: "Graduate Students Co-advising",
     program:
-      "2024 University of Tennessee – Graduate Research Advising & Guest Lecturing",
+      "2023-2025 University of Tennessee – Graduate Research Advising & Guest Lecturing",
     role:
       "Co-advised graduate researchers and delivered guest lectures in the Department of Industrial & Systems Engineering at the University of Tennessee, Knoxville (UTK), supporting research in intelligent transportation systems, digital twins, optimization, AI-enabled decision support, and intermodal freight transportation.",
     outcome:
@@ -101,15 +101,14 @@ export default function Teaching() {
                       >
                         Science Undergraduate Laboratory Internships (SULI) Program
                       </a>
-                    </strong>{" "}
+                    </strong>{" "} 
                     and contributed to the mentoring of graduate and doctoral researchers
                     through the <strong> <a
                         href="https://phdplus.virginia.edu/sites/phdplus/files/documents/ORNL_Opportunities_2025.7.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-600 hover:text-blue-800 underline"
-                      >Graduate Research Program (GRO)</a></strong>, as well as
-                    externally funded internship and research programs.
+                      >Graduate Research Program (GRO)</a></strong>, as well as through externally funded summer and winter internship and research programs.
                   </p>
 
               <p className="mt-4 text-slate-600 leading-relaxed">
