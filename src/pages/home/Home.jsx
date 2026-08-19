@@ -32,8 +32,8 @@ export default function Home() {
   const [isOpen_pub, setIsOpen_pub] = useState(true);
 
   return (
-    <main className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 via-white to-slate-100">
-          <div className="mx-auto max-w-[2500px] px-6">
+  <main className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 via-white to-slate-100">
+  <div className="mx-auto w-full max-w-[3000px] px-6 lg:px-8">
         {/* Card */}
         <section className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-8">
           {/* Photos (stacked) */}
@@ -84,10 +84,16 @@ export default function Home() {
                 <strong> University of Tennessee, Knoxville (UTK)</strong>.
               </li>
               <li>
-              Author of <strong>30+ peer-reviewed journal articles</strong> and{" "}
-              <strong>30+ peer-reviewed conference papers and presentations</strong>{" "}
-              across leading scientific and engineering venues.
-            </li>
+                Earned a <strong>Ph.D. in Civil & Environmental Engineering</strong> from the
+                <strong> University of Iowa, USA</strong>, along with a
+                <strong> Graduate Certificate in Geoinformatics</strong>.
+              </li>
+
+              <li>
+                Author of <strong>30+ peer-reviewed journal articles and book chapters</strong> and{" "}
+                <strong>30+ conference papers and presentations</strong> across leading
+                scientific and engineering venues.
+              </li>
               <li>
                 <strong>Over 1500 citations</strong> with an h-index of <strong>21</strong> on {" "}
                 <a 
@@ -135,25 +141,36 @@ export default function Home() {
                 associations including <strong>IEEE (Institute of Electrical and Electronics Engineers)</strong>, <strong>CIE (The 51st International Conference on Computers & Industrial Engineering)</strong>,
                 and <strong>IBPSA (International Building Performance Simulation Association)</strong>.
               </li>
-              <li>
-                <strong>Senior Member</strong> of the <strong>IEEE</strong>.
-              </li>
+              
               <li>
                 Served as a <strong> Co-Principal Investigator (Co-PI) </strong> on multiple nationally
                 funded research projects supported by the <strong>U.S. Department of Energy</strong>.
               </li>
               <li>
-                <strong>Topic Editor</strong> for the special topic &nbsp;                
-                  <a href="https://www.mdpi.com/topics/N3MS38231L">
-                    "Agentic and Generative AI for Spatial Data Science"
-                  </a>                
-                &nbsp; in <strong>ISPRS International Journal of Geo-Information (ISPRS IJGI)</strong>,
-                and former organizer of the
-                 &nbsp;
-                  <a href="https://dl.acm.org/doi/proceedings/10.1145/3681772">
-                    ACM SIGSPATIAL International Workshop on Computational Transportation Science (IWCTS)
-                  </a>.
-              </li>
+                    <strong>Senior Member of IEEE</strong>, <strong>Topic Editor</strong> for the
+                    special topic{" "}
+                    <a
+                      href="https://www.mdpi.com/topics/N3MS38231L"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      "Agentic and Generative AI for Spatial Data Science"
+                    </a>{" "}
+                    in the{" "}
+                    <strong>
+                      ISPRS International Journal of Geo-Information (IJGI)
+                    </strong>
+                    , and former <strong>Organizer</strong> of the{" "}
+                    <a
+                      href="https://dl.acm.org/doi/proceedings/10.1145/3681772"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      ACM SIGSPATIAL International Workshop on Computational Transportation
+                      Science (IWCTS)
+                    </a>{" "}
+                    <strong>(2022–2024)</strong>.
+                  </li>
               
               <li>
                 Holds <strong>Permanent Residency in Australia</strong>; eligible to work without visa sponsorship
@@ -191,11 +208,8 @@ export default function Home() {
               {/* Quick stats / tags */}
             <ul className="flex flex-wrap gap-2 text-xs">
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Urban Digital Twins
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Transportation Digital Twins
-              </li>   
+                Urban & Transportation Digital Twins
+              </li>               
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Computational Transportation Science
               </li>           
@@ -208,6 +222,9 @@ export default function Home() {
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Smart Mobility
               </li> 
+               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
+                HPC & Edge Computing
+              </li>
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Cyber-physical System (CPS)
               </li> 
@@ -215,25 +232,13 @@ export default function Home() {
                  Operations Research
               </li> 
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                LLM Apps
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Agentic AI
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                HPC & Edge Computing
-              </li>
+                LLM & Agentic AI
+              </li>        
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 Visual Analytics
-              </li>
+              </li>                          
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                Voxel-based 3D Simulations
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                3D Digital Twins
-              </li>
-              <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
-                3D Environmental World Model
+                3D Environmental World Model & Simulations
               </li>
               <li className="rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-inset ring-slate-200">
                 VR & AR & Serious Gaming
@@ -441,7 +446,7 @@ export default function Home() {
           className="flex items-center justify-between w-full px-4 py-2 text-left text-xl font-bold text-slate-800 bg-slate-100 rounded-lg hover:bg-slate-200"
           onClick={() => setIsOpen_pub(!isOpen_pub)}
         >
-          <span>📚 Journal Publications ({publications.length})</span>
+          <span>📚 Selected Publications ({publications.length})</span>
           {isOpen_pub ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
         </button>
 
