@@ -177,7 +177,7 @@ export default function Home() {
               </li>
               <li>               
                 <a 
-                    href="pdf/haowen_CV_SEP_2025.pdf"
+                    href="pdf/haowen_CV_Aug_2026.pdf"
                     target="_blank"                   
                     className="text-blue-600 hover:underline"
                 >Curriculum Vitae</a> {" "}|{" "}
