@@ -15,281 +15,7 @@ import "leaflet/dist/leaflet.css";
 
 
 // =========================================================
-// Utility
-// =========================================================
-
-function clamp(
-  value,
-  minValue,
-  maxValue
-) {
-
-  return Math.min(
-    maxValue,
-    Math.max(
-      minValue,
-      value
-    )
-  );
-
-}
-
-
-// =========================================================
-// Linear interpolation
-// =========================================================
-
-function lerp(
-  a,
-  b,
-  t
-) {
-
-  return (
-    a +
-    (
-      b -
-      a
-    ) *
-    t
-  );
-
-}
-
-
-// =========================================================
-// Interpolate RGB colors
-// =========================================================
-
-function interpolateRgb(
-  colorA,
-  colorB,
-  t
-) {
-
-  const safeT =
-    clamp(
-      t,
-      0,
-      1
-    );
-
-
-  const r =
-    Math.round(
-      lerp(
-        colorA[0],
-        colorB[0],
-        safeT
-      )
-    );
-
-
-  const g =
-    Math.round(
-      lerp(
-        colorA[1],
-        colorB[1],
-        safeT
-      )
-    );
-
-
-  const b =
-    Math.round(
-      lerp(
-        colorA[2],
-        colorB[2],
-        safeT
-      )
-    );
-
-
-  return `rgb(${r}, ${g}, ${b})`;
-
-}
-
-
-// =========================================================
-// Vehicle Speed Ratio
-//
-// 0.0 = stopped
-// 1.0 = vehicle desired speed
-//
-// IMPORTANT:
-//
-// Each vehicle has its OWN maximum:
-//
-// speedRatio =
-// currentSpeed / desiredSpeed
-//
-// =========================================================
-
-function getVehicleSpeedRatio(
-  vehicle
-) {
-
-  const currentSpeedMps =
-    Math.max(
-      0,
-      Number(
-        vehicle?.speedMps
-      ) || 0
-    );
-
-
-  const desiredSpeedMps =
-    Math.max(
-      0,
-      Number(
-        vehicle?.desiredSpeedMps
-      ) || 0
-    );
-
-
-  if (
-    desiredSpeedMps <=
-      0.0001
-  ) {
-
-    return 0;
-
-  }
-
-
-  return clamp(
-    currentSpeedMps /
-      desiredSpeedMps,
-    0,
-    1
-  );
-
-}
-
-
-// =========================================================
-// Speed Color Ramp
-//
-// Normalized against each vehicle's desired speed.
-//
-// 0.00 -> red
-// 0.25 -> orange
-// 0.50 -> yellow
-// 0.75 -> lime
-// 1.00 -> green
-//
-// =========================================================
-
-function getVehicleSpeedColor(
-  vehicle
-) {
-
-  const ratio =
-    getVehicleSpeedRatio(
-      vehicle
-    );
-
-
-  const stops = [
-
-    {
-      value: 0.0,
-      color: [
-        220,
-        38,
-        38
-      ]
-    },
-
-    {
-      value: 0.25,
-      color: [
-        249,
-        115,
-        22
-      ]
-    },
-
-    {
-      value: 0.50,
-      color: [
-        234,
-        179,
-        8
-      ]
-    },
-
-    {
-      value: 0.75,
-      color: [
-        132,
-        204,
-        22
-      ]
-    },
-
-    {
-      value: 1.0,
-      color: [
-        22,
-        163,
-        74
-      ]
-    }
-
-  ];
-
-
-  for (
-    let i = 0;
-    i < stops.length - 1;
-    i += 1
-  ) {
-
-    const lower =
-      stops[i];
-
-
-    const upper =
-      stops[i + 1];
-
-
-    if (
-      ratio >=
-        lower.value &&
-      ratio <=
-        upper.value
-    ) {
-
-      const localRatio =
-        (
-          ratio -
-          lower.value
-        ) /
-        (
-          upper.value -
-          lower.value
-        );
-
-
-      return interpolateRgb(
-        lower.color,
-        upper.color,
-        localRatio
-      );
-
-    }
-
-  }
-
-
-  return "rgb(22, 163, 74)";
-
-}
-
-
-// =========================================================
-// Create Vehicle Marker Icon
+// Create vehicle marker icon
 // =========================================================
 
 function createVehicleIcon(
@@ -316,8 +42,7 @@ function createVehicleIcon(
 
   const scale =
     vehicle.lengthM
-      ? vehicle.lengthM /
-        4.5
+      ? vehicle.lengthM / 4.5
       : 1;
 
 
@@ -342,16 +67,6 @@ function createVehicleIcon(
 
 
   // =======================================================
-  // Speed-dependent vehicle color
-  // =======================================================
-
-  const vehicleColor =
-    getVehicleSpeedColor(
-      vehicle
-    );
-
-
-  // =======================================================
   // Normal vehicle
   // =======================================================
 
@@ -369,80 +84,44 @@ function createVehicleIcon(
           style="
             position: relative;
 
-            width:
-              ${lengthPx}px;
+            width: ${lengthPx}px;
+            height: ${widthPx}px;
 
-            height:
-              ${widthPx}px;
+            background: #f59e0b;
 
-            background:
-              ${vehicleColor};
+            border: 1px solid #111827;
 
-            border:
-              1px solid
-              rgba(
-                15,
-                23,
-                42,
-                0.85
-              );
+            border-radius: 2px;
 
-            border-radius:
-              2px;
-
-            box-sizing:
-              border-box;
+            box-sizing: border-box;
 
             transform:
-              rotate(
-                ${-headingDeg}deg
-              );
+              rotate(${
+                -headingDeg
+              }deg);
 
             transform-origin:
               center center;
-
-            box-shadow:
-              0 1px 2px
-              rgba(
-                0,
-                0,
-                0,
-                0.30
-              );
           "
         >
-
-          <!-- Front indicator -->
 
           <div
             style="
               position: absolute;
 
-              right:
-                1px;
+              right: 1px;
+              top: 1px;
 
-              top:
-                1px;
+              width: 3px;
 
-              width:
-                3px;
+              height: ${Math.max(
+                widthPx - 4,
+                2
+              )}px;
 
-              height:
-                ${Math.max(
-                  widthPx - 4,
-                  2
-                )}px;
+              background: white;
 
-              background:
-                rgba(
-                  255,
-                  255,
-                  255,
-                  0.95
-                );
-
-              border-radius:
-                1px;
+              border-radius: 1px;
             "
           >
           </div>
@@ -468,34 +147,25 @@ function createVehicleIcon(
   // =======================================================
   // Ego vehicle
   //
-  // IMPORTANT:
-  //
-  // Ego BODY COLOR still represents speed.
-  //
-  // Blue / red is used only for:
-  //
-  // - outline
-  // - halo
-  // - label
-  //
-  // Therefore Ego remains part of the same speed ramp.
+  // Outer wrapper stays horizontal.
+  // Vehicle body itself rotates with heading.
   // =======================================================
 
   const containerWidthPx =
-    64;
+    84;
 
 
   const containerHeightPx =
-    42;
+    58;
 
 
-  const egoAccentColor =
+  const vehicleColor =
     isEgoBraking
       ? "#dc2626"
       : "#2563eb";
 
 
-  const egoDarkAccentColor =
+  const vehicleBorderColor =
     isEgoBraking
       ? "#7f1d1d"
       : "#1e3a8a";
@@ -503,8 +173,8 @@ function createVehicleIcon(
 
   const haloColor =
     isEgoBraking
-      ? "rgba(220, 38, 38, 0.24)"
-      : "rgba(37, 99, 235, 0.24)";
+      ? "rgba(220, 38, 38, 0.28)"
+      : "rgba(37, 99, 235, 0.28)";
 
 
   const labelText =
@@ -513,16 +183,12 @@ function createVehicleIcon(
       : "EGO";
 
 
-  const vehicleCenterY =
-    28;
-
-
   const haloSizePx =
     Math.max(
       lengthPx,
       widthPx
     ) +
-    8;
+    18;
 
 
   return L.divIcon({
@@ -533,46 +199,37 @@ function createVehicleIcon(
     html: `
       <div
         style="
-          position:
-            relative;
+          position: relative;
 
-          width:
-            ${containerWidthPx}px;
+          width: ${containerWidthPx}px;
+          height: ${containerHeightPx}px;
 
-          height:
-            ${containerHeightPx}px;
-
-          pointer-events:
-            none;
+          pointer-events: none;
         "
       >
 
         <!-- ==========================================
-             EGO Label
+             Label
         =========================================== -->
 
         <div
           style="
-            position:
-              absolute;
+            position: absolute;
 
-            left:
-              50%;
-
-            top:
-              0;
+            left: 50%;
+            top: 0;
 
             transform:
               translateX(-50%);
 
             background:
-              ${egoAccentColor};
+              ${vehicleColor};
 
             color:
               white;
 
             padding:
-              1px 6px;
+              2px 7px;
 
             border-radius:
               4px;
@@ -582,10 +239,10 @@ function createVehicleIcon(
               sans-serif;
 
             font-size:
-              8px;
+              9px;
 
             line-height:
-              12px;
+              13px;
 
             font-weight:
               700;
@@ -599,7 +256,7 @@ function createVehicleIcon(
                 0,
                 0,
                 0,
-                0.30
+                0.3
               );
           "
         >
@@ -608,19 +265,15 @@ function createVehicleIcon(
 
 
         <!-- ==========================================
-             Small Ego Halo
+             Halo
         =========================================== -->
 
         <div
           style="
-            position:
-              absolute;
+            position: absolute;
 
-            left:
-              50%;
-
-            top:
-              ${vehicleCenterY}px;
+            left: 50%;
+            top: 37px;
 
             width:
               ${haloSizePx}px;
@@ -638,15 +291,11 @@ function createVehicleIcon(
               50%;
 
             background:
-              transparent;
+              ${haloColor};
 
             border:
               2px solid
-              ${egoAccentColor};
-
-            box-shadow:
-              0 0 0 2px
-              ${haloColor};
+              ${vehicleColor};
 
             box-sizing:
               border-box;
@@ -656,21 +305,15 @@ function createVehicleIcon(
 
 
         <!-- ==========================================
-             Ego Vehicle Body
-             
-             BODY COLOR = SPEED COLOR
+             Vehicle body
         =========================================== -->
 
         <div
           style="
-            position:
-              absolute;
+            position: absolute;
 
-            left:
-              50%;
-
-            top:
-              ${vehicleCenterY}px;
+            left: 50%;
+            top: 37px;
 
             width:
               ${lengthPx}px;
@@ -683,7 +326,7 @@ function createVehicleIcon(
 
             border:
               2px solid
-              ${egoDarkAccentColor};
+              ${vehicleBorderColor};
 
             border-radius:
               2px;
@@ -709,7 +352,7 @@ function createVehicleIcon(
                 0,
                 0,
                 0,
-                0.45
+                0.4
               );
           "
         >
@@ -718,14 +361,10 @@ function createVehicleIcon(
 
           <div
             style="
-              position:
-                absolute;
+              position: absolute;
 
-              right:
-                1px;
-
-              top:
-                1px;
+              right: 1px;
+              top: 1px;
 
               width:
                 4px;
@@ -757,7 +396,7 @@ function createVehicleIcon(
 
     iconAnchor: [
       containerWidthPx / 2,
-      vehicleCenterY
+      37
     ]
 
   });
@@ -772,17 +411,12 @@ function createVehicleIcon(
 // - Display lane-based road network
 // - Highlight selected route
 // - Display simulation vehicles
-// - Color vehicles by normalized speed
 // - Highlight Ego vehicle
 //
-// Vehicle color:
-//
-// current speed / desired speed
-//
-// 0% ------------------------------ 100%
-//
-// Red -> Orange -> Yellow -> Lime -> Green
-//
+// It should NOT:
+// - Run A*
+// - Update vehicle physics
+// - Calculate car-following behavior
 // =========================================================
 
 export default function TrafficMap({
@@ -866,13 +500,13 @@ export default function TrafficMap({
         return {
 
           color:
-            "#94a3b8",
+            "green",
 
           weight:
             6,
 
           opacity:
-            0.6,
+            0.7,
 
         };
 
@@ -890,13 +524,13 @@ export default function TrafficMap({
         return {
 
           color:
-            "#16a34a",
+            "green",
 
           weight:
             5,
 
           opacity:
-            0.85,
+            0.95,
 
         };
 
@@ -1020,6 +654,10 @@ export default function TrafficMap({
           position="bottomleft"
         >
 
+          {/* ----------------------------------------------
+              OpenStreetMap
+          ----------------------------------------------- */}
+
           <LayersControl.BaseLayer
             name="OpenStreetMap"
           >
@@ -1031,6 +669,10 @@ export default function TrafficMap({
 
           </LayersControl.BaseLayer>
 
+
+          {/* ----------------------------------------------
+              Esri satellite imagery
+          ----------------------------------------------- */}
 
           <LayersControl.BaseLayer
             checked
@@ -1101,37 +743,6 @@ export default function TrafficMap({
                   egoVehicleId;
 
 
-              const speedRatio =
-                getVehicleSpeedRatio(
-                  vehicle
-                );
-
-
-              const speedPercent =
-                speedRatio *
-                100;
-
-
-              const currentSpeedKmh =
-                (
-                  Number(
-                    vehicle.speedMps
-                  ) ||
-                  0
-                ) *
-                3.6;
-
-
-              const desiredSpeedKmh =
-                (
-                  Number(
-                    vehicle.desiredSpeedMps
-                  ) ||
-                  0
-                ) *
-                3.6;
-
-
               return (
 
                 <Marker
@@ -1183,34 +794,32 @@ export default function TrafficMap({
                       </strong>
 
 
-                      {
-                        isEgo && (
+                      {isEgo && (
 
-                          <div
-                            style={{
-                              marginTop:
-                                "3px",
+                        <div
+                          style={{
+                            marginTop:
+                              "3px",
 
-                              fontWeight:
-                                600,
+                            fontWeight:
+                              600,
 
-                              color:
-                                isEgoBraking
-                                  ? "#dc2626"
-                                  : "#2563eb",
-                            }}
-                          >
-
-                            {
+                            color:
                               isEgoBraking
-                                ? "BRAKING"
-                                : vehicle.id
-                            }
+                                ? "#dc2626"
+                                : "#2563eb",
+                          }}
+                        >
 
-                          </div>
+                          {
+                            isEgoBraking
+                              ? "BRAKING"
+                              : vehicle.id
+                          }
 
-                        )
-                      }
+                        </div>
+
+                      )}
 
 
                       <div>
@@ -1231,46 +840,21 @@ export default function TrafficMap({
                         {" "}
 
                         {
-                          currentSpeedKmh.toFixed(
+                          (
+                            (
+                              Number(
+                                vehicle.speedMps
+                              ) ||
+                              0
+                            ) *
+                            3.6
+                          ).toFixed(
                             1
                           )
                         }
 
                         {" "}
                         km/h
-
-                      </div>
-
-
-                      <div>
-
-                        Desired Speed:
-                        {" "}
-
-                        {
-                          desiredSpeedKmh.toFixed(
-                            1
-                          )
-                        }
-
-                        {" "}
-                        km/h
-
-                      </div>
-
-
-                      <div>
-
-                        Desired-speed ratio:
-                        {" "}
-
-                        {
-                          speedPercent.toFixed(
-                            0
-                          )
-                        }
-
-                        %
 
                       </div>
 
@@ -1293,6 +877,34 @@ export default function TrafficMap({
 
                             {" "}
                             m/s²
+
+                          </div>
+
+                        )
+                      }
+
+
+                      {
+                        vehicle.desiredSpeedMps != null && (
+
+                          <div>
+
+                            Desired Speed:
+                            {" "}
+
+                            {
+                              (
+                                Number(
+                                  vehicle.desiredSpeedMps
+                                ) *
+                                3.6
+                              ).toFixed(
+                                1
+                              )
+                            }
+
+                            {" "}
+                            km/h
 
                           </div>
 
@@ -1340,13 +952,10 @@ export default function TrafficMap({
 
 
       {/* ==================================================
-          Map title
+          Map title overlay
       =================================================== */}
-      {
-        /**
-         * 
-         * 
-         <div
+
+      <div
         className="
           pointer-events-none
           absolute
@@ -1396,130 +1005,99 @@ export default function TrafficMap({
         </div>
 
       </div>
-         * 
-         */
-      }
-      
 
 
       {/* ==================================================
-          Speed color legend
+          Vehicle count / Ego legend
       =================================================== */}
 
       <div
         className="
           pointer-events-none
           absolute
+          bottom-4
           right-4
-          top-4
           z-[1000]
-          w-[180px]
-          rounded-lg
+
+          rounded-md
           border
           border-slate-200
           bg-white/95
           px-3
           py-2
-          shadow-md
-          backdrop-blur
+          text-xs
+          text-slate-600
+          shadow
         "
       >
 
         <div
           className="
-            text-[10px]
-            font-semibold
-            text-slate-700
-          "
-        >
-          Vehicle Speed
-        </div>
-
-
-        <div
-          className="
-            mt-0.5
-            text-[8px]
-            text-slate-400
-          "
-        >
-          % of each vehicle's desired speed
-        </div>
-
-
-        <div
-          className="
-            mt-2
-            h-2
-            w-full
-            rounded-full
-          "
-          style={{
-            background:
-              "linear-gradient(to right, rgb(220,38,38) 0%, rgb(249,115,22) 25%, rgb(234,179,8) 50%, rgb(132,204,22) 75%, rgb(22,163,74) 100%)"
-          }}
-        />
-
-
-        <div
-          className="
-            mt-1
             flex
             items-center
-            justify-between
-            text-[8px]
-            text-slate-500
+            gap-2
           "
         >
 
           <span>
-            0%
+
+            {
+              vehicles.length
+            }
+
+            {" "}
+
+            {
+              t?.vehicleUnit ??
+              "vehicles"
+            }
+
           </span>
 
 
-          <span>
-            50%
-          </span>
+          {
+            egoVehicleId &&
+            vehicles.length > 0 && (
+
+              <>
+
+                <span
+                  className="
+                    text-slate-300
+                  "
+                >
+                  •
+                </span>
 
 
-          <span>
-            100%
-          </span>
+                <span
+                  className={`
+                    font-semibold
 
-        </div>
+                    ${
+                      isEgoBraking
+                        ? "text-red-600"
+                        : "text-blue-600"
+                    }
+                  `}
+                >
 
+                  {
+                    isEgoBraking
+                      ? "EGO BRAKING"
+                      : "EGO"
+                  }
 
-        <div
-          className="
-            mt-0.5
-            flex
-            items-center
-            justify-between
-            text-[7px]
-            uppercase
-            tracking-wide
-            text-slate-400
-          "
-        >
+                </span>
 
-          <span>
-            Stopped
-          </span>
+              </>
 
-
-          <span>
-            Desired
-          </span>
+            )
+          }
 
         </div>
 
       </div>
-
-
-      {/* ==================================================
-          Vehicle count / Ego status
-      =================================================== */}
- 
 
     </section>
 

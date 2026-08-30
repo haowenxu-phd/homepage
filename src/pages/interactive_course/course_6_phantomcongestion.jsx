@@ -2516,8 +2516,8 @@ export default function InteractiveLearning_c6_Phantom() {
             className="
               pointer-events-none
               absolute
-              bottom-3
-              right-3
+              bottom-6
+              right-1
               z-[1000]
 
               flex
@@ -3039,7 +3039,7 @@ export default function InteractiveLearning_c6_Phantom() {
               {/* ===========================================
                   Speed-Density Chart
               ============================================ */}
-
+              {/**
               <div
                 className="
                   mb-4
@@ -3096,6 +3096,7 @@ export default function InteractiveLearning_c6_Phantom() {
                 </div>
 
               </div>
+               */}
 
 
               {/* ===========================================
