@@ -37,6 +37,8 @@ import InteractiveLearning_c2_routing from "./pages/interactive_course/course_2_
 import InteractiveLearning_c3_optimization from "./pages/interactive_course/course_3_optimization.jsx"
 import InteractiveLearning_c4_Greenshields from "./pages/interactive_course/course_4_greenshields.jsx"
 import InteractiveLearning_c5_Traffic_Control from "./pages/interactive_course/course_5_trafficcontrol.jsx"
+import InteractiveLearning_c6_Phantom from "./pages/interactive_course/course_6_phantomcongestion.jsx"
+
 
 
 import InteractiveLearning_c_watershed from "./pages/interactive_course/courseWatershedFlow.jsx"
@@ -91,7 +93,7 @@ export default function App() {
           <Route path="/learning/course_4" element={<InteractiveLearning_c4_Greenshields />} /> 
           <Route path="/learning/course_5" element={<InteractiveLearning_c5_Traffic_Control />} /> 
           <Route path="/learning/course_9" element={<InteractiveLearning_c_watershed />} /> 
-         
+         <Route path="/learning/course_6" element={<InteractiveLearning_c6_Phantom />} /> 
           
           
           

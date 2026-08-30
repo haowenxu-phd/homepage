@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "graph_type": "directed_lane_graph",
+    "network_type": "closed_loop",
+    "connectivity_source": "explicit_self_loop",
+    "lane_count": 1,
+    "connection_count": 1
+  },
+
+  "entry_lanes": [
+    "lane_0042"
+  ],
+
+  "exit_lanes": [],
+
+  "lanes": {
+    "lane_0042": {
+      "lane_id": "lane_0042",
+      "upstream": [
+        "lane_0042"
+      ],
+      "downstream": [
+        "lane_0042"
+      ]
+    }
+  },
+
+  "adjacency": {
+    "lane_0042": [
+      "lane_0042"
+    ]
+  },
+
+  "reverse_adjacency": {
+    "lane_0042": [
+      "lane_0042"
+    ]
+  }
+}
