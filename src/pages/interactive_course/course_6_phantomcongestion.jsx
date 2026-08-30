@@ -1011,7 +1011,7 @@ export default function InteractiveLearning_c6_Phantom() {
     setNumberOfVehicles
   ] =
     useState(
-      50
+      70
     );
 
 
@@ -1029,7 +1029,7 @@ export default function InteractiveLearning_c6_Phantom() {
     setCarFollowingModel
   ] =
     useState(
-      "idm"
+      "ghr"
     );
 
 
@@ -2119,8 +2119,10 @@ export default function InteractiveLearning_c6_Phantom() {
               "
             >
 
-              <option value="rule">
-                Rule-based Human Driver
+           
+
+              <option value="ghr">
+                GM / GHR Car-Following Model
               </option>
 
               <option value="idm">

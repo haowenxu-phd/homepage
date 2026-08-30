@@ -90,6 +90,20 @@ export function updateVehicleSpeed(
     model
   ) {
 
+     // =====================================================
+    // Existing custom rule-based model
+    // =====================================================
+
+    case "ghr":
+
+      updateVehicleSpeedGHR(
+        vehicle,
+        leaderInfo,
+        dt
+      );
+
+      break;
+
     // =====================================================
     // Existing custom rule-based model
     // =====================================================
@@ -167,6 +181,531 @@ export function updateVehicleSpeed(
       break;
 
   }
+
+}
+
+
+  // =======================================================
+  //  exising - 0
+  // =======================================================
+// GM / GHR Car-Following Model
+//
+// General Motors / Gazis-Herman-Rothery
+// stimulus-response car-following model.
+//
+// Core model:
+//
+//               v_n^m
+// a_n = alpha * ----- * (v_leader - v_n)
+//                s^l
+//
+// This implementation:
+//
+// 1. Uses continuous acceleration integration.
+// 2. Does NOT instantly force follower speed to leader speed.
+// 3. Adds bounded emergency braking when spacing becomes small.
+// 4. Adds free-flow recovery toward desired speed.
+// 5. Stores accelerationMps2 for visualization.
+//
+// =======================================================
+
+function updateVehicleSpeedGHR(
+  vehicle,
+  leaderInfo,
+  dt
+) {
+
+  // =====================================================
+  // Numerical safety
+  // =====================================================
+
+  const safeDt =
+    Math.max(
+      Number(dt) || 0,
+      0.000001
+    );
+
+
+  // =====================================================
+  // GHR parameters
+  // =====================================================
+
+  // Sensitivity coefficient.
+  //
+  // Larger value:
+  // stronger reaction to relative speed differences.
+  //
+  const sensitivityAlpha =
+    1.2;
+
+
+  // Speed sensitivity exponent.
+  //
+  // m = 0 gives a simpler spacing-based model.
+  //
+  const speedExponentM =
+    0.0;
+
+
+  // Spacing sensitivity exponent.
+  //
+  // l = 1 means sensitivity increases approximately
+  // inversely with spacing.
+  //
+  const gapExponentL =
+    1.0;
+
+
+  // =====================================================
+  // Physical / numerical limits
+  // =====================================================
+
+  const maximumAccelerationMps2 =
+    1.5;
+
+
+  // Normal strong braking limit.
+  const maximumDecelerationMps2 =
+    4.0;
+
+
+  // Emergency braking limit.
+  //
+  // This can be stronger than normal braking,
+  // but speed still changes continuously.
+  //
+  const emergencyDecelerationMps2 =
+    7.0;
+
+
+  // Absolute physical spacing buffer.
+  const minimumGapM =
+    2.0;
+
+
+  // Desired time headway used for deciding
+  // whether free-flow acceleration is appropriate.
+  const desiredTimeHeadwayS =
+    1.5;
+
+
+  // Free-flow acceleration when traffic ahead
+  // is sufficiently far away.
+  const freeFlowAccelerationMps2 =
+    0.8;
+
+
+  // =====================================================
+  // Current vehicle state
+  // =====================================================
+
+  const currentSpeedMps =
+    Math.max(
+      0,
+      Number(
+        vehicle.speedMps
+      ) || 0
+    );
+
+
+  const desiredSpeedMps =
+    Math.max(
+      0,
+      Number(
+        vehicle.desiredSpeedMps
+      ) || 0
+    );
+
+
+  // =====================================================
+  // No leader
+  //
+  // Accelerate toward desired speed.
+  // =====================================================
+
+  if (
+    !leaderInfo ||
+    !leaderInfo.vehicle
+  ) {
+
+    const accelerationMps2 =
+      currentSpeedMps <
+      desiredSpeedMps
+        ? freeFlowAccelerationMps2
+        : 0;
+
+
+    let newSpeedMps =
+      currentSpeedMps +
+      accelerationMps2 *
+        safeDt;
+
+
+    newSpeedMps =
+      Math.min(
+        desiredSpeedMps,
+        Math.max(
+          0,
+          newSpeedMps
+        )
+      );
+
+
+    vehicle.speedMps =
+      newSpeedMps;
+
+
+    vehicle.accelerationMps2 =
+      (
+        newSpeedMps -
+        currentSpeedMps
+      ) /
+      safeDt;
+
+
+    return;
+
+  }
+
+
+  // =====================================================
+  // Leader state
+  // =====================================================
+
+  const leader =
+    leaderInfo.vehicle;
+
+
+  const leaderSpeedMps =
+    Math.max(
+      0,
+      Number(
+        leader.speedMps
+      ) || 0
+    );
+
+
+  const gapM =
+    Math.max(
+      0.01,
+      Number(
+        leaderInfo.gapM
+      ) || 0.01
+    );
+
+
+  // =====================================================
+  // Relative speed
+  //
+  // Positive closingSpeed:
+  // follower is faster than leader and is closing in.
+  //
+  // =====================================================
+
+  const closingSpeedMps =
+    currentSpeedMps -
+    leaderSpeedMps;
+
+
+  const relativeSpeedMps =
+    leaderSpeedMps -
+    currentSpeedMps;
+
+
+  // =====================================================
+  // Classical GHR sensitivity
+  //
+  //               v^m
+  // sensitivity = α -----
+  //               gap^l
+  //
+  // =====================================================
+
+  const speedTerm =
+    Math.pow(
+      Math.max(
+        currentSpeedMps,
+        0.1
+      ),
+      speedExponentM
+    );
+
+
+  const gapTerm =
+    Math.pow(
+      Math.max(
+        gapM,
+        0.1
+      ),
+      gapExponentL
+    );
+
+
+  const sensitivity =
+    sensitivityAlpha *
+    (
+      speedTerm /
+      gapTerm
+    );
+
+
+  // =====================================================
+  // Core GHR acceleration
+  //
+  // If follower is faster:
+  //
+  // relativeSpeed < 0
+  // -> negative acceleration
+  //
+  // If leader is faster:
+  //
+  // relativeSpeed > 0
+  // -> positive acceleration
+  //
+  // =====================================================
+
+  let accelerationMps2 =
+    sensitivity *
+    relativeSpeedMps;
+
+
+  // =====================================================
+  // Desired following spacing
+  // =====================================================
+
+  const desiredGapM =
+    minimumGapM +
+    currentSpeedMps *
+      desiredTimeHeadwayS;
+
+
+  // =====================================================
+  // Free-flow recovery
+  //
+  // Pure GHR responds mainly to relative speed.
+  //
+  // If both vehicles travel at equal speed,
+  // GHR acceleration tends toward zero.
+  //
+  // Therefore when spacing is comfortably large,
+  // allow the vehicle to recover toward desired speed.
+  // =====================================================
+
+  if (
+    gapM >
+      desiredGapM &&
+    currentSpeedMps <
+      desiredSpeedMps
+  ) {
+
+    accelerationMps2 +=
+      freeFlowAccelerationMps2;
+
+  }
+
+
+  // =====================================================
+  // Close-gap braking enhancement
+  //
+  // As spacing falls below desired spacing,
+  // increase braking smoothly.
+  //
+  // This is NOT an instantaneous speed clamp.
+  // =====================================================
+
+  if (
+    gapM <
+      desiredGapM
+  ) {
+
+    const gapRatio =
+      Math.max(
+        0,
+        Math.min(
+          1,
+          gapM /
+            desiredGapM
+        )
+      );
+
+
+    // 0 when gap is adequate.
+    // Approaches 1 as spacing collapses.
+    const spacingDeficit =
+      1 -
+      gapRatio;
+
+
+    const additionalBrakingMps2 =
+      spacingDeficit *
+      maximumDecelerationMps2;
+
+
+    accelerationMps2 -=
+      additionalBrakingMps2;
+
+  }
+
+
+  // =====================================================
+  // Emergency braking calculation
+  //
+  // IMPORTANT:
+  //
+  // We DO NOT do:
+  //
+  // follower.speed = leader.speed
+  //
+  // Instead estimate the deceleration required to remove
+  // the relative speed before consuming the remaining gap.
+  //
+  //
+  //                delta_v²
+  // a_required = - --------
+  //                 2 s
+  //
+  // =====================================================
+
+  if (
+    closingSpeedMps >
+      0
+  ) {
+
+    const availableGapM =
+      Math.max(
+        gapM -
+          minimumGapM,
+        0.25
+      );
+
+
+    const requiredBrakingMps2 =
+      -(
+        closingSpeedMps *
+        closingSpeedMps
+      ) /
+      (
+        2 *
+        availableGapM
+      );
+
+
+    // If the physically required braking is stronger
+    // than the current GHR response, use it.
+    //
+    // Because these are negative values, Math.min()
+    // selects the stronger braking response.
+    accelerationMps2 =
+      Math.min(
+        accelerationMps2,
+        requiredBrakingMps2
+      );
+
+  }
+
+
+  // =====================================================
+  // Very small gap
+  //
+  // Apply emergency braking,
+  // but STILL through acceleration integration.
+  //
+  // No instantaneous speed matching.
+  // =====================================================
+
+  if (
+    gapM <=
+      minimumGapM
+  ) {
+
+    accelerationMps2 =
+      Math.min(
+        accelerationMps2,
+        -maximumDecelerationMps2
+      );
+
+  }
+
+
+  // =====================================================
+  // Acceleration limits
+  // =====================================================
+
+  accelerationMps2 =
+    Math.max(
+      -emergencyDecelerationMps2,
+      Math.min(
+        maximumAccelerationMps2,
+        accelerationMps2
+      )
+    );
+
+
+  // =====================================================
+  // Prevent acceleration beyond desired speed
+  // =====================================================
+
+  if (
+    currentSpeedMps >=
+      desiredSpeedMps &&
+    accelerationMps2 >
+      0
+  ) {
+
+    accelerationMps2 =
+      0;
+
+  }
+
+
+  // =====================================================
+  // Integrate speed continuously
+  //
+  // v(t + dt) =
+  // v(t) + a(t) dt
+  //
+  // =====================================================
+
+  let newSpeedMps =
+    currentSpeedMps +
+    accelerationMps2 *
+      safeDt;
+
+
+  // =====================================================
+  // Physical speed bounds
+  // =====================================================
+
+  newSpeedMps =
+    Math.max(
+      0,
+      newSpeedMps
+    );
+
+
+  newSpeedMps =
+    Math.min(
+      desiredSpeedMps,
+      newSpeedMps
+    );
+
+
+  // =====================================================
+  // Update vehicle
+  // =====================================================
+
+  vehicle.speedMps =
+    newSpeedMps;
+
+
+  // Store ACTUAL acceleration produced by
+  // the numerical speed update.
+  vehicle.accelerationMps2 =
+    (
+      newSpeedMps -
+      currentSpeedMps
+    ) /
+    safeDt;
 
 }
 
