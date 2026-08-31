@@ -1,13 +1,10 @@
 {
   "en": {
     "courseTitle": "Phantom Traffic Jams: From Driving Behavior to Traffic Waves",
-
     "introductionTitle": "Interactive Traffic Flow Experiment",
     "introductionText": "Explore how small changes in individual driving behavior can create stop-and-go traffic waves—even without accidents, bottlenecks, or traffic signals.",
-
     "learningGoal": "Learning Objectives",
     "learningGoalText": "Understand how car-following behavior, traffic density, and speed interactions can generate phantom congestion, and explore how traffic control and connected vehicles can help stabilize traffic flow.",
-
     "simulationControls": "Experiment Controls",
     "numberOfVehicles": "Number of Vehicles",
     "freeFlowSpeed": "Desired Speed",
@@ -15,42 +12,55 @@
     "trafficDemand": "Traffic Demand",
     "vehicleSpawnInterval": "Vehicle Entry Interval",
     "secondsPerVehicle": "s/vehicle",
-
+    "carFollowingModel": "Car-Following Model",
+    "speedLimit": "Speed Limit",
+    "speedLimitLabel": "Speed Limit",
+    "initialSpacing": "Initial Spacing",
+    "loopLength": "Loop Length",
+    "drivingModel": "Driving Model",
+    "meterUnit": "m",
+    "ghrModel": "GM / GHR Car-Following Model",
+    "idmModel": "IDM — Intelligent Driver Model",
+    "ovmModel": "OVM — Optimal Velocity Model",
+    "accModel": "ACC — Adaptive Cruise Control",
+    "caccModel": "CACC — Cooperative Adaptive Cruise Control",
+    "ghrDescription": "Classical stimulus–response model in which a driver reacts to the relative speed and spacing to the vehicle ahead.",
+    "idmDescription": "Human-driver model using desired speed, spacing, and relative speed.",
+    "ovmDescription": "Drivers adjust their speed toward an optimal velocity determined by the available spacing ahead.",
+    "accDescription": "Automated following using spacing and relative-speed feedback.",
+    "caccDescription": "Cooperative automated driving uses connected-vehicle information to damp traffic waves.",
     "start": "Start Simulation",
     "pause": "Pause",
     "reset": "Reset Experiment",
-
     "resultSummary": "Traffic State",
+    "realTimeTrafficConditions": "Real-time traffic conditions from the microscopic simulation.",
     "density": "Traffic Density",
     "averageSpeed": "Average Speed",
     "trafficFlow": "Traffic Flow",
     "speedDensityRelationship": "Speed–Density Relationship",
-    "speedLimit": "Speed Limit:",
-
+    "experimentConfiguration": "Experiment Configuration",
+    "vehicles": "Vehicles",
+    "model": "Model",
+    "trafficStability": "Traffic Stability",
+    "trafficStabilityText": "Observe whether small speed disturbances amplify into stop-and-go traffic waves.",
+    "egoBraking": "EGO BRAKING",
     "mapTitle": "Centennial Park Traffic Loop",
     "mapSubtitle": "Microscopic simulation of phantom traffic congestion",
-
     "status": "Simulation Status",
     "running": "Running",
     "paused": "Paused",
-
     "vehicleUnit": "vehicles",
     "densityUnit": "veh/km",
     "speedUnit": "km/h",
     "flowUnit": "veh/h",
-
     "generateRoute": "Generate Traffic Loop"
   },
-
   "zh": {
     "courseTitle": "幽灵堵塞：从驾驶行为到交通波",
-
     "introductionTitle": "交互式交通流实验",
-    "introductionText": "探索个体驾驶行为中的微小变化如何在没有事故、道路瓶颈或交通信号的情况下产生走走停停的交通波。",
-
+    "introductionText": "探索个体驾驶行为中的微小变化，如何在没有事故、道路瓶颈或交通信号的情况下形成走走停停的交通波。",
     "learningGoal": "学习目标",
-    "learningGoalText": "理解跟驰行为、交通密度与速度变化如何产生幽灵堵塞，并探索交通控制与网联车辆如何帮助稳定交通流。",
-
+    "learningGoalText": "理解跟驰行为、交通密度与速度相互作用如何产生幽灵堵塞，并探索交通控制与网联车辆如何帮助稳定交通流。",
     "simulationControls": "实验控制",
     "numberOfVehicles": "车辆数量",
     "freeFlowSpeed": "期望速度",
@@ -58,73 +68,103 @@
     "trafficDemand": "交通需求",
     "vehicleSpawnInterval": "车辆进入间隔",
     "secondsPerVehicle": "秒/辆",
-
+    "carFollowingModel": "跟驰模型",
+    "speedLimit": "限速",
+    "speedLimitLabel": "限速",
+    "initialSpacing": "初始车间距",
+    "loopLength": "环路长度",
+    "drivingModel": "驾驶模型",
+    "meterUnit": "米",
+    "ghrModel": "GM / GHR 跟驰模型",
+    "idmModel": "IDM — 智能驾驶员模型",
+    "ovmModel": "OVM — 最优速度模型",
+    "accModel": "ACC — 自适应巡航控制",
+    "caccModel": "CACC — 协同自适应巡航控制",
+    "ghrDescription": "经典刺激–响应跟驰模型：驾驶员根据与前车的相对速度和车间距调整自身运动状态。",
+    "idmDescription": "基于期望速度、车间距和相对速度描述人类驾驶员跟驰行为。",
+    "ovmDescription": "驾驶员根据前方可用车间距，将车速调整到对应的最优速度。",
+    "accDescription": "利用车间距和相对速度反馈实现自动跟驰控制。",
+    "caccDescription": "协同自动驾驶利用网联车辆信息抑制和消散交通波。",
     "start": "开始仿真",
     "pause": "暂停",
     "reset": "重置实验",
-
     "resultSummary": "交通状态",
+    "realTimeTrafficConditions": "来自微观交通仿真的实时交通运行状态。",
     "density": "交通密度",
     "averageSpeed": "平均速度",
     "trafficFlow": "交通流量",
     "speedDensityRelationship": "速度–密度关系",
-    "speedLimit": "限速：",
-
+    "experimentConfiguration": "实验配置",
+    "vehicles": "车辆数",
+    "model": "模型",
+    "trafficStability": "交通流稳定性",
+    "trafficStabilityText": "观察微小的速度扰动是否会逐渐放大并形成走走停停的交通波。",
+    "egoBraking": "EGO 车辆制动",
     "mapTitle": "Centennial Park 交通环路",
     "mapSubtitle": "幽灵堵塞微观交通仿真实验",
-
     "status": "仿真状态",
     "running": "运行中",
     "paused": "已暂停",
-
     "vehicleUnit": "辆",
     "densityUnit": "辆/公里",
     "speedUnit": "公里/小时",
     "flowUnit": "辆/小时",
-
     "generateRoute": "生成交通环路"
   },
-
   "fa": {
     "courseTitle": "ترافیک شبح‌وار: از رفتار رانندگی تا امواج ترافیکی",
-
     "introductionTitle": "آزمایش تعاملی جریان ترافیک",
-    "introductionText": "بررسی کنید که چگونه تغییرات کوچک در رفتار رانندگان می‌تواند حتی بدون تصادف، گلوگاه یا چراغ راهنمایی، امواج ترافیکی توقف و حرکت ایجاد کند.",
-
+    "introductionText": "بررسی کنید که چگونه تغییرات کوچک در رفتار رانندگان می‌تواند حتی بدون تصادف، گلوگاه یا چراغ راهنمایی، امواج توقف و حرکت در ترافیک ایجاد کند.",
     "learningGoal": "اهداف یادگیری",
-    "learningGoalText": "درک کنید که چگونه رفتار تعقیب خودرو، چگالی ترافیک و تغییرات سرعت می‌توانند ازدحام شبح‌وار ایجاد کنند و چگونه کنترل ترافیک و خودروهای متصل می‌توانند جریان ترافیک را پایدارتر کنند.",
-
-    "simulationControls": "کنترل آزمایش",
+    "learningGoalText": "درک کنید که چگونه رفتار تعقیب خودرو، چگالی ترافیک و برهم‌کنش سرعت می‌توانند ازدحام شبح‌وار ایجاد کنند و چگونه کنترل ترافیک و خودروهای متصل می‌توانند جریان را پایدارتر کنند.",
+    "simulationControls": "کنترل‌های آزمایش",
     "numberOfVehicles": "تعداد خودروها",
     "freeFlowSpeed": "سرعت مطلوب",
     "jamDensity": "چگالی تراکم",
     "trafficDemand": "تقاضای ترافیک",
     "vehicleSpawnInterval": "فاصله ورود خودرو",
     "secondsPerVehicle": "ثانیه/خودرو",
-
+    "carFollowingModel": "مدل تعقیب خودرو",
+    "speedLimit": "محدودیت سرعت",
+    "speedLimitLabel": "محدودیت سرعت",
+    "initialSpacing": "فاصله اولیه",
+    "loopLength": "طول حلقه",
+    "drivingModel": "مدل رانندگی",
+    "meterUnit": "متر",
+    "ghrModel": "مدل تعقیب خودرو GM / GHR",
+    "idmModel": "IDM — مدل راننده هوشمند",
+    "ovmModel": "OVM — مدل سرعت بهینه",
+    "accModel": "ACC — کروز کنترل تطبیقی",
+    "caccModel": "CACC — کروز کنترل تطبیقی مشارکتی",
+    "ghrDescription": "یک مدل کلاسیک محرک–پاسخ که در آن راننده بر اساس سرعت نسبی و فاصله با خودروی جلویی واکنش نشان می‌دهد.",
+    "idmDescription": "مدل رفتار راننده با استفاده از سرعت مطلوب، فاصله و سرعت نسبی.",
+    "ovmDescription": "رانندگان سرعت خود را به سمت سرعت بهینه‌ای تنظیم می‌کنند که با فاصله موجود تا خودروی جلویی تعیین می‌شود.",
+    "accDescription": "تعقیب خودکار خودرو با استفاده از بازخورد فاصله و سرعت نسبی.",
+    "caccDescription": "رانندگی خودکار مشارکتی از اطلاعات خودروهای متصل برای کاهش امواج ترافیکی استفاده می‌کند.",
     "start": "شروع شبیه‌سازی",
     "pause": "توقف",
     "reset": "بازنشانی آزمایش",
-
     "resultSummary": "وضعیت ترافیک",
+    "realTimeTrafficConditions": "شرایط لحظه‌ای ترافیک حاصل از شبیه‌سازی میکروسکوپی.",
     "density": "چگالی ترافیک",
     "averageSpeed": "سرعت متوسط",
     "trafficFlow": "جریان ترافیک",
     "speedDensityRelationship": "رابطه سرعت–چگالی",
-    "speedLimit": "محدودیت سرعت:",
-
+    "experimentConfiguration": "پیکربندی آزمایش",
+    "vehicles": "خودروها",
+    "model": "مدل",
+    "trafficStability": "پایداری جریان ترافیک",
+    "trafficStabilityText": "بررسی کنید که آیا اغتشاش‌های کوچک سرعت به امواج توقف و حرکت تقویت می‌شوند یا خیر.",
+    "egoBraking": "ترمز خودروی EGO",
     "mapTitle": "حلقه ترافیکی Centennial Park",
     "mapSubtitle": "شبیه‌سازی میکروسکوپی ازدحام ترافیکی شبح‌وار",
-
     "status": "وضعیت شبیه‌سازی",
     "running": "در حال اجرا",
     "paused": "متوقف",
-
     "vehicleUnit": "خودرو",
     "densityUnit": "خودرو/کیلومتر",
     "speedUnit": "کیلومتر/ساعت",
     "flowUnit": "خودرو/ساعت",
-
     "generateRoute": "ایجاد حلقه ترافیکی"
   }
 }

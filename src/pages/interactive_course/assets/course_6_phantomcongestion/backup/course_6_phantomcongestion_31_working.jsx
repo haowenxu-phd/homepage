@@ -2037,7 +2037,7 @@ export default function InteractiveLearning_c6_Phantom() {
               "
             >
 
-              {t.initialSpacing}:
+              Initial spacing:
               {" "}
 
               {
@@ -2052,7 +2052,7 @@ export default function InteractiveLearning_c6_Phantom() {
               }
 
               {" "}
-              {t.meterUnit}
+              m
 
             </div>
 
@@ -2079,7 +2079,7 @@ export default function InteractiveLearning_c6_Phantom() {
                 text-slate-700
               "
             >
-              {t.carFollowingModel}
+              Car-following Model
             </label>
 
 
@@ -2122,23 +2122,23 @@ export default function InteractiveLearning_c6_Phantom() {
            
 
               <option value="ghr">
-                {t.ghrModel}
+                GM / GHR Car-Following Model
               </option>
 
               <option value="idm">
-                {t.idmModel}
+                IDM — Intelligent Driver Model
               </option>
 
               <option value="ovm">
-                {t.ovmModel}
+                OVM — Optimal Velocity Model
               </option>
 
               <option value="acc">
-                {t.accModel}
+                ACC — Adaptive Cruise Control
               </option>
 
               <option value="cacc">
-                {t.caccModel}
+                CACC — Cooperative Adaptive Cruise Control
               </option>
 
             </select>
@@ -2158,19 +2158,45 @@ export default function InteractiveLearning_c6_Phantom() {
             >
 
               {
-                carFollowingModel === "ghr"
-                  ? t.ghrDescription
+                carFollowingModel === "rule"
+                  ? (
+                      <>
+                        Simple human-driver model using
+                        minimum spacing and time headway.
+                      </>
+                    )
 
                   : carFollowingModel === "idm"
-                  ? t.idmDescription
+                  ? (
+                      <>
+                        Human-driver model using desired
+                        speed, spacing and relative speed.
+                      </>
+                    )
 
                   : carFollowingModel === "ovm"
-                  ? t.ovmDescription
+                  ? (
+                      <>
+                        Drivers adjust speed according to
+                        the available spacing ahead.
+                      </>
+                    )
 
                   : carFollowingModel === "acc"
-                  ? t.accDescription
+                  ? (
+                      <>
+                        Automated following using spacing
+                        and relative-speed feedback.
+                      </>
+                    )
 
-                  : t.caccDescription
+                  : (
+                      <>
+                        Cooperative automated driving uses
+                        connected-vehicle information to
+                        damp traffic waves.
+                      </>
+                    )
               }
 
             </div>
@@ -2365,7 +2391,7 @@ export default function InteractiveLearning_c6_Phantom() {
                   text-slate-400
                 "
               >
-                {t.loopLength}
+                Loop length
               </div>
 
               <div
@@ -2394,7 +2420,7 @@ export default function InteractiveLearning_c6_Phantom() {
                   text-slate-400
                 "
               >
-                {t.drivingModel}
+                Driving model
               </div>
 
               <div
@@ -2554,7 +2580,7 @@ export default function InteractiveLearning_c6_Phantom() {
                     text-red-600
                   "
                 >
-                  {t.egoBraking}
+                  EGO BRAKING
                 </span>
               </>
 
@@ -2629,10 +2655,6 @@ export default function InteractiveLearning_c6_Phantom() {
                 handleEgoBrakeEnd
               }
 
-              t={
-                t
-              }
-
             />
 
 
@@ -2683,7 +2705,8 @@ export default function InteractiveLearning_c6_Phantom() {
                     text-slate-400
                   "
                 >
-                  {t.realTimeTrafficConditions}
+                  Real-time traffic conditions from the
+                  microscopic simulation.
                 </p>
 
               </div>
@@ -2834,7 +2857,7 @@ export default function InteractiveLearning_c6_Phantom() {
 
 
               {/* ===========================================
-                  {t.experimentConfiguration}
+                  Experiment Configuration
               ============================================ */}
 
               <div
@@ -2856,7 +2879,7 @@ export default function InteractiveLearning_c6_Phantom() {
                     text-slate-700
                   "
                 >
-                  {t.experimentConfiguration}
+                  Experiment Configuration
                 </div>
 
 
@@ -2881,7 +2904,7 @@ export default function InteractiveLearning_c6_Phantom() {
                         text-slate-500
                       "
                     >
-                      {t.vehicles}
+                      Vehicles
                     </span>
 
 
@@ -2912,7 +2935,7 @@ export default function InteractiveLearning_c6_Phantom() {
                         text-slate-500
                       "
                     >
-                      {t.model}
+                      Model
                     </span>
 
 
@@ -2946,7 +2969,7 @@ export default function InteractiveLearning_c6_Phantom() {
                         text-slate-500
                       "
                     >
-                      {t.speedLimitLabel}
+                      Speed Limit
                     </span>
 
 
@@ -2979,7 +3002,7 @@ export default function InteractiveLearning_c6_Phantom() {
                         text-slate-500
                       "
                     >
-                      {t.initialSpacing}
+                      Initial Spacing
                     </span>
 
 
@@ -3002,7 +3025,7 @@ export default function InteractiveLearning_c6_Phantom() {
                       }
 
                       {" "}
-                      {t.meterUnit}
+                      m
 
                     </span>
 
@@ -3077,7 +3100,7 @@ export default function InteractiveLearning_c6_Phantom() {
 
 
               {/* ===========================================
-                  {t.trafficStability}
+                  Traffic Stability
               ============================================ */}
 
               <div
@@ -3097,7 +3120,7 @@ export default function InteractiveLearning_c6_Phantom() {
                     text-slate-700
                   "
                 >
-                  {t.trafficStability}
+                  Traffic Stability
                 </div>
 
 
@@ -3109,7 +3132,8 @@ export default function InteractiveLearning_c6_Phantom() {
                     text-slate-400
                   "
                 >
-                  {t.trafficStabilityText}
+                  Observe whether small speed disturbances
+                  amplify into stop-and-go traffic waves.
                 </p>
 
               </div>
