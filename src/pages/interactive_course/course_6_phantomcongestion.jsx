@@ -54,6 +54,9 @@ import {
   updateVehicleSpeed
 } from "./assets/course_6_phantomcongestion/simulation/carFollowing";
 
+import MetricsStability
+  from "./assets/course_6_phantomcongestion/components/metricsStability";
+
 
 // =========================================================
 // Constants
@@ -2784,6 +2787,34 @@ export default function InteractiveLearning_c6_Phantom() {
 
               </div>
 
+              {/* ===========================================
+                    Traffic Stability Analytics
+                ============================================ */}
+
+                <MetricsStability
+
+                  vehicles={
+                    vehicles
+                  }
+
+                  loopLengthM={
+                    loopLengthM
+                  }
+
+                  simulationTimeS={
+                    simulationTimeRef.current
+                  }
+
+                  isRunning={
+                    isRunning
+                  }
+
+                  t={
+                    t
+                  }
+
+                />
+
 
               {/* ===========================================
                   Traffic Flow
@@ -3080,6 +3111,7 @@ export default function InteractiveLearning_c6_Phantom() {
                   {t.trafficStability}
               ============================================ */}
 
+              {/*
               <div
                 className="
                   rounded-md
@@ -3113,6 +3145,8 @@ export default function InteractiveLearning_c6_Phantom() {
                 </p>
 
               </div>
+
+              */}
 
             </section>
 
