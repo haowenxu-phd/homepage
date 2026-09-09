@@ -2600,226 +2600,6 @@ export default function InteractiveLearning_c6_Phantom() {
             ============================================== */}
 
             {/* place holder */}
-            
-              {/* ===========================================
-                  {t.experimentConfiguration}
-              ============================================ */}
-              
-              <TrafficWavePanel
-
-              vehicles={
-                vehicles
-              }
-
-              loopLengthM={
-                loopLengthM
-              }
-
-              speedLimit={
-                speedLimit
-              }
-
-              egoVehicleId={
-                EGO_VEHICLE_ID
-              }
-
-              followerCount={
-                5
-              }
-
-              isEgoBraking={
-                isEgoBraking
-              }
-
-              onBrakeStart={
-                handleEgoBrakeStart
-              }
-
-              onBrakeEnd={
-                handleEgoBrakeEnd
-              }
-
-              t={
-                t
-              }
-
-            />
-
-            {/*
-              <div
-                className="
-                  mb-4
-                  rounded-md
-                  border
-                  border-slate-200
-                  bg-slate-50
-                  p-3
-                "
-              >
-
-                <div
-                  className="
-                    mb-3
-                    text-xs
-                    font-semibold
-                    text-slate-700
-                  "
-                >
-                  {t.experimentConfiguration}
-                </div>
-
-
-                <div
-                  className="
-                    space-y-2
-                  "
-                >
-
-                  <div
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      gap-3
-                      text-xs
-                    "
-                  >
-
-                    <span
-                      className="
-                        text-slate-500
-                      "
-                    >
-                      {t.vehicles}
-                    </span>
-
-
-                    <span
-                      className="
-                        font-medium
-                        text-slate-700
-                      "
-                    >
-                      {numberOfVehicles}
-                    </span>
-
-                  </div>
-
-
-                  <div
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      gap-3
-                      text-xs
-                    "
-                  >
-
-                    <span
-                      className="
-                        text-slate-500
-                      "
-                    >
-                      {t.model}
-                    </span>
-
-
-                    <span
-                      className="
-                        font-medium
-                        text-slate-700
-                      "
-                    >
-                      {
-                        carFollowingModel
-                          .toUpperCase()
-                      }
-                    </span>
-
-                  </div>
-
-
-                  <div
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      gap-3
-                      text-xs
-                    "
-                  >
-
-                    <span
-                      className="
-                        text-slate-500
-                      "
-                    >
-                      {t.speedLimitLabel}
-                    </span>
-
-
-                    <span
-                      className="
-                        font-medium
-                        text-slate-700
-                      "
-                    >
-                      {speedLimit}
-                      {" "}
-                      {t.speedUnit}
-                    </span>
-
-                  </div>
-
-
-                  <div
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      gap-3
-                      text-xs
-                    "
-                  >
-
-                    <span
-                      className="
-                        text-slate-500
-                      "
-                    >
-                      {t.initialSpacing}
-                    </span>
-
-
-                    <span
-                      className="
-                        font-medium
-                        text-slate-700
-                      "
-                    >
-
-                      {
-                        numberOfVehicles > 0
-                          ? (
-                              loopLengthM /
-                              numberOfVehicles
-                            ).toFixed(
-                              1
-                            )
-                          : "0"
-                      }
-
-                      {" "}
-                      {t.meterUnit}
-
-                    </span>
-
-                  </div>
-
-                </div>
-
-              </div> */   }
 
 
             {/* =============================================
@@ -3047,8 +2827,225 @@ export default function InteractiveLearning_c6_Phantom() {
               </div>
 
 
+              <TrafficWavePanel
+
+              vehicles={
+                vehicles
+              }
+
+              loopLengthM={
+                loopLengthM
+              }
+
+              speedLimit={
+                speedLimit
+              }
+
+              egoVehicleId={
+                EGO_VEHICLE_ID
+              }
+
+              followerCount={
+                5
+              }
+
+              isEgoBraking={
+                isEgoBraking
+              }
+
+              onBrakeStart={
+                handleEgoBrakeStart
+              }
+
+              onBrakeEnd={
+                handleEgoBrakeEnd
+              }
+
+              t={
+                t
+              }
+
+            />
 
 
+              {/* ===========================================
+                  {t.experimentConfiguration}
+              ============================================ */}
+
+              <div
+                className="
+                  mb-4
+                  rounded-md
+                  border
+                  border-slate-200
+                  bg-slate-50
+                  p-3
+                "
+              >
+
+                <div
+                  className="
+                    mb-3
+                    text-xs
+                    font-semibold
+                    text-slate-700
+                  "
+                >
+                  {t.experimentConfiguration}
+                </div>
+
+
+                <div
+                  className="
+                    space-y-2
+                  "
+                >
+
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-between
+                      gap-3
+                      text-xs
+                    "
+                  >
+
+                    <span
+                      className="
+                        text-slate-500
+                      "
+                    >
+                      {t.vehicles}
+                    </span>
+
+
+                    <span
+                      className="
+                        font-medium
+                        text-slate-700
+                      "
+                    >
+                      {numberOfVehicles}
+                    </span>
+
+                  </div>
+
+
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-between
+                      gap-3
+                      text-xs
+                    "
+                  >
+
+                    <span
+                      className="
+                        text-slate-500
+                      "
+                    >
+                      {t.model}
+                    </span>
+
+
+                    <span
+                      className="
+                        font-medium
+                        text-slate-700
+                      "
+                    >
+                      {
+                        carFollowingModel
+                          .toUpperCase()
+                      }
+                    </span>
+
+                  </div>
+
+
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-between
+                      gap-3
+                      text-xs
+                    "
+                  >
+
+                    <span
+                      className="
+                        text-slate-500
+                      "
+                    >
+                      {t.speedLimitLabel}
+                    </span>
+
+
+                    <span
+                      className="
+                        font-medium
+                        text-slate-700
+                      "
+                    >
+                      {speedLimit}
+                      {" "}
+                      {t.speedUnit}
+                    </span>
+
+                  </div>
+
+
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-between
+                      gap-3
+                      text-xs
+                    "
+                  >
+
+                    <span
+                      className="
+                        text-slate-500
+                      "
+                    >
+                      {t.initialSpacing}
+                    </span>
+
+
+                    <span
+                      className="
+                        font-medium
+                        text-slate-700
+                      "
+                    >
+
+                      {
+                        numberOfVehicles > 0
+                          ? (
+                              loopLengthM /
+                              numberOfVehicles
+                            ).toFixed(
+                              1
+                            )
+                          : "0"
+                      }
+
+                      {" "}
+                      {t.meterUnit}
+
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
 
 
               {/* ===========================================

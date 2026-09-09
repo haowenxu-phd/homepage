@@ -1114,8 +1114,7 @@ export default function TrafficMap({
   isEgoBraking = false,
 
   mapCenter = [
-    -33.89684065544656,
-    151.23551856640137
+    -33.918692602538094, 151.22634405412714
   ],
 
   zoom = 17,

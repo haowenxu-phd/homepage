@@ -50,7 +50,7 @@ import {
 
 import {
   updateVehicleSpeed
-} from "./assets/course_4_greenshields/simulation/carFollowing_ovm";
+} from "./assets/course_4_greenshields/simulation/carFollowing";
 
 // =========================================================
 // Course 4
@@ -586,7 +586,7 @@ const simulationLaneIds =
               spec.desiredSpeedMps;
 
               const minimumSpawnGapM =
-            3.0;
+            8.0;
 
            /* const minimumSpawnGapM =
               4.5 +

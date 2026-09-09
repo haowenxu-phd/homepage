@@ -1005,15 +1005,15 @@ export default function TrafficWavePanel({
         "
       >
 
-        <div
+        <h4
           className="
             text-sm
             font-semibold
             text-slate-800
           "
         >
-          Traffic Wave Laboratory
-        </div>
+          Vehicle Control
+        </h4>
 
 
         <p
@@ -1120,7 +1120,7 @@ export default function TrafficWavePanel({
               text-slate-800
             "
           >
-            Traffic Wave Laboratory
+            Vehicle Control
           </h4>
 
 

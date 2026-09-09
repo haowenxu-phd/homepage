@@ -1,7 +1,7 @@
 {
   "en": {
     "courseTitle": "Phantom Traffic Jams: From Driving Behavior to Traffic Waves",
-    "introductionTitle": "Interactive Traffic Flow Experiment",
+    "introductionTitle": "Traffic Flow Experiment",
     "introductionText": "Explore how small changes in individual driving behavior can create stop-and-go traffic waves—even without accidents, bottlenecks, or traffic signals.",
     "learningGoal": "Learning Objectives",
     "learningGoalText": "Understand how car-following behavior, traffic density, and speed interactions can generate phantom congestion, and explore how traffic control and connected vehicles can help stabilize traffic flow.",
