@@ -574,14 +574,14 @@ export function VoxelGasDetail() {
     }
       publications={[
        {
-        authors: "Xu, H., Zlatanova, S., Gorte, B., Lamsal, R., Heslop, D., Liang, R., & Canbulat, I.",
-        title:
-          "A Pilot Study on a GPU-Accelerated Voxel Simulation Framework for 3D Indoor and Urban-Scale Gas Dispersion and Aerosol Transport",
-        venue: "Preprints.org (Technical Note)",
-        year: "2026",
-        doi: "https://www.preprints.org/manuscript/202606.1036",
-        badges: ["Open Access", "Preprint"],
-      },
+          authors: "Xu, H., Zlatanova, S., Gorte, B., Lamsal, R., Heslop, D., Liang, R., & Canbulat, I.",
+          title:
+            "A Pilot Study on a GPU-Accelerated Voxel Simulation Framework for 3D Indoor and Urban-Scale Gas Dispersion and Aerosol Transport",
+          venue: "ISPRS International Journal of Geo-Information",
+          year: "2026",
+          doi: "https://doi.org/10.3390/ijgi15090405",
+          badges: ["Open Access", "Journal Paper"],
+        },
          
 
         

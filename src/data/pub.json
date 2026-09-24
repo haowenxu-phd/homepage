@@ -3,9 +3,13 @@
     "name":"Yuan, J., ... Xu, H. et al., (2026). Real-World Integration of Traffic Signal Control and CAV Speed Planning for Energy-Efficient Mobility. Nature Communications (In-Principle Accepted).",
     "url":"https://haowenxu-phd.github.io/homepage/pdf/NC_Revision_SecondRevision.pdf"
     },
-    { 
-        "name":"Xu, H., Zlatanova, S., Gorte, B., Lamsal, R., Heslop， D., Liang, R., & Canbulat, I. (2026). A Pilot Study on a GPU-Accelerated Voxel Simulation Framework for 3D Indoor and Urban-Scale Gas Dispersion and Aerosol Transport. Available at Pre-print",
-        "url":"https://www.preprints.org/manuscript/202606.1036"
+    {
+    "name": "Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2026). Heat-Transfer-Driven Voxel-Based Simulation: An Exploratory GPU-Accelerated Framework for Urban-Scale 3D Fire Spread. ISPRS International Journal of Geo-Information, 15(9), 423.",
+        "url": "https://doi.org/10.3390/ijgi15090423"
+    },
+    {
+        "name": "Xu, H., Zlatanova, S., Gorte, B., Lamsal, R., Heslop, D., Liang, R., & Canbulat, I. (2026). A Pilot Study on a GPU-Accelerated Voxel Simulation Framework for 3D Indoor and Urban-Scale Gas Dispersion and Aerosol Transport. ISPRS International Journal of Geo-Information, 15(9), 405.",
+        "url": "https://doi.org/10.3390/ijgi15090405"
     },
     { 
         "name":"Xu, H., Lu, Q., Li, X., Liu, Z., Yu, X. Y., & Zhu, L. (2026). Bridging Industrial Engineering and Agentic AI: Integrating Operations Research Methods for Uncertainty-aware and Verifiable Spatial Decision Support. Available at SSRN 7229001",
@@ -15,10 +19,10 @@
         "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I.(2026). An Exploratory Study of Transformer-based Generative AI Surrogate Modeling for 3D Wildfire Spread Simulation in Voxelized City. Available at SSRN 6572079",
         "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572079"
     },    
-    { 
-        "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2026). Collaborative Fire Management for Community Wildfire Prevention Using Agentic AI, Simulation, and Mixed-Reality Visualization. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences",
-        "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5762363"
-    },    
+    {
+        "name": "Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2026). Community-oriented Wildfire Planning with Agentic AI: Automated Fire Spread Simulation and Interactive 3D Visualization. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 11, 251–258.",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5762363"
+    }, 
     { 
         "name":"Xu, H., Zlatanova, S., Li, X., Wachowicz, M., & Batty, M. (2026). Towards Fully Automated City Operations: Integrating Agentic AI with Urban Digital Twins. Computers, Environment and Urban Systems",
         "url":"https://www.sciencedirect.com/science/article/pii/S0198971526000517"

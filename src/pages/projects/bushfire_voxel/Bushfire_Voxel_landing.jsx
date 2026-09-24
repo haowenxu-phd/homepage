@@ -512,6 +512,15 @@ export function VoxelFireDetail() {
           doi: "https://www.mdpi.com/2571-6255/8/8/293",
           badges: ["Open Access", "Journal Paper"],
         },
+                {
+          authors: "Xu, H., Zlatanova, S., Liang, R., & Canbulat, I.",
+          title: "Heat-Transfer-Driven Voxel-Based Simulation: An Exploratory GPU-Accelerated Framework for Urban-Scale 3D Fire Spread",
+          venue: "ISPRS International Journal of Geo-Information",
+          year: "2026",
+          doi: "https://doi.org/10.3390/ijgi15090423",
+          badges: ["Journal Paper"],
+        },
+        
         {
           authors: "Xu, H., et al.",
           title: "A Modular Light-weight Voxel-Based 3D Wildfire Propagation Simulator in Python Using LiDAR Data, High-Performance Computing (HPC), and Immersive Scientific Visualization",
