@@ -571,8 +571,8 @@ export function RecoilDetail() {
         },
         {
           authors: "Xu, H., et al.",
-          title: "Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol",
-          venue: "Computers & Industrial Engineering (In Revision)",
+          title: "Towards Autonomous Freight Intermodal Optimization via Generative AI and Agentic Digital Twins",
+          venue: "Computers & Industrial Engineering (Accepted)",
           year: "2025",
           doi: "https://arxiv.org/abs/2506.13068",
           badges: ["Open Access", "Preprint"],

@@ -11,6 +11,10 @@
         "name": "Xu, H., Zlatanova, S., Gorte, B., Lamsal, R., Heslop, D., Liang, R., & Canbulat, I. (2026). A Pilot Study on a GPU-Accelerated Voxel Simulation Framework for 3D Indoor and Urban-Scale Gas Dispersion and Aerosol Transport. ISPRS International Journal of Geo-Information, 15(9), 405.",
         "url": "https://doi.org/10.3390/ijgi15090405"
     },
+        {
+        "name": "Xu, H., Sun, Y., Tupayachi, J., Omitaomu, O., Zlatanova, S., & Li, X. (2026). Towards Autonomous Freight Intermodal Optimization via Generative AI and Agentic Digital Twins. Computers & Industrial Engineering (Accepted)",
+        "url":"https://www.arxiv.org/abs/2506.13068"
+    },
     { 
         "name":"Xu, H., Lu, Q., Li, X., Liu, Z., Yu, X. Y., & Zhu, L. (2026). Bridging Industrial Engineering and Agentic AI: Integrating Operations Research Methods for Uncertainty-aware and Verifiable Spatial Decision Support. Available at SSRN 7229001",
         "url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7229001"
@@ -39,10 +43,6 @@
     { 
         "name":"Xu, H., Zlatanova, S., Liang, R., & Canbulat, I. (2025). Generative AI as a Pillar for Predicting 2D and 3D Wildfire Spread: Beyond Physics-Based Models and Traditional Deep Learning. Fire, 8(8), 293.",
         "url":"https://www.mdpi.com/2571-6255/8/8/293"
-    },
-    {
-        "name": "Xu, H., Sun, Y., Tupayachi, J., Omitaomu, O., Zlatanova, S., & Li, X. (2025). Towards the Autonomous Optimization of Urban Logistics: Training Generative AI with Scientific Tools via Agentic Digital Twins and Model Context Protocol. Computers & Industrial Engineering (In Revision)",
-        "url":"https://www.arxiv.org/abs/2506.13068"
     },
     {
         "name": "Xu, H., & Yu, X. Y. (2025). From powerpoint ui sketches to web-based applications: Pattern-driven code generation for gis dashboard development using knowledge-augmented llms, context-aware visual prompting, and the react framework. International Journal of Digital Earth (In Revision)",
