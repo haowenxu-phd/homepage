@@ -95,7 +95,7 @@ export default function Home() {
                 scientific and engineering venues.
               </li>
               <li>
-                <strong>Over 1660 citations</strong> with an h-index of <strong>21</strong> on {" "}
+                <strong>Over 1670 citations</strong> with an h-index of <strong>21</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
@@ -107,7 +107,7 @@ export default function Home() {
                 Inventer of <strong>three U.S. patent applications in transportation technologies</strong>:
                  
                           {" "}<a
-                            href="https://patents.google.com/patent/US20250128708A1/en"
+                            href="https://patents.google.com/patent/US12673678B2/en"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
