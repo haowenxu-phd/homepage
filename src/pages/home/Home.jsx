@@ -131,14 +131,13 @@ export default function Home() {
                             className="text-blue-600 hover:underline"
                           >
                             US20250209911A1 (Pending)
-                          </a>
-                      
+                          </a>                      
               </li>
 
               <li>
                 Recipient of <strong>multiple research awards</strong> from the{" "}
                 <strong>U.S. government</strong> and international professional
-                associations including <strong>IEEE (Institute of Electrical and Electronics Engineers)</strong>, <strong>CIE (The 51st International Conference on Computers & Industrial Engineering)</strong>,
+                associations including <strong>R&D 100 Awards Finalist</strong>, <strong>IEEE (Institute of Electrical and Electronics Engineers)</strong>, <strong>CIE (The 51st International Conference on Computers & Industrial Engineering)</strong>,
                 and <strong>IBPSA (International Building Performance Simulation Association)</strong>.
               </li>
               
