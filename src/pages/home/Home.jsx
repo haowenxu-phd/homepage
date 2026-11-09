@@ -95,7 +95,7 @@ export default function Home() {
                 scientific and engineering venues.
               </li>
               <li>
-                <strong>Over 1670 citations</strong> with an h-index of <strong>21</strong> on {" "}
+                <strong>Over 1690 citations</strong> with an h-index of <strong>22</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   
@@ -112,16 +112,16 @@ export default function Home() {
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
                           >
-                            US20250128708A1 (Granted)
+                            US12673678B2 (Granted)
                           </a>{" "}
                           ,{" "}
                           <a
-                            href="https://patents.google.com/patent/US20250131819A1/en"
+                            href="https://research-hub.nlr.gov/en/publications/energy-efficient-vehicle-andor-traffic-light-control/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
                           >
-                            US20250131819A1 (Pending)
+                            US12741640B2 (Granted)
                           </a>{" "}
                           and{" "}
                           <a
