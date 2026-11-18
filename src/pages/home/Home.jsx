@@ -95,7 +95,7 @@ export default function Home() {
                 scientific and engineering venues.
               </li>
               <li>
-                <strong>Over 1690 citations</strong> with an h-index of <strong>22</strong> on {" "}
+                <strong>Over 1720 citations</strong> with an h-index of <strong>22</strong> on {" "}
                 <a 
                     href="https://scholar.google.com/citations?user=WdKOUGcAAAAJ&hl=en"
                     target="_blank"                   

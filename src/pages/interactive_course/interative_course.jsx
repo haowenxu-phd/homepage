@@ -119,7 +119,22 @@ export default function InteractiveLearning() {
               "Available",
         },
         {
-          id: 6,
+            id: 6,
+
+            image:
+              "img/thumbnail_learning/T6_Jam.png",
+
+            href:
+              "/learning/course_6",
+
+            level:
+              "Intermediate",
+
+            status:
+              "Available",
+        },
+        {
+          id: 9,
 
           image:
             "img/thumbnail_learning/Tw1_transportation_watershed.png",
